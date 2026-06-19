@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <title>IFC Annotator 3D — Dashboard v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.170.0/build/three.module.js"}}</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="app-container">
+
+
+
+    <!-- ── Viewport Area ── -->
+    <div id="viewport-container">
+      <!-- Overlay HUD Header -->
+      <div id="hud-header">
+        <div class="hud-title" id="project-title">Loading Bridge...</div>
+        <div class="hud-chip" id="span-chip">Span: --</div>
+      </div>
+
+
+
+      <!-- Overlay Controls -->
+      <div id="hud-triggers">
+        <button class="hud-btn" onclick="toggleLeftPanel()"><i class="bi bi-table"></i> Inspector</button>
+        <button class="hud-btn" onclick="resetAllFilters(); setCameraPreset('home');"><i
+            class="bi bi-arrow-counterclockwise"></i> Reset View</button>
+      </div>
+    </div>
+
+    <!-- ── Right panel ── -->
+    <div id="right-panel" class="dashboard-panel">
+      <div class="panel-header">
+        <div class="panel-title"><i class="bi bi-layers-half"></i> Object Explorer</div>
+        <button class="btn btn-sm btn-dark text-muted" onclick="toggleRightPanel()"><i
+            class="bi bi-chevron-right"></i></button>
+      </div>
+
+      <div class="custom-tabs">
+        <div class="tab-btn active" id="tab-groups" onclick="switchRightTab('groups')">Groups</div>
+        <div class="tab-btn" id="tab-meta" onclick="switchRightTab('meta')">Specifications</div>
+      </div>
+
+      <div class="panel-content">
+
+        <!-- TAB 1: GROUPS CHECKLIST -->
+        <div id="content-groups">
+          <div id="groups-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- TAB 2: SPECIFICATIONS PANEL -->
+        <div id="content-meta" style="display:none">
+          <div id="meta-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Left Toggle button -->
+    <button id="left-trigger" class="sidebar-trigger" style="display:block" onclick="toggleLeftPanel()"><i
+        class="bi bi-chevron-right"></i></button>
+
+    <!-- Right Toggle button -->
+    <button id="right-trigger" class="sidebar-trigger" style="display:none" onclick="toggleRightPanel()"><i
+        class="bi bi-chevron-left"></i></button>
+
+    <!-- ── Left Inspector ── -->
+    <div id="left-panel" class="collapsed">
+      <div class="panel-header py-2" style="background: rgba(0, 0, 0, 0.2)">
+        <div class="panel-title" style="font-size: 11px;"><i class="bi bi-card-list"></i> Property Inspector</div>
+        <button class="btn btn-xs btn-dark py-0" onclick="toggleLeftPanel()"><i class="bi bi-chevron-left"></i></button>
+      </div>
+      <div class="inspector-grid" id="inspector-grid-content">
+        <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px;">
+          No element selected. Click on a component in the 3D viewer to inspect its physical parameters.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./scripts/app.js"></script>
+</body>
+
+</html>
