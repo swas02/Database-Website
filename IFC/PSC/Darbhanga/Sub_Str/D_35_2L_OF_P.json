@@ -1,0 +1,62 @@
+{
+  "ifcHash": "a9186c6522f4cb97e1c614cf68af05a9dd7d30492cb374c7cdb988ca4764caf8",
+  "groups": [
+    {
+      "name": "Pier Cap Mid",
+      "partIDs": [
+        "1395_0",
+        "245_0"
+      ],
+      "visible": true,
+      "meta": {
+        "length": "",
+        "color": "",
+        "custom": []
+      }
+    },
+    {
+      "name": "Pier Cap End",
+      "partIDs": [
+        "76_1",
+        "1759_0",
+        "832_0",
+        "1360_0",
+        "163_0",
+        "797_0",
+        "1231_0",
+        "76_0"
+      ],
+      "visible": true,
+      "meta": {
+        "length": "",
+        "color": "",
+        "custom": []
+      }
+    },
+    {
+      "name": "Pier",
+      "partIDs": [
+        "433_0"
+      ],
+      "visible": true,
+      "meta": {
+        "length": "",
+        "color": "",
+        "custom": []
+      }
+    },
+    {
+      "name": "Pile Cap",
+      "partIDs": [
+        "961_0"
+      ],
+      "visible": true,
+      "meta": {
+        "length": "",
+        "color": "",
+        "custom": []
+      }
+    }
+  ],
+  "autoMeta": {}
+}
