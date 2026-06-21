@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import * as WebIFC from "https://unpkg.com/web-ifc@0.0.77/web-ifc-api.js";
 import { state } from "./state.js";
-import { COLOR, IFCTYPES } from "./constants.js";
+import { COLOR, IFCTYPES, getMaterialColor, getIsConcrete } from "./constants.js";
 import { setLoadingState, renderGroupsPanel } from "./ui.js";
 import { precomputeGroupBounds } from "./selection.js";
 
@@ -70,8 +70,8 @@ export async function loadIFC(arrayBuffer) {
         geometry,
         new THREE.MeshStandardMaterial({
           color: meshColor,
-          roughness: 0.5,
-          metalness: 0.4,
+          roughness: 0.35,
+          metalness: 0.2,
           side: THREE.DoubleSide,
           transparent: true,
           opacity: 1.0,
@@ -121,6 +121,8 @@ export async function loadIFC(arrayBuffer) {
       ) {
         obj.material = obj.material.clone();
         obj.material.color.set(COLOR.CONCRETE);
+        obj.material.roughness = 0.8;
+        obj.material.metalness = 0.1;
         obj.userData.baseColor = COLOR.CONCRETE;
         obj.userData.originalColor = COLOR.CONCRETE;
       }
@@ -137,14 +139,53 @@ export async function loadIFC(arrayBuffer) {
   setLoadingState(null);
 }
 
-// ── Default and File Loader Events ───────────────────────────
 export function loadDefaultGroupsJSON() {
+  if (state.modelGroupsData && state.modelGroupsData.groups) {
+    const groupsList = state.modelGroupsData.groups;
+
+    // Reset mapping
+    state.groupIndex.clear();
+    state.groupMap.clear();
+
+    groupsList.forEach((g) => {
+      state.groupIndex.set(g.name, new Set());
+    });
+
+    state.meshMap.forEach((meshes, id) => {
+      groupsList.forEach((g) => {
+        if (g.partIDs.includes(id)) {
+          state.groupIndex.get(g.name).add(id);
+          mapPartToGroup(id, g.name);
+        }
+      });
+    });
+
+    // Apply colors
+    groupsList.forEach((g) => {
+      const colorHex = getMaterialColor(g.name);
+      const color = new THREE.Color(colorHex);
+      const isConcrete = getIsConcrete(g.name);
+      state.groupIndex.get(g.name)?.forEach((id) => {
+        state.meshMap.get(id)?.forEach((m) => {
+          m.material.color.set(color);
+          m.material.roughness = isConcrete ? 0.8 : 0.35;
+          m.material.metalness = isConcrete ? 0.1 : 0.2;
+          m.userData.originalColor = color.getHex();
+        });
+      });
+    });
+
+    renderGroupsPanel(groupsList);
+    precomputeGroupBounds();
+    return;
+  }
+
   const groupsList = [
-    { name: "deck_slab", color: "#d4c5a9" },
-    { name: "girder_sections", color: "#607d8b" },
-    { name: "cross_bracing", color: "#cfd8dc" },
-    { name: "transverse_stiffeners_per_girder_side", color: "#54728c" },
-    { name: "bearing_stiffeners_per_girder_side", color: "#b0bec5" },
+    { name: "deck_slab", color: "#dcd2c4" },
+    { name: "girder_sections", color: "#8a9ba8" },
+    { name: "cross_bracing", color: "#8a9ba8" },
+    { name: "transverse_stiffeners_per_girder_side", color: "#8a9ba8" },
+    { name: "bearing_stiffeners_per_girder_side", color: "#8a9ba8" },
   ];
 
   // Make mapping
@@ -272,10 +313,14 @@ export function loadDefaultGroupsJSON() {
 
   // Apply colors
   groupsList.forEach((g) => {
-    const color = new THREE.Color(g.color);
+    const colorHex = getMaterialColor(g.name);
+    const color = new THREE.Color(colorHex);
+    const isConcrete = getIsConcrete(g.name);
     state.groupIndex.get(g.name)?.forEach((id) => {
       state.meshMap.get(id)?.forEach((m) => {
         m.material.color.set(color);
+        m.material.roughness = isConcrete ? 0.8 : 0.35;
+        m.material.metalness = isConcrete ? 0.1 : 0.2;
         m.userData.originalColor = color.getHex();
       });
     });

@@ -20,6 +20,7 @@ export const state = {
   selection: null, // { groupKey, groups, hitPoint }
   isolateMode: true,
   activeSidebarTab: "groups",
+  modelGroupsData: null,
 
   // Camera transition variables
   targetCamPos: null,

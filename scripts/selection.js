@@ -54,7 +54,7 @@ export function updateIsolationVisuals() {
 // ── Bounding Box helpers ──────────────────────────────────────
 export function getSegmentHelper(index) {
   if (!state.segmentHelpers[index]) {
-    const helper = new THREE.Box3Helper(new THREE.Box3(), 0xa8c520);
+    const helper = new THREE.Box3Helper(new THREE.Box3(), 0x3b82f6);
     helper.material.transparent = true;
     helper.material.opacity = 0.4;
     helper.visible = false;
@@ -171,7 +171,7 @@ window.highlightSegment3D = function (index, highlight) {
   const helper = state.segmentHelpers[index];
   if (helper) {
     helper.material.opacity = highlight ? 0.95 : 0.4;
-    helper.material.color.setHex(0x22c55e); // Green
+    helper.material.color.setHex(0x3b82f6); // Corporate Blue
   }
 };
 
@@ -224,13 +224,31 @@ export function resetAllFilters() {
   clearHover();
   clearSegmentation();
   updateIsolationVisuals();
-  const panel = document.getElementById("left-panel");
-  panel.classList.add("collapsed");
-  const trigger = document.getElementById("left-trigger");
-  if (trigger) trigger.style.display = "block";
+  
+  if (window.switchRightTab) {
+    window.switchRightTab("groups");
+  }
+
+  // Collapse the right panel on filter reset
+  const rp = document.getElementById("right-panel");
+  const rt = document.getElementById("right-trigger");
+  if (rp) {
+    rp.classList.add("collapsed");
+    if (rt) rt.style.display = "block";
+  }
+
+
+
   document
     .querySelectorAll(".group-item")
     .forEach((item) => item.classList.remove("active"));
+
+  document
+    .querySelectorAll(".group-details-accordion")
+    .forEach((acc) => {
+      acc.style.display = "none";
+      acc.innerHTML = "";
+    });
 }
 window.resetAllFilters = resetAllFilters;
 

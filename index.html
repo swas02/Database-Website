@@ -19,37 +19,82 @@
 
     <!-- ── Viewport Area ── -->
     <div id="viewport-container">
-      <!-- Overlay HUD Header -->
+      <!-- Overlay HUD Navigation Header -->
       <div id="hud-header">
-        <div class="hud-title" id="project-title">Loading Bridge...</div>
-        <div class="hud-chip" id="span-chip">Span: --</div>
+        <!-- Brand / Logo -->
+        <a href="#" class="nav-brand">
+          <i class="bi bi-bezier2 text-primary"></i>
+          <span>BridgeLCCA</span>
+        </a>
+
+        <!-- Divider -->
+        <div class="nav-divider"></div>
+
+        <!-- Nav Links -->
+        <nav class="nav-menu">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link active">Dataset Viewer</a>
+          <a href="#" class="nav-link">Publications</a>
+          <a href="#" class="nav-link">Our Software</a>
+        </nav>
+
+        <!-- Three dots Dropdown -->
+        <div class="nav-dropdown" id="more-menu">
+          <button class="nav-dropdown-trigger" onclick="toggleDropdownMenu(event)">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="nav-dropdown-content" id="more-menu-content">
+            <!-- Mobile-only links -->
+            <a href="#" class="mobile-only-link"><i class="bi bi-house me-2"></i> Home</a>
+            <a href="#" class="mobile-only-link active"><i class="bi bi-bezier2 me-2"></i> Dataset Viewer</a>
+            <a href="#" class="mobile-only-link"><i class="bi bi-journal-text me-2"></i> Publications</a>
+            <a href="#" class="mobile-only-link"><i class="bi bi-cpu me-2"></i> Our Software</a>
+            <div class="nav-dropdown-divider mobile-only-link"></div>
+            
+            <!-- General links -->
+            <a href="#"><i class="bi bi-info-circle me-2"></i> About Us</a>
+            <a href="#"><i class="bi bi-book me-2"></i> Documentation</a>
+            <a href="#"><i class="bi bi-envelope me-2"></i> Contact Us</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="#" onclick="toggleSiteTheme(event)">
+              <i class="bi bi-sun-fill me-2" id="theme-toggle-icon"></i>
+              <span id="theme-toggle-text">Light Mode</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hidden elements to prevent script reference errors -->
+        <span id="project-title" style="display: none;"></span>
+        <span id="span-chip" style="display: none;"></span>
       </div>
 
 
 
       <!-- Overlay Controls -->
       <div id="hud-triggers">
-        <button class="hud-btn" onclick="toggleLeftPanel()"><i class="bi bi-table"></i> Inspector</button>
-        <button class="hud-btn" onclick="resetAllFilters(); setCameraPreset('home');"><i
-            class="bi bi-arrow-counterclockwise"></i> Reset View</button>
+        <button class="hud-btn active" id="btn-mode-rotate" onclick="setViewerMode('rotate')" title="Rotate Mode"><i class="bi bi-arrow-repeat"></i> <span class="hud-btn-text">Rotate</span></button>
+        <button class="hud-btn" id="btn-mode-pan" onclick="setViewerMode('pan')" title="Pan Mode"><i class="bi bi-arrows-move"></i> <span class="hud-btn-text">Pan</span></button>
+        <button class="hud-btn" onclick="zoomViewer(1)" title="Zoom In"><i class="bi bi-plus-lg"></i></button>
+        <button class="hud-btn" onclick="zoomViewer(-1)" title="Zoom Out"><i class="bi bi-dash-lg"></i></button>
+        <button class="hud-btn" onclick="resetAllFilters(); setCameraPreset('home'); setViewerMode('rotate');" title="Reset View"><i class="bi bi-arrow-counterclockwise"></i> <span class="hud-btn-text">Reset</span></button>
       </div>
     </div>
 
-    <!-- ── Right panel ── -->
-    <div id="right-panel" class="dashboard-panel">
+    <!-- ── Right Panel (Explorer & Inspector) ── -->
+    <div id="right-panel" class="dashboard-panel collapsed">
       <div class="panel-header">
-        <div class="panel-title"><i class="bi bi-layers-half"></i> Object Explorer</div>
-        <button class="btn btn-sm btn-dark text-muted" onclick="toggleRightPanel()"><i
+        <div class="panel-title"><i class="bi bi-layers-half"></i> Bridge Explorer</div>
+        <button class="btn btn-sm btn-panel-toggle" onclick="toggleRightPanel()"><i
             class="bi bi-chevron-right"></i></button>
       </div>
 
       <div class="custom-tabs">
         <div class="tab-btn active" id="tab-groups" onclick="switchRightTab('groups')">Groups</div>
-        <div class="tab-btn" id="tab-meta" onclick="switchRightTab('meta')">Specifications</div>
+        <div class="tab-btn" id="tab-meta" onclick="switchRightTab('meta')">Specs</div>
+        <div class="tab-btn" id="tab-downloads" onclick="switchRightTab('downloads')">Downloads</div>
       </div>
 
       <div class="panel-content">
-
         <!-- TAB 1: GROUPS CHECKLIST -->
         <div id="content-groups">
           <div id="groups-container">
@@ -64,27 +109,69 @@
           </div>
         </div>
 
+        <!-- TAB 4: DOWNLOADS PANEL -->
+        <div id="content-downloads" style="display:none">
+          <div class="inspector-grid" id="downloads-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Left Toggle button -->
-    <button id="left-trigger" class="sidebar-trigger" style="display:block" onclick="toggleLeftPanel()"><i
+    <!-- Left Toggle button (hidden initially because left panel is open) -->
+    <button id="left-trigger" class="sidebar-trigger" style="display:none" onclick="toggleLeftPanel()"><i
         class="bi bi-chevron-right"></i></button>
 
-    <!-- Right Toggle button -->
-    <button id="right-trigger" class="sidebar-trigger" style="display:none" onclick="toggleRightPanel()"><i
+    <!-- Right Toggle button (visible initially because right panel is collapsed) -->
+    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()"><i
         class="bi bi-chevron-left"></i></button>
 
-    <!-- ── Left Inspector ── -->
-    <div id="left-panel" class="collapsed">
-      <div class="panel-header py-2" style="background: rgba(0, 0, 0, 0.2)">
-        <div class="panel-title" style="font-size: 11px;"><i class="bi bi-card-list"></i> Property Inspector</div>
-        <button class="btn btn-xs btn-dark py-0" onclick="toggleLeftPanel()"><i class="bi bi-chevron-left"></i></button>
+    <!-- ── Left Panel (Bridge Model Library) ── -->
+    <div id="left-panel" class="dashboard-panel">
+      <div class="panel-header">
+        <div class="panel-title"><i class="bi bi-folder-fill"></i> Model Library</div>
+        <button class="btn btn-sm btn-panel-toggle" onclick="toggleLeftPanel()"><i
+            class="bi bi-chevron-left"></i></button>
       </div>
-      <div class="inspector-grid" id="inspector-grid-content">
-        <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px;">
-          No element selected. Click on a component in the 3D viewer to inspect its physical parameters.
+      
+      <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
+        
+        <!-- Primary Filters -->
+        <div class="settings-group mb-0">
+          <div class="settings-title">Primary Filters</div>
+          
+          <div class="control-row mb-2">
+            <span class="text-muted">Location</span>
+            <select id="filter-location" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+          
+          <div class="control-row mb-2">
+            <span class="text-muted">Type</span>
+            <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+          
+          <div class="control-row mb-2">
+            <span class="text-muted">Structure</span>
+            <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
         </div>
+
+        <!-- Hidden inputs to satisfy existing JS loading logic, hidden from user -->
+        <div style="display: none;">
+          <select id="filter-span" onchange="onFilterChange()"></select>
+          <select id="filter-lanes" onchange="onFilterChange()"></select>
+          <select id="filter-footpath" onchange="onFilterChange()"></select>
+        </div>
+
+        <!-- Available Models Catalog -->
+        <div class="border-top border-secondary pt-3 d-flex flex-column">
+          <div class="settings-title mb-2">Available Models (<span id="catalog-count">0</span>)</div>
+          
+          <div id="catalog-list" class="d-flex flex-column gap-2">
+            <!-- Populated dynamically as beautiful Cards -->
+          </div>
+        </div>
+        
       </div>
     </div>
 

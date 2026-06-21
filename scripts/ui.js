@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { state } from "./state.js";
-import { COLOR } from "./constants.js";
+import { COLOR, getMaterialColor } from "./constants.js";
 
 // Tab Navigation Explorer
 window.switchRightTab = function (tab) {
@@ -11,25 +11,75 @@ window.switchRightTab = function (tab) {
   document
     .getElementById("tab-meta")
     .classList.toggle("active", tab === "meta");
+  document
+    .getElementById("tab-downloads")
+    .classList.toggle("active", tab === "downloads");
+    
   document.getElementById("content-groups").style.display =
     tab === "groups" ? "block" : "none";
   document.getElementById("content-meta").style.display =
     tab === "meta" ? "block" : "none";
+  document.getElementById("content-downloads").style.display =
+    tab === "downloads" ? "block" : "none";
 };
 
 window.toggleRightPanel = function () {
   const p = document.getElementById("right-panel");
   const t = document.getElementById("right-trigger");
+  if (!p) return;
   const col = p.classList.toggle("collapsed");
-  t.style.display = col ? "block" : "none";
+  if (t) t.style.display = col ? "block" : "none";
+  
+  // On mobile (<= 768px), if we open the right panel, collapse the left panel
+  if (!col && window.innerWidth <= 768) {
+    const lp = document.getElementById("left-panel");
+    const lt = document.getElementById("left-trigger");
+    if (lp && !lp.classList.contains("collapsed")) {
+      lp.classList.add("collapsed");
+      if (lt) lt.style.display = "block";
+    }
+  }
 };
 
 window.toggleLeftPanel = function () {
   const p = document.getElementById("left-panel");
   const t = document.getElementById("left-trigger");
+  if (!p) return;
   const col = p.classList.toggle("collapsed");
-  t.style.display = col ? "block" : "none";
+  if (t) t.style.display = col ? "block" : "none";
+  
+  // On mobile (<= 768px), if we open the left panel, collapse the right panel
+  if (!col && window.innerWidth <= 768) {
+    const rp = document.getElementById("right-panel");
+    const rt = document.getElementById("right-trigger");
+    if (rp && !rp.classList.contains("collapsed")) {
+      rp.classList.add("collapsed");
+      if (rt) rt.style.display = "block";
+    }
+  }
 };
+
+// Dynamic Panel Expansion on Boot based on screen size
+(function initPanels() {
+  const lp = document.getElementById("left-panel");
+  const lt = document.getElementById("left-trigger");
+  const rp = document.getElementById("right-panel");
+  const rt = document.getElementById("right-trigger");
+
+  if (window.innerWidth > 768) {
+    // Desktop: both panels open, triggers hidden
+    if (lp) lp.classList.remove("collapsed");
+    if (lt) lt.style.display = "none";
+    if (rp) rp.classList.remove("collapsed");
+    if (rt) rt.style.display = "none";
+  } else {
+    // Mobile: Left Panel (Library) open, Right Panel (Explorer) collapsed
+    if (lp) lp.classList.remove("collapsed");
+    if (lt) lt.style.display = "none";
+    if (rp) rp.classList.add("collapsed");
+    if (rt) rt.style.display = "block";
+  }
+})();
 
 // Loading Indicator
 export function setLoadingState(text) {
@@ -43,14 +93,14 @@ export function setLoadingState(text) {
       overlay.style.left = "0";
       overlay.style.width = "100%";
       overlay.style.height = "100%";
-      overlay.style.background = "rgba(5, 8, 12, 0.9)";
+      overlay.style.background = "rgba(15, 23, 42, 0.9)";
       overlay.style.display = "flex";
       overlay.style.flexDirection = "column";
       overlay.style.alignItems = "center";
       overlay.style.justifyContent = "center";
       overlay.style.zIndex = "999";
       overlay.innerHTML = `
-        <div class="spinner-border text-success mb-3" style="width: 3rem; height: 3rem; color: #a8c520 !important;"></div>
+        <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem; color: #3b82f6 !important;"></div>
         <div id="loading-text" class="text-white" style="font-family:'Outfit'; font-size: 14px; font-weight:500;"></div>
       `;
       state.viewportContainer.appendChild(overlay);
@@ -94,6 +144,44 @@ export function renderBridgeMetadata(data) {
       </div>
     `;
   });
+
+  // Dynamically render downloads list
+  renderDownloads(data.bridge_id, state.currentLoadedBridgePath);
+}
+
+export function getCleanGroupName(name) {
+  const nameLower = name.toLowerCase();
+  if (name === "deck_slab" || nameLower === "slab" || nameLower === "deck") {
+    return "Deck Slab";
+  }
+  if (name === "cross_bracing" || nameLower === "bracing" || nameLower.includes("brace")) {
+    return "Cross Bracing";
+  }
+  if (name === "girder_sections" || nameLower === "girder") {
+    return "Girder Sections";
+  }
+  if (nameLower === "chord" || nameLower === "cord") {
+    return "Chord";
+  }
+  if (nameLower.includes("bearing") || nameLower.includes("end stiffener") || nameLower.includes("end stifferen")) {
+    return "Bearing Stiffeners";
+  }
+  if (nameLower.includes("transverse") || nameLower.includes("intermediate stiffener") || nameLower.includes("stiffener") || nameLower.includes("stifferen")) {
+    return "Transverse Stiffeners";
+  }
+  if (nameLower === "pier" || name === "Pier Shaft") {
+    return "Pier Shaft";
+  }
+  if (nameLower === "pier_cap" || nameLower.includes("pier cap")) {
+    return "Pier Cap";
+  }
+  if (nameLower === "pile_cap" || nameLower === "pile cap") {
+    return "Pile Cap";
+  }
+  if (nameLower === "pile" || nameLower === "piles") {
+    return "Piles";
+  }
+  return name.replace(/_/g, " ");
 }
 
 export function renderGroupsPanel(list) {
@@ -101,11 +189,21 @@ export function renderGroupsPanel(list) {
   container.innerHTML = "";
 
   list.forEach((g) => {
-    const colorHex =
-      "#" +
-      new THREE.Color(
-        COLOR[g.name.toUpperCase().split("_")[0]] || 0x607d8b,
-      ).getHexString();
+    let colorHex = "#607d8b";
+    
+    // Attempt to get color from actual Three.js meshes inside the group
+    const firstPartID = Array.from(state.groupIndex.get(g.name) || [])[0];
+    if (firstPartID) {
+      const meshes = state.meshMap.get(firstPartID);
+      if (meshes && meshes[0]) {
+        colorHex = "#" + meshes[0].material.color.getHexString();
+      }
+    } else if (g.meta?.color && g.meta.color !== "") {
+      colorHex = g.meta.color;
+    } else {
+      colorHex = getMaterialColor(g.name);
+    }
+
     const count = state.groupIndex.get(g.name)?.size || 0;
 
     const div = document.createElement("div");
@@ -113,17 +211,20 @@ export function renderGroupsPanel(list) {
     div.setAttribute("data-group", g.name);
     div.setAttribute("onclick", `selectGroup('${g.name}')`);
     div.innerHTML = `
-      <div class="group-info">
-        <span class="group-dot" style="color: ${colorHex}; background-color: ${colorHex}"></span>
-        <span class="group-name">${g.name.replace(/_/g, " ")}</span>
-        <span class="group-count">${count}</span>
-      </div>
-      <div class="group-controls" onclick="event.stopPropagation()">
-        <div class="color-picker-wrapper" style="background-color: ${colorHex}">
-          <input type="color" class="color-picker-input" value="${colorHex}" onchange="changeGroupColor('${g.name}', this.value)">
+      <div class="group-header">
+        <div class="group-info">
+          <span class="group-dot" style="color: ${colorHex}; background-color: ${colorHex}"></span>
+          <span class="group-name">${getCleanGroupName(g.name)}</span>
+          <span class="group-count">${count}</span>
         </div>
-        <button class="vis-toggle" onclick="toggleGroupVisibility('${g.name}', this); event.stopPropagation();"><i class="bi bi-eye-fill"></i></button>
+        <div class="group-controls" onclick="event.stopPropagation()">
+          <div class="color-picker-wrapper" style="background-color: ${colorHex}">
+            <input type="color" class="color-picker-input" value="${colorHex}" onchange="changeGroupColor('${g.name}', this.value)">
+          </div>
+          <button class="vis-toggle" onclick="toggleGroupVisibility('${g.name}', this); event.stopPropagation();"><i class="bi bi-eye-fill"></i></button>
+        </div>
       </div>
+      <div class="group-details-accordion" style="display:none" onclick="event.stopPropagation()"></div>
     `;
     container.innerHTML += div.outerHTML;
   });
@@ -168,16 +269,54 @@ export function generateGirderSVG(props, color) {
 }
 
 export function updatePropertyInspector(group) {
-  const panel = document.getElementById("left-panel");
-  panel.classList.remove("collapsed");
-  const trigger = document.getElementById("left-trigger");
-  if (trigger) trigger.style.display = "none";
+  console.log("Selected group in inspector:", group);
+  console.log("Bridge database specs (bridgeData):", state.bridgeData);
 
-  const content = document.getElementById("inspector-grid-content");
-  content.innerHTML = "";
+  // Open the right panel if collapsed
+  const p = document.getElementById("right-panel");
+  if (p) {
+    const wasCollapsed = p.classList.contains("collapsed");
+    p.classList.remove("collapsed");
+    const t = document.getElementById("right-trigger");
+    if (t) t.style.display = "none";
+    
+    // On mobile (<= 768px), if we open the right panel, collapse the left panel
+    if (wasCollapsed && window.innerWidth <= 768) {
+      const lp = document.getElementById("left-panel");
+      const lt = document.getElementById("left-trigger");
+      if (lp && !lp.classList.contains("collapsed")) {
+        lp.classList.add("collapsed");
+        if (lt) lt.style.display = "block";
+      }
+    }
+  }
+
+  // Switch right panel tab to 'groups'
+  window.switchRightTab('groups');
+  
+  // Collapse all other accordions first
+  document.querySelectorAll(".group-details-accordion").forEach((acc) => {
+    acc.style.display = "none";
+    acc.innerHTML = "";
+  });
+
+  let targetAccordion = null;
+  if (group) {
+    const groupEl = document.querySelector(`.group-item[data-group="${group.name}"]`);
+    if (groupEl) {
+      targetAccordion = groupEl.querySelector(".group-details-accordion");
+    }
+  }
+
+  let htmlContent = "";
+
+  const isSteel = state.bridgeData && 
+                  state.bridgeData.bridge_type && 
+                  !state.bridgeData.bridge_type.toLowerCase().includes("psc") && 
+                  !state.bridgeData.bridge_type.toLowerCase().includes("prestressed");
 
   if (!group && state.bridgeData) {
-    content.innerHTML = `
+    htmlContent = `
       <div class="metric-card mb-0" style="min-width: 230px;">
         <span class="metric-header">General Specs</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
@@ -229,8 +368,13 @@ export function updatePropertyInspector(group) {
         </table>
       </div>
     `;
-  } else if (group && group.name === "deck_slab" && state.bridgeData.deck_slab) {
-    content.innerHTML = `
+  } else if (
+    group &&
+    isSteel &&
+    (group.name === "deck_slab" || group.name.toLowerCase() === "slab" || group.name.toLowerCase() === "deck") &&
+    state.bridgeData.deck_slab
+  ) {
+    htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
         <span class="metric-header">Deck Slab Specifications</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
@@ -244,12 +388,19 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    group.name === "cross_bracing" &&
+    isSteel &&
+    (group.name === "cross_bracing" || 
+     group.name.toLowerCase() === "bracing" || 
+     group.name.toLowerCase().includes("brace") || 
+     group.name.toLowerCase() === "chord" || 
+     group.name.toLowerCase() === "cord") &&
     state.bridgeData.cross_bracing
   ) {
-    content.innerHTML = `
+    const isChord = group.name.toLowerCase() === "chord" || group.name.toLowerCase() === "cord";
+    const displayName = isChord ? "Chord" : "Cross Bracing";
+    htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Cross Bracing Specifications</span>
+        <span class="metric-header">${displayName} Specifications</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Section Profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || "90x90x10"}</td></tr>
@@ -262,9 +413,12 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    group.name === "girder_sections" &&
+    isSteel &&
+    (group.name === "girder_sections" || group.name.toLowerCase() === "girder") &&
     state.bridgeData.girder_sections
   ) {
+    const displayName = "Girder";
+
     const activeSegs = state.bridgeData.girder_sections.longitudinal_segmentation_m
       ? state.bridgeData.girder_sections.longitudinal_segmentation_m.filter(
           (seg) => seg.initial_m !== seg.end_m,
@@ -315,9 +469,9 @@ export function updatePropertyInspector(group) {
       `;
     });
 
-    content.innerHTML = `
+    htmlContent = `
       <div class="metric-card mb-0" style="display: flex; flex-direction: column; width: 100%;">
-        <span class="metric-header" style="margin-bottom: 12px;">Girder Longitudinal Segmentation Specs</span>
+        <span class="metric-header" style="margin-bottom: 12px;">${displayName} Longitudinal Segmentation Specs</span>
         
         <!-- Visual Segment Bar -->
         <div style="display: flex; height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); margin-bottom: 12px;">
@@ -330,29 +484,344 @@ export function updatePropertyInspector(group) {
         </div>
       </div>
       
-      <!-- Girder Spacing -->
-      <div class="metric-card mb-0" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 14px;">
-        <span class="metric-header" style="margin-bottom: 0;">Girder Spacing</span>
-        <span class="metric-value font-monospace" style="font-size: 16px; color: #a8c520;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</span>
+      <!-- Girder/Chord Spacing -->
+      <div class="metric-card mb-0" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 14px; margin-top: 8px;">
+        <span class="metric-header" style="margin-bottom: 0;">${displayName} Spacing</span>
+        <span class="metric-value font-monospace" style="font-size: 16px; color: #60a5fa;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</span>
       </div>
     `;
   } else if (
     group &&
-    group.name.includes("stiffeners") &&
-    state.bridgeData[group.name]
+    isSteel &&
+    (group.name.toLowerCase() === "pier" || group.name === "Pier Shaft") &&
+    state.bridgeData.substructure?.pier
   ) {
-    const s = state.bridgeData[group.name];
-    content.innerHTML = `
+    const p = state.bridgeData.substructure.pier;
+    htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">${group.name.replace(/_/g, " ")} Specs</span>
+        <span class="metric-header">Pier Column Specifications</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Width</td><td class="text-end text-white font-monospace p-0 py-1">${s.width_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${s.thickness_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Spacing Interval</td><td class="text-end text-white font-monospace p-0 py-1">${s.spacing_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Height</td><td class="text-end text-white font-monospace p-0 py-1">${p.height_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${p.diameter_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Concrete Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
           </tbody>
         </table>
       </div>
     `;
+  } else if (
+    group &&
+    isSteel &&
+    (group.name.toLowerCase().includes("pier cap") || group.name === "pier_cap") &&
+    state.bridgeData.substructure?.pier_cap
+  ) {
+    const pc = state.bridgeData.substructure.pier_cap;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Pier Cap Specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            <tr><td class="text-muted p-0 py-1">Cap Width</td><td class="text-end text-white font-monospace p-0 py-1">${pc.width_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">End Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid Length</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Taper Length</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pc.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (
+    group &&
+    isSteel &&
+    (group.name.toLowerCase() === "pile cap" || group.name === "pile_cap") &&
+    state.bridgeData.substructure?.pile_cap
+  ) {
+    const pcap = state.bridgeData.substructure.pile_cap;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Pile Cap Specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            <tr><td class="text-muted p-0 py-1">Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Dimensions (W x L)</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.dimensions_m?.raw || `${pcap.dimensions_m?.width_m} x ${pcap.dimensions_m?.length_m} m`}</td></tr>
+            <tr><td class="text-muted p-0 py-1">PCC Bedding Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.pcc_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pcap.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (
+    group &&
+    isSteel &&
+    (group.name.toLowerCase() === "pile" || group.name === "piles" || group.name === "Pile") &&
+    state.bridgeData.substructure?.pile
+  ) {
+    const pile = state.bridgeData.substructure.pile;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Foundation Pile Specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            <tr><td class="text-muted p-0 py-1">Piles Count</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pile.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (
+    group &&
+    isSteel &&
+    (group.name.toLowerCase().includes("stiffener") || group.name.toLowerCase().includes("stifferen"))
+  ) {
+    const nameLower = group.name.toLowerCase();
+    const isBearing = nameLower.includes("bearing") || nameLower.includes("end");
+    const dbKey = isBearing ? "bearing_stiffeners_per_girder_side" : "transverse_stiffeners_per_girder_side";
+    const s = state.bridgeData[dbKey];
+
+    if (s) {
+      const displayName = isBearing ? "Bearing Stiffeners" : "Transverse Stiffeners";
+      htmlContent = `
+        <div class="metric-card mb-0" style="min-width: 250px;">
+          <span class="metric-header">${displayName} Specifications</span>
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+            <tbody>
+              <tr><td class="text-muted p-0 py-1">Width</td><td class="text-end text-white font-monospace p-0 py-1">${s.width_m} m</td></tr>
+              <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${s.thickness_m} m</td></tr>
+              <tr><td class="text-muted p-0 py-1">Spacing Interval</td><td class="text-end text-white font-monospace p-0 py-1">${s.spacing_m} m</td></tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+  }
+
+  // Fallback if no specific template content was loaded (e.g. PSC components)
+  if (!htmlContent.trim()) {
+    const isPSC = state.bridgeData?.bridge_type?.includes("PSC") || state.bridgeData?.bridge_type?.includes("Prestressed");
+    htmlContent = `
+      <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px;">
+        ${isPSC ? "Specifications not yet mapped for Prestressed Concrete (PSC) models." : "No properties found for this component."}
+      </div>
+    `;
+  }
+
+
+
+  if (targetAccordion && htmlContent) {
+    targetAccordion.innerHTML = htmlContent;
+    targetAccordion.style.display = "block";
+    
+    // Smooth scroll the selected group item into view within the panel content
+    const groupEl = document.querySelector(`.group-item[data-group="${group.name}"]`);
+    if (groupEl) {
+      groupEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }
 }
+
+// ── Bridge Model Library Catalog Renderer ──────────────────────────
+export function renderCatalog(matches, currentIfcPath) {
+  const container = document.getElementById("catalog-list");
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  const countSpan = document.getElementById("catalog-count");
+  if (countSpan) countSpan.textContent = matches.length;
+  
+  if (matches.length === 0) {
+    container.innerHTML = `
+      <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px; color: rgba(255,255,255,0.4) !important;">
+        No models match primary filters.
+      </div>
+    `;
+    return;
+  }
+  
+  matches.forEach(item => {
+    const isLoaded = item.ifc === currentIfcPath;
+    const bridgeIdFromPath = item.ifc.split("/").pop().replace(".ifc", "");
+    
+    const spanText = `${item.span}m`;
+    const lanesText = item.lanes === "2L" ? "2 Lanes" : "3 Lanes";
+    const footpathText = item.footpath === "OF" ? "With Footpath" : "No Footpath";
+    
+    let iconClass = "bi-bezier2";
+    if (item.structure === "Superstructure") {
+      iconClass = "bi-bridge-fill";
+    } else if (item.structure === "Substructure") {
+      iconClass = "bi-bricks";
+    }
+    
+    const card = document.createElement("div");
+    card.className = `catalog-card ${isLoaded ? 'active' : ''}`;
+    card.setAttribute("data-ifc", item.ifc);
+    
+    card.onclick = () => {
+      window.loadBridgeByCard(item);
+    };
+    
+    card.innerHTML = `
+      <div class="catalog-card-header">
+        <div class="catalog-card-badge">${item.bridge_type}</div>
+      </div>
+      <div class="catalog-card-stats">
+        <div class="catalog-stat-item">
+          <span class="catalog-stat-label">Span</span>
+          <span class="catalog-stat-val">${spanText}</span>
+        </div>
+        <div class="catalog-stat-item">
+          <span class="catalog-stat-label">Lanes</span>
+          <span class="catalog-stat-val">${lanesText}</span>
+        </div>
+        <div class="catalog-stat-item">
+          <span class="catalog-stat-label">Footpath</span>
+          <span class="catalog-stat-val">${footpathText}</span>
+        </div>
+      </div>
+      <div class="catalog-card-footer">
+        <span class="catalog-card-location"><i class="bi bi-geo-alt-fill text-primary me-1"></i>${item.location}</span>
+        <button class="catalog-load-btn">
+          ${isLoaded ? '<i class="bi bi-check-lg"></i> Loaded' : 'Load Model'}
+        </button>
+      </div>
+    `;
+    
+    container.appendChild(card);
+  });
+}
+
+export function updateCardActiveStates(activeIfcPath) {
+  document.querySelectorAll(".catalog-card").forEach((card) => {
+    const isLoaded = card.getAttribute("data-ifc") === activeIfcPath;
+    card.classList.toggle("active", isLoaded);
+    
+    const btn = card.querySelector(".catalog-load-btn");
+    if (btn) {
+      btn.innerHTML = isLoaded ? '<i class="bi bi-check-lg"></i> Loaded' : 'Load Model';
+    }
+  });
+}
+
+// ── Render Bridge Downloads List ──
+export function renderDownloads(bridgeId, ifcPath) {
+  const container = document.getElementById("downloads-container");
+  if (!container) return;
+
+  const jsonPath = ifcPath ? ifcPath.replace(".ifc", ".json") : null;
+
+  container.innerHTML = `
+    <!-- PDF Design Report card -->
+    <div class="metric-card mb-0">
+      <span class="metric-header">Design Documentation</span>
+      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+        <div>
+          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_design_report.pdf</div>
+          <div class="text-muted" style="font-size: 9px;">PDF Document • ~4.5 MB</div>
+        </div>
+        <button class="btn btn-sm btn-outline-secondary" onclick="alert('PDF Design Report not generated yet for this bridge configuration.')" style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
+      </div>
+    </div>
+
+    <!-- MCB Analysis model card -->
+    <div class="metric-card mb-0">
+      <span class="metric-header">Analysis Model</span>
+      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+        <div>
+          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_model.mcb</div>
+          <div class="text-muted" style="font-size: 9px;">Midas Civil File • ~1.2 MB</div>
+        </div>
+        <button class="btn btn-sm btn-outline-secondary" onclick="alert('Midas Civil MCB analysis model not generated yet for this bridge configuration.')" style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
+      </div>
+    </div>
+
+    <!-- Real IFC File Download -->
+    <div class="metric-card mb-0">
+      <span class="metric-header">3D CAD Model</span>
+      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+        <div>
+          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${ifcPath ? ifcPath.split("/").pop() : "model.ifc"}</div>
+          <div class="text-muted" style="font-size: 9px;">IFC Model File • Source</div>
+        </div>
+        ${ifcPath ? `
+          <a href="${ifcPath}" download class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+        ` : `
+          <button class="btn btn-sm btn-outline-secondary" disabled style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
+        `}
+      </div>
+    </div>
+
+    <!-- Real JSON Schema Download -->
+    <div class="metric-card mb-0">
+      <span class="metric-header">Structural Schema Data</span>
+      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+        <div>
+          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${jsonPath ? jsonPath.split("/").pop() : "schema.json"}</div>
+          <div class="text-muted" style="font-size: 9px;">JSON Data File</div>
+        </div>
+        ${jsonPath ? `
+          <a href="${jsonPath}" download class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+        ` : `
+          <button class="btn btn-sm btn-outline-secondary" disabled style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+// ── Dropdown Menu Toggle Handler ──
+window.toggleDropdownMenu = function (event) {
+  event.stopPropagation();
+  const dropdown = document.getElementById("more-menu-content");
+  if (dropdown) {
+    dropdown.classList.toggle("show");
+  }
+};
+
+// Close dropdown if clicked outside
+document.addEventListener("click", () => {
+  const dropdown = document.getElementById("more-menu-content");
+  if (dropdown && dropdown.classList.contains("show")) {
+    dropdown.classList.remove("show");
+  }
+});
+
+// ── Theme Switching Handler ──
+const savedTheme = localStorage.getItem("bridge-lcca-theme") || "dark";
+document.documentElement.setAttribute("data-bs-theme", savedTheme);
+
+window.toggleSiteTheme = function (event) {
+  if (event) event.preventDefault();
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute("data-bs-theme") || "dark";
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  
+  html.setAttribute("data-bs-theme", newTheme);
+  localStorage.setItem("bridge-lcca-theme", newTheme);
+  
+  updateThemeUI(newTheme);
+};
+
+function updateThemeUI(theme) {
+  const icon = document.getElementById("theme-toggle-icon");
+  const text = document.getElementById("theme-toggle-text");
+  
+  if (theme === "light") {
+    if (icon) icon.className = "bi bi-moon-fill me-2";
+    if (text) text.innerText = "Dark Mode";
+  } else {
+    if (icon) icon.className = "bi bi-sun-fill me-2";
+    if (text) text.innerText = "Light Mode";
+  }
+}
+
+// Call updateThemeUI on load
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => updateThemeUI(savedTheme));
+} else {
+  setTimeout(() => updateThemeUI(savedTheme), 50);
+}
+
