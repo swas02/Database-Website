@@ -218,7 +218,8 @@ canvas {
 }
 
 /* ── Floating Controls Overlay ── */
-#hud-header {
+#hud-header,
+.site-nav {
   position: absolute;
   top: 16px;
   left: 50%;
@@ -1043,7 +1044,8 @@ canvas {
     right: 16px;
   }
   
-  #hud-header {
+  #hud-header,
+  .site-nav {
     top: 12px;
     width: calc(100% - 24px) !important;
     left: 12px !important;
@@ -1179,6 +1181,168 @@ canvas {
   background: rgba(59, 130, 246, 0.06) !important;
   border-color: var(--primary) !important;
   box-shadow: none !important;
+}
+
+/* ════ Static Site Pages (pages/ — reuse viewer classes on scrolling pages) ════ */
+body.static-page {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body.static-page .site-nav {
+  position: fixed;
+}
+
+.page-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 104px 24px 48px;
+}
+.page-hero {
+  text-align: center;
+  padding: 40px 0 44px;
+}
+.page-hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.page-hero .accent {
+  color: var(--text-accent);
+}
+.page-lead {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+.page-section {
+  margin-bottom: 44px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+.stat-strip .metric-value {
+  font-size: 26px;
+}
+.icon-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg-badge);
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: 99px;
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.cta-btn:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #ffffff;
+}
+.cta-btn.ghost {
+  background: transparent;
+  color: var(--text-accent);
+  border-color: rgba(var(--primary-rgb), 0.4);
+}
+.cta-btn.ghost:hover {
+  background: var(--bg-tab-active);
+  color: var(--text-accent);
+}
+.code-block {
+  font-family: "JetBrains Mono", "Consolas", "Fira Code", monospace;
+  font-size: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  color: var(--text-main);
+  white-space: pre;
+  margin: 0;
+}
+.page-footer {
+  border-top: 1px solid var(--border-panel);
+  padding: 22px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+body.static-page .form-control {
+  background-color: var(--bg-hud-btn);
+  color: var(--text-main);
+  border-color: var(--border-panel);
+}
+body.static-page .form-control:focus {
+  background-color: var(--bg-hud-btn);
+  color: var(--text-main);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.15);
+}
+body.static-page .form-control::placeholder {
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 92px 16px 32px;
+  }
+}
+
+/* ── View-cube icons for camera preset buttons ── */
+.view-cube-icon {
+  width: 15px;
+  height: 15px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── HUD toolbar dividers (between mode / view / zoom clusters) ── */
+.hud-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 4px 2px;
+  background: var(--border-panel);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .hud-divider {
+    display: none;
+  }
+  #hud-triggers {
+    flex-wrap: wrap;
+    max-width: calc(100% - 24px);
+    justify-content: center;
+  }
+  .hud-btn {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 
