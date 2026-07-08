@@ -451,11 +451,13 @@ export function updatePropertyInspector(group) {
      group.name.toLowerCase() === "bracing" || 
      group.name.toLowerCase().includes("brace") || 
      group.name.toLowerCase() === "chord" || 
-     group.name.toLowerCase() === "cord") &&
+     group.name.toLowerCase() === "cord" ||
+     group.name.toLowerCase() === "diaphragm") &&
     state.bridgeData.cross_bracing
   ) {
     const isChord = group.name.toLowerCase() === "chord" || group.name.toLowerCase() === "cord";
-    const displayName = isChord ? "Chord" : "Cross Bracing";
+    const isDiaphragm = group.name.toLowerCase() === "diaphragm";
+    const displayName = isChord ? "Chord" : (isDiaphragm ? "Intermediate Diaphragm" : "Cross Bracing");
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
         <span class="metric-header">${displayName} Specifications</span>
@@ -467,6 +469,40 @@ export function updatePropertyInspector(group) {
             <tr><td class="text-muted p-0 py-1">Material Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
           </tbody>
         </table>
+      </div>
+    `;
+  } else if (
+    group &&
+    (group.name.toLowerCase().includes("end diaphragm") || group.name === "end_diaphragm") &&
+    state.bridgeData.girder_sections?.end_diaphragm
+  ) {
+    const props = state.bridgeData.girder_sections.end_diaphragm;
+    let colorHex = "#607d8b";
+    const firstPartID = Array.from(state.groupIndex.get(group.name) || [])[0];
+    if (firstPartID) {
+      const meshes = state.meshMap.get(firstPartID);
+      if (meshes && meshes[0]) {
+        colorHex = "#" + meshes[0].material.color.getHexString();
+      }
+    } else {
+      colorHex = getMaterialColor(group.name);
+    }
+    const svgHtml = generateGirderSVG(props, colorHex);
+
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header" style="margin-bottom: 8px;">End Diaphragm Specifications</span>
+        <div style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+          ${svgHtml}
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+            <tbody>
+              <tr><td class="text-muted p-0 py-0.5">Web Depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web Thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Top Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Bottom Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     `;
   } else if (
