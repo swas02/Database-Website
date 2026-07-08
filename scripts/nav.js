@@ -17,13 +17,12 @@
   const LINKS = [
     { key: "home", label: "Home", icon: "bi-house", href: "pages/home.html" },
     { key: "viewer", label: "Dataset Viewer", icon: "bi-bezier2", href: "index.html" },
-    { key: "publications", label: "Publications", icon: "bi-journal-text", href: "pages/publications.html" },
-    { key: "software", label: "Our Software", icon: "bi-cpu", href: "pages/software.html" },
+    { key: "software", label: "Our Software", icon: "bi-cpu", href: "pages/home.html#software" },
+    { key: "publications", label: "Publications", icon: "bi-journal-text", href: "pages/home.html#publications" },
   ];
   const MORE_LINKS = [
-    { key: "about", label: "About Us", icon: "bi-info-circle", href: "pages/about.html" },
-    { key: "docs", label: "Documentation", icon: "bi-book", href: "pages/docs.html" },
-    { key: "contact", label: "Contact Us", icon: "bi-envelope", href: "pages/contact.html" },
+    { key: "about", label: "About Us", icon: "bi-info-circle", href: "pages/home.html#about" },
+    { key: "contact", label: "Contact Us", icon: "bi-envelope", href: "pages/home.html#contact" },
   ];
 
   function renderTopNav(host) {
@@ -131,7 +130,87 @@
     }
   });
 
+  function initScrollSpy() {
+    const sections = [
+      { id: "home", key: "home" },
+      { id: "software", key: "software" },
+      { id: "publications", key: "publications" },
+      { id: "about", key: "about" },
+      { id: "contact", key: "contact" }
+    ];
+
+    function checkActiveSection() {
+      let activeKey = "home";
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      const hash = window.location.hash;
+
+      if (scrollY <= 100) {
+        if (hash) {
+          const matched = sections.find(s => "#" + s.id === hash);
+          if (matched) activeKey = matched.key;
+        }
+      } else {
+        let minDiff = Infinity;
+        for (const section of sections) {
+          if (section.id === "home") continue;
+          const el = document.getElementById(section.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            const diff = Math.abs(rect.top - 80);
+            if (diff < minDiff) {
+              minDiff = diff;
+              activeKey = section.key;
+            }
+          }
+        }
+        
+        // If the closest section's top is still in the lower 40% of the viewport, keep Home highlighted
+        if (activeKey !== "home") {
+          const activeEl = document.getElementById(activeKey);
+          if (activeEl) {
+            const rect = activeEl.getBoundingClientRect();
+            if (rect.top > window.innerHeight * 0.6) {
+              activeKey = "home";
+            }
+          }
+        }
+      }
+
+      document.querySelectorAll("#hud-header a").forEach((link) => {
+        const href = link.getAttribute("href") || "";
+        if (link.classList.contains("nav-brand")) return;
+
+        let isCurrent = false;
+        if (activeKey === "home") {
+          isCurrent = href.includes("home.html") && !href.includes("#");
+        } else {
+          isCurrent = href.endsWith("#" + activeKey);
+        }
+
+        if (isCurrent) {
+          link.classList.add("active");
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.classList.remove("active");
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", checkActiveSection);
+    window.addEventListener("hashchange", checkActiveSection);
+    window.addEventListener("load", () => {
+      setTimeout(checkActiveSection, 100);
+      setTimeout(checkActiveSection, 400);
+    });
+    checkActiveSection();
+  }
+
   // ── Render all placeholders (script is loaded at end of body) ──
   document.querySelectorAll("[data-topnav]").forEach(renderTopNav);
   updateThemeUI(savedTheme);
+
+  if (document.body.classList.contains("static-page")) {
+    initScrollSpy();
+  }
 })();

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <title>Home | BridgeLCCA & Team OSDAG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BridgeLCCA — interactive 3D IFC bridge model viewer and lifecycle cost analysis suite by Team OSDAG.">
+  <meta name="theme-color" content="#0e131f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%233b82f6' d='M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm12 3A1.5 1.5 0 0 1 13.5 12h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="static-page">
+
+  <!-- Shared Top Navigation Header -->
+  <header id="hud-header" data-topnav data-active="home" data-root="../"></header>
+
+  <main class="page-shell">
+    
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <span class="hero-eyebrow"><i class="bi bi-mortarboard" aria-hidden="true"></i> FOSSEE &middot; IIT Bombay &middot; Open Source</span>
+      <div class="icon-bubble icon-bubble-lg mx-auto">
+        <i class="bi bi-bezier2"></i>
+      </div>
+      <h1>Bridge Lifecycle <span class="accent">Cost Analysis</span></h1>
+      <p class="page-lead">
+        Built by <strong>Team OSDAG</strong> under the FOSSEE initiative at IIT Bombay, BridgeLCCA parses IFC bridge models and renders every girder, pier, diaphragm, and stiffener in 3D — so you can inspect component specs and lifecycle costs together.
+      </p>
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="../index.html" class="cta-btn">
+          <i class="bi bi-play-fill" aria-hidden="true"></i> Launch Viewer
+        </a>
+        <a href="#software" class="cta-btn ghost">
+          <i class="bi bi-cpu" aria-hidden="true"></i> Our Software
+        </a>
+      </div>
+    </section>
+
+
+    <!-- Software Section -->
+    <section id="software" class="page-section mt-5">
+      <h2 class="section-eyebrow mb-4"><i class="bi bi-cpu" aria-hidden="true"></i> Our Integrated Software</h2>
+      <div class="card-grid">
+        <!-- Osdag -->
+        <div class="content-card feature-card p-4">
+          <div>
+            <div class="icon-bubble">
+              <i class="bi bi-cpu-fill" aria-hidden="true"></i>
+            </div>
+            <h3>Osdag</h3>
+            <p class="small text-muted mb-3">
+              Open Steel Design and Graphics. A free, open-source, cross-platform tool for the analysis, design, and detailing of structural steel connections per IS 800:2007, with 3D visualization and CAD export. Developed under FOSSEE at IIT Bombay.
+            </p>
+          </div>
+          <div class="d-flex gap-2 mt-2">
+            <a href="https://osdag.fossee.in/" target="_blank" rel="noopener" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-globe" aria-hidden="true"></i> Website
+            </a>
+            <a href="https://github.com/osdag-admin/Osdag" target="_blank" rel="noopener" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- osdagBridge -->
+        <div class="content-card feature-card p-4">
+          <div>
+            <div class="icon-bubble">
+              <i class="bi bi-bezier2" aria-hidden="true"></i>
+            </div>
+            <h3>osdagBridge</h3>
+            <p class="small text-muted mb-3">
+              The bridge-design module of the Osdag ecosystem, built for modeling and detailing steel and composite steel-concrete bridge components — girders, diaphragms, stiffeners, and bearings — with automated design checks.
+            </p>
+          </div>
+          <div class="d-flex gap-2 mt-2">
+            <a href="https://osdag.fossee.in/" target="_blank" rel="noopener" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-globe" aria-hidden="true"></i> Website
+            </a>
+            <a href="https://github.com/osdag-admin/Osdag" target="_blank" rel="noopener" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- 3psLCCA -->
+        <div class="content-card feature-card p-4">
+          <div>
+            <div class="icon-bubble">
+              <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            </div>
+            <h3>3psLCCA</h3>
+            <p class="small text-muted mb-3">
+              This site. A 3D IFC bridge model viewer paired with a Lifecycle Cost Analysis engine — browse the component catalog, inspect per-part specifications, and track long-term maintenance and material costs.
+            </p>
+          </div>
+          <div class="d-flex gap-2 mt-2">
+            <a href="../index.html" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-globe" aria-hidden="true"></i> Launch
+            </a>
+            <a href="https://github.com/swas02/Database-Website" target="_blank" rel="noopener" class="cta-btn ghost btn-sm py-1 px-3" style="font-size: 12px;">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="page-section mt-5">
+      <h2 class="section-eyebrow mb-4"><i class="bi bi-journal-text" aria-hidden="true"></i> Research &amp; Publications</h2>
+      <div class="d-flex flex-column gap-3">
+        <!-- Publication 1 (placeholder) -->
+        <div class="content-card p-4">
+          <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+            <div>
+              <span class="badge-mono mb-2">JOURNAL PAPER &middot; TBD</span>
+              <h3 class="mb-2" style="font-size: 16px;">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit</h3>
+              <p class="small text-muted mb-2">
+                <strong>Authors:</strong> Lorem Ipsum, Dolor Sitamet. <em>Journal Name Placeholder</em>, Vol. XX, No. X.
+              </p>
+              <p class="small text-muted mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder abstract — replace with a real publication.
+              </p>
+            </div>
+            <a href="#" class="cta-btn ghost btn-sm py-1 px-3 mt-2 mt-md-0" style="font-size: 12px;">
+              <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Publication 2 (placeholder) -->
+        <div class="content-card p-4">
+          <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+            <div>
+              <span class="badge-mono mb-2">CONFERENCE PAPER &middot; TBD</span>
+              <h3 class="mb-2" style="font-size: 16px;">Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation</h3>
+              <p class="small text-muted mb-2">
+                <strong>Authors:</strong> Lorem Ipsum, Consectetur Adipiscing. <em>Conference Name Placeholder</em>.
+              </p>
+              <p class="small text-muted mb-0">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Placeholder abstract — replace with a real publication.
+              </p>
+            </div>
+            <a href="#" class="cta-btn ghost btn-sm py-1 px-3 mt-2 mt-md-0" style="font-size: 12px;">
+              <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section mt-5">
+      <h2 class="section-eyebrow mb-4"><i class="bi bi-info-circle" aria-hidden="true"></i> About Team OSDAG &amp; Project</h2>
+
+      <div class="content-card p-4">
+        <h3 class="info-card-title">Our Mission</h3>
+        <p class="small text-muted mb-3" style="line-height: 1.8;">
+          <strong>Team OSDAG</strong> builds free, open-source structural engineering software under the <strong>FOSSEE</strong> initiative at IIT Bombay — giving students and practicing engineers tools that are normally locked behind expensive proprietary licenses. <strong>Osdag</strong> started with steel connection design; <strong>osdagBridge</strong> extended that into steel and composite bridge components.
+        </p>
+        <p class="small text-muted mb-0" style="line-height: 1.8;">
+          This <strong>site</strong> is where that work meets lifecycle costing: it parses IFC bridge models straight out of osdagBridge, renders every girder, pier, and diaphragm in 3D, and pairs each component with its specification and long-term cost data — so engineers can compare design alternatives on more than just upfront price.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section mt-5">
+      <h2 class="section-eyebrow mb-4"><i class="bi bi-envelope" aria-hidden="true"></i> Contact Team OSDAG</h2>
+
+      <div class="row g-4">
+        <!-- Institutional Office -->
+        <div class="col-md-6">
+          <div class="content-card p-4 h-100">
+            <h3 class="info-card-title">Institutional Office</h3>
+            <div class="contact-row">
+              <span class="contact-card-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span>
+              <p class="small text-muted mb-0">
+                FOSSEE Project Office,<br>
+                IIT Bombay, Powai,<br>
+                Mumbai, Maharashtra - 400076
+              </p>
+            </div>
+            <div class="contact-row">
+              <span class="contact-card-icon"><i class="bi bi-envelope-fill" aria-hidden="true"></i></span>
+              <p class="small text-muted mb-0">support@osdag.fossee.in</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Info -->
+        <div class="col-md-6">
+          <div class="content-card p-4 h-100">
+            <h3 class="info-card-title">Support &amp; Inquiries</h3>
+            <p class="small text-muted mb-3" style="line-height: 1.7;">
+              For any technical questions, feedback, or collaboration queries regarding Osdag, osdagBridge, or 3psLCCA, please feel free to email our team.
+            </p>
+            <div class="contact-row">
+              <span class="contact-card-icon"><i class="bi bi-clock-fill" aria-hidden="true"></i></span>
+              <p class="small text-muted mb-0">Our development and support teams typically respond within 2-3 business days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p class="mb-0">&copy; 2026 Team OSDAG. All rights reserved. Developed for advanced bridge engineering lifecycle analysis.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/nav.js"></script>
+</body>
+
+</html>

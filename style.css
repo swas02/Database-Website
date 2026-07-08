@@ -1187,6 +1187,7 @@ canvas {
 body.static-page {
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body.static-page .site-nav {
   position: fixed;
@@ -1219,6 +1220,21 @@ body.static-page .site-nav {
 }
 .page-section {
   margin-bottom: 44px;
+  scroll-margin-top: 80px;
+}
+.page-section:target {
+  animation: section-highlight-fade 1.8s ease-out;
+}
+@keyframes section-highlight-fade {
+  0% {
+    background: rgba(var(--primary-rgb), 0.08);
+    box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.15);
+    border-radius: 8px;
+  }
+  100% {
+    background: transparent;
+    box-shadow: none;
+  }
 }
 .card-grid {
   display: grid;
@@ -1311,6 +1327,127 @@ body.static-page .form-control::placeholder {
   .page-shell {
     padding: 92px 16px 32px;
   }
+}
+
+/* ── Static Page Content Refinements ── */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-badge);
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+  color: var(--text-accent);
+  padding: 5px 16px;
+  border-radius: 99px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.icon-bubble-lg {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  font-size: 24px;
+  box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.25);
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-title);
+  border-left: 2px solid var(--primary);
+  padding-left: 10px;
+}
+.section-eyebrow i {
+  color: var(--text-accent);
+  font-size: 13px;
+}
+
+.badge-mono {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: var(--bg-badge);
+  color: var(--text-accent);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+/* Non-interactive content panel — same glass surface as .catalog-card
+   without the pointer cursor / click affordance, for static page text */
+.content-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 22px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.content-card:hover {
+  border-color: rgba(var(--primary-rgb), 0.3);
+  background: var(--bg-card-hover);
+}
+[data-bs-theme="light"] .content-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+[data-bs-theme="light"] .content-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--primary);
+}
+
+/* Software / product tiles get a slight lift on hover since their
+   footer links are the actual click targets */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+}
+.feature-card .icon-bubble {
+  margin-bottom: 14px;
+}
+.feature-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.feature-card p {
+  line-height: 1.6;
+}
+
+.contact-card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--bg-badge);
+  color: var(--text-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.contact-row + .contact-row {
+  margin-top: 14px;
 }
 
 /* ── View-cube icons for camera preset buttons ── */
