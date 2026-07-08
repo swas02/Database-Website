@@ -33,3 +33,4 @@ get_ifc_files.ps1
 get_unique_groups.ps1
 merge_delete_groups.ps1
 data/compare_pier_cap.py
+design_system/
