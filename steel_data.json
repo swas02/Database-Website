@@ -1,0 +1,5666 @@
+[
+  {
+    "metadata": {
+      "bridge_id": "M_20_2L_OF_S",
+      "display_name": "M_20_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.01,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.75,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.05,
+        "dimensions": "3.8 X 3.8",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0046
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.325
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.45,
+        "end_depth_m": 0.725,
+        "width_m": 1.4,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0132
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_25_2L_OF_S",
+      "display_name": "M_25_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.335,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.8,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.175,
+        "dimensions": "4 X 4",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0041
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.35
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.55,
+        "end_depth_m": 0.775,
+        "width_m": 1.425,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.013
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_30_2L_OF_S",
+      "display_name": "M_30_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.525,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.71,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.525,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.35,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0036
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.375
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.65,
+        "end_depth_m": 0.825,
+        "width_m": 1.45,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0129
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_35_2L_OF_S",
+      "display_name": "M_35_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.01,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.175,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0041
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.425
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.75,
+        "end_depth_m": 0.875,
+        "width_m": 1.5,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.013
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_40_2L_OF_S",
+      "display_name": "M_40_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.31,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.5,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0032
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.45
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.85,
+        "end_depth_m": 0.925,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0129
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_45_2L_OF_S",
+      "display_name": "M_45_2L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.61,
+          "web_thickness_m": 0.022,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.35,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0036
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.5
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.95,
+        "end_depth_m": 0.975,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0121
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_20_2L_NF_S",
+      "display_name": "M_20_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.01,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.75,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.85,
+        "dimensions": "3.8 X 3.8",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0057
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.2
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.45,
+        "end_depth_m": 0.725,
+        "width_m": 1.4,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0069
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_25_2L_NF_S",
+      "display_name": "M_25_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.335,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.8,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1,
+        "dimensions": "4 X 4",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0048
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.225
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.55,
+        "end_depth_m": 0.775,
+        "width_m": 1.425,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0067
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_30_2L_NF_S",
+      "display_name": "M_30_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.715,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.8,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.2,
+        "dimensions": "4 X 4",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.004
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.25
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.65,
+        "end_depth_m": 0.825,
+        "width_m": 1.45,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0068
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_35_2L_NF_S",
+      "display_name": "M_35_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.01,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.175,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0041
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.275
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.75,
+        "end_depth_m": 0.875,
+        "width_m": 1.5,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.007
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_40_2L_NF_S",
+      "display_name": "M_40_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.31,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.275,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0038
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.3
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.85,
+        "end_depth_m": 0.925,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0067
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_45_2L_NF_S",
+      "display_name": "M_45_2L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.61,
+          "web_thickness_m": 0.022,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.3,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0037
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.325
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.95,
+        "end_depth_m": 0.975,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0064
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_20_3L_OF_S",
+      "display_name": "M_20_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.014,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.8,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.05,
+        "dimensions": "4 X 4",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0046
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.55
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.6,
+        "end_depth_m": 0.8,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0129
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_25_3L_OF_S",
+      "display_name": "M_25_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.339,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.3,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0037
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.65
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.7,
+        "end_depth_m": 0.85,
+        "width_m": 1.7,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0121
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_30_3L_OF_S",
+      "display_name": "M_30_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.714,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.475,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0033
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.7
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.8,
+        "end_depth_m": 0.9,
+        "width_m": 1.75,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0119
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_35_3L_OF_S",
+      "display_name": "M_35_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.014,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.275,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0038
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.75
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.9,
+        "end_depth_m": 0.95,
+        "width_m": 1.8,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0127
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_40_3L_OF_S",
+      "display_name": "M_40_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.016,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.016,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.314,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.375,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0035
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.8
+      },
+      "pier_cap": {
+        "mid_depth_m": 2,
+        "end_depth_m": 1,
+        "width_m": 1.85,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0131
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_45_3L_OF_S",
+      "display_name": "M_45_3L_OF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.6,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.605,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.325,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.614,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.6,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.25,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0039
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.85
+      },
+      "pier_cap": {
+        "mid_depth_m": 2.1,
+        "end_depth_m": 1.05,
+        "width_m": 1.9,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0131
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_20_3L_NF_S",
+      "display_name": "M_20_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.012,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.075,
+        "dimensions": "3.8 X 3.8",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0045
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.4
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.6,
+        "end_depth_m": 0.8,
+        "width_m": 1.45,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.01
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_25_3L_NF_S",
+      "display_name": "M_25_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.337,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 0.9,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.175,
+        "dimensions": "4 X 4",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0041
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.45
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.7,
+        "end_depth_m": 0.85,
+        "width_m": 1.5,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0068
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_30_3L_NF_S",
+      "display_name": "M_30_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.712,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.4,
+        "dimensions": "4.5 X 4.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0034
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.5
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.8,
+        "end_depth_m": 0.9,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0095
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_35_3L_NF_S",
+      "display_name": "M_35_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.012,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.25,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0039
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.55
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.9,
+        "end_depth_m": 0.95,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0091
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_40_3L_NF_S",
+      "display_name": "M_40_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.314,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.35,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0036
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.6
+      },
+      "pier_cap": {
+        "mid_depth_m": 2,
+        "end_depth_m": 1,
+        "width_m": 1.65,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0088
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "M_45_3L_NF_S",
+      "display_name": "M_45_3L_NF_S",
+      "location": "Mumbai",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.614,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.175,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0041
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.65
+      },
+      "pier_cap": {
+        "mid_depth_m": 2.1,
+        "end_depth_m": 1.05,
+        "width_m": 1.7,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.009
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_20_2L_OF_S",
+      "display_name": "D_20_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.01,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.75,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0064
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.35
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.45,
+        "end_depth_m": 0.725,
+        "width_m": 1.4,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0132
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_25_2L_OF_S",
+      "display_name": "D_25_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.335,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.375
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.55,
+        "end_depth_m": 0.775,
+        "width_m": 1.425,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.013
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_30_2L_OF_S",
+      "display_name": "D_30_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.525,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.71,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.525,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.815,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0059
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.4
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.65,
+        "end_depth_m": 0.825,
+        "width_m": 1.45,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0129
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_35_2L_OF_S",
+      "display_name": "D_35_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.01,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.72,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0067
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.45
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.75,
+        "end_depth_m": 0.875,
+        "width_m": 1.5,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0118
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_40_2L_OF_S",
+      "display_name": "D_40_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.31,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.5
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.85,
+        "end_depth_m": 0.925,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0129
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_45_2L_OF_S",
+      "display_name": "D_45_2L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 2,
+      "footpath": "Yes",
+      "width_m": 10.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.61,
+          "web_thickness_m": 0.022,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.5,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.225,
+        "dimensions": "7.5 X 7.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0039
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.55
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.95,
+        "end_depth_m": 0.975,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.63,
+        "reinf_pct": 0.0121
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_20_2L_NF_S",
+      "display_name": "D_20_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.01,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.75,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0064
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.25
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.45,
+        "end_depth_m": 0.725,
+        "width_m": 1.4,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0069
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_25_2L_NF_S",
+      "display_name": "D_25_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.335,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.325,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.3
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.55,
+        "end_depth_m": 0.775,
+        "width_m": 1.425,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0067
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_30_2L_NF_S",
+      "display_name": "D_30_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.715,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.35
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.65,
+        "end_depth_m": 0.825,
+        "width_m": 1.45,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0068
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_35_2L_NF_S",
+      "display_name": "D_35_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.01,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 1.993,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.81,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.006
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.4
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.75,
+        "end_depth_m": 0.875,
+        "width_m": 1.5,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.007
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_40_2L_NF_S",
+      "display_name": "D_40_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.31,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.69,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.007
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.45
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.85,
+        "end_depth_m": 0.925,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0067
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_45_2L_NF_S",
+      "display_name": "D_45_2L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 2,
+      "footpath": "No",
+      "width_m": 8.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 3,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.61,
+          "web_thickness_m": 0.022,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.022,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.02,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.735,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0066
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.5
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.95,
+        "end_depth_m": 0.975,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.38,
+        "reinf_pct": 0.0064
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_20_3L_OF_S",
+      "display_name": "D_20_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.014,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.75,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0064
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.7
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.6,
+        "end_depth_m": 0.8,
+        "width_m": 1.75,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0116
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_25_3L_OF_S",
+      "display_name": "D_25_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.339,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.425,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0048
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.75
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.7,
+        "end_depth_m": 0.85,
+        "width_m": 1.8,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0135
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_30_3L_OF_S",
+      "display_name": "D_30_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.015,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 1.714,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.725,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0067
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.8
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.8,
+        "end_depth_m": 0.9,
+        "width_m": 1.85,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0112
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_35_3L_OF_S",
+      "display_name": "D_35_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.014,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.005,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.775,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0062
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.85
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.9,
+        "end_depth_m": 0.95,
+        "width_m": 1.9,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0106
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_40_3L_OF_S",
+      "display_name": "D_40_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.016,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.016,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.314,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.5,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.2,
+        "dimensions": "7.5 X 7.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.004
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.9
+      },
+      "pier_cap": {
+        "mid_depth_m": 2,
+        "end_depth_m": 1,
+        "width_m": 1.95,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0103
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_45_3L_OF_S",
+      "display_name": "D_45_3L_OF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 3,
+      "footpath": "Yes",
+      "width_m": 13.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 5,
+      "girder_spacing_m": 2.75,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.012,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.6,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 2.605,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.325,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.614,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.6,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.5,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.25,
+        "dimensions": "7.5 X 7.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0039
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.95
+      },
+      "pier_cap": {
+        "mid_depth_m": 2.1,
+        "end_depth_m": 1.05,
+        "width_m": 2,
+        "length_mid_m": 2,
+        "length_taper_m": 5,
+        "reinf_pct": 0.0101
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_20_3L_NF_S",
+      "display_name": "D_20_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 20,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 6,
+      "section_details": "90 x 90 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 8
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.012,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.005,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 6
+        },
+        "mid": {
+          "initial": 6,
+          "end": 14
+        },
+        "intermediate_2": {
+          "initial": 14,
+          "end": 14
+        },
+        "support_2": {
+          "initial": 14,
+          "end": 20
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.75,
+        "dimensions": "5 X 5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0064
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.5
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.6,
+        "end_depth_m": 0.8,
+        "width_m": 1.55,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0093
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_25_3L_NF_S",
+      "display_name": "D_25_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 25,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.571,
+      "no_cross_bracings": 8,
+      "section_details": "90 x 90 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 9
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.337,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 16
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.45,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.33,
+          "web_thickness_m": 0.008,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 8
+        },
+        "intermediate_1": {
+          "initial": 8,
+          "end": 8
+        },
+        "mid": {
+          "initial": 8,
+          "end": 17
+        },
+        "intermediate_2": {
+          "initial": 17,
+          "end": 17
+        },
+        "support_2": {
+          "initial": 17,
+          "end": 25
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.55
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.7,
+        "end_depth_m": 0.85,
+        "width_m": 1.6,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0064
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_30_3L_NF_S",
+      "display_name": "D_30_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 30,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 9,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 1.5
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.025,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0,
+          "top_flange_thickness_m": 0,
+          "web_depth_m": 0,
+          "web_thickness_m": 0,
+          "bottom_flange_width_m": 0,
+          "bottom_flange_thickness_m": 0,
+          "section_length_m": 0
+        },
+        "support": {
+          "top_flange_width_m": 0.375,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 1.712,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.45,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 18
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.02,
+          "web_depth_m": 1.705,
+          "web_thickness_m": 0.01,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.025
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 9
+        },
+        "intermediate_1": {
+          "initial": 9,
+          "end": 9
+        },
+        "mid": {
+          "initial": 9,
+          "end": 21
+        },
+        "intermediate_2": {
+          "initial": 21,
+          "end": 21
+        },
+        "support_2": {
+          "initial": 21,
+          "end": 30
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.815,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0059
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.6
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.8,
+        "end_depth_m": 0.9,
+        "width_m": 1.65,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0089
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_35_3L_NF_S",
+      "display_name": "D_35_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 35,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.5,
+      "no_cross_bracings": 11,
+      "section_details": "100 x 100 x 8",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 11
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.4,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.475,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 12
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.018,
+          "web_depth_m": 2.012,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2,
+          "web_thickness_m": 0.012,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.028
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 12
+        },
+        "mid": {
+          "initial": 12,
+          "end": 23
+        },
+        "intermediate_2": {
+          "initial": 23,
+          "end": 29
+        },
+        "support_2": {
+          "initial": 29,
+          "end": 35
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.72,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0067
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.65
+      },
+      "pier_cap": {
+        "mid_depth_m": 1.9,
+        "end_depth_m": 0.95,
+        "width_m": 1.7,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0084
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_40_3L_NF_S",
+      "display_name": "D_40_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 40,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 4,
+      "no_cross_bracings": 11,
+      "section_details": "110 x 110 x 10",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.008,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.022,
+          "web_depth_m": 2.3,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.028,
+          "section_length_m": 14
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.314,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 14
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.475,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.293,
+          "web_thickness_m": 0.014,
+          "bottom_flange_width_m": 0.55,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 7
+        },
+        "intermediate_1": {
+          "initial": 7,
+          "end": 14
+        },
+        "mid": {
+          "initial": 14,
+          "end": 26
+        },
+        "intermediate_2": {
+          "initial": 26,
+          "end": 33
+        },
+        "support_2": {
+          "initial": 33,
+          "end": 40
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 5,
+        "depth_m": 10,
+        "diameter_m": 1.2,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 0.76,
+        "dimensions": "6 X 6",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0063
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.7
+      },
+      "pier_cap": {
+        "mid_depth_m": 2,
+        "end_depth_m": 1,
+        "width_m": 1.75,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0082
+      }
+    }
+  },
+  {
+    "metadata": {
+      "bridge_id": "D_45_3L_NF_S",
+      "display_name": "D_45_3L_NF_S",
+      "location": "Darbhanga",
+      "bridge_type": "Steel-girder RC deck",
+      "span_m": 45,
+      "lanes": 3,
+      "footpath": "No",
+      "width_m": 11.5,
+      "grade_rebar": "Fe500",
+      "grade_structural_steel": "E350",
+      "grade_concrete": "M35"
+    },
+    "superstructure": {
+      "slab_depth_m": 0.23,
+      "no_of_girders": 4,
+      "girder_spacing_m": 2.875,
+      "bracing_spacing_m": 3.75,
+      "no_cross_bracings": 13,
+      "section_details": "110 x 110 x 12",
+      "transverse_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 2
+      },
+      "bearing_stiffeners": {
+        "width_m": 0.2,
+        "thickness_m": 0.01,
+        "spacing_m": 0.15
+      },
+      "girder_details": {
+        "mid": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 12
+        },
+        "intermediate": {
+          "top_flange_width_m": 0.425,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.5,
+          "bottom_flange_thickness_m": 0.032,
+          "section_length_m": 21
+        },
+        "support": {
+          "top_flange_width_m": 0.35,
+          "top_flange_thickness_m": 0.016,
+          "web_depth_m": 2.614,
+          "web_thickness_m": 0.018,
+          "bottom_flange_width_m": 0.4,
+          "bottom_flange_thickness_m": 0.02,
+          "section_length_m": 12
+        },
+        "end_diaphragm": {
+          "top_flange_width_m": 0.5,
+          "top_flange_thickness_m": 0.025,
+          "web_depth_m": 2.593,
+          "web_thickness_m": 0.016,
+          "bottom_flange_width_m": 0.575,
+          "bottom_flange_thickness_m": 0.032
+        }
+      },
+      "stiffener_ranges": {
+        "support_1": {
+          "initial": 0,
+          "end": 6
+        },
+        "intermediate_1": {
+          "initial": 6,
+          "end": 16.5
+        },
+        "mid": {
+          "initial": 16.5,
+          "end": 28.5
+        },
+        "intermediate_2": {
+          "initial": 28.5,
+          "end": 39
+        },
+        "support_2": {
+          "initial": 39,
+          "end": 45
+        }
+      }
+    },
+    "substructure": {
+      "pile": {
+        "no_of_piles": 4,
+        "depth_m": 10,
+        "diameter_m": 1.5,
+        "reinf_pct": 0.008
+      },
+      "pile_cap": {
+        "depth_m": 1.235,
+        "dimensions": "7.5 X 7.5",
+        "pcc_depth_m": 0.1,
+        "reinf_pct": 0.0039
+      },
+      "pier": {
+        "height_m": 6,
+        "diameter_m": 1.75
+      },
+      "pier_cap": {
+        "mid_depth_m": 2.1,
+        "end_depth_m": 1.05,
+        "width_m": 1.8,
+        "length_mid_m": 2,
+        "length_taper_m": 3.81,
+        "reinf_pct": 0.0079
+      }
+    }
+  }
+]

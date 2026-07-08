@@ -189,6 +189,8 @@ export function renderGroupsPanel(list) {
   container.innerHTML = "";
 
   list.forEach((g) => {
+    if (g.name.startsWith("_")) return;
+
     let colorHex = "#607d8b";
     
     // Attempt to get color from actual Three.js meshes inside the group
@@ -264,6 +266,63 @@ export function generateGirderSVG(props, color) {
       <rect x="${tf_x}" y="${tf_y}" width="${tf_w}" height="${tf_t}" rx="0.5" />
       <rect x="${web_x}" y="${web_y}" width="${web_t}" height="${web_h}" rx="0.5" />
       <rect x="${bf_x}" y="${bf_y}" width="${bf_w}" height="${bf_t}" rx="0.5" />
+    </svg>
+  `;
+}
+
+export function generatePierCapSVG(pc, color) {
+  const midLen = parseFloat(pc.mid_section_length_m) || 2.0;
+  const taperLen = parseFloat(pc.taper_section_length_m) || 3.63;
+  const totalLen = midLen + 2 * taperLen;
+  const midDepth = parseFloat(pc.mid_depth_m) || 1.45;
+  const endDepth = parseFloat(pc.end_depth_m) || 0.725;
+
+  const svgW = 260;
+  const svgH = 130;
+  
+  const padX = 45;
+  const padY = 20;
+  const drawW = svgW - 2 * padX;
+  const drawH = svgH - 2 * padY - 15; // Save some space for bottom dimensions
+
+  const scaleX = drawW / totalLen;
+  const scaleY = drawH / Math.max(midDepth, endDepth, 1.0);
+
+  const topY = padY;
+  const endDepthY = topY + endDepth * scaleY;
+  const midDepthY = topY + midDepth * scaleY;
+  
+  const x0 = padX;
+  const x1 = padX + taperLen * scaleX;
+  const x2 = padX + (taperLen + midLen) * scaleX;
+  const x3 = padX + totalLen * scaleX;
+
+  const points = `${x0},${topY} ${x3},${topY} ${x3},${endDepthY} ${x2},${midDepthY} ${x1},${midDepthY} ${x0},${endDepthY}`;
+
+  return `
+    <svg width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="stroke: ${color}; stroke-width: 1.2; fill: rgba(${hexToRgb(color)}, 0.15); filter: drop-shadow(0 0 4px rgba(${hexToRgb(color)}, 0.35)); flex-shrink: 0; display: block; margin: 0 auto 12px auto;">
+      <polygon points="${points}" />
+      <line x1="${(x1+x2)/2}" y1="${topY}" x2="${(x1+x2)/2}" y2="${midDepthY + 8}" style="stroke: ${color}; stroke-dasharray: 2 2; opacity: 0.5;" />
+      
+      <!-- Top Dimension Line (L1 - Total Length) -->
+      <line x1="${x0}" y1="${topY - 8}" x2="${x3}" y2="${topY - 8}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <line x1="${x0}" y1="${topY - 11}" x2="${x0}" y2="${topY - 5}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <line x1="${x3}" y1="${topY - 11}" x2="${x3}" y2="${topY - 5}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <text x="${(x0+x3)/2}" y="${topY - 12}" text-anchor="middle" fill="#94a3b8" style="font-size: 7px; stroke: none; font-family: monospace; font-weight: 600;">L1 = ${totalLen.toFixed(2)}m</text>
+      
+      <!-- Mid Depth Label (d1) -->
+      <line x1="${(x1+x2)/2}" y1="${topY}" x2="${(x1+x2)/2}" y2="${midDepthY}" style="stroke: #94a3b8; stroke-width: 0.8; stroke-dasharray: 1 1;" />
+      <text x="${(x1+x2)/2 + 4}" y="${(topY + midDepthY)/2 + 2}" text-anchor="start" fill="#94a3b8" style="font-size: 7px; stroke: none; font-family: monospace;">d1=${midDepth.toFixed(3)}m</text>
+      
+      <!-- End Depth Label (d2) -->
+      <line x1="${x0}" y1="${topY}" x2="${x0}" y2="${endDepthY}" style="stroke: #94a3b8; stroke-width: 0.8; stroke-dasharray: 1 1;" />
+      <text x="${x0 - 4}" y="${(topY + endDepthY)/2 + 2}" text-anchor="end" fill="#94a3b8" style="font-size: 7px; stroke: none; font-family: monospace;">d2=${endDepth.toFixed(3)}m</text>
+
+      <!-- Bottom Dimension Line (L2 - Mid Section Length) -->
+      <line x1="${x1}" y1="${midDepthY + 8}" x2="${x2}" y2="${midDepthY + 8}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <line x1="${x1}" y1="${midDepthY + 5}" x2="${x1}" y2="${midDepthY + 11}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <line x1="${x2}" y1="${midDepthY + 5}" x2="${x2}" y2="${midDepthY + 11}" style="stroke: #94a3b8; stroke-width: 0.8;" />
+      <text x="${(x1+x2)/2}" y="${midDepthY + 17}" text-anchor="middle" fill="#94a3b8" style="font-size: 7px; stroke: none; font-family: monospace; font-weight: 600;">L2 = ${midLen.toFixed(2)}m</text>
     </svg>
   `;
 }
@@ -370,7 +429,6 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    isSteel &&
     (group.name === "deck_slab" || group.name.toLowerCase() === "slab" || group.name.toLowerCase() === "deck") &&
     state.bridgeData.deck_slab
   ) {
@@ -492,7 +550,6 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    isSteel &&
     (group.name.toLowerCase() === "pier" || group.name === "Pier Shaft") &&
     state.bridgeData.substructure?.pier
   ) {
@@ -511,21 +568,41 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    isSteel &&
     (group.name.toLowerCase().includes("pier cap") || group.name === "pier_cap") &&
     state.bridgeData.substructure?.pier_cap
   ) {
     const pc = state.bridgeData.substructure.pier_cap;
+    let colorHex = "#607d8b";
+    const firstPartID = Array.from(state.groupIndex.get(group.name) || [])[0];
+    if (firstPartID) {
+      const meshes = state.meshMap.get(firstPartID);
+      if (meshes && meshes[0]) {
+        colorHex = "#" + meshes[0].material.color.getHexString();
+      }
+    } else {
+      colorHex = getMaterialColor(group.name);
+    }
+
+    const svgHtml = generatePierCapSVG(pc, colorHex);
+
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Pier Cap Specifications</span>
+        <span class="metric-header" style="margin-bottom: 8px;">Pier Cap Specifications</span>
+        ${svgHtml}
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; margin-bottom: 12px; font-size: 8px; color: #94a3b8; font-family: monospace; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+          <span><strong>L1</strong>: Total Length</span>
+          <span><strong>L2</strong>: Mid Length</span>
+          <span><strong>d1</strong>: Mid Depth</span>
+          <span><strong>d2</strong>: End Depth</span>
+        </div>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Cap Width</td><td class="text-end text-white font-monospace p-0 py-1">${pc.width_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Mid Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">End Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Mid Length</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Taper Length</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid Depth (d1)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">End Depth (d2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid Length (L2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Side Length (Taper)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total Length (L1)</td><td class="text-end text-white font-monospace p-0 py-1">${((parseFloat(pc.mid_section_length_m) || 2.0) + 2 * (parseFloat(pc.taper_section_length_m) || 3.63)).toFixed(2)} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pc.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
           </tbody>
         </table>
@@ -533,7 +610,6 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    isSteel &&
     (group.name.toLowerCase() === "pile cap" || group.name === "pile_cap") &&
     state.bridgeData.substructure?.pile_cap
   ) {
@@ -553,7 +629,6 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    isSteel &&
     (group.name.toLowerCase() === "pile" || group.name === "piles" || group.name === "Pile") &&
     state.bridgeData.substructure?.pile
   ) {

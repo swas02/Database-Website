@@ -11,7 +11,7 @@ export async function initDatabase() {
     setLoadingState("Loading Bridge Database...");
     const [registryResp, dbResp] = await Promise.all([
       fetch("registry_flat.json"),
-      fetch("steel_database.json"),
+      fetch("data/steel_data.json"),
     ]);
 
     if (registryResp.ok) registry = await registryResp.json();
@@ -271,7 +271,7 @@ window.loadSelectedBridge = async function () {
     if (spec) {
       // Create local deep copy
       state.bridgeData = JSON.parse(JSON.stringify(spec));
-      
+
       // Override values to match this specific model
       state.bridgeData.bridge_id = bridgeIdFromPath;
       state.bridgeData.location = match.location;

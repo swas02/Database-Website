@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Excel temp files
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+
+# OS files
+Thumbs.db
+db.json
+.DS_Store
+
+# Editor / IDE environments
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Node / Web dependencies (if any)
+node_modules/
+dist/
+.env
+
+# Scratch and test files
+get_ifc_files.ps1
+get_unique_groups.ps1
+merge_delete_groups.ps1
+data/compare_pier_cap.py

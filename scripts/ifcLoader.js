@@ -171,6 +171,9 @@ export function loadDefaultGroupsJSON() {
           m.material.roughness = isConcrete ? 0.8 : 0.35;
           m.material.metalness = isConcrete ? 0.1 : 0.2;
           m.userData.originalColor = color.getHex();
+          if (g.name.startsWith("_")) {
+            m.visible = false;
+          }
         });
       });
     });
@@ -322,6 +325,9 @@ export function loadDefaultGroupsJSON() {
         m.material.roughness = isConcrete ? 0.8 : 0.35;
         m.material.metalness = isConcrete ? 0.1 : 0.2;
         m.userData.originalColor = color.getHex();
+        if (g.name.startsWith("_")) {
+          m.visible = false;
+        }
       });
     });
   });

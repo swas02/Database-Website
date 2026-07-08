@@ -1,0 +1,1078 @@
+{
+  "PSC": {
+    "Darbhanga": {
+      "Sub_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P.json"
+            }
+          }
+        }
+      },
+      "Sup_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P.ifc",
+              "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P.json"
+            }
+          }
+        }
+      }
+    },
+    "Mumbai": {
+      "Sub_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P.json"
+            }
+          }
+        }
+      },
+      "Sup_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P.json"
+            },
+            "OF": {
+              "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P.ifc",
+              "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Steel": {
+    "Darbhanga": {
+      "Sub_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S.json"
+            }
+          }
+        }
+      },
+      "Sup_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S.ifc",
+              "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S.json"
+            }
+          }
+        }
+      }
+    },
+    "Mumbai": {
+      "Sub_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S.json"
+            }
+          }
+        }
+      },
+      "Sup_Str": {
+        "20": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S.json"
+            }
+          }
+        },
+        "25": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S.json"
+            }
+          }
+        },
+        "30": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S.json"
+            }
+          }
+        },
+        "35": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S.json"
+            }
+          }
+        },
+        "40": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S.json"
+            }
+          }
+        },
+        "45": {
+          "2L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S.json"
+            }
+          },
+          "3L": {
+            "NF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S.json"
+            },
+            "OF": {
+              "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S.ifc",
+              "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S.json"
+            }
+          }
+        }
+      }
+    }
+  }
+}
