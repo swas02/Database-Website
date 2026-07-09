@@ -263,11 +263,13 @@ window.loadSelectedBridge = async function () {
     const arrayBuffer = await ifcResp.arrayBuffer();
 
     // 3. Find matching spec in steelDatabase
-    const bridgeIdFromPath = match.ifc.split("/").pop().replace(".ifc", "");
+    const pathParts = match.ifc.split("/");
+    const lastPart = pathParts.pop();
+    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts.pop() : lastPart.replace(".ifc", "");
     // Replace trailing _P with _S to lookup superstructure details (which holds pier cap, pier size etc.)
     const searchId = bridgeIdFromPath.replace(/_P$/, "_S");
 
-    const spec = steelDatabase.find((item) => item.bridge_id === searchId);
+    const spec = match.bridge_type !== "PSC" ? steelDatabase.find((item) => item.bridge_id === searchId) : null;
     if (spec) {
       // Create local deep copy
       state.bridgeData = JSON.parse(JSON.stringify(spec));
@@ -309,6 +311,11 @@ window.loadSelectedBridge = async function () {
       };
     }
 
+    // Save current loaded bridge path and update cards
+    state.currentLoadedBridgePath = match.ifc;
+    state.currentLoadedBridge = match;
+    updateCardActiveStates(match.ifc);
+
     // Refresh general specifications UI
     renderBridgeMetadata(state.bridgeData);
 
@@ -319,10 +326,6 @@ window.loadSelectedBridge = async function () {
     if (window.resetAllFilters) {
       window.resetAllFilters();
     }
-    
-    // Save current loaded bridge path and update cards
-    state.currentLoadedBridgePath = match.ifc;
-    updateCardActiveStates(match.ifc);
 
     // Auto-fit camera to the newly loaded bridge
     if (window.setCameraPreset) {

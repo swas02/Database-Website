@@ -133,7 +133,7 @@ export function renderBridgeMetadata(data) {
       k: "Pile Cap Dimensions",
       v: data.substructure?.pile_cap?.dimensions_m?.raw || "N/A",
     },
-    { k: "Pier Diameter", v: data.substructure?.pier?.diameter_m + " m" },
+    { k: "Pier Diameter", v: data.substructure?.pier?.diameter_m ? data.substructure.pier.diameter_m + " m" : "N/A" },
   ];
 
   items.forEach((i) => {
@@ -754,7 +754,9 @@ export function renderCatalog(matches, currentIfcPath) {
   
   matches.forEach(item => {
     const isLoaded = item.ifc === currentIfcPath;
-    const bridgeIdFromPath = item.ifc.split("/").pop().replace(".ifc", "");
+    const pathParts = item.ifc.split("/");
+    const lastPart = pathParts.pop();
+    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts.pop() : lastPart.replace(".ifc", "");
     
     const spanText = `${item.span}m`;
     const lanesText = item.lanes === "2L" ? "2 Lanes" : "3 Lanes";
@@ -822,65 +824,109 @@ export function renderDownloads(bridgeId, ifcPath) {
   const container = document.getElementById("downloads-container");
   if (!container) return;
 
-  const jsonPath = ifcPath ? ifcPath.replace(".ifc", ".json") : null;
+  container.innerHTML = "";
 
-  container.innerHTML = `
-    <!-- PDF Design Report card -->
-    <div class="metric-card mb-0">
-      <span class="metric-header">Design Documentation</span>
-      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-        <div>
-          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_design_report.pdf</div>
-          <div class="text-muted" style="font-size: 9px;">PDF Document • ~4.5 MB</div>
-        </div>
-        <button class="btn btn-sm btn-outline-secondary" onclick="alert('PDF Design Report not generated yet for this bridge configuration.')" style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
-      </div>
-    </div>
+  let jsonPath = null;
+  let pdfPath = null;
+  let mcbPath = null;
+  let cadPath = null;
 
-    <!-- MCB Analysis model card -->
-    <div class="metric-card mb-0">
-      <span class="metric-header">Analysis Model</span>
-      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-        <div>
-          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_model.mcb</div>
-          <div class="text-muted" style="font-size: 9px;">Midas Civil File • ~1.2 MB</div>
-        </div>
-        <button class="btn btn-sm btn-outline-secondary" onclick="alert('Midas Civil MCB analysis model not generated yet for this bridge configuration.')" style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
-      </div>
-    </div>
+  const currentBridge = state.currentLoadedBridge;
+  if (currentBridge && currentBridge.ifc === ifcPath) {
+    jsonPath = currentBridge.json;
+    pdfPath = currentBridge.design_report;
+    mcbPath = currentBridge.design_file;
+    cadPath = currentBridge.cad;
+  } else if (ifcPath) {
+    // Fallback if not loaded/found from state
+    const lower = ifcPath.toLowerCase();
+    if (lower.endsWith("/model.ifc")) {
+      jsonPath = ifcPath.substring(0, ifcPath.length - 9) + "groups.json";
+    } else {
+      jsonPath = ifcPath.replace(".ifc", ".json");
+    }
+  }
 
-    <!-- Real IFC File Download -->
-    <div class="metric-card mb-0">
-      <span class="metric-header">3D CAD Model</span>
-      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-        <div>
-          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${ifcPath ? ifcPath.split("/").pop() : "model.ifc"}</div>
-          <div class="text-muted" style="font-size: 9px;">IFC Model File • Source</div>
+  // 1. PDF Design Report (Rendered only if it exists)
+  if (pdfPath) {
+    container.innerHTML += `
+      <div class="metric-card mb-0">
+        <span class="metric-header">Design Documentation</span>
+        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+          <div>
+            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_design_report.pdf</div>
+            <div class="text-muted" style="font-size: 9px;">PDF Document • ~4.5 MB</div>
+          </div>
+          <a href="${pdfPath}" download="${bridgeId}_design_report.pdf" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
-        ${ifcPath ? `
-          <a href="${ifcPath}" download class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        ` : `
-          <button class="btn btn-sm btn-outline-secondary" disabled style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
-        `}
       </div>
-    </div>
+    `;
+  }
 
-    <!-- Real JSON Schema Download -->
-    <div class="metric-card mb-0">
-      <span class="metric-header">Structural Schema Data</span>
-      <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-        <div>
-          <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${jsonPath ? jsonPath.split("/").pop() : "schema.json"}</div>
-          <div class="text-muted" style="font-size: 9px;">JSON Data File</div>
+  // 2. MCB Analysis Model (Rendered only if it exists)
+  if (mcbPath) {
+    container.innerHTML += `
+      <div class="metric-card mb-0">
+        <span class="metric-header">Analysis Model</span>
+        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+          <div>
+            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_model.mcb</div>
+            <div class="text-muted" style="font-size: 9px;">Midas Civil File • ~1.2 MB</div>
+          </div>
+          <a href="${mcbPath}" download="${bridgeId}_model.mcb" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
-        ${jsonPath ? `
-          <a href="${jsonPath}" download class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        ` : `
-          <button class="btn btn-sm btn-outline-secondary" disabled style="font-size: 10px; padding: 4px 8px;"><i class="bi bi-download"></i></button>
-        `}
       </div>
-    </div>
-  `;
+    `;
+  }
+
+  // 3. CAD Drawings (Rendered only if it exists)
+  if (cadPath) {
+    const ext = cadPath.split(".").pop();
+    container.innerHTML += `
+      <div class="metric-card mb-0">
+        <span class="metric-header">2D CAD Drawings</span>
+        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+          <div>
+            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_drawings.${ext}</div>
+            <div class="text-muted" style="font-size: 9px;">CAD Drawing File</div>
+          </div>
+          <a href="${cadPath}" download="${bridgeId}_drawings.${ext}" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. IFC Model (Always rendered)
+  if (ifcPath) {
+    container.innerHTML += `
+      <div class="metric-card mb-0">
+        <span class="metric-header">3D CAD Model</span>
+        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+          <div>
+            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}.ifc</div>
+            <div class="text-muted" style="font-size: 9px;">IFC Model File • Source</div>
+          </div>
+          <a href="${ifcPath}" download="${bridgeId}.ifc" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+        </div>
+      </div>
+    `;
+  }
+
+  // 5. JSON Schema (Always rendered)
+  if (jsonPath) {
+    container.innerHTML += `
+      <div class="metric-card mb-0">
+        <span class="metric-header">Structural Schema Data</span>
+        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+          <div>
+            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}.json</div>
+            <div class="text-muted" style="font-size: 9px;">JSON Data File</div>
+          </div>
+          <a href="${jsonPath}" download="${bridgeId}.json" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+        </div>
+      </div>
+    `;
+  }
 }
 
 // ── Dropdown Menu Toggle Handler ──

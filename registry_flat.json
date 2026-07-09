@@ -7,8 +7,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -18,8 +21,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -29,8 +35,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_20_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -40,8 +49,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -51,8 +63,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -62,8 +77,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -73,8 +91,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_25_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -84,8 +105,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -95,8 +119,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -106,8 +133,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -117,8 +147,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_30_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -128,8 +161,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -139,8 +175,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -150,8 +189,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -161,8 +203,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_35_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -172,8 +217,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -183,8 +231,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -194,8 +245,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -205,8 +259,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_40_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -216,8 +273,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -227,8 +287,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -238,8 +301,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -249,8 +315,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sub_Str/D_45_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -260,8 +329,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -271,8 +343,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -282,8 +357,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -293,8 +371,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_20_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -304,8 +385,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -315,8 +399,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -326,8 +413,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -337,8 +427,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_25_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -348,8 +441,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -359,8 +455,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -370,8 +469,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -381,8 +483,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_30_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -392,8 +497,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -403,8 +511,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -414,8 +525,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -425,8 +539,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_35_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -436,8 +553,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -447,8 +567,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -458,8 +581,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -469,8 +595,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_40_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -480,8 +609,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -491,8 +623,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -502,8 +637,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -513,8 +651,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P.ifc",
-    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P.json"
+    "ifc": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Darbhanga/Sup_Str/D_45_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -524,8 +665,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -535,8 +679,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -546,8 +693,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -557,8 +707,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_20_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -568,8 +721,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -579,8 +735,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -590,8 +749,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -601,8 +763,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_25_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -612,8 +777,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -623,8 +791,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -634,8 +805,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -645,8 +819,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_30_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -656,8 +833,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -667,8 +847,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -678,8 +861,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -689,8 +875,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_35_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -700,8 +889,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -711,8 +903,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -722,8 +917,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -733,8 +931,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_40_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -744,8 +945,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -755,8 +959,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -766,8 +973,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -777,8 +987,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sub_Str/M_45_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -788,8 +1001,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -799,8 +1015,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -810,8 +1029,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -821,8 +1043,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_20_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -832,8 +1057,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -843,8 +1071,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -854,8 +1085,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -865,8 +1099,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_25_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -876,8 +1113,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -887,8 +1127,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -898,8 +1141,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -909,8 +1155,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_30_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -920,8 +1169,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -931,8 +1183,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -942,8 +1197,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -953,8 +1211,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_35_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -964,8 +1225,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -975,8 +1239,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -986,8 +1253,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -997,8 +1267,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_40_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -1008,8 +1281,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -1019,8 +1295,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_2L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -1030,8 +1309,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_NF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "PSC",
@@ -1041,8 +1323,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P.ifc",
-    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P.json"
+    "ifc": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P/model.ifc",
+    "json": "IFC/PSC/Mumbai/Sup_Str/M_45_3L_OF_P/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1052,8 +1337,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1063,8 +1351,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1074,8 +1365,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1085,8 +1379,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_20_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1096,8 +1393,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1107,8 +1407,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1118,8 +1421,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1129,8 +1435,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_25_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1140,8 +1449,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1151,8 +1463,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1162,8 +1477,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1173,8 +1491,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_30_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1184,8 +1505,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1195,8 +1519,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1206,8 +1533,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1217,8 +1547,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_35_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1228,8 +1561,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1239,8 +1575,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1250,8 +1589,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1261,8 +1603,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_40_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1272,8 +1617,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1283,8 +1631,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1294,8 +1645,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1305,8 +1659,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sub_Str/D_45_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1316,8 +1673,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1327,8 +1687,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1338,8 +1701,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1349,8 +1715,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_20_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1360,8 +1729,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1371,8 +1743,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1382,8 +1757,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1393,8 +1771,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_25_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1404,8 +1785,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1415,8 +1799,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1426,8 +1813,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1437,8 +1827,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_30_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1448,8 +1841,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1459,8 +1855,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1470,8 +1869,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1481,8 +1883,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_35_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1492,8 +1897,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1503,8 +1911,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1514,8 +1925,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1525,8 +1939,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_40_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1536,8 +1953,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1547,8 +1967,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1558,8 +1981,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1569,8 +1995,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S.ifc",
-    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S.json"
+    "ifc": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Darbhanga/Sup_Str/D_45_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1580,8 +2009,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1591,8 +2023,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1602,8 +2037,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1613,8 +2051,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_20_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1624,8 +2065,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1635,8 +2079,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1646,8 +2093,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1657,8 +2107,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_25_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1668,8 +2121,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1679,8 +2135,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1690,8 +2149,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1701,8 +2163,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_30_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1712,8 +2177,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1723,8 +2191,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1734,8 +2205,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1745,8 +2219,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_35_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1756,8 +2233,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1767,8 +2247,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1778,8 +2261,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_40_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1789,8 +2275,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1800,8 +2289,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1811,8 +2303,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1822,8 +2317,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sub_Str/M_45_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1833,8 +2331,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1844,8 +2345,11 @@
     "span": "20",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1855,8 +2359,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1866,8 +2373,11 @@
     "span": "20",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_20_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1877,8 +2387,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1888,8 +2401,11 @@
     "span": "25",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1899,8 +2415,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1910,8 +2429,11 @@
     "span": "25",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_25_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1921,8 +2443,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1932,8 +2457,11 @@
     "span": "30",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1943,8 +2471,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1954,8 +2485,11 @@
     "span": "30",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_30_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1965,8 +2499,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1976,8 +2513,11 @@
     "span": "35",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1987,8 +2527,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -1998,8 +2541,11 @@
     "span": "35",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_35_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2009,8 +2555,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2020,8 +2569,11 @@
     "span": "40",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2031,8 +2583,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2042,8 +2597,11 @@
     "span": "40",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_40_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2053,8 +2611,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2064,8 +2625,11 @@
     "span": "45",
     "lanes": "2L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_2L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2075,8 +2639,11 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "NF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_NF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   },
   {
     "bridge_type": "Steel",
@@ -2086,7 +2653,10 @@
     "span": "45",
     "lanes": "3L",
     "footpath": "OF",
-    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S.ifc",
-    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S.json"
+    "ifc": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S/model.ifc",
+    "json": "IFC/Steel/Mumbai/Sup_Str/M_45_3L_OF_S/groups.json",
+    "design_report": null,
+    "design_file": null,
+    "cad": null
   }
 ]

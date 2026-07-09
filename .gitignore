@@ -37,3 +37,4 @@ design_system/
 
 # Temp static pages (not releasing yet)
 # pages/
+migrate_to_subfolders.py

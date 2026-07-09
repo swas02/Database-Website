@@ -106,19 +106,32 @@ def scan():
 
     for ifc_path in all_ifc:
         rel = ifc_path.relative_to(BASE_DIR)
-        parts = rel.parts  # ('IFC', 'PSC', 'Darbhanga', 'Sub_Str', 'D_20_2L_NF_P.ifc')
+        parts = rel.parts  # ('IFC', 'PSC', 'Darbhanga', 'Sub_Str', 'D_20_2L_NF_P.ifc') or ('IFC', 'PSC', 'Darbhanga', 'Sub_Str', 'D_20_2L_NF_P', 'model.ifc')
 
-        if len(parts) != 5:
+        if len(parts) == 5:
+            _, bridge_type, location, structure_dir, filename = parts
+            stem = ifc_path.stem
+            json_path = ifc_path.with_suffix(".json")
+        elif len(parts) == 6:
+            _, bridge_type, location, structure_dir, folder_name, filename = parts
+            stem = folder_name
+            # Resolve JSON sidecar path: check {stem}.json, then groups.json, then fallback to any json in folder
+            json_path = ifc_path.parent / f"{stem}.json"
+            if not json_path.exists():
+                json_path = ifc_path.parent / "groups.json"
+            if not json_path.exists():
+                jsons = list(ifc_path.parent.glob("*.json"))
+                if jsons:
+                    json_path = jsons[0]
+        else:
             logging.warning(f"SKIP — unexpected folder depth ({len(parts)} levels): {rel}")
             continue
 
-        _, bridge_type, location, structure_dir, filename = parts
-        parsed = parse_filename(ifc_path.stem)
+        parsed = parse_filename(stem)
         if parsed is None:
-            logging.warning(f"SKIP — filename does not match expected pattern: {filename}")
+            logging.warning(f"SKIP — config identifier does not match expected pattern: {stem}")
             continue
 
-        json_path = ifc_path.with_suffix(".json")
         ifc_rel = str(rel).replace("\\", "/")
         json_rel = str(json_path.relative_to(BASE_DIR)).replace("\\", "/")
 
@@ -129,9 +142,50 @@ def scan():
 
         logging.debug(f"OK — {ifc_rel}")
 
+        # Resolve extra assets based purely on file extensions in the directory
+        pdf_rel = None
+        mcb_rel = None
+        cad_rel = None
+
+        if len(parts) == 5:
+            # Flat layout (match prefix + extension in parent folder)
+            parent_dir = ifc_path.parent
+            pdfs = list(parent_dir.glob(f"{stem}*.pdf"))
+            if pdfs:
+                pdf_rel = str(pdfs[0].relative_to(BASE_DIR)).replace("\\", "/")
+
+            mcbs = list(parent_dir.glob(f"{stem}*.mcb"))
+            if mcbs:
+                mcb_rel = str(mcbs[0].relative_to(BASE_DIR)).replace("\\", "/")
+
+            dwgs = list(parent_dir.glob(f"{stem}*.dwg")) + list(parent_dir.glob(f"{stem}*.dxf"))
+            if dwgs:
+                cad_rel = str(dwgs[0].relative_to(BASE_DIR)).replace("\\", "/")
+        elif len(parts) == 6:
+            # Subfolder layout (match any file with extension in config directory)
+            config_dir = ifc_path.parent
+            
+            # Find any PDF
+            pdfs = list(config_dir.glob("*.pdf"))
+            if pdfs:
+                pdf_rel = str(pdfs[0].relative_to(BASE_DIR)).replace("\\", "/")
+
+            # Find any MCB
+            mcbs = list(config_dir.glob("*.mcb"))
+            if mcbs:
+                mcb_rel = str(mcbs[0].relative_to(BASE_DIR)).replace("\\", "/")
+
+            # Find any DWG or DXF
+            dwgs = list(config_dir.glob("*.dwg")) + list(config_dir.glob("*.dxf"))
+            if dwgs:
+                cad_rel = str(dwgs[0].relative_to(BASE_DIR)).replace("\\", "/")
+
         entry = {
             "ifc": ifc_rel,
             "json": json_rel,
+            "design_report": pdf_rel,
+            "design_file": mcb_rel,
+            "cad": cad_rel,
         }
 
         nested_set(registry, [bridge_type, location, structure_dir,

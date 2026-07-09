@@ -1,7 +1,7 @@
 ISO-10303-21;
 HEADER;
 FILE_DESCRIPTION(('ViewDefinition [CoordinationView_V2.0]','RevitIdentifiers [ContentGUID: 392be187-d6b9-4b64-8c04-c118aaa74a8e, VersionGUID: 189474f4-7a52-4946-b52b-f9c76f65211d, NumberOfSaves: 0]','CoordinateReference [CoordinateBase: Shared Coordinates]'),'2;1');
-FILE_NAME('D_40_2L_OF_S_Sub_updated.ifc','2026-06-23T13:51:14+05:30',(''),(''),'ODA SDAI 25.12','Autodesk - Revit 27.0.20.10 (ENU) - 27.0.20.10','');
+FILE_NAME('D_40_2L_NF_S_Sub_updated.ifc','2026-06-23T13:51:14+05:30',(''),(''),'ODA SDAI 25.12','Autodesk - Revit 27.0.20.10 (ENU) - 27.0.20.10','');
 FILE_SCHEMA(('IFC2X3'));
 ENDSEC;
 
