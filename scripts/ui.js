@@ -46,13 +46,21 @@ window.toggleRightPanel = function () {
   const col = p.classList.toggle("collapsed");
   if (t) t.style.display = col ? "block" : "none";
   
-  // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
-  if (!col && window.innerWidth <= 1024) {
-    const lp = document.getElementById("left-panel");
-    const lt = document.getElementById("left-trigger");
-    if (lp && !lp.classList.contains("collapsed")) {
-      lp.classList.add("collapsed");
-      if (lt) lt.style.display = "block";
+  if (col) {
+    // If we collapse the panel while LCCA is active, exit LCCA mode and reset tab
+    if (p.classList.contains("lcca-active")) {
+      window.toggleLCCAMode(false);
+      window.switchRightTab('groups');
+    }
+  } else {
+    // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
+    if (window.innerWidth <= 1024) {
+      const lp = document.getElementById("left-panel");
+      const lt = document.getElementById("left-trigger");
+      if (lp && !lp.classList.contains("collapsed")) {
+        lp.classList.add("collapsed");
+        if (lt) lt.style.display = "block";
+      }
     }
   }
 };
