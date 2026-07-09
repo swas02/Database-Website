@@ -1373,7 +1373,7 @@ export function renderLCCAData(lccaData) {
         <td class="row-total">${formatINR(stageGross['eol'] + stageCredit['eol'])}</td>
       </tr>
       <tr class="grand-total">
-        <td style="text-align: left; font-weight: 600;">Grand Total</td>
+        <td style="text-align: left; font-weight: 600;">Total</td>
         <td>${formatINR(pillarGross['economic'] + pillarCredit['economic'])}</td>
         <td>${formatINR(pillarGross['environmental'] + pillarCredit['environmental'])}</td>
         <td>${formatINR(pillarGross['social'] + pillarCredit['social'])}</td>
