@@ -999,32 +999,54 @@ if (document.readyState === "loading") {
 }
 
 // ── LCCA Rendering Functions ──
+const MASTER_LABELS = {
+  // Initial Stage
+  "initial_stage|economic|initial_construction_cost": "Initial Construction Cost",
+  "initial_stage|economic|time_cost_of_loan": "Time Costs",
+  "initial_stage|environmental|initial_material_carbon_emission_cost": "Initial Carbon Emissions",
+  "initial_stage|environmental|initial_vehicular_emission_cost": "Carbon emissions due to Rerouting (Construction)",
+  "initial_stage|social|initial_road_user_cost": "Road User Costs (Construction)",
+
+  // Use Stage
+  "use_stage|economic|routine_inspection_costs": "Routine Inspection Costs",
+  "use_stage|economic|periodic_maintenance": "Periodic Maintenance Costs",
+  "use_stage|economic|major_inspection_costs": "Major Inspection Costs",
+  "use_stage|economic|major_repair_cost": "Major Repair Costs",
+  "use_stage|economic|replacement_costs_for_bearing_and_expansion_joint": "Replacement Costs of Bearings and Expansion joints",
+  "use_stage|environmental|periodic_carbon_costs": "Periodic Maintenance related Carbon Emissions",
+  "use_stage|environmental|major_repair_material_carbon_emission_costs": "Major Repair related Carbon Emissions",
+  "use_stage|environmental|major_repair_vehicular_emission_costs": "Carbon Emissions due to Rerouting during Major Repairs",
+  "use_stage|environmental|vehicular_emission_costs_for_replacement_of_bearing_and_expansion_joint": "Carbon Emissions due to Rerouting during Replacement of Bearings and Expansion joints",
+  "use_stage|social|major_repair_road_user_costs": "Road User Costs during Major Repairs",
+  "use_stage|social|road_user_costs_for_replacement_of_bearing_and_expansion_joint": "Road User Costs during Replacement of Bearings and Expansion joints",
+
+  // Reconstruction Stage
+  "reconstruction|economic|total_demolition_and_disposal_costs": "Demolition and Disposal Costs",
+  "reconstruction|economic|total_scrap_value": "Recycling Costs",
+  "reconstruction|economic|cost_of_reconstruction_after_demolition": "Reconstruction Costs",
+  "reconstruction|economic|time_cost_of_loan": "Time Costs",
+  "reconstruction|environmental|carbon_costs_demolition_and_disposal": "Demolition and Disposal related Carbon Emissions",
+  "reconstruction|environmental|demolition_vehicular_emission_cost": "Carbon Emissions due to Rerouting during Demolition and Disposal",
+  "reconstruction|environmental|carbon_cost_of_reconstruction_after_demolition": "Reconstruction related Carbon Emissions",
+  "reconstruction|environmental|reconstruction_vehicular_emission_cost": "Carbon Emissions due to Rerouting during Reconstruction",
+  "reconstruction|social|ruc_demolition": "Road User Costs related to Demolition and Disposal during Reconstruction",
+  "reconstruction|social|ruc_reconstruction": "Road User Costs during Reconstruction",
+
+  // End of Life Stage
+  "end_of_life|economic|total_demolition_and_disposal_costs": "Demolition and Disposal Costs",
+  "end_of_life|economic|total_scrap_value": "Recycling Costs",
+  "end_of_life|environmental|carbon_costs_demolition_and_disposal": "Demolition and Disposal related Carbon Emissions",
+  "end_of_life|environmental|demolition_vehicular_emission_cost": "Carbon Emissions due to Rerouting during Demolition and Disposal",
+  "end_of_life|social|ruc_demolition": "Road User Costs due to Demolition and Disposal"
+};
+
+// Fallback for simple flat translations if needed
 const LCCA_NAMES = {
-  initial_construction_cost: 'Initial construction',
-  time_cost_of_loan: 'Time cost of loan',
-  initial_material_carbon_emission_cost: 'Material carbon emissions',
-  initial_vehicular_emission_cost: 'Vehicular emissions',
-  initial_road_user_cost: 'Road user cost',
-  routine_inspection_costs: 'Routine inspections',
-  periodic_maintenance: 'Periodic maintenance',
-  major_inspection_costs: 'Major inspections',
-  major_repair_cost: 'Major repairs',
-  replacement_costs_for_bearing_and_expansion_joint: 'Bearing & expansion joint replacement',
-  periodic_carbon_costs: 'Periodic maintenance carbon',
-  major_repair_material_carbon_emission_costs: 'Major-repair material carbon',
-  major_repair_vehicular_emission_costs: 'Major-repair vehicular emissions',
-  vehicular_emission_costs_for_replacement_of_bearing_and_expansion_joint: 'Bearing/joint vehicular emissions',
-  major_repair_road_user_costs: 'Major-repair road user cost',
-  road_user_costs_for_replacement_of_bearing_and_expansion_joint: 'Bearing/joint road user cost',
-  total_demolition_and_disposal_costs: 'Demolition & disposal',
-  cost_of_reconstruction_after_demolition: 'Reconstruction',
-  total_scrap_value: 'Scrap value',
-  carbon_costs_demolition_and_disposal: 'Demolition & disposal carbon',
-  carbon_cost_of_reconstruction_after_demolition: 'Reconstruction carbon',
-  demolition_vehicular_emission_cost: 'Demolition vehicular emissions',
-  reconstruction_vehicular_emission_cost: 'Reconstruction vehicular emissions',
-  ruc_demolition: 'Demolition road user cost',
-  ruc_reconstruction: 'Reconstruction road user cost'
+  initial_construction_cost: 'Initial Construction Cost',
+  time_cost_of_loan: 'Time Costs',
+  initial_material_carbon_emission_cost: 'Initial Carbon Emissions',
+  initial_vehicular_emission_cost: 'Carbon emissions due to Rerouting (Construction)',
+  initial_road_user_cost: 'Road User Costs (Construction)'
 };
 
 const LCCA_PILLARS = [
@@ -1280,12 +1302,12 @@ export function renderLCCAData(lccaData) {
   const hasRecon = LCCA_PILLARS.some(p => RAW.reconstruction && RAW.reconstruction[p.id]);
 
   const STAGES = [
-    { id: 'initial', label: 'Initial stage', short: 'Initial', color: '#64748b', cvar: '--st1', parts: [{ src: RAW.initial_stage || {}, tag: '' }] },
-    { id: 'use',     label: 'Use stage',     short: 'Use', color: '#00C49A', cvar: '--st2', parts: [{ src: RAW.use_stage || {}, tag: '' }] },
+    { id: 'initial', label: 'Initial stage', short: 'Initial', color: '#64748b', cvar: '--st1', parts: [{ id: 'initial_stage', src: RAW.initial_stage || {}, tag: '' }] },
+    { id: 'use',     label: 'Use stage',     short: 'Use', color: '#00C49A', cvar: '--st2', parts: [{ id: 'use_stage', src: RAW.use_stage || {}, tag: '' }] },
     { id: 'eol',     label: 'End of life',   short: 'End of life', color: '#EA9E9E', cvar: '--st3',
       parts: [
-        ...(hasRecon ? [{ src: RAW.reconstruction, tag: ' (reconstruction)' }] : []),
-        { src: RAW.end_of_life || {}, tag: hasRecon ? ' (final)' : '' }
+        ...(hasRecon ? [{ id: 'reconstruction', src: RAW.reconstruction, tag: ' (reconstruction)' }] : []),
+        { id: 'end_of_life', src: RAW.end_of_life || {}, tag: hasRecon ? ' (final)' : '' }
       ]
     }
   ];
@@ -1297,10 +1319,11 @@ export function renderLCCAData(lccaData) {
     for (const [k, v] of Object.entries(grp)) {
       const scrap = /scrap/.test(k);
       const costEffect = scrap ? -v : v;
+      const lookupKey = `${part.id}|${pl.id}|${k}`;
+      const label = MASTER_LABELS[lookupKey] || ((LCCA_NAMES[k] || k) + part.tag);
       components.push({
         stage: st.id, pillar: pl.id, key: k,
-        label: (LCCA_NAMES[k] || k) + part.tag,
-        costEffect, isCredit: costEffect < 0
+        label, costEffect, isCredit: costEffect < 0
       });
     }
   })));
@@ -1377,9 +1400,9 @@ export function renderLCCAData(lccaData) {
       const colVar = pillar.cvar;
       const bgClass = `matrix-col-${c.pillar === 'economic' ? 'eco' : c.pillar === 'environmental' ? 'env' : 'soc'}`;
 
-      // Calculate unidirectional bar chart styles (0 to 100%)
+      // Calculate unidirectional bar chart styles with a 10% safety margin on the right
       const valPct = (Math.abs(c.costEffect) / maxVal) * 100;
-      const barStyle = `left: 0; width: ${valPct}%; background-color: var(${colVar}); border-radius: 0 2px 2px 0;`;
+      const barStyle = `left: 0; width: ${valPct * 0.9}%; background-color: var(${colVar}); border-radius: 0 2px 2px 0;`;
 
       detailedTableBody += `
         <tr class="${bgClass}">
