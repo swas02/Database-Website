@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 import { setLoadingState, renderBridgeMetadata, renderCatalog, updateCardActiveStates } from "./ui.js";
-import { loadIFC } from "./ifcLoader.js";
+import { loadOBJ } from "./ifcLoader.js";
 
 // Global lists populated from registry_flat.json
 let registry = [];
@@ -257,10 +257,8 @@ window.loadSelectedBridge = async function () {
     // Keep it on state so it is processed dynamically in ifcLoader.js
     state.modelGroupsData = groupsData;
 
-    // 2. Fetch IFC arrayBuffer
-    const ifcResp = await fetch(match.ifc);
-    if (!ifcResp.ok) throw new Error("Failed to load IFC file");
-    const arrayBuffer = await ifcResp.arrayBuffer();
+    // 2. Resolve OBJ model path
+    const objPath = match.obj || match.ifc.replace(/\.ifc$/i, ".obj");
 
     // 3. Find matching spec in steelDatabase
     const pathParts = match.ifc.split("/");
@@ -319,8 +317,8 @@ window.loadSelectedBridge = async function () {
     // Refresh general specifications UI
     renderBridgeMetadata(state.bridgeData);
 
-    // Call loadIFC to generate meshes, which calls loadDefaultGroupsJSON inside ifcLoader.js
-    await loadIFC(arrayBuffer);
+    // Call loadOBJ to load and render the OBJ model
+    await loadOBJ(objPath);
 
     // Reset filters
     if (window.resetAllFilters) {

@@ -1,0 +1,12 @@
+{
+  "name": "bridge-lcca-converter",
+  "version": "1.0.0",
+  "description": "IFC to OBJ converter with structural grouping support",
+  "main": "convert_ifc_to_obj.js",
+  "scripts": {
+    "convert": "node convert_ifc_to_obj.js"
+  },
+  "dependencies": {
+    "web-ifc": "0.0.77"
+  }
+}

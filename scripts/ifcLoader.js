@@ -1,18 +1,12 @@
 import * as THREE from "three";
-import * as WebIFC from "https://unpkg.com/web-ifc@0.0.77/web-ifc-api.js";
 import { state } from "./state.js";
 import { COLOR, IFCTYPES, getMaterialColor, getIsConcrete } from "./constants.js";
 import { setLoadingState, renderGroupsPanel } from "./ui.js";
 import { precomputeGroupBounds } from "./selection.js";
 
 // ── Loaders ──────────────────────────────────────────────────
-export async function loadIFC(arrayBuffer) {
-  setLoadingState("Loading WebAssembly parser...");
-  if (!state.ifcInitDone) {
-    state.ifc.SetWasmPath("./ifc_wasm/");
-    await state.ifc.Init();
-    state.ifcInitDone = true;
-  }
+export async function loadOBJ(objPath) {
+  setLoadingState("Loading 3D model...");
 
   // Clear previous scene meshes
   while (state.modelGroup.children.length) state.modelGroup.remove(state.modelGroup.children[0]);
@@ -21,122 +15,81 @@ export async function loadIFC(arrayBuffer) {
   state.groupMap.clear();
   state.hovered.clear();
 
-  setLoadingState("Generating WebGL meshes...");
-  const data = new Uint8Array(arrayBuffer);
-  const modelID = state.ifc.OpenModel(data);
-  const allGeometry = state.ifc.LoadAllGeometry(modelID);
+  try {
+    const { OBJLoader } = await import("https://unpkg.com/three@0.170.0/examples/jsm/loaders/OBJLoader.js");
+    const loader = new OBJLoader();
 
-  for (let i = 0; i < allGeometry.size(); i++) {
-    const placed = allGeometry.get(i);
-    let elemType = 0,
-      elemName = "";
-    try {
-      const line = state.ifc.GetLine(modelID, placed.expressID);
-      elemType = line.type;
-      elemName = line.Name?.value || "";
-    } catch (_) {}
+    // Load OBJ
+    const loadedGroup = await new Promise((resolve, reject) => {
+      loader.load(objPath, resolve, undefined, reject);
+    });
 
-    const meshColor =
-      elemType === WebIFC.IFCBUILDINGELEMENTPROXY ||
-      elemName.toLowerCase().includes("brace")
-        ? COLOR.BRACE
-        : COLOR.BEAM;
-
-    for (let j = 0; j < placed.geometries.size(); j++) {
-      const part = placed.geometries.get(j);
-      const geo = state.ifc.GetGeometry(modelID, part.geometryExpressID);
-      const verts = state.ifc.GetVertexArray(
-        geo.GetVertexData(),
-        geo.GetVertexDataSize(),
+    const children = [...loadedGroup.children];
+    children.forEach((mesh) => {
+      const normalizedName = mesh.name.toLowerCase(); // e.g. "pier_cap"
+      
+      // Find matching group in groupsData
+      const groupsList = state.modelGroupsData?.groups || [];
+      const groupDef = groupsList.find(
+        (g) => g.name.replace(/\s+/g, "_").toLowerCase() === normalizedName
       );
-      const inds = state.ifc.GetIndexArray(
-        geo.GetIndexData(),
-        geo.GetIndexDataSize(),
-      );
+      const groupName = groupDef ? groupDef.name : mesh.name;
+      const partIDs = groupDef ? groupDef.partIDs : [];
+      const firstPartID = partIDs.length > 0 ? partIDs[0] : `${mesh.name}_0`;
 
-      const positions = [];
-      for (let k = 0; k < verts.length; k += 6)
-        positions.push(verts[k], verts[k + 1], verts[k + 2]);
-
-      const geometry = new THREE.BufferGeometry();
-      geometry.setAttribute(
-        "position",
-        new THREE.Float32BufferAttribute(positions, 3),
-      );
-      geometry.setIndex(Array.from(inds));
-      geometry.computeVertexNormals();
-
-      const mesh = new THREE.Mesh(
-        geometry,
-        new THREE.MeshStandardMaterial({
-          color: meshColor,
-          roughness: 0.35,
-          metalness: 0.2,
-          side: THREE.DoubleSide,
-          transparent: true,
-          opacity: 1.0,
-        }),
-      );
+      // Assign default standard material properties
+      mesh.material = new THREE.MeshStandardMaterial({
+        roughness: 0.35,
+        metalness: 0.2,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 1.0
+      });
       mesh.castShadow = true;
       mesh.receiveShadow = true;
 
-      if (part.flatTransformation?.length === 16)
-        mesh.applyMatrix4(
-          new THREE.Matrix4().fromArray(part.flatTransformation),
-        );
-
       mesh.userData = {
-        partID: `${placed.expressID}_${j}`,
-        baseColor: meshColor,
-        originalColor: meshColor,
-        elemName,
-        elemType,
+        partID: firstPartID,
+        baseColor: 0x8a9ba8,
+        originalColor: 0x8a9ba8,
+        elemName: groupName,
+        elemType: 0
       };
+
       state.modelGroup.add(mesh);
-      if (!state.meshMap.has(mesh.userData.partID))
-        state.meshMap.set(mesh.userData.partID, []);
-      state.meshMap.get(mesh.userData.partID).push(mesh);
-    }
-  }
 
-  // Centre model
-  state.modelBox = new THREE.Box3().setFromObject(state.modelGroup);
-  const size = state.modelBox.getSize(new THREE.Vector3());
-  state.modelCenter = state.modelBox.getCenter(new THREE.Vector3());
-  state.modelGroup.position.sub(state.modelCenter);
-  state.modelGroup.position.y += 2;
-  state.scene.add(state.modelGroup);
-  state.modelGroup.updateMatrixWorld(true);
-
-  // Auto Concrete Coloring
-  const threshold = size.y * 0.35 - state.modelCenter.y;
-  state.modelGroup.traverse((obj) => {
-    if (
-      obj.isMesh &&
-      obj.userData.elemType !== WebIFC.IFCBUILDINGELEMENTPROXY
-    ) {
-      if (
-        new THREE.Box3().setFromObject(obj).getCenter(new THREE.Vector3()).y >
-        threshold
-      ) {
-        obj.material = obj.material.clone();
-        obj.material.color.set(COLOR.CONCRETE);
-        obj.material.roughness = 0.8;
-        obj.material.metalness = 0.1;
-        obj.userData.baseColor = COLOR.CONCRETE;
-        obj.userData.originalColor = COLOR.CONCRETE;
+      // Map all partIDs of this group to this mesh in state.meshMap
+      if (partIDs.length > 0) {
+        partIDs.forEach((pid) => {
+          state.meshMap.set(pid, [mesh]);
+        });
+      } else {
+        state.meshMap.set(firstPartID, [mesh]);
       }
-    }
-  });
+    });
 
-  document.getElementById("project-title").textContent = "IFC Bridge Model";
-  document.getElementById("span-chip").textContent =
-    "Span: " + size.x.toFixed(1) + " m";
-  state.ifcLoaded = true;
+    // Center model
+    state.modelBox = new THREE.Box3().setFromObject(state.modelGroup);
+    const size = state.modelBox.getSize(new THREE.Vector3());
+    state.modelCenter = state.modelBox.getCenter(new THREE.Vector3());
+    state.modelGroup.position.sub(state.modelCenter);
+    state.modelGroup.position.y += 2;
+    state.scene.add(state.modelGroup);
+    state.modelGroup.updateMatrixWorld(true);
 
-  // Render Groups Sidebar
-  loadDefaultGroupsJSON();
-  setLoadingState(null);
+    document.getElementById("project-title").textContent = state.bridgeData?.bridge_id || "OBJ Bridge Model";
+    document.getElementById("span-chip").textContent =
+      "Span: " + size.x.toFixed(1) + " m";
+    state.ifcLoaded = true;
+
+    // Render Groups Sidebar and apply coloring
+    loadDefaultGroupsJSON();
+    setLoadingState(null);
+  } catch (err) {
+    console.error("Failed to load OBJ model:", err);
+    alert("Error loading 3D model: " + err.message);
+    setLoadingState(null);
+  }
 }
 
 export function loadDefaultGroupsJSON() {

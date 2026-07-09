@@ -1,8 +1,6 @@
 import * as THREE from "three";
-import * as WebIFC from "https://unpkg.com/web-ifc@0.0.77/web-ifc-api.js";
 
 export const state = {
-  ifc: new WebIFC.IfcAPI(),
   modelGroup: new THREE.Group(),
   meshMap: new Map(), // partID -> Mesh[]
   groupMap: new Map(), // partID -> Array of group names

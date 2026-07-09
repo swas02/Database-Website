@@ -180,9 +180,16 @@ def scan():
             if dwgs:
                 cad_rel = str(dwgs[0].relative_to(BASE_DIR)).replace("\\", "/")
 
+        # Resolve OBJ companion file path
+        obj_path = ifc_path.with_suffix(".obj")
+        obj_rel = None
+        if obj_path.exists():
+            obj_rel = str(obj_path.relative_to(BASE_DIR)).replace("\\", "/")
+
         entry = {
             "ifc": ifc_rel,
             "json": json_rel,
+            "obj": obj_rel,
             "design_report": pdf_rel,
             "design_file": mcb_rel,
             "cad": cad_rel,
