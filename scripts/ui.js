@@ -46,8 +46,8 @@ window.toggleRightPanel = function () {
   const col = p.classList.toggle("collapsed");
   if (t) t.style.display = col ? "block" : "none";
   
-  // On mobile (<= 768px), if we open the right panel, collapse the left panel
-  if (!col && window.innerWidth <= 768) {
+  // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
+  if (!col && window.innerWidth <= 1024) {
     const lp = document.getElementById("left-panel");
     const lt = document.getElementById("left-trigger");
     if (lp && !lp.classList.contains("collapsed")) {
@@ -64,8 +64,8 @@ window.toggleLeftPanel = function () {
   const col = p.classList.toggle("collapsed");
   if (t) t.style.display = col ? "block" : "none";
   
-  // On mobile (<= 768px), if we open the left panel, collapse the right panel
-  if (!col && window.innerWidth <= 768) {
+  // On tablet/mobile (<= 1024px), if we open the left panel, collapse the right panel
+  if (!col && window.innerWidth <= 1024) {
     const rp = document.getElementById("right-panel");
     const rt = document.getElementById("right-trigger");
     if (rp && !rp.classList.contains("collapsed")) {
@@ -82,14 +82,14 @@ window.toggleLeftPanel = function () {
   const rp = document.getElementById("right-panel");
   const rt = document.getElementById("right-trigger");
 
-  if (window.innerWidth > 768) {
+  if (window.innerWidth > 1024) {
     // Desktop: both panels open, triggers hidden
     if (lp) lp.classList.remove("collapsed");
     if (lt) lt.style.display = "none";
     if (rp) rp.classList.remove("collapsed");
     if (rt) rt.style.display = "none";
   } else {
-    // Mobile: Left Panel (Library) open, Right Panel (Explorer) collapsed
+    // Tablet/Mobile: Left Panel (Library) open, Right Panel (Explorer) collapsed
     if (lp) lp.classList.remove("collapsed");
     if (lt) lt.style.display = "none";
     if (rp) rp.classList.add("collapsed");
@@ -355,8 +355,8 @@ export function updatePropertyInspector(group) {
     const t = document.getElementById("right-trigger");
     if (t) t.style.display = "none";
     
-    // On mobile (<= 768px), if we open the right panel, collapse the left panel
-    if (wasCollapsed && window.innerWidth <= 768) {
+    // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
+    if (wasCollapsed && window.innerWidth <= 1024) {
       const lp = document.getElementById("left-panel");
       const lt = document.getElementById("left-trigger");
       if (lp && !lp.classList.contains("collapsed")) {

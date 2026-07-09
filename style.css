@@ -1872,6 +1872,12 @@ body.static-page .form-control::placeholder {
   }
 }
 
+@media (min-width: 769px) and (max-width: 1100px) {
+  #app-container:has(#left-panel:not(.collapsed)) #right-panel.lcca-active {
+    left: 332px !important; /* 300px tablet left-panel width + 16px border-gap + 16px gap space */
+  }
+}
+
 #lcca-container h4 {
   text-align: center;
   margin-top: 32px !important;
