@@ -1,0 +1,106 @@
+{
+  "export_meta": {
+    "type": "results",
+    "project_name": "M_20_2L_OF_S (imported)",
+    "analysis_period": 100,
+    "currency": "INR",
+    "exported_at": "2026-07-09"
+  },
+  "lcc_breakdown": {
+    "initial_construction_cost": 6477802.688576319,
+    "initial_carbon_emissions_cost": 1330820.0579844,
+    "superstructure_construction_cost": 4071330.60347092,
+    "total_scrap_value": 936065.467636,
+    "daily_road_user_cost_with_vehicular_emissions": {
+      "accident_cost": {
+        "total_accident_cost_INR_per_day": 175.59,
+        "human_cost_INR_per_day": 167.81,
+        "vehicle_damage_cost_INR_per_day": 7.78,
+        "calculated_total_daily_accidents": 0.00033852,
+        "accident_severity_distribution_counts": {
+          "minor": 8.7e-05,
+          "major": 0.00020792,
+          "fatal": 4.36e-05
+        }
+      },
+      "vehicle_operation_cost": {
+        "distance_total": {
+          "IT": 197872.5120173055,
+          "ET": 88117.46205240008
+        },
+        "time_total": {
+          "IT": 134151.63108518475,
+          "ET": 131374.17328207204
+        },
+        "total": {
+          "IT": 332024.1431024902,
+          "ET": 219491.6353344721
+        },
+        "unit": "Rs/km"
+      },
+      "value_of_time": {
+        "total_Cost": 53233.37681706354,
+        "unit": "Rs./day"
+      },
+      "total_carbon_emission": {
+        "total_emission_kgCO2e": 331.2205000000001,
+        "unit": "kgCO2e/day",
+        "distance_per_day_km": 0.1,
+        "Note": "This value represents the total carbon emissions per day for the given distance traveled. To get total emissions over multiple days or different distances, multiply accordingly."
+      },
+      "total_daily_ruc": 75358.13
+    }
+  },
+  "results": {
+    "initial_stage": {
+      "economic": {
+        "initial_construction_cost": 6477802.688576319,
+        "time_cost_of_loan": 83671.61806077746
+      },
+      "environmental": {
+        "initial_material_carbon_emission_cost": 1330820.0579844,
+        "initial_vehicular_emission_cost": 379181.23
+      },
+      "social": {
+        "initial_road_user_cost": 9042975.6
+      }
+    },
+    "use_stage": {
+      "economic": {
+        "routine_inspection_costs": 334610.89787840977,
+        "periodic_maintenance": 350756.8210796863,
+        "major_inspection_costs": 318869.83734516933,
+        "major_repair_cost": 268181.03130705963,
+        "replacement_costs_for_bearing_and_expansion_joint": 763883.4044762313
+      },
+      "environmental": {
+        "periodic_carbon_costs": 72060.57908971031,
+        "major_repair_material_carbon_emission_costs": 3030.2772720304793,
+        "major_repair_vehicular_emission_costs": 117735.77,
+        "vehicular_emission_costs_for_replacement_of_bearing_and_expansion_joint": 9485.85
+      },
+      "social": {
+        "major_repair_road_user_costs": 2807843.92,
+        "road_user_costs_for_replacement_of_bearing_and_expansion_joint": 226225.11
+      }
+    },
+    "reconstruction": {
+      "Note": "Analysis period is less than or equal to service life; reconstruction costs are not applicable."
+    },
+    "end_of_life": {
+      "economic": {
+        "total_demolition_and_disposal_costs": 149637.242106113,
+        "total_scrap_value": 216231.123023916
+      },
+      "environmental": {
+        "carbon_costs_demolition_and_disposal": 30741.943339439647,
+        "demolition_vehicular_emission_cost": 21897.72
+      },
+      "social": {
+        "ruc_demolition": 522231.84
+      }
+    },
+    "warnings": [],
+    "notes": []
+  }
+}

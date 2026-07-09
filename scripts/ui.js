@@ -1550,8 +1550,8 @@ export async function loadAndRenderLCCA() {
   `;
 
   // Determine path to LCCA results:
-  // For now keep plots/test.lcca in every model (as requested by user)
-  const lccaPath = state.currentLoadedBridge?.lcca || "./plots/test.lcca";
+  // Look for test.lcca in the root folder by default
+  const lccaPath = state.currentLoadedBridge?.lcca || "./test.lcca";
   
   try {
     const response = await fetch(lccaPath);
