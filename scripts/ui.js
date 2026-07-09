@@ -12,6 +12,9 @@ window.switchRightTab = function (tab) {
     .getElementById("tab-meta")
     .classList.toggle("active", tab === "meta");
   document
+    .getElementById("tab-lcca")
+    .classList.toggle("active", tab === "lcca");
+  document
     .getElementById("tab-downloads")
     .classList.toggle("active", tab === "downloads");
     
@@ -19,8 +22,21 @@ window.switchRightTab = function (tab) {
     tab === "groups" ? "block" : "none";
   document.getElementById("content-meta").style.display =
     tab === "meta" ? "block" : "none";
+  document.getElementById("content-lcca").style.display =
+    tab === "lcca" ? "block" : "none";
   document.getElementById("content-downloads").style.display =
     tab === "downloads" ? "block" : "none";
+
+  // Toggle central LCCA dashboard vs 3D viewer
+  if (window.toggleLCCAMode) {
+    window.toggleLCCAMode(tab === "lcca");
+  }
+
+  // Toggle HUD button active state
+  const lccaBtn = document.getElementById("btn-mode-lcca");
+  if (lccaBtn) {
+    lccaBtn.classList.toggle("active", tab === "lcca");
+  }
 };
 
 window.toggleRightPanel = function () {
@@ -982,3 +998,589 @@ if (document.readyState === "loading") {
   setTimeout(() => updateThemeUI(savedTheme), 50);
 }
 
+// ── LCCA Rendering Functions ──
+const LCCA_NAMES = {
+  initial_construction_cost: 'Initial construction',
+  time_cost_of_loan: 'Time cost of loan',
+  initial_material_carbon_emission_cost: 'Material carbon emissions',
+  initial_vehicular_emission_cost: 'Vehicular emissions',
+  initial_road_user_cost: 'Road user cost',
+  routine_inspection_costs: 'Routine inspections',
+  periodic_maintenance: 'Periodic maintenance',
+  major_inspection_costs: 'Major inspections',
+  major_repair_cost: 'Major repairs',
+  replacement_costs_for_bearing_and_expansion_joint: 'Bearing & expansion joint replacement',
+  periodic_carbon_costs: 'Periodic maintenance carbon',
+  major_repair_material_carbon_emission_costs: 'Major-repair material carbon',
+  major_repair_vehicular_emission_costs: 'Major-repair vehicular emissions',
+  vehicular_emission_costs_for_replacement_of_bearing_and_expansion_joint: 'Bearing/joint vehicular emissions',
+  major_repair_road_user_costs: 'Major-repair road user cost',
+  road_user_costs_for_replacement_of_bearing_and_expansion_joint: 'Bearing/joint road user cost',
+  total_demolition_and_disposal_costs: 'Demolition & disposal',
+  cost_of_reconstruction_after_demolition: 'Reconstruction',
+  total_scrap_value: 'Scrap value',
+  carbon_costs_demolition_and_disposal: 'Demolition & disposal carbon',
+  carbon_cost_of_reconstruction_after_demolition: 'Reconstruction carbon',
+  demolition_vehicular_emission_cost: 'Demolition vehicular emissions',
+  reconstruction_vehicular_emission_cost: 'Reconstruction vehicular emissions',
+  ruc_demolition: 'Demolition road user cost',
+  ruc_reconstruction: 'Reconstruction road user cost'
+};
+
+const LCCA_PILLARS = [
+  { id: 'economic',      label: 'Economic',      color: '#3b82f6', cvar: '--pl1' },
+  { id: 'environmental', label: 'Environmental', color: '#10b981', cvar: '--pl2' },
+  { id: 'social',        label: 'Social',        color: '#ff5a2a', cvar: '--pl3' }
+];
+
+function formatINR(v) {
+  const s = v < 0 ? '-' : '';
+  return s + '₹' + Math.round(Math.abs(v)).toLocaleString('en-IN');
+}
+
+function formatCompactINR(v) {
+  const s = v < 0 ? '-' : '';
+  const a = Math.abs(v);
+  if (a >= 1e7) return s + '₹' + (a/1e7).toFixed(2) + ' Cr';
+  if (a >= 1e5) return s + '₹' + (a/1e5).toFixed(2) + ' L';
+  if (a >= 1e3) return s + '₹' + (a/1e3).toFixed(1) + 'K';
+  return s + '₹' + a.toFixed(0);
+}
+
+const pct = (v, of) => (of > 0 ? (100 * v / of).toFixed(1) : '0.0') + '%';
+const cv = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+function inkOn(hex) {
+  if (!hex || hex[0] !== '#') return 'var(--text-main)';
+  const n = parseInt(hex.slice(1), 16), r = n>>16, g = (n>>8)&255, b = n&255;
+  return (0.2126*r + 0.7152*g + 0.0722*b) / 255 > 0.55 ? '#0f172a' : '#ffffff';
+}
+
+const ttRow = (color, label, value, lines) =>
+  `<div class="t"><span class="sw" style="background:${color}"></span>${label}</div>` +
+  `<div class="v">${formatINR(value)}</div>` + lines.map(l => `<div>${l}</div>`).join('');
+
+function bindTip(sel, html) {
+  let tooltip = document.getElementById('lcca-tooltip');
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.id = 'lcca-tooltip';
+    tooltip.className = 'lcca-tooltip';
+    document.body.appendChild(tooltip);
+  }
+  
+  sel.on('mousemove.tt', (e, d) => {
+    tooltip.innerHTML = html(d);
+    tooltip.style.display = 'block';
+    const r = tooltip.getBoundingClientRect();
+    tooltip.style.left = Math.min(e.clientX + 14, window.innerWidth  - r.width  - 8) + 'px';
+    tooltip.style.top  = Math.min(e.clientY + 14, window.innerHeight - r.height - 8) + 'px';
+  })
+  .on('mouseleave.tt', () => { tooltip.style.display = 'none'; })
+  .on('focus.tt', function(e, d) { 
+    const b = this.getBoundingClientRect(); 
+    tooltip.innerHTML = html(d);
+    tooltip.style.display = 'block';
+    const r = tooltip.getBoundingClientRect();
+    tooltip.style.left = Math.min(b.x + b.width/2 + 14, window.innerWidth  - r.width  - 8) + 'px';
+    tooltip.style.top  = Math.min(b.y + b.height/2 + 14, window.innerHeight - r.height - 8) + 'px';
+  })
+  .on('blur.tt', () => { tooltip.style.display = 'none'; });
+}
+
+function renderDashCard(el, title, sub, legendGroups, footnote) {
+  const d = document.getElementById(el);
+  if (!d) return;
+  d.innerHTML = `<h3>${title}</h3><p class="sub">${sub}</p><div class="legend">` +
+    legendGroups.map(gp =>
+      (gp.name ? `<span class="grp">${gp.name}</span>` : '') +
+      gp.items.map(it => `<span class="it"><span class="sw" style="background:${it.color}"></span>${it.label}</span>`).join('')
+    ).join('') + `</div>` +
+    (footnote ? `<div class="footnote">${footnote}</div>` : '');
+  return d;
+}
+
+function donut(el, data, o) {
+  const W = o.W || 560, H = o.H || 330, R = o.R || 118, cx = W/2, cy = H/2;
+  const root = d3.select(el);
+  root.selectAll('svg').remove();
+  root.selectAll('.nochart').remove();
+  data = data.filter(d => d.value > 0);
+  const total = d3.sum(data, d => d.value);
+  if (!data.length || total <= 0) {
+    root.insert('div', '.legend').attr('class', 'nochart')
+      .text('Pie not drawn — no positive costs here. A pie chart cannot show negative values; the credits are listed in the table view.');
+    return;
+  }
+  const svg = root.insert('svg', '.legend').attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', o.aria || o.title);
+  const g = svg.append('g').attr('transform', `translate(${cx},${cy})`);
+  const arcs = d3.pie().sort(null).value(d => d.value)(data);
+  const arc = d3.arc().innerRadius(R*0.56).outerRadius(R).cornerRadius(2);
+
+  const paths = g.selectAll('path').data(arcs).join('path')
+    .attr('class', 'slice').attr('tabindex', 0)
+    .attr('d', arc).attr('fill', d => d.data.color)
+    .attr('stroke', 'none')
+    .attr('aria-label', d => `${d.data.label}: ${formatINR(d.data.value)}, ${pct(d.data.value, total)}`);
+  
+  paths.on('mouseenter.hl', function() { paths.attr('opacity', 0.35); d3.select(this).attr('opacity', null); })
+       .on('mouseleave.hl', () => paths.attr('opacity', null));
+  
+  bindTip(paths, d => ttRow(d.data.color, d.data.label, d.data.value,
+    [`${pct(d.data.value, total)} of ${o.ofLabel || 'total'}`, ...(d.data.tip || [])]));
+
+  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.05em').text(formatCompactINR(o.center ?? total));
+  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '1.75em').text(o.centerLabel || 'gross cost');
+
+  const min = o.labelMin ?? 0.03, sides = { 1: [], '-1': [] };
+  arcs.forEach(d => {
+    const f = d.data.value / total; if (f < min) return;
+    const m = (d.startAngle + d.endAngle) / 2, side = m < Math.PI ? 1 : -1;
+    sides[side].push({ d, m, side, y: -Math.cos(m) * (R + 16) });
+  });
+  Object.values(sides).forEach(list => {
+    list.sort((a, b) => a.y - b.y);
+    for (let i = 1; i < list.length; i++) if (list[i].y < list[i-1].y + 15) list[i].y = list[i-1].y + 15;
+  });
+  const lab = g.append('g');
+  Object.values(sides).flat().forEach(({d, m, side, y}) => {
+    const p1 = [Math.sin(m)*(R+2), -Math.cos(m)*(R+2)];
+    const p2 = [Math.sin(m)*(R+11), y];
+    const p3 = [p2[0] + side*10, y];
+    lab.append('polyline').attr('class', 'leader').attr('points', [p1, p2, p3].map(p => p.join(',')).join(' '));
+    const t = lab.append('text').attr('class', 'lab')
+      .attr('x', p3[0] + side*4).attr('y', y).attr('dy', '0.32em')
+      .attr('text-anchor', side === 1 ? 'start' : 'end');
+    if (!o.pctOnly) t.append('tspan').text(d.data.label + ' ');
+    t.append('tspan').attr('class', 'pct').text(pct(d.data.value, total));
+  });
+}
+
+function nested(el, inner, o) {
+  const W = 640, H = 380, cx = W/2, cy = H/2;
+  const r0 = 58, r1 = 98, r2 = 102, r3 = 150;
+  const root = d3.select(el);
+  root.selectAll('svg').remove();
+  root.selectAll('.nochart').remove();
+  inner = inner.filter(d => d.value > 0);
+  const total = d3.sum(inner, d => d.value);
+  if (!inner.length || total <= 0) {
+    root.insert('div', '.legend').attr('class', 'nochart')
+      .text('Pie not drawn — no positive costs here. A pie chart cannot show negative values; the credits are listed in the table view.');
+    return;
+  }
+  const svg = root.insert('svg', '.legend').attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', o.aria || o.title);
+  const g = svg.append('g').attr('transform', `translate(${cx},${cy})`);
+
+  const innerArcs = d3.pie().sort(null).value(d => d.value)(inner);
+  const arcIn  = d3.arc().innerRadius(r0).outerRadius(r1).cornerRadius(2);
+  const arcOut = d3.arc().innerRadius(r2).outerRadius(r3).cornerRadius(2);
+
+  const outerArcs = [];
+  innerArcs.forEach(p => {
+    const span = p.endAngle - p.startAngle, pt = d3.sum(p.data.children, c => c.value);
+    let a = p.startAngle;
+    p.data.children.forEach(c => {
+      if (c.value <= 0) return;
+      const e = a + span * c.value / pt;
+      outerArcs.push({ startAngle: a, endAngle: e, data: c, parent: p.data });
+      a = e;
+    });
+  });
+
+  const allPaths = g.append('g');
+  const pIn = allPaths.selectAll('.in').data(innerArcs).join('path')
+    .attr('class', 'slice in').attr('tabindex', 0)
+    .attr('d', arcIn).attr('fill', d => d.data.color)
+    .attr('stroke', 'none')
+    .attr('aria-label', d => `${d.data.label}: ${formatINR(d.data.value)}, ${pct(d.data.value, total)} of gross`);
+  const pOut = allPaths.selectAll('.out').data(outerArcs).join('path')
+    .attr('class', 'slice out').attr('tabindex', 0)
+    .attr('d', arcOut).attr('fill', d => d.data.color)
+    .attr('stroke', 'none')
+    .attr('aria-label', d => `${d.parent.label} — ${d.data.label}: ${formatINR(d.data.value)}`);
+
+  const both = allPaths.selectAll('path');
+  function hl(target) { both.attr('opacity', 0.35); d3.select(target).attr('opacity', null); }
+  pIn.on('mouseenter.hl', function() { hl(this); }).on('mouseleave.hl', () => both.attr('opacity', null));
+  pOut.on('mouseenter.hl', function() { hl(this); }).on('mouseleave.hl', () => both.attr('opacity', null));
+  
+  bindTip(pIn, d => ttRow(d.data.color, d.data.label, d.data.value, [`${pct(d.data.value, total)} of gross cost`]));
+  bindTip(pOut, d => ttRow(d.data.color, `${d.parent.label} — ${d.data.label}`, d.data.value,
+    [`${pct(d.data.value, d.parent.value)} of ${d.parent.short || d.parent.label}`, `${pct(d.data.value, total)} of gross cost`]));
+
+  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.05em').text(formatCompactINR(total));
+  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '1.75em').text('gross cost');
+
+  innerArcs.forEach(d => {
+    const span = d.endAngle - d.startAngle; if (span < 0.5) return;
+    const [x, y] = arcIn.centroid(d);
+    const fill = inkOn(d.data.color);
+    const t = g.append('text').attr('text-anchor', 'middle').attr('x', x).attr('y', y);
+    if (span > 0.85) {
+      t.append('tspan').attr('class', 'inLab').attr('x', x).attr('dy', '-0.25em').attr('fill', fill).text(d.data.short || d.data.label);
+      t.append('tspan').attr('class', 'inLab2').attr('x', x).attr('dy', '1.25em').attr('fill', fill).text(pct(d.data.value, total));
+    } else {
+      t.append('tspan').attr('class', 'inLab2').attr('x', x).attr('dy', '0.35em').attr('fill', fill).text(pct(d.data.value, total));
+    }
+  });
+
+  const sides = { 1: [], '-1': [] };
+  outerArcs.forEach(d => {
+    if (d.data.value / total < 0.055) return;
+    const m = (d.startAngle + d.endAngle) / 2, side = m < Math.PI ? 1 : -1;
+    sides[side].push({ d, m, side, y: -Math.cos(m) * (r3 + 14) });
+  });
+  Object.values(sides).forEach(list => {
+    list.sort((a, b) => a.y - b.y);
+    for (let i = 1; i < list.length; i++) if (list[i].y < list[i-1].y + 15) list[i].y = list[i-1].y + 15;
+  });
+  Object.values(sides).flat().forEach(({d, m, side, y}) => {
+    const p1 = [Math.sin(m)*(r3+2), -Math.cos(m)*(r3+2)];
+    const p2 = [Math.sin(m)*(r3+9), y];
+    const p3 = [p2[0] + side*8, y];
+    g.append('polyline').attr('class', 'leader').attr('points', [p1, p2, p3].map(p => p.join(',')).join(' '));
+    const t = g.append('text').attr('class', 'lab')
+      .attr('x', p3[0] + side*4).attr('y', y).attr('dy', '0.32em')
+      .attr('text-anchor', side === 1 ? 'start' : 'end');
+    t.append('tspan').text(d.data.label + ' ');
+    t.append('tspan').attr('class', 'pct').text(pct(d.data.value, total));
+  });
+}
+
+window.toggleLCCAMode = function (isLCCA) {
+  const rp = document.getElementById("right-panel");
+  const hudTriggers = document.getElementById("hud-triggers");
+  const canvas = state.viewportContainer?.querySelector("canvas");
+  
+  if (isLCCA) {
+    if (rp) rp.classList.add("lcca-active");
+    if (hudTriggers) hudTriggers.style.display = "none";
+    if (canvas) canvas.style.display = "none";
+  } else {
+    if (rp) rp.classList.remove("lcca-active");
+    if (hudTriggers) hudTriggers.style.display = "flex";
+    if (canvas) canvas.style.display = "block";
+    
+    // Trigger window resize so Three.js canvas size updates correctly
+    window.dispatchEvent(new Event('resize'));
+  }
+};
+
+export function renderLCCAData(lccaData) {
+  const container = document.getElementById("lcca-container");
+  if (!container) return;
+  container.innerHTML = "";
+
+  const RAW = lccaData.results || {};
+  const META = lccaData.export_meta || {};
+
+  const hasRecon = LCCA_PILLARS.some(p => RAW.reconstruction && RAW.reconstruction[p.id]);
+
+  const STAGES = [
+    { id: 'initial', label: 'Initial stage', short: 'Initial', color: '#64748b', cvar: '--st1', parts: [{ src: RAW.initial_stage || {}, tag: '' }] },
+    { id: 'use',     label: 'Use stage',     short: 'Use', color: '#00C49A', cvar: '--st2', parts: [{ src: RAW.use_stage || {}, tag: '' }] },
+    { id: 'eol',     label: 'End of life',   short: 'End of life', color: '#EA9E9E', cvar: '--st3',
+      parts: [
+        ...(hasRecon ? [{ src: RAW.reconstruction, tag: ' (reconstruction)' }] : []),
+        { src: RAW.end_of_life || {}, tag: hasRecon ? ' (final)' : '' }
+      ]
+    }
+  ];
+
+  // Flatten nested details to component items
+  const components = [];
+  STAGES.forEach(st => st.parts.forEach(part => LCCA_PILLARS.forEach(pl => {
+    const grp = part.src[pl.id] || {};
+    for (const [k, v] of Object.entries(grp)) {
+      const scrap = /scrap/.test(k);
+      const costEffect = scrap ? -v : v;
+      components.push({
+        stage: st.id, pillar: pl.id, key: k,
+        label: (LCCA_NAMES[k] || k) + part.tag,
+        costEffect, isCredit: costEffect < 0
+      });
+    }
+  })));
+
+  const sumBy = f => components.filter(f).reduce((a, c) => a + c.costEffect, 0);
+  const gross  = sumBy(c => !c.isCredit);
+  const credit = sumBy(c => c.isCredit);
+  const net    = gross + credit;
+
+  const stageGross  = Object.fromEntries(STAGES.map(s => [s.id, sumBy(c => c.stage === s.id && !c.isCredit)]));
+  const stageCredit = Object.fromEntries(STAGES.map(s => [s.id, sumBy(c => c.stage === s.id && c.isCredit)]));
+
+  const cell = (s, p) => sumBy(c => c.stage === s && c.pillar === p && !c.isCredit);
+  const pillarGross = Object.fromEntries(LCCA_PILLARS.map(p => [p.id, sumBy(c => c.pillar === p.id && !c.isCredit)]));
+  const pillarCredit = Object.fromEntries(LCCA_PILLARS.map(p => [p.id, sumBy(c => c.pillar === p.id && c.isCredit)]));
+
+  // Retrieve current color stylesheet values
+  const stCol = Object.fromEntries(STAGES.map(s => [s.id, cv(s.cvar)]));
+  const plCol = Object.fromEntries(LCCA_PILLARS.map(p => [p.id, cv(p.cvar)]));
+  const compCols = ['--c1','--c2','--c3','--c4','--c5'].map(cv);
+  const otherCol = cv('--other');
+
+  const cellNet = (s, p) => sumBy(c => c.stage === s && c.pillar === p);
+
+  // Matrix table HTML
+  let matrixTableBody = `
+    <tbody>
+      <tr>
+        <td class="matrix-lbl-initial">Initial Stage</td>
+        <td class="val-cell">${formatINR(cellNet('initial', 'economic'))}</td>
+        <td class="val-cell">${formatINR(cellNet('initial', 'environmental'))}</td>
+        <td class="val-cell">${formatINR(cellNet('initial', 'social'))}</td>
+        <td class="row-total">${formatINR(stageGross['initial'] + stageCredit['initial'])}</td>
+      </tr>
+      <tr>
+        <td class="matrix-lbl-use">Use Stage</td>
+        <td class="val-cell">${formatINR(cellNet('use', 'economic'))}</td>
+        <td class="val-cell">${formatINR(cellNet('use', 'environmental'))}</td>
+        <td class="val-cell">${formatINR(cellNet('use', 'social'))}</td>
+        <td class="row-total">${formatINR(stageGross['use'] + stageCredit['use'])}</td>
+      </tr>
+      <tr>
+        <td class="matrix-lbl-eol">End-of-Life Stage</td>
+        <td class="val-cell">${formatINR(cellNet('eol', 'economic'))}</td>
+        <td class="val-cell">${formatINR(cellNet('eol', 'environmental'))}</td>
+        <td class="val-cell">${formatINR(cellNet('eol', 'social'))}</td>
+        <td class="row-total">${formatINR(stageGross['eol'] + stageCredit['eol'])}</td>
+      </tr>
+      <tr class="grand-total">
+        <td style="text-align: left; font-weight: 600;">Grand Total</td>
+        <td>${formatINR(pillarGross['economic'] + pillarCredit['economic'])}</td>
+        <td>${formatINR(pillarGross['environmental'] + pillarCredit['environmental'])}</td>
+        <td>${formatINR(pillarGross['social'] + pillarCredit['social'])}</td>
+        <td style="font-weight: 600;">${formatINR(net)}</td>
+      </tr>
+    </tbody>
+  `;
+
+  // Detailed Cost table HTML
+  let detailedTableBody = '';
+  const maxVal = d3.max(components, c => Math.abs(c.costEffect)) || 1;
+
+  STAGES.forEach(s => {
+    const stageComponents = components.filter(c => c.stage === s.id);
+    if (stageComponents.length === 0) return;
+
+    stageComponents.forEach((c, idx) => {
+      const isFirst = (idx === 0);
+      const rowspanHtml = isFirst
+        ? `<td rowspan="${stageComponents.length}" class="stage-rowspan-cell stage-rowspan-${s.id}"><div class="stage-rowspan-text">${s.short} Stage Costs</div></td>`
+        : '';
+
+      const pillar = LCCA_PILLARS.find(p => p.id === c.pillar) || LCCA_PILLARS[0];
+      const colVar = pillar.cvar;
+      const bgClass = `matrix-col-${c.pillar === 'economic' ? 'eco' : c.pillar === 'environmental' ? 'env' : 'soc'}`;
+
+      // Calculate unidirectional bar chart styles (0 to 100%)
+      const valPct = (Math.abs(c.costEffect) / maxVal) * 100;
+      const barStyle = `left: 0; width: ${valPct}%; background-color: var(${colVar}); border-radius: 0 2px 2px 0;`;
+
+      detailedTableBody += `
+        <tr class="${bgClass}">
+          ${rowspanHtml}
+          <td style="font-weight: 500; text-align: left;">${c.label}</td>
+          <td class="num font-monospace" style="font-weight: 600;">${formatINR(c.costEffect)}</td>
+          <td style="position: relative; height: 32px; padding: 0 8px; vertical-align: middle;">
+            <!-- Value bar -->
+            <div style="position: absolute; top: 6px; bottom: 6px; left: 0; z-index: 2; transition: width 0.3s ease; ${barStyle}"></div>
+          </td>
+        </tr>
+      `;
+    });
+  });
+
+  // Render everything inside lcca-container
+  container.innerHTML = `
+    <!-- Charts Row 1: Gross Stage & Pillar splits -->
+    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Cost Distribution Overview</h4>
+    <div class="lcca-dash-grid2">
+      <div class="lcca-dash-card" id="dash-chStage"></div>
+      <div class="lcca-dash-card" id="dash-chPillar"></div>
+    </div>
+
+    <!-- Charts Row 2: Nested Splits -->
+    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Cross-Sectional Relations</h4>
+    <div class="lcca-dash-grid2">
+      <div class="lcca-dash-card" id="dash-chNestSP"></div>
+      <div class="lcca-dash-card" id="dash-chNestPS"></div>
+    </div>
+
+    <!-- Charts Row 3: Inside Stages -->
+    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Stage Component Breakdowns</h4>
+    <div class="lcca-dash-grid3" id="dash-chComps"></div>
+
+    <!-- Summary Tables -->
+    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Tabular Reports</h4>
+    <div class="lcca-dash-card mb-4" style="overflow-x: auto;">
+      <h3 style="font-size:15px; margin-bottom:4px;">Consolidated stage summary</h3>
+      <p class="sub" style="margin-bottom: 16px;">A consolidated presentation of costs across the three pillars (economic, social, and environmental) for each lifecycle stage. This table facilitates the identification of phases that bear the most substantial burden.</p>
+      <table class="matrix-table-lcca">
+        <thead>
+          <tr>
+            <th style="width: 150px; text-align: left;">Stage</th>
+            <th class="matrix-hdr-eco">Economic<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th class="matrix-hdr-env">Environmental<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th class="matrix-hdr-soc">Social<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th style="text-align: right; width: 150px;">Stage Total<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
+          </tr>
+        </thead>
+        ${matrixTableBody}
+      </table>
+    </div>
+
+    <div class="lcca-dash-card" style="overflow-x: auto;">
+      <h3 style="font-size:15px; margin-bottom:4px;">Detailed Component Cost Ledger</h3>
+      <p class="sub" style="margin-bottom: 12px;">Fully itemized ledger of cost components compiled from the analysis model results</p>
+      
+      <!-- Color legend for the pillars -->
+      <div class="d-flex gap-3 mb-3 px-1" style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+        <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl1); width: 10px; height: 10px; border-radius: 2px;"></span>Economic</span>
+        <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl2); width: 10px; height: 10px; border-radius: 2px;"></span>Environmental</span>
+        <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl3); width: 10px; height: 10px; border-radius: 2px;"></span>Social</span>
+      </div>
+
+      <table class="lcca-table">
+        <thead>
+          <tr>
+            <th style="width: 85px; text-align: center;">Stage</th>
+            <th>Cost Item</th>
+            <th class="num" style="width: 160px; text-align: right;">Value (INR)</th>
+            <th style="width: 250px; text-align: center;">Visual Representation</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${detailedTableBody}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  // Draw D3 Charts dynamically!
+  try {
+    // 1. Chart Stage Gross
+    renderDashCard('dash-chStage', 'Gross Cost by Life-Cycle Stage',
+      'Initial · Use · End of Life stages',
+      [{ items: STAGES.map(s => ({ label: s.label, color: stCol[s.id] || s.color })) }]);
+    donut('#dash-chStage', STAGES.map(s => ({
+      label: s.short, value: stageGross[s.id], color: stCol[s.id] || s.color,
+      tip: stageCredit[s.id] ? [`scrap credit ${formatCompactINR(stageCredit[s.id])} → net ${formatCompactINR(stageGross[s.id] + stageCredit[s.id])}`] : []
+    })), { title: 'Gross cost by stage', ofLabel: 'gross cost' });
+
+    // 2. Chart Pillar Gross
+    renderDashCard('dash-chPillar', 'Gross Cost by Sustainability Pillar', 'Economic · Environmental · Social splits',
+      [{ items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) }]);
+    donut('#dash-chPillar', LCCA_PILLARS.map(p => ({ label: p.label, value: pillarGross[p.id], color: plCol[p.id] || p.color })),
+      { title: 'Gross cost by pillar', ofLabel: 'gross cost' });
+
+    // 3. Chart Nested Stage x Pillar
+    renderDashCard('dash-chNestSP', 'Life-Cycle Stage × Pillar Breakdown', 'Inner ring: Stage · Outer ring: Pillar split',
+      [{ name: 'Stage', items: STAGES.map(s => ({ label: s.short, color: stCol[s.id] || s.color })) },
+       { name: 'Pillar', items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) }]);
+    nested('#dash-chNestSP', STAGES.map(s => ({
+      label: s.label, short: s.short, value: stageGross[s.id], color: stCol[s.id] || s.color,
+      children: LCCA_PILLARS.map(p => ({ label: p.label, value: cell(s.id, p.id), color: plCol[p.id] || p.color }))
+    })), { title: 'Stage by pillar double pie' });
+
+    // 4. Chart Nested Pillar x Stage
+    renderDashCard('dash-chNestPS', 'Sustainability Pillar × Stage Breakdown', 'Inner ring: Pillar · Outer ring: Stage split',
+      [{ name: 'Pillar', items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) },
+       { name: 'Stage', items: STAGES.map(s => ({ label: s.short, color: stCol[s.id] || s.color })) }]);
+    nested('#dash-chNestPS', LCCA_PILLARS.map(p => ({
+      label: p.label, short: p.label, value: pillarGross[p.id], color: plCol[p.id] || p.color,
+      children: STAGES.map(s => ({ label: s.short, value: cell(s.id, p.id), color: stCol[s.id] || s.color }))
+    })), { title: 'Pillar by stage double pie' });
+
+    // 5. Stage Component Breakdowns (Card + Donut for each stage)
+    const dashChComps = document.getElementById('dash-chComps');
+    STAGES.forEach(s => {
+      const costs = components.filter(c => c.stage === s.id && !c.isCredit)
+        .slice().sort((a, b) => b.costEffect - a.costEffect);
+      const top = costs.slice(0, 5), rest = costs.slice(5);
+      
+      const data = top.map((c, i) => {
+        let col = compCols[i] || '#607d8b';
+        const lbl = c.label.toLowerCase();
+        if (lbl.includes('steel')) col = cv('--steel_color') || '#6E0902';
+        else if (lbl.includes('concrete')) col = cv('--concrete_color') || '#4B4B4B';
+        return { label: c.label, value: c.costEffect, color: col };
+      });
+      
+      if (rest.length) {
+        data.push({
+          label: `Other (${rest.length})`, value: d3.sum(rest, c => c.costEffect), color: otherCol || '#64748b',
+          tip: rest.map(c => `${c.label}: ${formatCompactINR(c.costEffect)}`)
+        });
+      }
+      
+      const credits = components.filter(c => c.stage === s.id && c.isCredit);
+      const foot = credits.length
+        ? `Credit: ${credits.map(c => `${c.label} <b class="credit">${formatCompactINR(c.costEffect)}</b>`).join(' · ')} → net ${formatCompactINR(stageGross[s.id] + stageCredit[s.id])}`
+        : '';
+        
+      const div = document.createElement('div');
+      div.className = 'lcca-dash-card'; div.id = 'dash-comp_' + s.id;
+      dashChComps.appendChild(div);
+      
+      renderDashCard('dash-comp_' + s.id, s.label, `${pct(stageGross[s.id], gross)} of gross cost`,
+        [{ items: data.map(d => ({ label: d.label, color: d.color })) }], foot);
+        
+      donut('#dash-comp_' + s.id, data, { title: s.label + ' components', ofLabel: s.short, R: 96, W: 460, H: 290, labelMin: 0.055, pctOnly: true });
+    });
+
+  } catch (err) {
+    console.error("Failed to render D3 charts:", err);
+  }
+}
+
+export async function loadAndRenderLCCA() {
+  const container = document.getElementById("lcca-container");
+  if (!container) return;
+  
+  container.innerHTML = `
+    <div class="d-flex justify-content-center align-items-center p-4">
+      <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+      <span style="font-size: 12px; color: var(--text-muted);">Loading LCCA Data...</span>
+    </div>
+  `;
+
+  // Determine path to LCCA results:
+  // For now keep plots/test.lcca in every model (as requested by user)
+  const lccaPath = state.currentLoadedBridge?.lcca || "./plots/test.lcca";
+  
+  try {
+    const response = await fetch(lccaPath);
+    if (!response.ok) throw new Error("Failed to load LCCA data");
+    const lccaData = await response.json();
+    renderLCCAData(lccaData);
+  } catch (err) {
+    console.error("Failed to load LCCA data:", err);
+    container.innerHTML = `
+      <div class="alert alert-danger m-3" role="alert" style="font-size: 12px; padding: 8px 12px;">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        Failed to load LCCA data: ${err.message}
+      </div>
+    `;
+  }
+}
+
+window.toggleLCCADashboardHUD = function () {
+  const isCurrentlyLCCA = (state.activeSidebarTab === 'lcca');
+  if (isCurrentlyLCCA) {
+    // Switch back to groups (3D viewer)
+    window.switchRightTab('groups');
+  } else {
+    // Open the Right panel if collapsed
+    const rp = document.getElementById("right-panel");
+    if (rp && rp.classList.contains("collapsed")) {
+      window.toggleRightPanel();
+    }
+    // Switch to LCCA tab
+    window.switchRightTab('lcca');
+  }
+};

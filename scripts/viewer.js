@@ -58,6 +58,9 @@ export function initViewer() {
 
 // ── Camera Preset ─────────────────────────────────────────────
 window.setCameraPreset = function (preset) {
+  if (window.switchRightTab && state.activeSidebarTab === "lcca") {
+    window.switchRightTab("groups");
+  }
   if (!state.modelCenter || !state.modelBox) return;
   const target = new THREE.Vector3(0, 2, 0); // world center
   
@@ -104,6 +107,9 @@ export function animate() {
 
 // ── Toggle interaction modes (Pan vs Orbit) ──
 window.setViewerMode = function (mode) {
+  if (window.switchRightTab && state.activeSidebarTab === "lcca") {
+    window.switchRightTab("groups");
+  }
   if (!state.controls) return;
   
   const rotateBtn = document.getElementById("btn-mode-rotate");
@@ -128,6 +134,9 @@ window.setViewerMode = function (mode) {
 
 // ── Focus Zoom controls (+ and -) ──
 window.zoomViewer = function (direction) {
+  if (window.switchRightTab && state.activeSidebarTab === "lcca") {
+    window.switchRightTab("groups");
+  }
   if (!state.camera || !state.controls) return;
   
   const factor = direction > 0 ? 0.82 : 1.22;

@@ -8,6 +8,22 @@
   --select-color: #f5a020;
   --success: #10b981;
   --success-hover: #059669;
+
+  /* LCCA variables */
+  --st1: #CCCCCC;
+  --st2: #00C49A;
+  --st3: #EA9E9E;
+  --pl1: #9e9eff;
+  --pl2: #8ad400;
+  --pl3: #ff5a2a;
+  --c1: #3b82f6;
+  --c2: #10b981;
+  --c3: #f59e0b;
+  --c4: #ef4444;
+  --c5: #8b5cf6;
+  --other: #64748b;
+  --steel_color: #6E0902;
+  --concrete_color: #4B4B4B;
   
   /* Theme-specific Colors (Default Dark Theme) */
   --bg-main: #0e131f;
@@ -41,6 +57,20 @@
   --shadow-panel: 0 20px 50px rgba(0, 0, 0, 0.5);
   --shadow-hud: 0 8px 32px rgba(0, 0, 0, 0.35);
   --shadow-dropdown: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --slice-stroke: #0e131f;
+  
+  /* Stage Light Background Variables */
+  --st1-bg: #f1f5f9;
+  --st2-bg: #d1fae5;
+  --st3-bg: #fee2e2;
+  --st1-hdr: #cbd5e1;
+  --st2-hdr: #a7f3d0;
+  --st3-hdr: #fca5a5;
+  
+  /* Pillar Light Background Variables */
+  --pl1-bg: #c7d2fe;
+  --pl2-bg: #d9f99d;
+  --pl3-bg: #fed7aa;
 }
 
 [data-bs-theme="light"] {
@@ -74,6 +104,7 @@
   --text-accent-hover: #1d4ed8;
   
   --shadow-panel: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --slice-stroke: #ffffff;
   --shadow-hud: 0 8px 24px rgba(15, 23, 42, 0.08);
   --shadow-dropdown: 0 10px 25px rgba(15, 23, 42, 0.1);
 }
@@ -178,6 +209,11 @@ canvas {
 #right-panel {
   right: 16px;
   width: 340px;
+  left: calc(100% - 356px);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s,
+    left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 #right-panel.collapsed {
   transform: translateX(360px);
@@ -972,8 +1008,21 @@ canvas {
     top: calc(50% + 6px);
     bottom: 12px;
     height: calc(50% - 18px);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s,
+      top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 16px;
+  }
+  
+  #right-panel.lcca-active {
+    top: 12px;
+    bottom: 12px;
+    height: calc(100% - 24px);
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
   }
   
   #right-panel.collapsed {
@@ -1480,6 +1529,453 @@ body.static-page .form-control::placeholder {
     width: 36px;
     height: 36px;
   }
+}
+
+/* ── LCCA Tab Styles ── */
+#content-lcca {
+  padding: 0 4px;
+}
+.lcca-section-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin-top: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.lcca-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  margin-bottom: 16px;
+}
+.lcca-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  color: var(--text-main);
+}
+.lcca-table th,
+.lcca-table td {
+  padding: 8px 10px;
+  border: 1px solid var(--border-card);
+  text-align: left;
+}
+.lcca-table th {
+  background: var(--bg-panel);
+  color: var(--text-title);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.lcca-table td.num {
+  text-align: right;
+  font-family: "Outfit", sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.lcca-table tr.stg-row td {
+  font-weight: 600;
+  background: rgba(var(--primary-rgb), 0.08);
+  color: var(--text-title);
+  border-top: 2px solid var(--border-panel);
+}
+.lcca-table tr.sub-row td {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--text-accent);
+}
+.lcca-table tr.total-row td {
+  font-weight: 600;
+  background: rgba(var(--primary-rgb), 0.12);
+  color: var(--text-title);
+}
+.lcca-table tr.net-row td {
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+.lcca-table tr.credit-row td {
+  color: var(--success);
+}
+.lcca-table tr.credit-row td.num {
+  font-weight: 600;
+}
+
+/* Specific styling for the stage-pillar matrix */
+.matrix-table-lcca {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  color: var(--text-main);
+}
+.matrix-table-lcca th,
+.matrix-table-lcca td {
+  padding: 8px 10px;
+  border: 1px solid var(--border-card);
+  text-align: right;
+}
+.matrix-table-lcca th:first-child,
+.matrix-table-lcca td:first-child {
+  text-align: left;
+}
+.matrix-table-lcca th {
+  background: var(--bg-panel);
+  color: var(--text-title);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: right;
+}
+.matrix-table-lcca th:first-child {
+  text-align: left;
+}
+.matrix-table-lcca td.val-cell {
+  font-family: "Outfit", sans-serif;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card);
+}
+.matrix-table-lcca td.row-total {
+  font-family: "Outfit", sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.02);
+}
+.matrix-table-lcca tr.grand-total td {
+  font-weight: 700;
+  background: rgba(var(--primary-rgb), 0.12);
+  color: var(--text-title);
+}
+.matrix-table-lcca tr.matrix-credit-row td {
+  font-weight: 600;
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+}
+.matrix-table-lcca tr.matrix-net-row td {
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+.lcca-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ── LCCA Dashboard View styles ── */
+.lcca-dash-grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.lcca-dash-grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (max-width: 576px) {
+  .lcca-dash-grid2, .lcca-dash-grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+.lcca-dash-card {
+  background: var(--bg-panel);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-panel);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-panel);
+  min-width: 0;
+}
+.lcca-dash-card h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 6px 0;
+  letter-spacing: 0.5px;
+}
+.lcca-dash-card .sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 16px 0;
+}
+.lcca-dash-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lcca-dash-card .legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-main);
+  border-top: 1px solid var(--border-card);
+  padding-top: 12px;
+}
+.lcca-dash-card .legend .grp {
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 100%;
+  margin-bottom: 2px;
+}
+.lcca-dash-card .legend .it {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+}
+.lcca-dash-card .legend .sw {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex: none;
+}
+.lcca-dash-card .footnote {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  border-top: 1px solid var(--border-card);
+  padding-top: 10px;
+}
+.lcca-dash-card .footnote b.credit {
+  color: var(--success);
+  font-weight: 600;
+}
+.lcca-dash-card .nochart {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 46px 16px;
+  margin: 10px 0 6px;
+  border: 1.5px dashed var(--border-card);
+  border-radius: 10px;
+}
+
+/* Tooltip on dashboard */
+.lcca-tooltip {
+  position: fixed;
+  display: none;
+  pointer-events: none;
+  z-index: 1000;
+  max-width: 290px;
+  background: var(--bg-dropdown);
+  border: 1px solid var(--border-dropdown);
+  border-radius: 10px;
+  box-shadow: var(--shadow-dropdown);
+  padding: 10px 14px;
+  font-size: 12.5px;
+  color: var(--text-main);
+  backdrop-filter: blur(8px);
+}
+.lcca-tooltip .t {
+  font-weight: 600;
+  color: var(--text-title);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lcca-tooltip .t .sw {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex: none;
+}
+.lcca-tooltip .v {
+  color: var(--text-title);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* SVG typography styling inside the expanded LCCA panel */
+#lcca-container svg text {
+  font-family: 'Outfit', sans-serif;
+  fill: var(--text-main);
+}
+#lcca-container .slice {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.2s;
+}
+#lcca-container .slice:focus-visible {
+  stroke: var(--text-title);
+  stroke-width: 2px;
+}
+#lcca-container .lab {
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+#lcca-container .lab .pct {
+  font-weight: 700;
+  fill: var(--text-title);
+}
+#lcca-container .leader {
+  fill: none;
+  stroke: var(--border-card);
+  stroke-width: 1;
+}
+#lcca-container .ctrTop {
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-title);
+}
+#lcca-container .ctrBot {
+  font-size: 11px;
+  fill: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+#lcca-container .inLab {
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+#lcca-container .inLab2 {
+  font-size: 11px;
+  pointer-events: none;
+}
+
+/* LCCA Active Panel Expansion */
+#right-panel.lcca-active {
+  z-index: 45; /* Lower than left-panel (50) to respect it */
+}
+
+@media (min-width: 769px) {
+  #right-panel.lcca-active {
+    left: 16px;
+    width: auto;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #app-container:has(#left-panel:not(.collapsed)) #right-panel.lcca-active {
+    left: 372px; /* 340px left-panel width + 16px border-gap + 16px gap space */
+  }
+}
+
+#lcca-container h4 {
+  text-align: center;
+  margin-top: 32px !important;
+  margin-bottom: 20px !important;
+}
+
+/* Matrix Table Header Shading */
+.matrix-table-lcca th.matrix-hdr-eco {
+  background-color: var(--pl1) !important;
+  color: #000000 !important;
+  text-align: center;
+  font-weight: 700;
+}
+.matrix-table-lcca th.matrix-hdr-env {
+  background-color: var(--pl2) !important;
+  color: #000000 !important;
+  text-align: center;
+  font-weight: 700;
+}
+.matrix-table-lcca th.matrix-hdr-soc {
+  background-color: var(--pl3) !important;
+  color: #000000 !important;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Matrix Table Row Label Shading */
+.matrix-table-lcca td.matrix-lbl-initial {
+  background-color: var(--st1) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.matrix-table-lcca td.matrix-lbl-use {
+  background-color: var(--st2) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+.matrix-table-lcca td.matrix-lbl-eol {
+  background-color: var(--st3) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+
+/* Ledger Table Column Shading (Row backgrounds) */
+.lcca-table tr.matrix-col-eco {
+  background-color: var(--pl1-bg) !important;
+}
+.lcca-table tr.matrix-col-env {
+  background-color: var(--pl2-bg) !important;
+}
+.lcca-table tr.matrix-col-soc {
+  background-color: var(--pl3-bg) !important;
+}
+
+/* Force black text for all cell types in shaded ledger rows */
+.lcca-table tr.matrix-col-eco td,
+.lcca-table tr.matrix-col-env td,
+.lcca-table tr.matrix-col-soc td {
+  color: #000000 !important;
+}
+
+/* Detailed Ledger Rowspan Stage Column */
+.stage-rowspan-cell {
+  vertical-align: middle !important;
+  text-align: center !important;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  border-right: 1px solid var(--border-panel) !important;
+  color: #000000 !important;
+  width: 85px;
+}
+.stage-rowspan-initial {
+  background-color: var(--st1-bg) !important;
+}
+.stage-rowspan-use {
+  background-color: var(--st2-bg) !important;
+}
+.stage-rowspan-eol {
+  background-color: var(--st3-bg) !important;
+}
+.stage-rowspan-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: block;
+  white-space: nowrap;
+  padding: 8px;
+  color: #000000 !important;
+  margin: 0 auto;
+}
+
+/* Remove borders from both LCCA tables */
+.matrix-table-lcca,
+.matrix-table-lcca th,
+.matrix-table-lcca td,
+.lcca-table,
+.lcca-table th,
+.lcca-table td {
+  border: none !important;
 }
 
 

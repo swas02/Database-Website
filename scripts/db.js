@@ -1,5 +1,5 @@
 import { state } from "./state.js";
-import { setLoadingState, renderBridgeMetadata, renderCatalog, updateCardActiveStates } from "./ui.js";
+import { setLoadingState, renderBridgeMetadata, renderCatalog, updateCardActiveStates, loadAndRenderLCCA } from "./ui.js";
 import { loadOBJ } from "./ifcLoader.js";
 
 // Global lists populated from registry_flat.json
@@ -316,6 +316,9 @@ window.loadSelectedBridge = async function () {
 
     // Refresh general specifications UI
     renderBridgeMetadata(state.bridgeData);
+
+    // Load and render LCCA tables
+    await loadAndRenderLCCA();
 
     // Call loadOBJ to load and render the OBJ model
     await loadOBJ(objPath);

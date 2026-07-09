@@ -35,3 +35,4 @@ merge_delete_groups.ps1
 data/compare_pier_cap.py
 design_system/
 migrate_to_subfolders.py
+plots/
