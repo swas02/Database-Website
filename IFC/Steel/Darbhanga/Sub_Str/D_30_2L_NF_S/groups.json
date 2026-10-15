@@ -23,7 +23,7 @@
                                 }
                    },
                    {
-                       "name":  "pile",
+                       "name":  "Pile",
                        "partIDs":  [
                                        "2390_0",
                                        "2773_0",
@@ -76,7 +76,7 @@
                                 }
                    },
                    {
-                       "name":  "pile cap",
+                       "name":  "Pile Cap",
                        "partIDs":  [
                                        "1896_0"
                                    ],
@@ -90,7 +90,7 @@
                                 }
                    },
                    {
-                       "name":  "pier",
+                       "name":  "Pier",
                        "partIDs":  [
                                        "4871_0"
                                    ],

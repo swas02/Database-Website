@@ -175,7 +175,7 @@ export function renderBridgeMetadata(data) {
 
 export function getCleanGroupName(name) {
   const nameLower = name.toLowerCase();
-  if (name === "deck_slab" || nameLower === "slab" || nameLower === "deck") {
+  if (name === "deck_slab" || nameLower === "slab" || nameLower === "deck" || nameLower === "deck slab") {
     return "Deck Slab";
   }
   if (name === "cross_bracing" || nameLower === "bracing" || nameLower.includes("brace")) {
@@ -453,7 +453,7 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
-    (group.name === "deck_slab" || group.name.toLowerCase() === "slab" || group.name.toLowerCase() === "deck") &&
+    (group.name === "deck_slab" || group.name.toLowerCase() === "slab" || group.name.toLowerCase() === "deck" || group.name.toLowerCase() === "deck slab") &&
     state.bridgeData.deck_slab
   ) {
     htmlContent = `

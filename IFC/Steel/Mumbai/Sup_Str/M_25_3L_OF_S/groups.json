@@ -103,7 +103,7 @@
       }
     },
     {
-      "name": "slab",
+      "name": "Deck Slab",
       "partIDs": [
         "6993_0"
       ],
@@ -190,7 +190,7 @@
       }
     },
     {
-      "name": "End diaphragm",
+      "name": "End Diaphragm",
       "partIDs": [
         "3391_0",
         "3417_0",

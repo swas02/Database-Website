@@ -67,7 +67,7 @@
       }
     },
     {
-      "name": "chord",
+      "name": "Chord",
       "partIDs": [
         "3060_0",
         "3166_0",
@@ -132,7 +132,7 @@
       }
     },
     {
-      "name": "slab",
+      "name": "Deck Slab",
       "partIDs": [
         "5942_0"
       ],
@@ -161,7 +161,7 @@
       }
     },
     {
-      "name": "girder",
+      "name": "Girder",
       "partIDs": [
         "98_0",
         "175_0",

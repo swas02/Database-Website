@@ -84,7 +84,7 @@
       }
     },
     {
-      "name": "slab",
+      "name": "Deck Slab",
       "partIDs": [
         "5424_0"
       ],
@@ -172,7 +172,7 @@
       }
     },
     {
-      "name": "End stiffener",
+      "name": "End Stiffener",
       "partIDs": [
         "754_0",
         "778_0",
@@ -215,7 +215,7 @@
       }
     },
     {
-      "name": "Intermediate stiffener",
+      "name": "Intermediate Stiffener",
       "partIDs": [
         "354_0",
         "379_0",

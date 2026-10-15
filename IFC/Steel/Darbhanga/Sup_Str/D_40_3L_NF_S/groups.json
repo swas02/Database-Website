@@ -2,7 +2,7 @@
   "ifcHash": "51205446cbf1700e9e1ad6436841221e6b03997e4687f694b0324e21cc1d11ae",
   "groups": [
     {
-      "name": "chord",
+      "name": "Chord",
       "partIDs": [
         "3460_0",
         "3566_0",
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "girder",
+      "name": "Girder",
       "partIDs": [
         "98_0",
         "175_0",
@@ -163,7 +163,7 @@
       }
     },
     {
-      "name": "slab",
+      "name": "Deck Slab",
       "partIDs": [
         "6978_0"
       ],

@@ -37,7 +37,7 @@
       }
     },
     {
-      "name": "slab",
+      "name": "Deck Slab",
       "partIDs": [
         "3855_0"
       ],
@@ -186,7 +186,7 @@
       }
     },
     {
-      "name": "chord",
+      "name": "Chord",
       "partIDs": [
         "2165_0",
         "2271_0",
