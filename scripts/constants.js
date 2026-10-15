@@ -70,6 +70,11 @@ export const DECK_DIMS = {
   footpathWidth: 1.5,
   footpathHeight: 0.1,
   plinthWidth: 0.375,
+  railingHeight: 1.1,
+  railingPost: 0.1,
+  railingPostSpacing: 2.0,
+  railingTopRail: 0.08,
+  railingRail: 0.05,
 };
 
 /** Standard lane width in metres: 3.75 on two lanes (7.5 m carriageway), 3.5 per lane on three. Keep in sync with barrier_geometry.js. */

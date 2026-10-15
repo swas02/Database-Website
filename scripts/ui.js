@@ -54,7 +54,7 @@ window.toggleRightPanel = function () {
     }
   } else {
     // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 768) {
       const lp = document.getElementById("left-panel");
       const lt = document.getElementById("left-trigger");
       if (lp && !lp.classList.contains("collapsed")) {
@@ -73,7 +73,7 @@ window.toggleLeftPanel = function () {
   if (t) t.style.display = col ? "block" : "none";
   
   // On tablet/mobile (<= 1024px), if we open the left panel, collapse the right panel
-  if (!col && window.innerWidth <= 1024) {
+  if (!col && window.innerWidth <= 768) {
     const rp = document.getElementById("right-panel");
     const rt = document.getElementById("right-trigger");
     if (rp && !rp.classList.contains("collapsed")) {
@@ -90,7 +90,7 @@ window.toggleLeftPanel = function () {
   const rp = document.getElementById("right-panel");
   const rt = document.getElementById("right-trigger");
 
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 768) {
     // Desktop: both panels open, triggers hidden
     if (lp) lp.classList.remove("collapsed");
     if (lt) lt.style.display = "none";
@@ -213,7 +213,7 @@ export function renderGroupsPanel(list) {
   container.innerHTML = "";
 
   list.forEach((g) => {
-    if (g.name.startsWith("_")) return;
+    if (g.name.startsWith("_") || g.name.toLowerCase() === "lane markings") return;
 
     let colorHex = "#607d8b";
     
@@ -364,7 +364,7 @@ export function updatePropertyInspector(group) {
     if (t) t.style.display = "none";
     
     // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
-    if (wasCollapsed && window.innerWidth <= 1024) {
+    if (wasCollapsed && window.innerWidth <= 768) {
       const lp = document.getElementById("left-panel");
       const lt = document.getElementById("left-trigger");
       if (lp && !lp.classList.contains("collapsed")) {
@@ -488,6 +488,24 @@ export function updatePropertyInspector(group) {
             ${row("Crash Barrier Width", DECK_DIMS.crashBarrierWidth.toFixed(2) + " m (each side)")}
             ${row("Footpath", bd.has_footpath ? "Yes (one side)" : "No")}
             ${bd.has_footpath ? row("Footpath Width", DECK_DIMS.footpathWidth.toFixed(1) + " m") : ""}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (group && group.name.toLowerCase() === "railing") {
+    const row = (label, value) =>
+      `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Railing (IRC:5, Cl. 109.7)</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            ${row("Height Above Footpath", DECK_DIMS.railingHeight.toFixed(2) + " m")}
+            ${row("Post Size", (DECK_DIMS.railingPost * 1000).toFixed(0) + " mm")}
+            ${row("Post Spacing", DECK_DIMS.railingPostSpacing.toFixed(1) + " m c/c")}
+            ${row("Top Rail", (DECK_DIMS.railingTopRail * 1000).toFixed(0) + " mm")}
+            ${row("Intermediate Rails", "3 nos. (" + (DECK_DIMS.railingRail * 1000).toFixed(0) + " mm)")}
+            ${row("Plinth Width", DECK_DIMS.plinthWidth.toFixed(3) + " m")}
           </tbody>
         </table>
       </div>
@@ -794,92 +812,6 @@ export function updatePropertyInspector(group) {
       groupEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }
-}
-
-// ── Bridge Model Library Catalog Renderer ──────────────────────────
-export function renderCatalog(matches, currentIfcPath) {
-  const container = document.getElementById("catalog-list");
-  if (!container) return;
-  
-  container.innerHTML = "";
-  
-  const countSpan = document.getElementById("catalog-count");
-  if (countSpan) countSpan.textContent = matches.length;
-  
-  if (matches.length === 0) {
-    container.innerHTML = `
-      <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px; color: rgba(255,255,255,0.4) !important;">
-        No models match primary filters.
-      </div>
-    `;
-    return;
-  }
-  
-  matches.forEach(item => {
-    const isLoaded = item.ifc === currentIfcPath;
-    const pathParts = item.ifc.split("/");
-    const lastPart = pathParts.pop();
-    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts.pop() : lastPart.replace(".ifc", "");
-    
-    const spanText = `${item.span}m`;
-    const lanesText = item.lanes === "2L" ? "2 Lanes" : "3 Lanes";
-    const footpathText = item.footpath === "OF" ? "With Footpath" : "No Footpath";
-    
-    let iconClass = "bi-bezier2";
-    if (item.structure === "Superstructure") {
-      iconClass = "bi-bridge-fill";
-    } else if (item.structure === "Substructure") {
-      iconClass = "bi-bricks";
-    }
-    
-    const card = document.createElement("div");
-    card.className = `catalog-card ${isLoaded ? 'active' : ''}`;
-    card.setAttribute("data-ifc", item.ifc);
-    
-    card.onclick = () => {
-      window.loadBridgeByCard(item);
-    };
-    
-    card.innerHTML = `
-      <div class="catalog-card-header">
-        <div class="catalog-card-badge">${item.bridge_type}</div>
-      </div>
-      <div class="catalog-card-stats">
-        <div class="catalog-stat-item">
-          <span class="catalog-stat-label">Span</span>
-          <span class="catalog-stat-val">${spanText}</span>
-        </div>
-        <div class="catalog-stat-item">
-          <span class="catalog-stat-label">Lanes</span>
-          <span class="catalog-stat-val">${lanesText}</span>
-        </div>
-        <div class="catalog-stat-item">
-          <span class="catalog-stat-label">Footpath</span>
-          <span class="catalog-stat-val">${footpathText}</span>
-        </div>
-      </div>
-      <div class="catalog-card-footer">
-        <span class="catalog-card-location"><i class="bi bi-geo-alt-fill text-primary me-1"></i>${item.location}</span>
-        <button class="catalog-load-btn">
-          ${isLoaded ? '<i class="bi bi-check-lg"></i> Loaded' : 'Load Model'}
-        </button>
-      </div>
-    `;
-    
-    container.appendChild(card);
-  });
-}
-
-export function updateCardActiveStates(activeIfcPath) {
-  document.querySelectorAll(".catalog-card").forEach((card) => {
-    const isLoaded = card.getAttribute("data-ifc") === activeIfcPath;
-    card.classList.toggle("active", isLoaded);
-    
-    const btn = card.querySelector(".catalog-load-btn");
-    if (btn) {
-      btn.innerHTML = isLoaded ? '<i class="bi bi-check-lg"></i> Loaded' : 'Load Model';
-    }
-  });
 }
 
 // ── Render Bridge Downloads List ──

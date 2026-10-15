@@ -160,9 +160,13 @@ window.toggleGroupVisibility = function (groupName, btn) {
     ? `<i class="bi bi-eye-slash-fill"></i>`
     : `<i class="bi bi-eye-fill"></i>`;
 
-  state.groupIndex.get(groupName)?.forEach((id) => {
-    state.meshMap.get(id)?.forEach((m) => {
-      m.visible = !isHidden;
+  // Lane markings have no row of their own; they follow the carriageway.
+  const names = groupName.toLowerCase() === "carriageway" ? [groupName, "Lane Markings"] : [groupName];
+  names.forEach((n) => {
+    state.groupIndex.get(n)?.forEach((id) => {
+      state.meshMap.get(id)?.forEach((m) => {
+        m.visible = !isHidden;
+      });
     });
   });
 };

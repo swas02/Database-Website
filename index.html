@@ -84,6 +84,71 @@
       </div>
     </main>
 
+    <!-- Left Toggle button (hidden initially because left panel is open) -->
+    <button id="left-trigger" class="sidebar-trigger" style="display:none" onclick="toggleLeftPanel()"
+      aria-label="Open model library" title="Model Library ( [ )"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+
+    <!-- Right Toggle button (visible initially because right panel is collapsed) -->
+    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()"
+      aria-label="Open bridge explorer" title="Bridge Explorer ( ] )"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+
+    <!-- ── Side stack: Model Library on top, Bridge Explorer below ── -->
+    <div id="side-stack">
+    <!-- ── Left Panel (Bridge Model Library) ── -->
+    <aside id="left-panel" class="dashboard-panel" aria-label="Model library">
+      <div class="panel-header">
+        <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Model Library</div>
+        <button class="btn btn-sm btn-panel-toggle" onclick="toggleLeftPanel()" aria-label="Close library panel"><i
+            class="bi bi-chevron-left" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
+
+        <!-- Primary Filters -->
+        <div class="settings-group mb-0">
+          <div class="settings-title">Primary Filters</div>
+
+          <div class="filter-grid">
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-location">Location</label>
+            <select id="filter-location" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-type">Type</label>
+            <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-structure">Structure</label>
+            <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-span">Span</label>
+            <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-lanes">Lanes</label>
+            <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-footpath">Footpath</label>
+            <select id="filter-footpath" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          </div>
+
+          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge()">
+            <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
+          </button>
+        </div>
+
+      </div>
+    </aside>
+
     <!-- ── Right Panel (Explorer & Inspector) ── -->
     <aside id="right-panel" class="dashboard-panel collapsed" aria-label="Bridge explorer">
       <div class="panel-header">
@@ -133,66 +198,7 @@
         </div>
       </div>
     </aside>
-
-    <!-- Left Toggle button (hidden initially because left panel is open) -->
-    <button id="left-trigger" class="sidebar-trigger" style="display:none" onclick="toggleLeftPanel()"
-      aria-label="Open model library" title="Model Library ( [ )"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-
-    <!-- Right Toggle button (visible initially because right panel is collapsed) -->
-    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()"
-      aria-label="Open bridge explorer" title="Bridge Explorer ( ] )"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
-
-    <!-- ── Left Panel (Bridge Model Library) ── -->
-    <aside id="left-panel" class="dashboard-panel" aria-label="Model library">
-      <div class="panel-header">
-        <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Model Library</div>
-        <button class="btn btn-sm btn-panel-toggle" onclick="toggleLeftPanel()" aria-label="Close library panel"><i
-            class="bi bi-chevron-left" aria-hidden="true"></i></button>
-      </div>
-
-      <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
-
-        <!-- Primary Filters -->
-        <div class="settings-group mb-0">
-          <div class="settings-title">Primary Filters</div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-location">Location</label>
-            <select id="filter-location" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-type">Type</label>
-            <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-structure">Structure</label>
-            <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-span">Span</label>
-            <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-lanes">Lanes</label>
-            <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-footpath">Footpath</label>
-            <select id="filter-footpath" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge()">
-            <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
-          </button>
-        </div>
-
-      </div>
-    </aside>
+    </div>
 
   </div>
 
