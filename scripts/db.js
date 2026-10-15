@@ -61,10 +61,34 @@ function populateFilters() {
       opt.textContent = formatOptionText(key, val);
       select.appendChild(opt);
     });
+
+    if (key === "structure") {
+      const both = document.createElement("option");
+      both.value = BOTH;
+      both.textContent = formatOptionText("structure", BOTH);
+      select.appendChild(both);
+    }
   });
 }
 
+// Structure filter value that loads the superstructure and substructure together
+const BOTH = "Both";
+
+// The substructure registry row that belongs to a superstructure row (same bridge configuration)
+function findSubstructureFor(sup) {
+  return registry.find(
+    (item) =>
+      item.structure === "Substructure" &&
+      item.bridge_type === sup.bridge_type &&
+      item.location === sup.location &&
+      item.span === sup.span &&
+      item.lanes === sup.lanes &&
+      item.footpath === sup.footpath
+  );
+}
+
 function formatOptionText(key, value) {
+  if (key === "structure" && value === BOTH) return "Super + Substructure";
   if (key === "footpath") {
     return value === "OF" ? "With footpath" : "No footpath";
   }
@@ -122,11 +146,13 @@ function updateFilterCombinations() {
   const type = typeSelect.value;
   const typeItems = locItems.filter(item => item.bridge_type === type);
   const validStructures = new Set(typeItems.map(item => item.structure));
+  const pairedSupers = typeItems.filter(item => item.structure === "Superstructure" && findSubstructureFor(item));
+  if (pairedSupers.length) validStructures.add(BOTH);
   updateSelectOptions("filter-structure", validStructures);
 
-  // 3. Filter by Location + Type + Structure
+  // 3. Filter by Location + Type + Structure ("Both" only offers configurations that have both models)
   const struct = structureSelect.value;
-  const structItems = typeItems.filter(item => item.structure === struct);
+  const structItems = struct === BOTH ? pairedSupers : typeItems.filter(item => item.structure === struct);
   const validSpans = new Set(structItems.map(item => item.span));
   updateSelectOptions("filter-span", validSpans);
 
@@ -178,12 +204,13 @@ window.loadSelectedBridge = async function (fromUser = false) {
     footpath: document.getElementById("filter-footpath").value,
   };
 
-  // Find matching row in registry
+  // Find matching row in registry ("Both" is the superstructure row plus its paired substructure)
+  const wantBoth = filters.structure === BOTH;
   const match = registry.find(
     (item) =>
       item.location === filters.location &&
       item.bridge_type === filters.bridge_type &&
-      item.structure === filters.structure &&
+      item.structure === (wantBoth ? "Superstructure" : filters.structure) &&
       item.span === filters.span &&
       item.lanes === filters.lanes &&
       item.footpath === filters.footpath
@@ -192,6 +219,12 @@ window.loadSelectedBridge = async function (fromUser = false) {
   if (!match) {
     console.warn("Selected Input Configuration (No Match Found):", filters);
     window.showToast("No model exists for this combination. Try a different span, lanes or footpath option.");
+    return;
+  }
+
+  const subMatch = wantBoth ? findSubstructureFor(match) : null;
+  if (wantBoth && !subMatch) {
+    window.showToast("No substructure model exists for this combination.");
     return;
   }
 
@@ -205,6 +238,21 @@ window.loadSelectedBridge = async function (fromUser = false) {
     const jsonResp = await fetch(match.json);
     if (!jsonResp.ok) throw new Error("Failed to load model groups data");
     const groupsData = await jsonResp.json();
+    const partOf = (row) => (row.structure === "Substructure" ? "sub" : "super");
+    groupsData.groups = (groupsData.groups || []).map((g) => ({ ...g, part: partOf(match) }));
+
+    if (subMatch) {
+      const subResp = await fetch(subMatch.json);
+      if (!subResp.ok) throw new Error("Failed to load substructure groups data");
+      const subData = await subResp.json();
+      // Part IDs come from separate IFC files and can collide, so the substructure ones are namespaced
+      const subGroups = (subData.groups || []).map((g) => ({
+        ...g,
+        part: "sub",
+        partIDs: (g.partIDs || []).map((id) => "sub:" + id),
+      }));
+      groupsData.groups = groupsData.groups.concat(subGroups);
+    }
 
     // Keep it on state so it is processed dynamically in ifcLoader.js
     state.modelGroupsData = groupsData;
@@ -264,6 +312,7 @@ window.loadSelectedBridge = async function (fromUser = false) {
     // Remember the current bridge
     state.currentLoadedBridgePath = match.ifc;
     state.currentLoadedBridge = match;
+    state.loadedStructure = wantBoth ? BOTH : match.structure;
 
     // Refresh general specifications UI
     renderBridgeMetadata(state.bridgeData);
@@ -272,7 +321,7 @@ window.loadSelectedBridge = async function (fromUser = false) {
     await loadAndRenderLCCA();
 
     // Call loadOBJ to load and render the OBJ model
-    await loadOBJ(objPath);
+    await loadOBJ(objPath, subMatch ? { subObjPath: subMatch.obj, span: parseFloat(match.span) } : {});
 
     // Reset filters
     if (window.resetAllFilters) {

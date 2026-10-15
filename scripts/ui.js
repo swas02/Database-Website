@@ -197,8 +197,18 @@ export function renderGroupsPanel(list) {
   const container = document.getElementById("groups-container");
   container.innerHTML = "";
 
+  // With both parts loaded, the list is split under Superstructure / Substructure headings
+  const sectioned = new Set(list.map((g) => g.part).filter(Boolean)).size > 1;
+  const partTitles = { super: "Superstructure", sub: "Substructure" };
+  let lastPart = null;
+
   list.forEach((g) => {
     if (g.name.startsWith("_") || g.name.toLowerCase() === "lane markings") return;
+
+    if (sectioned && g.part && g.part !== lastPart) {
+      lastPart = g.part;
+      container.innerHTML += `<div class="group-section">${partTitles[g.part] || g.part}</div>`;
+    }
 
     let colorHex = "#607d8b";
     

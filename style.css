@@ -1636,3 +1636,26 @@ canvas {
   flex: 0 1 auto !important;
   max-height: 60% !important;
 }
+
+/* Superstructure / Substructure headings in the group list (shown when both parts are loaded) */
+.group-section {
+  margin: 10px 2px 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-card);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.group-section:first-child {
+  margin-top: 2px;
+  padding-top: 0;
+  border-top: 0;
+}
+#side-stack .group-section {
+  margin: 0;
+  padding: 10px 16px 4px;
+  border-top: 0;
+  background: var(--bg-card-hover);
+}

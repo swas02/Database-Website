@@ -39,12 +39,15 @@ const MATERIAL_STYLES = [
   { match: /footpath/, color: "#7d7a74", roughness: 0.85, metalness: 0.0 },
   { match: /crash barrier/, color: "#8a867e", roughness: 0.8, metalness: 0.0 },
   { match: /railing/, color: "#9aa5b1", roughness: 0.4, metalness: 0.8 },
+  { match: /pedestal/, color: "#9a958b", roughness: 0.85, metalness: 0.0 },
   // Concrete substructure: deeper at the base, lighter towards the deck
   { match: /pile cap/, color: "#55534f", roughness: 0.9, metalness: 0.0 },
   { match: /pile|foundation/, color: "#45433f", roughness: 0.95, metalness: 0.0 },
   { match: /pier cap|abutment|cap/, color: "#78746c", roughness: 0.85, metalness: 0.0 },
   { match: /pier|column|shaft/, color: "#6c6861", roughness: 0.88, metalness: 0.0 },
   // Superstructure
+  { match: /ptfe/, color: "#f1f5f9", roughness: 0.3, metalness: 0.0 },
+  { match: /bearing/, color: "#48515c", roughness: 0.4, metalness: 0.85 },
   { match: /deck|slab/, color: "#8f8a80", roughness: 0.82, metalness: 0.0 },
   { match: /diaphragm|brace|bracing/, color: "#4f8fb8", roughness: 0.35, metalness: 0.75 },
   { match: /stiffener/, color: "#6aa6c9", roughness: 0.35, metalness: 0.75 },
@@ -52,11 +55,29 @@ const MATERIAL_STYLES = [
   { match: /girder/, color: "#5b7f9e", roughness: 0.32, metalness: 0.8 },
 ];
 
+// Girder colours by bridge type, as in the legend: PSC grey (concrete), steel maroon
+const GIRDER_STYLES = {
+  PSC: { color: "#6f6f6f", roughness: 0.8, metalness: 0.0 },
+  Steel: { color: "#8b3a35", roughness: 0.32, metalness: 0.8 },
+};
+// Every steel member of a steel bridge is rust coloured; the secondary members are a shade lighter than the girders
+const STEEL_MEMBER = /diaphragm|brace|bracing|stiffener|chord/;
+const RUST_SECONDARY = { color: "#9c4638", roughness: 0.4, metalness: 0.75 };
+let bridgeType = null;
+
+/** Set the bridge type ("PSC" or "Steel") that the girder colours follow. */
+export function setBridgeType(type) {
+  bridgeType = type;
+}
+
 const DEFAULT_STYLE = { color: "#8a9ba8", roughness: 0.4, metalness: 0.6 };
 
 /** Colour, roughness and metalness for a group, by name. */
 export function getMaterialStyle(groupName) {
   const name = groupName.toLowerCase();
+  if (name.includes("girder") && GIRDER_STYLES[bridgeType]) return GIRDER_STYLES[bridgeType];
+  if (bridgeType === "Steel" && STEEL_MEMBER.test(name)) return RUST_SECONDARY;
+  if (bridgeType === "PSC" && name.includes("diaphragm")) return GIRDER_STYLES.PSC; // same grey as the girders
   return MATERIAL_STYLES.find((s) => s.match.test(name)) || DEFAULT_STYLE;
 }
 
