@@ -29,6 +29,17 @@ export function getIsConcrete(groupName) {
          name.includes("foundation");
 }
 
+// Deck furniture added by convert_ifc_to_obj.js (see barrier_geometry.js)
+const FURNITURE_COLORS = {
+  railing: "#3b82f6",
+  "crash barrier": "#ef4444",
+  footpath: "#9ca3af",
+  carriageway: "#374151",
+  "lane markings": "#ffffff",
+};
+
 export function getMaterialColor(groupName) {
+  const furniture = FURNITURE_COLORS[groupName.toLowerCase()];
+  if (furniture) return furniture;
   return getIsConcrete(groupName) ? "#dcd2c4" : "#8a9ba8";
 }

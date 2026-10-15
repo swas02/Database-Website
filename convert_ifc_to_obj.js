@@ -8,6 +8,7 @@
 const fs = require("fs");
 const path = require("path");
 const WebIFC = require("web-ifc");
+const { buildDeckFurniture, GROUPS: FURNITURE_GROUPS } = require("./barrier_geometry");
 
 // Constants
 const BASE_DIR = __dirname;
@@ -23,7 +24,63 @@ function applyMatrix(v, m) {
   ];
 }
 
-async function convertModel(ifcPath, jsonPath, objPath) {
+/**
+ * Adds the deck furniture to the vertex list / group faces and registers it in
+ * groupsData. Does nothing when the model has no deck slab geometry.
+ * Returns true when something was injected.
+ */
+function injectDeckFurniture(allVertices, groupFaces, groupsData, entry) {
+  const injectedNames = new Set(Object.values(FURNITURE_GROUPS).map((g) => g.name));
+  // Drop leftovers from a previous run so re-converting is idempotent.
+  if (groupsData && groupsData.groups) {
+    groupsData.groups = groupsData.groups.filter((g) => !injectedNames.has(g.name));
+  }
+
+  // Bounding box of the deck slab groups
+  const min = [Infinity, Infinity, Infinity];
+  const max = [-Infinity, -Infinity, -Infinity];
+  for (const name in groupFaces) {
+    if (!/slab/i.test(name)) continue;
+    for (const f of groupFaces[name]) {
+      for (const idx of f) {
+        const v = allVertices[idx - 1];
+        for (let a = 0; a < 3; a++) {
+          if (v[a] < min[a]) min[a] = v[a];
+          if (v[a] > max[a]) max[a] = v[a];
+        }
+      }
+    }
+  }
+  if (!isFinite(min[0]) || !groupsData || !groupsData.groups) {
+    console.warn("  No deck slab geometry: skipping barrier injection.");
+    return false;
+  }
+
+  const built = buildDeckFurniture(
+    { min, max },
+    {
+      hasFootpath: entry.footpath === "OF",
+      lanes: parseInt(entry.lanes, 10) || 1,
+    },
+  );
+
+  for (const key in built) {
+    const g = built[key];
+    const base = allVertices.length;
+    g.verts.forEach((v) => allVertices.push(v));
+    groupFaces[g.name] = g.tris.map(([a, b, c]) => [a + base + 1, b + base + 1, c + base + 1]);
+    groupsData.groups.push({
+      name: g.name,
+      partIDs: [g.partID],
+      visible: true,
+      meta: { length: "", color: "", custom: [] },
+    });
+  }
+  console.log(`  Injected: ${Object.values(built).map((g) => g.name).join(", ")}`);
+  return true;
+}
+
+async function convertModel(ifcPath, jsonPath, objPath, entry = {}) {
   console.log(`Processing: ${path.relative(BASE_DIR, ifcPath)}`);
   
   // 1. Initialize web-ifc API
@@ -106,6 +163,9 @@ async function convertModel(ifcPath, jsonPath, objPath) {
       }
     }
 
+    // 5b. Inject railing, crash barrier, footpath, carriageway and lanes on the deck slab
+    const injected = injectDeckFurniture(allVertices, groupFaces, groupsData, entry);
+
     // 6. Write OBJ file
     console.log(`Writing OBJ file: ${path.relative(BASE_DIR, objPath)} (${allVertices.length} vertices)`);
     const writeStream = fs.createWriteStream(objPath);
@@ -137,6 +197,11 @@ async function convertModel(ifcPath, jsonPath, objPath) {
     }
 
     writeStream.end();
+
+    // Register the injected groups so the viewer can select them
+    if (injected) {
+      fs.writeFileSync(jsonPath, JSON.stringify(groupsData));
+    }
     
     // Close model
     ifcApi.CloseModel(modelID);
@@ -162,7 +227,11 @@ async function main() {
   let succeeded = 0;
   let failed = 0;
 
+  // Optional filter: node convert_ifc_to_obj.js <substring of ifc path>
+  const filter = process.argv[2];
+
   for (const entry of registry) {
+    if (filter && !entry.ifc.includes(filter)) continue;
     const ifcPath = path.join(BASE_DIR, entry.ifc);
     const jsonPath = path.join(BASE_DIR, entry.json);
     const objPath = ifcPath.replace(/\.ifc$/i, ".obj");
@@ -179,7 +248,7 @@ async function main() {
       continue;
     }
 
-    const success = await convertModel(ifcPath, jsonPath, objPath);
+    const success = await convertModel(ifcPath, jsonPath, objPath, entry);
     if (success) {
       succeeded++;
     } else {

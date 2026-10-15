@@ -1,7 +1,6 @@
 import { initViewer, animate } from "./viewer.js";
 import { initInteraction } from "./interaction.js";
 import { initDatabase } from "./db.js";
-import "./barrierInjector.js";
 
 // ── Auto-load Defaults on Boot ───────────────────────────────
 (async function init() {

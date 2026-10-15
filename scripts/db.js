@@ -104,6 +104,8 @@ window.onFilterChange = function () {
   updateCatalog();
 };
 
+window.updateCatalog = updateCatalog;
+
 export function updateCatalog() {
   const locSelect = document.getElementById("filter-location");
   const typeSelect = document.getElementById("filter-type");
@@ -115,12 +117,39 @@ export function updateCatalog() {
   const type = typeSelect.value;
   const struct = structSelect.value;
   
-  const matches = registry.filter(item => 
+  const base = registry.filter(item =>
     item.location === loc &&
     item.bridge_type === type &&
     item.structure === struct
   );
-  
+
+  // Secondary filters narrow the list; each offers only values present in `base`.
+  const extra = { span: "catalog-span", lanes: "catalog-lanes", footpath: "catalog-footpath" };
+  const selected = {};
+  Object.keys(extra).forEach((key) => {
+    const select = document.getElementById(extra[key]);
+    if (!select) return;
+    const prev = select.value;
+    const values = [...new Set(base.map((item) => item[key]))].sort((a, b) =>
+      key === "span" ? Number(a) - Number(b) : String(a).localeCompare(b));
+    select.innerHTML = "";
+    const all = document.createElement("option");
+    all.value = "";
+    all.textContent = "All";
+    select.appendChild(all);
+    values.forEach((val) => {
+      const opt = document.createElement("option");
+      opt.value = val;
+      opt.textContent = formatOptionText(key, val);
+      select.appendChild(opt);
+    });
+    select.value = values.includes(prev) ? prev : "";
+    selected[key] = select.value;
+  });
+
+  const matches = base.filter((item) =>
+    Object.keys(selected).every((key) => !selected[key] || item[key] === selected[key]));
+
   renderCatalog(matches, state.currentLoadedBridgePath);
 }
 

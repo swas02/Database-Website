@@ -78,9 +78,6 @@
             class="bi bi-plus-lg" aria-hidden="true"></i></button>
         <button class="hud-btn" onclick="zoomViewer(-1)" title="Zoom Out (-)" aria-label="Zoom out"><i
             class="bi bi-dash-lg" aria-hidden="true"></i></button>
-        <button class="hud-btn" id="btn-barriers" onclick="toggleBarriers()"
-          title="Add/remove railing &amp; crash barrier (temporary sheets)"><i class="bi bi-layout-sidebar-inset"
-            aria-hidden="true"></i> <span class="hud-btn-text">Barriers</span></button>
         <button class="hud-btn" onclick="resetAllFilters(); setCameraPreset('home'); setViewerMode('rotate');"
           title="Reset View (H)"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> <span
             class="hud-btn-text">Reset</span></button>
@@ -172,6 +169,22 @@
           <div class="control-row mb-2">
             <label class="text-muted" for="filter-structure">Structure</label>
             <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <!-- Narrow the catalog list only; the hidden filter-* selects below drive model loading -->
+          <div class="control-row mb-2">
+            <label class="text-muted" for="catalog-span">Span</label>
+            <select id="catalog-span" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="catalog-lanes">Lanes</label>
+            <select id="catalog-lanes" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="catalog-footpath">Footpath</label>
+            <select id="catalog-footpath" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
           </div>
         </div>
 
