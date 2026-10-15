@@ -66,7 +66,7 @@ function populateFilters() {
 
 function formatOptionText(key, value) {
   if (key === "footpath") {
-    return value === "OF" ? "With Footpath (OF)" : "No Footpath (NF)";
+    return value === "OF" ? "With footpath" : "No footpath";
   }
   if (key === "lanes") {
     return value === "2L" ? "2 Lanes (2L)" : "3 Lanes (3L)";
@@ -168,7 +168,7 @@ function updateSelectOptions(selectId, validValues) {
   }
 }
 
-window.loadSelectedBridge = async function () {
+window.loadSelectedBridge = async function (fromUser = false) {
   const filters = {
     location: document.getElementById("filter-location").value,
     bridge_type: document.getElementById("filter-type").value,
@@ -191,7 +191,7 @@ window.loadSelectedBridge = async function () {
 
   if (!match) {
     console.warn("Selected Input Configuration (No Match Found):", filters);
-    alert("No matching bridge model found for the selected configuration.");
+    window.showToast("No model exists for this combination. Try a different span, lanes or footpath option.");
     return;
   }
 
@@ -279,6 +279,9 @@ window.loadSelectedBridge = async function () {
       window.resetAllFilters();
     }
 
+    // Library was used to pick this model: fold it away so the explorer gets the room
+    if (fromUser && window.setSidebarSection) window.setSidebarSection("left", false);
+
     // Auto-fit camera to the newly loaded bridge
     if (window.setCameraPreset) {
       window.setCameraPreset('home');
@@ -286,7 +289,7 @@ window.loadSelectedBridge = async function () {
 
   } catch (err) {
     console.error("Load failed:", err);
-    alert("Error loading model: " + err.message);
+    window.showToast("Could not load the model: " + err.message);
     setLoadingState(null);
   }
 };

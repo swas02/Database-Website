@@ -233,10 +233,10 @@ export function resetAllFilters() {
     window.switchRightTab("groups");
   }
 
-  // Collapse the right panel on filter reset
+  // Collapse the right panel on filter reset (mobile only; on desktop it stays docked)
   const rp = document.getElementById("right-panel");
   const rt = document.getElementById("right-trigger");
-  if (rp) {
+  if (rp && false) {
     rp.classList.add("collapsed");
     if (rt) rt.style.display = "block";
   }

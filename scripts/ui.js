@@ -39,48 +39,25 @@ window.switchRightTab = function (tab) {
   }
 };
 
-window.toggleRightPanel = function () {
-  const p = document.getElementById("right-panel");
-  const t = document.getElementById("right-trigger");
+// Model Library and Bridge Explorer are independent collapsible sections; either, both or neither can be open.
+window.setSidebarSection = function (which, open) {
+  const p = document.getElementById(which === "left" ? "left-panel" : "right-panel");
   if (!p) return;
-  const col = p.classList.toggle("collapsed");
-  if (t) t.style.display = col ? "block" : "none";
-  
-  if (col) {
-    // If we collapse the panel while LCCA is active, exit LCCA mode and reset tab
-    if (p.classList.contains("lcca-active")) {
-      window.toggleLCCAMode(false);
-      window.switchRightTab('groups');
-    }
-  } else {
-    // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
-    if (window.innerWidth <= 768) {
-      const lp = document.getElementById("left-panel");
-      const lt = document.getElementById("left-trigger");
-      if (lp && !lp.classList.contains("collapsed")) {
-        lp.classList.add("collapsed");
-        if (lt) lt.style.display = "block";
-      }
-    }
+  p.classList.toggle("section-closed", !open);
+  p.querySelector(".panel-header")?.setAttribute("aria-expanded", String(open));
+};
+window.openSidebarSection = (which) => window.setSidebarSection(which, true);
+window.toggleRightPanel = function () {
+  const open = document.getElementById("right-panel").classList.contains("section-closed");
+  window.setSidebarSection("right", open);
+  if (!open && window.toggleLCCAMode) {
+    window.toggleLCCAMode(false);
+    window.switchRightTab("groups");
   }
 };
-
 window.toggleLeftPanel = function () {
-  const p = document.getElementById("left-panel");
-  const t = document.getElementById("left-trigger");
-  if (!p) return;
-  const col = p.classList.toggle("collapsed");
-  if (t) t.style.display = col ? "block" : "none";
-  
-  // On tablet/mobile (<= 1024px), if we open the left panel, collapse the right panel
-  if (!col && window.innerWidth <= 768) {
-    const rp = document.getElementById("right-panel");
-    const rt = document.getElementById("right-trigger");
-    if (rp && !rp.classList.contains("collapsed")) {
-      rp.classList.add("collapsed");
-      if (rt) rt.style.display = "block";
-    }
-  }
+  const open = document.getElementById("left-panel").classList.contains("section-closed");
+  window.setSidebarSection("left", open);
 };
 
 // Dynamic Panel Expansion on Boot based on screen size
@@ -90,20 +67,28 @@ window.toggleLeftPanel = function () {
   const rp = document.getElementById("right-panel");
   const rt = document.getElementById("right-trigger");
 
-  if (window.innerWidth > 768) {
-    // Desktop: both panels open, triggers hidden
-    if (lp) lp.classList.remove("collapsed");
-    if (lt) lt.style.display = "none";
-    if (rp) rp.classList.remove("collapsed");
-    if (rt) rt.style.display = "none";
-  } else {
-    // Tablet/Mobile: Left Panel (Library) open, Right Panel (Explorer) collapsed
-    if (lp) lp.classList.remove("collapsed");
-    if (lt) lt.style.display = "none";
-    if (rp) rp.classList.add("collapsed");
-    if (rt) rt.style.display = "block";
-  }
+  // Sidebar is always visible: docked column (desktop) or bottom sheet (mobile)
+  if (lp) lp.classList.remove("collapsed");
+  if (lt) lt.style.display = "none";
+  if (rp) rp.classList.remove("collapsed");
+  if (rt) rt.style.display = "none";
+  window.openSidebarSection("right");
 })();
+
+// Toast (non-blocking replacement for alert)
+window.showToast = function (message) {
+  let t = document.getElementById("app-toast");
+  if (!t) {
+    t = document.createElement("div");
+    t.id = "app-toast";
+    t.setAttribute("role", "alert");
+    document.body.appendChild(t);
+  }
+  t.textContent = message;
+  t.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => t.classList.remove("show"), 5000);
+};
 
 // Loading Indicator
 export function setLoadingState(text) {
@@ -355,24 +340,8 @@ export function updatePropertyInspector(group) {
   console.log("Selected group in inspector:", group);
   console.log("Bridge database specs (bridgeData):", state.bridgeData);
 
-  // Open the right panel if collapsed
-  const p = document.getElementById("right-panel");
-  if (p) {
-    const wasCollapsed = p.classList.contains("collapsed");
-    p.classList.remove("collapsed");
-    const t = document.getElementById("right-trigger");
-    if (t) t.style.display = "none";
-    
-    // On tablet/mobile (<= 1024px), if we open the right panel, collapse the left panel
-    if (wasCollapsed && window.innerWidth <= 768) {
-      const lp = document.getElementById("left-panel");
-      const lt = document.getElementById("left-trigger");
-      if (lp && !lp.classList.contains("collapsed")) {
-        lp.classList.add("collapsed");
-        if (lt) lt.style.display = "block";
-      }
-    }
-  }
+  // Make sure the explorer section is the open one
+  window.openSidebarSection("right");
 
   // Switch right panel tab to 'groups'
   window.switchRightTab('groups');
@@ -1256,6 +1225,7 @@ window.toggleLCCAMode = function (isLCCA) {
   const hudTriggers = document.getElementById("hud-triggers");
   const canvas = state.viewportContainer?.querySelector("canvas");
   
+  document.getElementById("app-container")?.classList.toggle("lcca-mode", !!isLCCA);
   if (isLCCA) {
     if (rp) rp.classList.add("lcca-active");
     if (hudTriggers) hudTriggers.style.display = "none";
@@ -1578,10 +1548,7 @@ window.toggleLCCADashboardHUD = function () {
     window.switchRightTab('groups');
   } else {
     // Open the Right panel if collapsed
-    const rp = document.getElementById("right-panel");
-    if (rp && rp.classList.contains("collapsed")) {
-      window.toggleRightPanel();
-    }
+    window.openSidebarSection("right");
     // Switch to LCCA tab
     window.switchRightTab('lcca');
   }

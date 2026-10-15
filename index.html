@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>IFC Annotator 3D — Dashboard v2</title>
+  <title>BridgeLCCA — Bridge Model Library</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BridgeLCCA — interactive 3D IFC bridge model viewer with filterable dataset catalog, component explorer and specification inspector.">
+  <meta name="description" content="BridgeLCCA — browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
   <meta name="theme-color" content="#0e131f">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%233b82f6' d='M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm12 3A1.5 1.5 0 0 1 13.5 12h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -41,6 +41,10 @@
       <span id="project-title" style="display: none;"></span>
       <span id="span-chip" style="display: none;"></span>
 
+      <!-- Current model summary -->
+      <div id="model-chip" class="model-chip" hidden aria-live="polite"></div>
+      <div class="viewer-hint" aria-hidden="true">Drag to rotate · Right-drag to pan · Scroll to zoom</div>
+
       <!-- Overlay Controls -->
       <div id="hud-triggers" role="toolbar" aria-label="Viewer controls">
         <button class="hud-btn active" id="btn-mode-rotate" onclick="setViewerMode('rotate')"
@@ -55,22 +59,19 @@
             <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75"/>
             <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
             <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
-          </svg>
-        </button>
+          </svg> <span class="hud-btn-text">Top</span></button>
         <button class="hud-btn" onclick="setCameraPreset('front')" title="Front View (F)" aria-label="Front view">
           <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
             <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75"/>
             <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
-          </svg>
-        </button>
+          </svg> <span class="hud-btn-text">Front</span></button>
         <button class="hud-btn" onclick="setCameraPreset('side')" title="Side View (S)" aria-label="Side view">
           <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
             <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
             <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75"/>
-          </svg>
-        </button>
+          </svg> <span class="hud-btn-text">Side</span></button>
 
         <div class="hud-divider" role="presentation"></div>
 
@@ -96,10 +97,10 @@
     <div id="side-stack">
     <!-- ── Left Panel (Bridge Model Library) ── -->
     <aside id="left-panel" class="dashboard-panel" aria-label="Model library">
-      <div class="panel-header">
+      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleLeftPanel()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeftPanel()}">
         <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Model Library</div>
-        <button class="btn btn-sm btn-panel-toggle" onclick="toggleLeftPanel()" aria-label="Close library panel"><i
-            class="bi bi-chevron-left" aria-hidden="true"></i></button>
+        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
       </div>
 
       <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
@@ -141,7 +142,7 @@
 
           </div>
 
-          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge()">
+          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge(true)">
             <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
           </button>
         </div>
@@ -151,10 +152,10 @@
 
     <!-- ── Right Panel (Explorer & Inspector) ── -->
     <aside id="right-panel" class="dashboard-panel collapsed" aria-label="Bridge explorer">
-      <div class="panel-header">
+      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleRightPanel()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRightPanel()}">
         <div class="panel-title"><i class="bi bi-layers-half" aria-hidden="true"></i> Bridge Explorer</div>
-        <button class="btn btn-sm btn-panel-toggle" onclick="toggleRightPanel()" aria-label="Close explorer panel"><i
-            class="bi bi-chevron-right" aria-hidden="true"></i></button>
+        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
       </div>
 
       <div class="custom-tabs" role="tablist" aria-label="Explorer sections">
@@ -185,6 +186,7 @@
 
         <!-- TAB 3: LCCA PANEL -->
         <div id="content-lcca" role="tabpanel" aria-labelledby="tab-lcca" style="display:none">
+          <button type="button" class="lcca-back" onclick="switchRightTab('groups')"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back to model</button>
           <div id="lcca-container">
             <!-- Populated dynamically -->
           </div>
@@ -222,8 +224,8 @@
         case "l": if (window.toggleLCCADashboardHUD) toggleLCCADashboardHUD(); break;
         case "+": case "=": if (window.zoomViewer) zoomViewer(1); break;
         case "-": case "_": if (window.zoomViewer) zoomViewer(-1); break;
-        case "[": if (window.toggleLeftPanel) toggleLeftPanel(); break;
-        case "]": if (window.toggleRightPanel) toggleRightPanel(); break;
+        case "[": if (window.openSidebarSection) openSidebarSection("left"); break;
+        case "]": if (window.openSidebarSection) openSidebarSection("right"); break;
       }
     });
 

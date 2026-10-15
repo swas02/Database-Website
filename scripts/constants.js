@@ -38,7 +38,7 @@ const MATERIAL_STYLES = [
   { match: /carriageway/, color: "#262b33", roughness: 0.92, metalness: 0.0 },
   { match: /footpath/, color: "#7d7a74", roughness: 0.85, metalness: 0.0 },
   { match: /crash barrier/, color: "#8a867e", roughness: 0.8, metalness: 0.0 },
-  { match: /railing/, color: "#e8a33d", roughness: 0.3, metalness: 0.85 },
+  { match: /railing/, color: "#9aa5b1", roughness: 0.4, metalness: 0.8 },
   // Concrete substructure: deeper at the base, lighter towards the deck
   { match: /pile cap/, color: "#55534f", roughness: 0.9, metalness: 0.0 },
   { match: /pile|foundation/, color: "#45433f", roughness: 0.95, metalness: 0.0 },

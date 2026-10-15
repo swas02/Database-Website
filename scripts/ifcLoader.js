@@ -83,13 +83,15 @@ export async function loadOBJ(objPath) {
     document.getElementById("span-chip").textContent =
       "Span: " + size.x.toFixed(1) + " m";
     state.ifcLoaded = true;
+    updateGround(size);
+    updateModelChip();
 
     // Render Groups Sidebar and apply coloring
     loadDefaultGroupsJSON();
     setLoadingState(null);
   } catch (err) {
     console.error("Failed to load OBJ model:", err);
-    alert("Error loading 3D model: " + err.message);
+    window.showToast("Could not load the 3D model: " + err.message);
     setLoadingState(null);
   }
 }
@@ -296,4 +298,38 @@ function mapPartToGroup(partID, groupName) {
   state.groupMap
     .get(partID)
     .push({ name: groupName, meta: { length: "", custom: [] } });
+}
+
+// Subtle ground grid under the model, for scale and grounding
+function updateGround(size) {
+  if (state.groundGrid) {
+    state.scene.remove(state.groundGrid);
+    state.groundGrid.geometry.dispose();
+    state.groundGrid.material.dispose();
+  }
+  const extent = Math.max(size.x, size.z) * 2.5;
+  const divisions = Math.max(10, Math.round(extent / 5));
+  const dark = document.documentElement.getAttribute("data-bs-theme") !== "light";
+  const grid = new THREE.GridHelper(extent, divisions, dark ? 0x4a5a78 : 0x94a3b8, dark ? 0x2b3752 : 0xcbd5e1);
+  grid.material.transparent = true;
+  grid.material.opacity = 0.55;
+  grid.position.y = state.modelGroup.position.y + (state.modelBox.min.y - state.modelCenter.y) - 0.05;
+  state.scene.add(grid);
+  state.groundGrid = grid;
+}
+
+// Summary line above the viewport: Mumbai · Steel · 20 m span · 2 lanes · With footpath
+function updateModelChip() {
+  const chip = document.getElementById("model-chip");
+  const d = state.bridgeData;
+  if (!chip || !d) return;
+  const parts = [
+    d.location,
+    state.currentLoadedBridge?.bridge_type,
+    d.span_m ? d.span_m + " m span" : null,
+    d.lanes ? d.lanes + " lanes" : null,
+    d.has_footpath ? "With footpath" : "No footpath",
+  ].filter(Boolean);
+  chip.textContent = parts.join("  ·  ");
+  chip.hidden = false;
 }

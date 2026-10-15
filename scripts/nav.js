@@ -28,10 +28,6 @@
         <i class="bi bi-bezier2 text-primary" aria-hidden="true"></i>
         <span>BridgeLCCA</span>
       </a>
-      <div class="nav-divider" role="presentation"></div>
-      <nav class="nav-menu" aria-label="Primary">
-        <a href="index.html" class="nav-link active" aria-current="page">Dataset Viewer</a>
-      </nav>
       <div class="nav-dropdown" id="more-menu">
         <button class="nav-dropdown-trigger" onclick="toggleDropdownMenu(event)" aria-label="More options" aria-haspopup="menu">
           <i class="bi bi-three-dots" aria-hidden="true"></i>

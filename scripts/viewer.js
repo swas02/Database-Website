@@ -19,6 +19,7 @@ export function initViewer() {
 
   state.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   state.renderer.setPixelRatio(window.devicePixelRatio);
+  applyViewOffset(W(), H());
   state.renderer.setSize(W(), H());
   // Cinematic look: filmic tone mapping, sRGB output, soft shadows
   state.renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -62,11 +63,19 @@ export function initViewer() {
     const height = H();
     if (width && height) {
       state.camera.aspect = width / height;
-      state.camera.updateProjectionMatrix();
+      applyViewOffset(width, height);
       state.renderer.setSize(width, height);
     }
   });
   resizeObserver.observe(state.viewportContainer);
+}
+
+// On desktop the side panels cover the left ~372px: shift the image so the model sits in the free area.
+function applyViewOffset(width, height) {
+  const shift = 0; // the desktop sidebar is docked beside the viewport, so no offset is needed
+  if (shift) state.camera.setViewOffset(width, height, -shift, 0, width, height);
+  else state.camera.clearViewOffset();
+  state.camera.updateProjectionMatrix();
 }
 
 /**
@@ -100,13 +109,12 @@ window.setCameraPreset = function (preset) {
   
   // Calculate dynamic fit distance
   const size = state.modelBox.getSize(new THREE.Vector3());
-  const maxDim = Math.max(size.x, size.y, size.z);
-  const fov = state.camera.fov * (Math.PI / 180);
-  let distance = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-  
-  // Enforce sensible bounds and padding
-  distance = Math.max(distance, 40);
-  distance *= 1.25; 
+  const radius = size.length() / 2;
+  const vfov = state.camera.fov * (Math.PI / 180);
+  const hfov = 2 * Math.atan(Math.tan(vfov / 2) * state.camera.aspect);
+  // Fit the bounding sphere in the tighter of the two fields of view
+  let distance = radius / Math.sin(Math.min(vfov, hfov) / 2);
+  distance *= preset === "home" || !preset ? 0.72 : 0.8;
 
   let pos = new THREE.Vector3();
 
