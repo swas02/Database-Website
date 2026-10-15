@@ -26,8 +26,8 @@ const LAYOUT = {
   footpathHeight: 0.1,
   plinthWidth: 0.375, // railing plinth, footpathHeight above the walkway; the walkway itself is level with the deck
   laneLineWidth: 0.15,
-  roadLift: 0.005,
-  laneLift: 0.015,
+  roadLift: 0.03,
+  laneLift: 0.05,
 };
 
 // Standard lane width: 3.75 m on a two-lane carriageway (7.5 m), 3.5 m per lane on three lanes (10.5 m).

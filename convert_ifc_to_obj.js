@@ -163,6 +163,17 @@ async function convertModel(ifcPath, jsonPath, objPath, entry = {}) {
       }
     }
 
+    // 5a. PSC models carry a duplicate "_delete" slab (stiffness filler) and loose
+    // slab fragments; neither is a real member, so keep them out of the OBJ.
+    if (entry.bridge_type === "PSC") {
+      delete groupFaces["_delete"];
+      delete groupFaces["unassigned"];
+      if (groupsData && groupsData.groups) {
+        groupsData.groups = groupsData.groups.filter((g) => g.name !== "_delete");
+        fs.writeFileSync(jsonPath, JSON.stringify(groupsData));
+      }
+    }
+
     // 5b. Inject railing, crash barrier, footpath, carriageway and lanes on the deck slab
     const injected = injectDeckFurniture(allVertices, groupFaces, groupsData, entry);
 

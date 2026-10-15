@@ -14,7 +14,7 @@ export function initViewer() {
   state.scene = new THREE.Scene();
   state.scene.background = null; // transparent background so CSS gradient shows through
 
-  state.camera = new THREE.PerspectiveCamera(50, W() / H(), 0.1, 10000);
+  state.camera = new THREE.PerspectiveCamera(50, W() / H(), 0.3, 3000); // tighter near/far keeps depth precision for coplanar surfaces
   state.camera.position.set(120, 70, 120);
 
   state.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
