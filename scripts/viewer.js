@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "https://unpkg.com/three@0.170.0/examples/jsm/controls/OrbitControls.js";
+import { RoomEnvironment } from "https://unpkg.com/three@0.170.0/examples/jsm/environments/RoomEnvironment.js";
 import { state } from "./state.js";
+
+// Key light, re-fitted to each model (shadow frustum)
+let keyLight = null;
 
 export function initViewer() {
   state.viewportContainer = document.getElementById("viewport-container");
@@ -16,7 +20,11 @@ export function initViewer() {
   state.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   state.renderer.setPixelRatio(window.devicePixelRatio);
   state.renderer.setSize(W(), H());
-  state.renderer.shadowMap.enabled = false;
+  // Cinematic look: filmic tone mapping, sRGB output, soft shadows
+  state.renderer.outputColorSpace = THREE.SRGBColorSpace;
+  state.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  state.renderer.toneMappingExposure = 1.05;
+  state.renderer.shadowMap.enabled = true;
   state.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   state.viewportContainer.appendChild(state.renderer.domElement);
 
@@ -24,21 +32,26 @@ export function initViewer() {
   state.controls.enableDamping = true;
   state.controls.dampingFactor = 0.05;
 
-  // Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
-  state.scene.add(ambientLight);
+  // Lighting: image-based reflections + warm key, cool rim, sky/ground fill
+  const pmrem = new THREE.PMREMGenerator(state.renderer);
+  state.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  state.scene.environmentIntensity = 0.55;
 
-  const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
-  dirLight.position.set(100, 200, 100);
-  dirLight.castShadow = false;
-  dirLight.shadow.mapSize.width = 1024;
-  dirLight.shadow.mapSize.height = 1024;
-  dirLight.shadow.bias = -0.001;
-  state.scene.add(dirLight);
+  state.scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x2a2118, 0.55));
 
-  const backLight = new THREE.DirectionalLight(0x94a3b8, 0.4); // Cool slate backlight
-  backLight.position.set(-100, 80, -100);
-  state.scene.add(backLight);
+  keyLight = new THREE.DirectionalLight(0xffe7c4, 3.2); // warm, low "golden hour" sun
+  keyLight.position.set(120, 140, 80);
+  keyLight.castShadow = true;
+  keyLight.shadow.mapSize.set(2048, 2048);
+  keyLight.shadow.bias = -0.0004;
+  keyLight.shadow.normalBias = 0.05;
+  keyLight.shadow.radius = 4;
+  state.scene.add(keyLight);
+  state.scene.add(keyLight.target);
+
+  const rimLight = new THREE.DirectionalLight(0x6fa8ff, 1.4); // cool rim from behind
+  rimLight.position.set(-120, 60, -110);
+  state.scene.add(rimLight);
 
   // Fog Setup
   state.scene.fog = null;
@@ -54,6 +67,27 @@ export function initViewer() {
     }
   });
   resizeObserver.observe(state.viewportContainer);
+}
+
+/**
+ * Fit the key light's shadow frustum to the loaded model. Call after the model is added and positioned.
+ */
+export function fitLightingToModel() {
+  if (!keyLight || !state.modelGroup) return;
+  state.modelGroup.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(state.modelGroup);
+  if (box.isEmpty()) return;
+  const center = box.getCenter(new THREE.Vector3());
+  const radius = box.getSize(new THREE.Vector3()).length() / 2;
+
+  keyLight.target.position.copy(center);
+  keyLight.position.copy(center).add(new THREE.Vector3(0.6, 0.7, 0.4).multiplyScalar(radius * 2.2));
+  const cam = keyLight.shadow.camera;
+  cam.left = cam.bottom = -radius;
+  cam.right = cam.top = radius;
+  cam.near = 0.5;
+  cam.far = radius * 5;
+  cam.updateProjectionMatrix();
 }
 
 // ── Camera Preset ─────────────────────────────────────────────

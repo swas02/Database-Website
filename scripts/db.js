@@ -1,5 +1,5 @@
 import { state } from "./state.js";
-import { setLoadingState, renderBridgeMetadata, renderCatalog, updateCardActiveStates, loadAndRenderLCCA } from "./ui.js";
+import { setLoadingState, renderBridgeMetadata, loadAndRenderLCCA } from "./ui.js";
 import { loadOBJ } from "./ifcLoader.js";
 
 // Global lists populated from registry_flat.json
@@ -25,9 +25,6 @@ export async function initDatabase() {
 
     // Auto-load default selection
     await loadSelectedBridge();
-    
-    // Initial catalog render
-    updateCatalog();
   } catch (err) {
     console.error("Failed to load database:", err);
     setLoadingState("Failed to load databases.");
@@ -99,83 +96,9 @@ function setFilterDefaults() {
   updateFilterCombinations();
 }
 
+// A filter change only narrows the remaining options; the Load Model button loads.
 window.onFilterChange = function () {
   updateFilterCombinations();
-  updateCatalog();
-};
-
-window.updateCatalog = updateCatalog;
-
-export function updateCatalog() {
-  const locSelect = document.getElementById("filter-location");
-  const typeSelect = document.getElementById("filter-type");
-  const structSelect = document.getElementById("filter-structure");
-  
-  if (!locSelect || !typeSelect || !structSelect) return;
-  
-  const loc = locSelect.value;
-  const type = typeSelect.value;
-  const struct = structSelect.value;
-  
-  const base = registry.filter(item =>
-    item.location === loc &&
-    item.bridge_type === type &&
-    item.structure === struct
-  );
-
-  // Secondary filters narrow the list; each offers only values present in `base`.
-  const extra = { span: "catalog-span", lanes: "catalog-lanes", footpath: "catalog-footpath" };
-  const selected = {};
-  Object.keys(extra).forEach((key) => {
-    const select = document.getElementById(extra[key]);
-    if (!select) return;
-    const prev = select.value;
-    const values = [...new Set(base.map((item) => item[key]))].sort((a, b) =>
-      key === "span" ? Number(a) - Number(b) : String(a).localeCompare(b));
-    select.innerHTML = "";
-    const all = document.createElement("option");
-    all.value = "";
-    all.textContent = "All";
-    select.appendChild(all);
-    values.forEach((val) => {
-      const opt = document.createElement("option");
-      opt.value = val;
-      opt.textContent = formatOptionText(key, val);
-      select.appendChild(opt);
-    });
-    select.value = values.includes(prev) ? prev : "";
-    selected[key] = select.value;
-  });
-
-  const matches = base.filter((item) =>
-    Object.keys(selected).every((key) => !selected[key] || item[key] === selected[key]));
-
-  renderCatalog(matches, state.currentLoadedBridgePath);
-}
-
-window.loadBridgeByCard = async function (match) {
-  if (!match) return;
-  
-  // Set all filter values first to prevent intermediate auto-selection overrides
-  document.getElementById("filter-location").value = match.location;
-  document.getElementById("filter-type").value = match.bridge_type;
-  document.getElementById("filter-structure").value = match.structure;
-  document.getElementById("filter-span").value = match.span;
-  document.getElementById("filter-lanes").value = match.lanes;
-  document.getElementById("filter-footpath").value = match.footpath;
-  
-  // Update combinations and disabled options once at the end
-  updateFilterCombinations();
-  
-  // Call loading function
-  await loadSelectedBridge();
-
-  // On mobile (<= 768px), collapse Left Panel so they see the loaded model in 3D
-  if (window.innerWidth <= 768) {
-    if (window.toggleLeftPanel) {
-      window.toggleLeftPanel();
-    }
-  }
 };
 
 // Cascaded filter system: restricts subsequent dropdown choices dynamically
@@ -338,10 +261,9 @@ window.loadSelectedBridge = async function () {
       };
     }
 
-    // Save current loaded bridge path and update cards
+    // Remember the current bridge
     state.currentLoadedBridgePath = match.ifc;
     state.currentLoadedBridge = match;
-    updateCardActiveStates(match.ifc);
 
     // Refresh general specifications UI
     renderBridgeMetadata(state.bridgeData);

@@ -40,7 +40,7 @@
   --bg-badge: rgba(59, 130, 246, 0.15);
   --bg-badge-active: rgba(59, 130, 246, 0.2);
   --bg-tab-active: rgba(59, 130, 246, 0.15);
-  --bg-viewport-grad: radial-gradient(circle at center, #1e293b 0%, #0e131f 100%);
+  --bg-viewport-grad: linear-gradient(180deg, #8fc3e6 0%, #b9d9ee 45%, #dbe8ee 100%);
   
   --border-panel: rgba(255, 255, 255, 0.08);
   --border-card: rgba(255, 255, 255, 0.06);
@@ -89,7 +89,7 @@
   --bg-badge: rgba(59, 130, 246, 0.08);
   --bg-badge-active: rgba(59, 130, 246, 0.15);
   --bg-tab-active: rgba(59, 130, 246, 0.08);
-  --bg-viewport-grad: radial-gradient(circle at center, #ffffff 0%, #cbd5e1 100%);
+  --bg-viewport-grad: linear-gradient(180deg, #8fc3e6 0%, #b9d9ee 45%, #dbe8ee 100%);
   
   --border-panel: rgba(15, 23, 42, 0.08);
   --border-card: rgba(15, 23, 42, 0.08);

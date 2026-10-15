@@ -24,19 +24,26 @@ const LAYOUT = {
   footpathSide: 1, // 1 = max-width edge, -1 = min-width edge
   footpathWidth: 1.5,
   footpathHeight: 0.1,
-  plinthWidth: 0.375, // railing plinth, part of the footpath block
+  plinthWidth: 0.375, // railing plinth, footpathHeight above the walkway; the walkway itself is level with the deck
   laneLineWidth: 0.15,
   roadLift: 0.005,
   laneLift: 0.015,
 };
 
-// Crash barrier: 450 wide, 1100 high (900 on the footpath side).
+// Standard lane width: 3.75 m on a two-lane carriageway (7.5 m), 3.5 m per lane on three lanes (10.5 m).
+function standardLaneWidth(lanes) {
+  return lanes <= 2 ? 3.75 : 3.5;
+}
+
+// Crash barrier, from the IRC drawings: 450 wide, 1100 high (900 on the footpath side).
+// Outer face has a 50 batter, 175 flat top, 50 step at 350 above the deck, then a slope down to a 100 toe.
 const CRASH_BARRIER = {
   height: 1.1,
   heightFootpathSide: 0.9,
   width: 0.45,
-  // u = distance from the outer (vertical) face, v = height; "top" = barrier height.
-  profile: [[0, 0], [0, "top"], [0.175, "top"], [0.225, 0.35], [0.45, 0.1], [0.45, 0]],
+  edgeSetback: 0.05, // base sits 50 inside the slab edge (barrier-only side)
+  // u = distance from the outer face at the base, v = height; "top" = barrier height.
+  profile: [[0, 0], [0.05, "top"], [0.225, "top"], [0.275, 0.35], [0.45, 0.1], [0.45, 0]],
 };
 
 // Steel railing (post-and-rail; sizes are assumptions).
@@ -166,6 +173,13 @@ function buildDeckFurniture(slab, { hasFootpath, lanes }) {
   const extrudeAcross = (key, profile, acrossStart, inward, baseY) =>
     extrude(get(key), profile, (u, v, t) => p3(lo + t * length, baseY + v, acrossStart + inward * u));
 
+  // Horizontal sheet spanning the bridge between two positions across the deck.
+  const flat = (key, y, c0, c1) => {
+    const m = get(key);
+    const v = [p3(lo, y, c0), p3(hi, y, c0), p3(hi, y, c1), p3(lo, y, c1)].map((p) => m.vert(p));
+    m.quad(v[0], v[1], v[2], v[3]);
+  };
+
   const barrierProfile = (h) => CRASH_BARRIER.profile.map(([u, v]) => [u, v === "top" ? h : v]);
 
   const railing = (across, baseY) => {
@@ -191,9 +205,13 @@ function buildDeckFurniture(slab, { hasFootpath, lanes }) {
     if (hasFootpath && side === LAYOUT.footpathSide) {
       barrierHeight = CRASH_BARRIER.heightFootpathSide;
       const fpWidth = LAYOUT.plinthWidth + LAYOUT.footpathWidth;
-      box("footpath", lo, hi, top, top + LAYOUT.footpathHeight, edge, edge + inward * fpWidth);
+      // Railing plinth stands 100 above the walkway; the walkway is level with the deck.
+      box("footpath", lo, hi, top, top + LAYOUT.footpathHeight, edge, edge + inward * LAYOUT.plinthWidth);
+      flat("footpath", top + LAYOUT.roadLift, edge + inward * LAYOUT.plinthWidth, edge + inward * fpWidth);
       railing(edge + inward * (LAYOUT.plinthWidth / 2), top + LAYOUT.footpathHeight);
       cursor += inward * fpWidth;
+    } else {
+      cursor += inward * CRASH_BARRIER.edgeSetback;
     }
     extrudeAcross("barrier", barrierProfile(barrierHeight), cursor, inward, top);
     roadEdge[side] = cursor + inward * CRASH_BARRIER.width;
@@ -203,15 +221,13 @@ function buildDeckFurniture(slab, { hasFootpath, lanes }) {
   const roadLo = roadEdge[-1];
   const roadHi = roadEdge[1];
   const roadWidth = roadHi - roadLo;
-  const flat = (key, y, c0, c1) => {
-    const m = get(key);
-    const v = [p3(lo, y, c0), p3(hi, y, c0), p3(hi, y, c1), p3(lo, y, c1)].map((p) => m.vert(p));
-    m.quad(v[0], v[1], v[2], v[3]);
-  };
   flat("road", top + LAYOUT.roadLift, roadLo, roadHi);
+  // Lane markings at standard lane widths, centred on the carriageway (white edge lines + dividers).
   const laneCount = Math.max(1, Number(lanes) || 1);
-  for (let i = 1; i < laneCount; i++) {
-    const c = roadLo + (roadWidth * i) / laneCount;
+  const laneWidth = standardLaneWidth(laneCount);
+  const markStart = (roadLo + roadHi) / 2 - (laneCount * laneWidth) / 2;
+  for (let i = 0; i <= laneCount; i++) {
+    const c = markStart + i * laneWidth;
     flat("lanes", top + LAYOUT.laneLift, c - LAYOUT.laneLineWidth / 2, c + LAYOUT.laneLineWidth / 2);
   }
 
@@ -222,4 +238,4 @@ function buildDeckFurniture(slab, { hasFootpath, lanes }) {
   return result;
 }
 
-module.exports = { buildDeckFurniture, GROUPS, LAYOUT, CRASH_BARRIER, RAILING };
+module.exports = { buildDeckFurniture, standardLaneWidth, GROUPS, LAYOUT, CRASH_BARRIER, RAILING };

@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import { state } from "./state.js";
-import { COLOR, IFCTYPES, getMaterialColor, getIsConcrete } from "./constants.js";
+import { COLOR, IFCTYPES, getMaterialColor, getMaterialStyle } from "./constants.js";
 import { setLoadingState, renderGroupsPanel } from "./ui.js";
 import { precomputeGroupBounds } from "./selection.js";
+import { fitLightingToModel } from "./viewer.js";
 
 // ── Loaders ──────────────────────────────────────────────────
 export async function loadOBJ(objPath) {
@@ -76,6 +77,7 @@ export async function loadOBJ(objPath) {
     state.modelGroup.position.y += 2;
     state.scene.add(state.modelGroup);
     state.modelGroup.updateMatrixWorld(true);
+    fitLightingToModel();
 
     document.getElementById("project-title").textContent = state.bridgeData?.bridge_id || "OBJ Bridge Model";
     document.getElementById("span-chip").textContent =
@@ -117,12 +119,12 @@ export function loadDefaultGroupsJSON() {
     groupsList.forEach((g) => {
       const colorHex = getMaterialColor(g.name);
       const color = new THREE.Color(colorHex);
-      const isConcrete = getIsConcrete(g.name);
+      const style = getMaterialStyle(g.name);
       state.groupIndex.get(g.name)?.forEach((id) => {
         state.meshMap.get(id)?.forEach((m) => {
           m.material.color.set(color);
-          m.material.roughness = isConcrete ? 0.8 : 0.35;
-          m.material.metalness = isConcrete ? 0.1 : 0.2;
+          m.material.roughness = style.roughness;
+          m.material.metalness = style.metalness;
           m.userData.originalColor = color.getHex();
           if (g.name.startsWith("_")) {
             m.visible = false;
@@ -271,12 +273,12 @@ export function loadDefaultGroupsJSON() {
   groupsList.forEach((g) => {
     const colorHex = getMaterialColor(g.name);
     const color = new THREE.Color(colorHex);
-    const isConcrete = getIsConcrete(g.name);
+    const style = getMaterialStyle(g.name);
     state.groupIndex.get(g.name)?.forEach((id) => {
       state.meshMap.get(id)?.forEach((m) => {
         m.material.color.set(color);
-        m.material.roughness = isConcrete ? 0.8 : 0.35;
-        m.material.metalness = isConcrete ? 0.1 : 0.2;
+        m.material.roughness = style.roughness;
+        m.material.metalness = style.metalness;
         m.userData.originalColor = color.getHex();
         if (g.name.startsWith("_")) {
           m.visible = false;

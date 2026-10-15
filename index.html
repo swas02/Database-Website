@@ -171,37 +171,24 @@
             <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
           </div>
 
-          <!-- Narrow the catalog list only; the hidden filter-* selects below drive model loading -->
           <div class="control-row mb-2">
-            <label class="text-muted" for="catalog-span">Span</label>
-            <select id="catalog-span" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="catalog-lanes">Lanes</label>
-            <select id="catalog-lanes" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
+            <label class="text-muted" for="filter-span">Span</label>
+            <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
           </div>
 
           <div class="control-row mb-2">
-            <label class="text-muted" for="catalog-footpath">Footpath</label>
-            <select id="catalog-footpath" class="form-select form-select-sm w-50" onchange="updateCatalog()"></select>
+            <label class="text-muted" for="filter-lanes">Lanes</label>
+            <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
           </div>
-        </div>
 
-        <!-- Hidden inputs to satisfy existing JS loading logic, hidden from user -->
-        <div style="display: none;" aria-hidden="true">
-          <select id="filter-span" onchange="onFilterChange()"></select>
-          <select id="filter-lanes" onchange="onFilterChange()"></select>
-          <select id="filter-footpath" onchange="onFilterChange()"></select>
-        </div>
-
-        <!-- Available Models Catalog -->
-        <div class="border-top border-secondary pt-3 d-flex flex-column">
-          <div class="settings-title mb-2">Available Models (<span id="catalog-count">0</span>)</div>
-
-          <div id="catalog-list" class="d-flex flex-column gap-2">
-            <!-- Populated dynamically as beautiful Cards -->
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-footpath">Footpath</label>
+            <select id="filter-footpath" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
           </div>
+
+          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge()">
+            <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
+          </button>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { state } from "./state.js";
-import { COLOR, getMaterialColor } from "./constants.js";
+import { COLOR, getMaterialColor, DECK_DIMS, standardLaneWidth } from "./constants.js";
 
 // Tab Navigation Explorer
 window.switchRightTab = function (tab) {
@@ -464,6 +464,45 @@ export function updatePropertyInspector(group) {
             <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.deck_slab.depth_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Concrete Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
             <tr><td class="text-muted p-0 py-1">Rebar Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (group && group.name.toLowerCase() === "carriageway" && state.bridgeData) {
+    const bd = state.bridgeData;
+    const lanes = Number(bd.lanes) || 2;
+    const total = Number(bd.total_width_m);
+    const laneWidth = standardLaneWidth(lanes);
+    const carriageway = lanes * laneWidth;
+    const row = (label, value) =>
+      `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Carriageway</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            ${row("Total Deck Width", total ? total.toFixed(2) + " m" : "N/A")}
+            ${row("Carriageway Width", carriageway.toFixed(2) + " m")}
+            ${row("Lanes", lanes)}
+            ${row("Lane Width", laneWidth.toFixed(2) + " m")}
+            ${row("Crash Barrier Width", DECK_DIMS.crashBarrierWidth.toFixed(2) + " m (each side)")}
+            ${row("Footpath", bd.has_footpath ? "Yes (one side)" : "No")}
+            ${bd.has_footpath ? row("Footpath Width", DECK_DIMS.footpathWidth.toFixed(1) + " m") : ""}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (group && group.name.toLowerCase() === "footpath") {
+    const row = (label, value) =>
+      `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Footpath</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <tbody>
+            ${row("Width", DECK_DIMS.footpathWidth.toFixed(1) + " m")}
+            ${row("Railing Plinth", DECK_DIMS.plinthWidth.toFixed(3) + " m")}
+            ${row("Height Above Deck", DECK_DIMS.footpathHeight.toFixed(1) + " m")}
           </tbody>
         </table>
       </div>
