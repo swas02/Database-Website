@@ -1720,3 +1720,5 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
 .award-body { flex: 0 0 13.25rem; }
 .award-media { flex: 1 1 0; }
 .award-media img { object-position: center 60%; }
+
+.band-title { font-size: clamp(2.6rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin: 0; }
