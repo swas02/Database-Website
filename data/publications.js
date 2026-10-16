@@ -1,6 +1,7 @@
 // Loads the lab's research outputs from data/research.json (edit that file, not this one).
 // Papers keep the order they have in the JSON; journals first, then conferences, then book chapters.
-import raw from "./research.json";
+// Fetched as plain JSON (not imported as a module) so it also works on servers that send it as application/json.
+const raw = await (await fetch(new URL("./research.json", import.meta.url))).json();
 
 const tag = (list, type) => (list || []).map((p) => ({ ...p, type }));
 
