@@ -21,13 +21,16 @@
    Also owns the theme / dropdown / fullscreen handlers
    (ui.js redefines theme/dropdown identically on the viewer page). */
 
+// Imported so Vite emits it with its hashed name; a runtime path would 404 in the build.
+import logoUrl from "../images/ssrr-logo.png";
+
 (function () {
   function renderTopNav(host) {
     const root = host.dataset.root || "./";
     host.innerHTML = `
       <div class="site-header-inner">
         <a href="${root}index.html" class="site-logo" aria-label="SSRR Lab home">
-          <img src="${root}images/ssrr-logo.png" alt="SSRR Lab, IIT Bombay" height="48">
+          <img src="${logoUrl}" alt="SSRR Lab, IIT Bombay" height="48">
         </a>
         <span class="site-page-name"><a href="${root}datasets.html">Datasets</a> / Bridge model library</span>
         <nav aria-label="Main" class="site-links">
