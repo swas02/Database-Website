@@ -46,9 +46,26 @@ function copyModelData() {
   };
 }
 
+// The research data is written into the script itself (dev and build), so no extra request is needed;
+// editing data/research.json re-triggers the transform. The fetch in publications.js is only a fallback for other servers.
+function inlineResearch() {
+  const marker = /const raw = await \(await fetch\(new URL\("\.\/research\.json", import\.meta\.url\)\)\)\.json\(\);/;
+  return {
+    name: "inline-research",
+    transform(code, id) {
+      if (!id.replace(/\\/g, "/").endsWith("/data/publications.js")) return null;
+      if (!marker.test(code)) this.error("inline-research: could not find the research.json fetch in data/publications.js");
+      const file = path.resolve(path.dirname(id), "research.json");
+      this.addWatchFile(file);
+      const json = fs.readFileSync(file, "utf-8");
+      return code.replace(marker, () => `const raw = ${JSON.stringify(JSON.parse(json))};`);
+    },
+  };
+}
+
 export default defineConfig({
   base: "./",
   publicDir: false,
-  plugins: [copyModelData()],
+  plugins: [inlineResearch(), copyModelData()],
   build: { outDir: "dist", emptyOutDir: true, chunkSizeWarningLimit: 1200, rollupOptions: { input: htmlPages() } },
 });

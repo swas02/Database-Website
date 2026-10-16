@@ -112,18 +112,18 @@ async function buildSupports({ bearingXs, girderZs, soffitY, lowestY }) {
       girderZs.forEach((z) => parts.forEach((make) => geoms.push(make().translate(x, 0, z)))),
     );
     const mesh = new THREE.Mesh(mergeGeometries(geoms));
-    mesh.name = name;
+    mesh.name = name.replace(/\s+/g, "_"); // addMesh matches the group by this name with spaces as underscores
     return { mesh, def: { name, part, partIDs: [partID] } };
   };
 
   return [
     // the sole plate reaches up to the girder soffit, which can sit a few cm above the lowest point
-    group("Bearings", "super", "injected_bearings_0", [
+    group("Pot Bearings", "super", "injected_bearings_0", [
       () => box(BEARING.basePlate.plan, baseBottom, potBottom),
       () => disc(BEARING.pot.diameter, potBottom, ptfeBottom),
+      () => disc(BEARING.ptfe.diameter, ptfeBottom, soleBottom), // PTFE pad, part of the pot bearing
       () => box(BEARING.solePlate, soleBottom, soffitY),
     ]),
-    group("PTFE Pads", "super", "injected_ptfe_0", [() => disc(BEARING.ptfe.diameter, ptfeBottom, soleBottom)]),
     group("Pedestals", "sub", "sub:injected_pedestals_0", [() => box(PEDESTAL.plan, capTop, baseBottom)]),
   ];
 }

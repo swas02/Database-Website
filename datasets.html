@@ -30,22 +30,51 @@
   </header>
 
   <main>
-    <section class="plain-hero">
+    <section class="ds-hero">
       <div class="container">
         <h1>Datasets</h1>
-        <p>Open data from the SSRR Lab. Each dataset has its own page.</p>
+        <p>Open data from the lab's work. Pick a dataset to browse it, inspect the details and download what you need.</p>
       </div>
     </section>
 
-    <section class="plain-section tint">
+    <section class="ds-section">
       <div class="container">
-        <ul class="dataset-list">
-          <li>
-            <div>
-              <h2>Bridge model library</h2>
-              <p>Standard 3D bridge models by location, type, span and number of lanes. Inspect the components and specifications, and download the data.</p>
-            </div>
-            <a href="dataset_1.html" class="btn btn-primary">Open</a>
+        <ul class="ds-grid">
+          <li class="ds-card ds-feature">
+            <a class="ds-link" href="dataset_1.html" aria-label="Open the bridge model library">
+              <div class="ds-art" aria-hidden="true">
+                <svg viewBox="0 0 480 220" preserveAspectRatio="xMidYMid slice">
+                  <rect width="480" height="220" fill="#F3F7E4"/>
+                  <g fill="none" stroke="#90AF13" stroke-width="2" opacity="0.5">
+                    <path d="M0 150H480"/><path d="M0 168H480" opacity="0.5"/>
+                  </g>
+                  <rect x="0" y="118" width="480" height="14" fill="#586B0B"/>
+                  <rect x="0" y="132" width="480" height="10" fill="#90AF13"/>
+                  <g fill="#586B0B">
+                    <rect x="70" y="142" width="26" height="78"/><rect x="227" y="142" width="26" height="78"/><rect x="384" y="142" width="26" height="78"/>
+                    <rect x="62" y="136" width="42" height="8"/><rect x="219" y="136" width="42" height="8"/><rect x="376" y="136" width="42" height="8"/>
+                  </g>
+                  <g stroke="#586B0B" stroke-width="3"><path d="M0 104V118M40 104V118M80 104V118M120 104V118M160 104V118M200 104V118M240 104V118M280 104V118M320 104V118M360 104V118M400 104V118M440 104V118M480 104V118"/><path d="M0 104H480"/></g>
+                </svg>
+              </div>
+              <div class="ds-body">
+                <p class="ds-kicker">3D models</p>
+                <h2>Bridge model library</h2>
+                <p>Standard bridge models for different locations, structure types, spans and numbers of lanes. Inspect every component, read the specifications and download the data.</p>
+                <ul class="ds-facts" aria-label="Contents">
+                  <li><strong>190</strong><span>models</span></li>
+                  <li><strong>2</strong><span>bridge types</span></li>
+                  <li><strong>2</strong><span>structures</span></li>
+                  <li><strong>OBJ</strong><span>+ JSON</span></li>
+                </ul>
+                <span class="ds-open">Open dataset <span aria-hidden="true">&rarr;</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="ds-card ds-soon">
+            <p class="ds-kicker">In preparation</p>
+            <h2>More datasets</h2>
+            <p>New datasets are added here as the lab releases them. Each one gets its own page.</p>
           </li>
         </ul>
       </div>

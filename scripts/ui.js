@@ -172,6 +172,7 @@ export function getCleanGroupName(name) {
   if (nameLower === "chord" || nameLower === "cord") {
     return "Chord";
   }
+  if (nameLower === "pot bearings") return name;
   if (nameLower.includes("bearing") || nameLower.includes("end stiffener") || nameLower.includes("end stifferen")) {
     return "Bearing Stiffeners";
   }
@@ -191,6 +192,42 @@ export function getCleanGroupName(name) {
     return "Piles";
   }
   return name.replace(/_/g, " ");
+}
+
+// Number of separate solids in a mesh (a pile, a girder...), found by joining triangles that share a vertex.
+// A group's part IDs are IFC fragments, not members, so they overcount (40 "piles" for 4).
+function solidCount(mesh) {
+  if (mesh.userData.solids != null) return mesh.userData.solids;
+  const pos = mesh.geometry.attributes.position;
+  const parent = new Map();
+  const find = (a) => {
+    while (parent.get(a) !== a) {
+      parent.set(a, parent.get(parent.get(a)));
+      a = parent.get(a);
+    }
+    return a;
+  };
+  const key = (i) => `${Math.round(pos.getX(i) * 1000)},${Math.round(pos.getY(i) * 1000)},${Math.round(pos.getZ(i) * 1000)}`;
+  const index = mesh.geometry.index;
+  const at = (n) => (index ? index.getX(n) : n);
+  const total = index ? index.count : pos.count;
+  for (let n = 0; n + 2 < total; n += 3) {
+    const keys = [key(at(n)), key(at(n + 1)), key(at(n + 2))];
+    keys.forEach((k) => { if (!parent.has(k)) parent.set(k, k); });
+    parent.set(find(keys[1]), find(keys[0]));
+    parent.set(find(keys[2]), find(keys[0]));
+  }
+  const roots = new Set();
+  parent.forEach((_, k) => roots.add(find(k)));
+  return (mesh.userData.solids = roots.size);
+}
+
+// Members in a group, counted on one copy of it (the combined view repeats the pier at each end)
+function groupSolidCount(groupName) {
+  const ids = state.groupIndex.get(groupName);
+  if (!ids || !ids.size) return 0;
+  const first = state.meshMap.get(ids.values().next().value);
+  return first?.[0] ? solidCount(first[0]) : ids.size;
 }
 
 export function renderGroupsPanel(list) {
@@ -225,7 +262,7 @@ export function renderGroupsPanel(list) {
       colorHex = getMaterialColor(g.name);
     }
 
-    const count = state.groupIndex.get(g.name)?.size || 0;
+    const count = groupSolidCount(g.name);
 
     const div = document.createElement("div");
     div.className = "group-item";
