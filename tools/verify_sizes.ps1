@@ -1,8 +1,9 @@
 # verify_sizes.ps1
+$ProjectRoot = Split-Path $PSScriptRoot -Parent
 # PowerShell script to audit the sizes of .ifc, .json, and .obj files.
 # Calculates ratio: K = (ifc_size + json_size) / obj_size for each model configuration.
 
-$registryFile = Join-Path $PSScriptRoot "registry_flat.json"
+$registryFile = Join-Path $ProjectRoot "registry_flat.json"
 if (-not (Test-Path $registryFile)) {
     Write-Error "registry_flat.json not found."
     exit 1
@@ -22,8 +23,8 @@ $totalObj = 0
 $count = 0
 
 foreach ($entry in $registry) {
-    $ifcPath = Join-Path $PSScriptRoot $entry.ifc
-    $jsonPath = Join-Path $PSScriptRoot $entry.json
+    $ifcPath = Join-Path $ProjectRoot $entry.ifc
+    $jsonPath = Join-Path $ProjectRoot $entry.json
     $objPath = $ifcPath -replace '\.ifc$', '.obj'
     
     if ((Test-Path $ifcPath) -and (Test-Path $jsonPath) -and (Test-Path $objPath)) {

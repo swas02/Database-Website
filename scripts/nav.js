@@ -23,25 +23,31 @@
 
 (function () {
   function renderTopNav(host) {
+    const root = host.dataset.root || "./";
     host.innerHTML = `
-      <a href="index.html" class="nav-brand" aria-label="BridgeLCCA">
-        <i class="bi bi-bezier2 text-primary" aria-hidden="true"></i>
-        <span>BridgeLCCA</span>
-      </a>
-      <div class="nav-dropdown" id="more-menu">
-        <button class="nav-dropdown-trigger" onclick="toggleDropdownMenu(event)" aria-label="More options" aria-haspopup="menu">
-          <i class="bi bi-three-dots" aria-hidden="true"></i>
-        </button>
-        <div class="nav-dropdown-content" id="more-menu-content" role="menu">
-          <a href="#" onclick="toggleSiteTheme(event)">
-            <i class="bi bi-sun-fill me-2" id="theme-toggle-icon" aria-hidden="true"></i>
-            <span id="theme-toggle-text">Light Mode</span>
-          </a>
-          <a href="#" onclick="toggleAppFullscreen(event)">
-            <i class="bi bi-arrows-fullscreen me-2" id="fullscreen-icon" aria-hidden="true"></i>
-            <span id="fullscreen-text">Fullscreen</span>
-          </a>
-        </div>
+      <div class="site-header-inner">
+        <a href="${root}index.html" class="site-logo" aria-label="SSRR Lab home">
+          <img src="${root}images/ssrr-logo.png" alt="SSRR Lab, IIT Bombay" height="48">
+        </a>
+        <span class="site-page-name"><a href="${root}datasets.html">Datasets</a> / Bridge model library</span>
+        <nav aria-label="Main" class="site-links">
+          <a href="${root}research.html">Research</a>
+          <a href="${root}index.html#awards">Awards</a>
+          <a href="${root}index.html#software">Software</a>
+          <a href="${root}datasets.html" class="active">Datasets</a>
+          <a href="${root}index.html#contact">Contact</a>
+          <div class="nav-dropdown" id="more-menu">
+            <button class="nav-dropdown-trigger" onclick="toggleDropdownMenu(event)" aria-label="More options" aria-haspopup="menu">
+              <i class="bi bi-three-dots" aria-hidden="true"></i>
+            </button>
+            <div class="nav-dropdown-content" id="more-menu-content" role="menu">
+              <a href="#" onclick="toggleAppFullscreen(event)">
+                <i class="bi bi-arrows-fullscreen me-2" id="fullscreen-icon" aria-hidden="true"></i>
+                <span id="fullscreen-text">Fullscreen</span>
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>`;
   }
 
@@ -58,30 +64,8 @@
     }
   });
 
-  // ── Theme (same storage key as ui.js) ──
-  function updateThemeUI(theme) {
-    const icon = document.getElementById("theme-toggle-icon");
-    const text = document.getElementById("theme-toggle-text");
-    if (theme === "light") {
-      if (icon) icon.className = "bi bi-moon-fill me-2";
-      if (text) text.innerText = "Dark Mode";
-    } else {
-      if (icon) icon.className = "bi bi-sun-fill me-2";
-      if (text) text.innerText = "Light Mode";
-    }
-  }
-
-  const savedTheme = localStorage.getItem("bridge-lcca-theme") || "dark";
-  document.documentElement.setAttribute("data-bs-theme", savedTheme);
-
-  window.toggleSiteTheme = function (event) {
-    if (event) event.preventDefault();
-    const html = document.documentElement;
-    const newTheme = (html.getAttribute("data-bs-theme") || "dark") === "dark" ? "light" : "dark";
-    html.setAttribute("data-bs-theme", newTheme);
-    localStorage.setItem("bridge-lcca-theme", newTheme);
-    updateThemeUI(newTheme);
-  };
+  // ── Theme: light only ──
+  document.documentElement.setAttribute("data-bs-theme", "light");
 
   // ── Fullscreen ──
   window.toggleAppFullscreen = function (event) {
@@ -108,5 +92,4 @@
 
   // ── Render all placeholders (script is loaded at end of body) ──
   document.querySelectorAll("[data-topnav]").forEach(renderTopNav);
-  updateThemeUI(savedTheme);
 })();

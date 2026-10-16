@@ -24,28 +24,28 @@ npm install
 ### Step 2: Convert IFC to OBJ
 Run the Node converter script to parse all `.ifc` files and output grouped `.obj` files in the same directory:
 ```bash
-node convert_ifc_to_obj.js
+node tools/convert_ifc_to_obj.js
 ```
 
 ### Step 3: Verify File Headers
 Verify that the IFC files correspond to the folder names they reside in:
 ```bash
-python verify_model_paths.py
+python tools/verify_model_paths.py
 ```
 
 ### Step 4: Regenerate Registry Databases
 Scan the folder structure and regenerate the website index databases (`registry.json` and `registry_flat.json`) listing both the `.ifc` and generated `.obj` paths:
 ```bash
-python reg.py
+python tools/reg.py
 ```
 
 ---
 
 ## 3. Script References
 
-* [convert_ifc_to_obj.js](./convert_ifc_to_obj.js) — Node.js CLI script using `web-ifc` to output grouped `.obj` files.
-* [verify_model_paths.py](./verify_model_paths.py) — Python script checking IFC file headers for correct naming conventions.
-* [reg.py](./reg.py) — Python script generating registry database.
+* [convert_ifc_to_obj.js](./tools/convert_ifc_to_obj.js) — Node.js CLI script using `web-ifc` to output grouped `.obj` files.
+* [verify_model_paths.py](./tools/verify_model_paths.py) — Python script checking IFC file headers for correct naming conventions.
+* [reg.py](./tools/reg.py) — Python script generating registry database.
 
 ---
 
@@ -60,3 +60,17 @@ The following group names are extracted and mapped across the current models:
 * `Pier Cap`
 * `Pile`
 * `Pile Cap`
+
+---
+
+## 4. Web build (Vite)
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # outputs dist/ (bundled JS/CSS + registry, steel data, test.lcca and every registered OBJ + groups.json (no IFC))
+npm run build:complete  # (or: npm run build -- --complete) reg.py -> regenerate every OBJ -> build
+npm run preview  # serve dist/ locally
+```
+
+The build config is [vite.config.mjs](./vite.config.mjs). Three.js comes from npm; Bootstrap and D3 still load from CDN.

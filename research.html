@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | SSRR Lab</title>
+  <meta name="description" content="Research focus areas, publications and awards of the SSRR Lab, IIT Bombay.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/ssrr-logo.png" alt="SSRR Lab, IIT Bombay" height="64">
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="research.html" class="nav-link active">Research</a></li>
+          <li><a href="index.html#awards" class="nav-link">Awards</a></li>
+          <li><a href="index.html#software" class="nav-link">Software</a></li>
+          <li><a href="datasets.html" class="nav-link">Datasets</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="plain-hero">
+      <div class="container">
+        <h1>Research</h1>
+        <p>Publications and awards from the SSRR Lab.</p>
+      </div>
+    </section>
+
+    <section class="plain-section tint" id="publications">
+      <div class="container">
+        <h2 class="tiles-heading">Publications</h2>
+        <div id="pub-filters" class="pub-filters" role="group" aria-label="Filter publications by type"></div>
+        <div id="pub-list" class="pub-list"></div>
+      </div>
+    </section>
+
+    <section class="plain-section" id="awards">
+      <div class="container">
+        <h2 class="tiles-heading">Awards</h2>
+        <ul id="award-list" class="award-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="plain-footer">
+    <div class="container">
+      <p>SSRR Lab, Department of Civil Engineering, IIT Bombay</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/research.js"></script>
+</body>
+</html>

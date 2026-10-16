@@ -36,3 +36,7 @@ data/compare_pier_cap.py
 design_system/
 migrate_to_subfolders.py
 plots/
+.agents
+.claude
+skills-lock.json
+.gitattributes

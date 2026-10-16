@@ -1,0 +1,112 @@
+{
+  "_how_to_add": "Add one object per item inside the matching list below, in the order you want it shown (the site does not re-sort). Keep the commas between objects. Do not edit the keys starting with an underscore. Use \"status\": \"Submitted\" for papers that are not published yet; they are listed but not counted as publications.",
+  "_format_publication": { "year": 2024, "title": "Paper title", "authors": "Author, A., & Author, B.", "venue": "Journal or conference name, volume, pages", "link": "https://doi.org/... (optional, leave empty if none)", "status": "Submitted (optional, omit when published)" },
+  "_format_award": { "year": 2024, "event": "Short event name, e.g. STESSA 2026", "title": "Name of the award", "detail": "Event, place, dates (optional)", "link": "", "image": "images/awards/photo-name.jpg (optional; put the file in images/awards/)" },
+
+  "journalPapers": [
+    {
+      "year": 2025,
+      "title": "An Integrated Life Cycle Cost Assessment Framework Incorporating Cost of Carbon Dioxide Equivalent for Buildings Subjected to Natural Hazards",
+      "authors": "Pajgade, R. P., Raghunandan, M., & Ghosh, S.",
+      "venue": "Sustainable Cities and Society, 126, 106394",
+      "link": ""
+    }
+  ],
+
+  "conferencePapers": [
+    {
+      "year": 2025,
+      "title": "A comparative life cycle cost assessment of short-span road bridges with prestressed concrete girders and steel girders",
+      "authors": "Pajgade, R. P., Mahasrankintakam, A. B., Jha, M. K., Ghosh, S., & Raghunandan, M.",
+      "venue": "9th International Symposium on Life Cycle Civil Engineering (IALCCE 2025), Melbourne, Australia",
+      "link": ""
+    },
+    {
+      "year": 2026,
+      "title": "Development of an Optimisation-Based Steel Plate Girder Design Module in Osdag",
+      "authors": "Karia, P., Kumari, A., Krishnan, S. N. L. A., Mahasrankintakam, A. B., Khare, N., Pajgade, R. P., Raghunandan, M., & Ghosh, S.",
+      "venue": "International Conference on Sustainable Practices and Materials in Civil Engineering (SPMCE 2026), NIT Jamshedpur, Jharkhand, India",
+      "link": ""
+    },
+    {
+      "year": 2026,
+      "title": "A Life-Cycle Sustainability Assessment Framework for Bridges with Parametric Evaluation of Social and Environmental Factors",
+      "authors": "Khare, N., Mahasrankintakam, A. B., Sulakhe, R. P., Gupta, S., Pajgade, R. P., Tankala, S., Raghunandan, M., & Ghosh, S.",
+      "venue": "3rd International Conference on Net-Zero Built Environment: Innovations in Materials, Structures, and Management Practices (Net-Zero Future 2026), Darmstadt, Germany",
+      "link": ""
+    },
+    {
+      "year": 2026,
+      "title": "Development of Life Cycle Cost Assessment Tool for Short-Span Bridges",
+      "authors": "Mahasrankintakam, A. B., Pajgade, R. P., Gupta, S., Ghosh, S., Raghunandan, M., George, C., Najwani, G., & Karia, P. C.",
+      "venue": "12th International Conference on the Behaviour of Steel Structures in Seismic Areas (STESSA 2026), New Delhi, India",
+      "link": ""
+    },
+    {
+      "year": 2026,
+      "title": "Life Cycle Cost Comparison of Steel Bridges Across Seismic Zones",
+      "authors": "Pajgade, R. P., Tankala, S., Raghunandan, M., Ghosh, S., Mahasrankintakam, A. B., Chikhalikar, S., & Jha, M. K.",
+      "venue": "12th International Conference on the Behaviour of Steel Structures in Seismic Areas (STESSA 2026), New Delhi, India",
+      "link": ""
+    },
+    {
+      "year": 2026,
+      "title": "OsdagBridge: An Open-Source Solution for Short-Span Steel Bridge Design",
+      "authors": "Khare, N., Donde, A., Ghosh, S., Karia, P. C., Mahasrankintakam, B. A., Pajgade, R. P., & Raghunandan, M.",
+      "venue": "12th International Conference on the Behaviour of Steel Structures in Seismic Areas (STESSA 2026), New Delhi, India",
+      "link": ""
+    },
+    {
+      "year": 2027,
+      "title": "Bridge Life Cycle Cost Analysis Using the 3psLCCA Software: A Demonstration with Short-Span Highway Bridges",
+      "authors": "Gupta, S., George, C., Sulakhe, R., Pajgade, R., Babu, A., Khare, N., Raghunandan, M., & Ghosh, S.",
+      "venue": "IABSE Symposium Guwahati 2027, Guwahati, India",
+      "link": "",
+      "status": "Submitted"
+    },
+    {
+      "year": 2027,
+      "title": "Decision Support for Bridge Design Selection using 3psLCCA",
+      "authors": "George, C., Gupta, S., Sulakhe, R., Pajgade, R., Babu, A., Khare, N., Raghunandan, M., & Ghosh, S.",
+      "venue": "IABSE Symposium Guwahati 2027, Guwahati, India",
+      "link": "",
+      "status": "Submitted"
+    },
+    {
+      "year": 2027,
+      "title": "Life Cycle Thinking for Sustainable Bridge Infrastructure: Framework Development and Implementation Challenges",
+      "authors": "Ghosh, S., Raghunandan, M., Pajgade, R., Khare, N., Babu, A., George, C., Gupta, S., & Sulakhe, R.",
+      "venue": "IABSE Symposium Guwahati 2027, Guwahati, India",
+      "link": "",
+      "status": "Submitted"
+    }
+  ],
+
+  "bookChapters": [],
+  "awards": [
+    {
+      "year": 2026,
+      "event": "SPMCE 2026",
+      "title": "Best Paper Presentation Award",
+      "detail": "SPMCE 2026, International Conference on Sustainable Practices and Materials in Civil Engineering, NIT Jamshedpur. 28\u201330 May 2026.",
+      "link": "",
+      "image": "images/awards/1782200975856.jpg"
+    },
+    {
+      "year": 2026,
+      "event": "STESSA 2026",
+      "title": "Best Pitch Award: OsdagBridge",
+      "detail": "Industry Impact Challenge (winner, Doctoral/Postdoctoral Category), STESSA 2026, IIT Delhi, India. 7\u20139 September 2026.",
+      "link": "",
+      "image": "images/awards/stessa_industry.jpeg"
+    },
+    {
+      "year": 2026,
+      "event": "STESSA 2026",
+      "title": "Best Paper Award",
+      "detail": "STESSA 2026, 12th International Conference on Behaviour of Steel Structures in Seismic Areas, IIT Delhi, India. 7\u20139 September 2026.",
+      "link": "",
+      "image": "images/awards/stessa_best_paper.jpeg"
+    }
+  ]
+}

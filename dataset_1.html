@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bridge Model Library | SSRR Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SSRR Lab, IIT Bombay: browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
+  <meta name="theme-color" content="#f8fafc">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2390AF13' d='M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm12 3A1.5 1.5 0 0 1 13.5 12h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#FAFBF7;color:#1B2118;font-family:system-ui,sans-serif;z-index:9999;text-align:center;padding:24px;">
+      This page needs JavaScript to render 3D bridge models. Please enable JavaScript and reload.
+    </div>
+  </noscript>
+
+  <!-- Site header, same look as the lab home page (rendered by scripts/nav.js) -->
+  <header id="hud-header" class="site-header" data-topnav data-active="datasets" data-root="./"></header>
+
+  <div id="app-container">
+
+    <!-- ── Viewport Area ── -->
+    <main id="viewport-container" aria-label="3D model viewport">
+
+
+
+
+      <!-- Hidden elements to prevent script reference errors -->
+      <span id="project-title" style="display: none;"></span>
+      <span id="span-chip" style="display: none;"></span>
+
+      <!-- Current model summary -->
+      <div id="model-chip" class="model-chip" hidden aria-live="polite"></div>
+      <div class="viewer-hint" aria-hidden="true">Drag to rotate · Right-drag to pan · Scroll to zoom</div>
+
+      <!-- Overlay Controls -->
+      <div id="hud-triggers" role="toolbar" aria-label="Viewer controls">
+        <button class="hud-btn active" id="btn-mode-rotate" onclick="setViewerMode('rotate')"
+          title="Rotate Mode (R)"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> <span class="hud-btn-text">Rotate</span></button>
+        <button class="hud-btn" id="btn-mode-pan" onclick="setViewerMode('pan')" title="Pan Mode (P)"><i
+            class="bi bi-arrows-move" aria-hidden="true"></i> <span class="hud-btn-text">Pan</span></button>
+
+        <div class="hud-divider" role="presentation"></div>
+
+        <button class="hud-btn" onclick="setCameraPreset('top')" title="Top View (T)" aria-label="Top view">
+          <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75"/>
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
+          </svg> <span class="hud-btn-text">Top</span></button>
+        <button class="hud-btn" onclick="setCameraPreset('front')" title="Front View (F)" aria-label="Front view">
+          <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75"/>
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
+          </svg> <span class="hud-btn-text">Front</span></button>
+        <button class="hud-btn" onclick="setCameraPreset('side')" title="Side View (S)" aria-label="Side view">
+          <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75"/>
+          </svg> <span class="hud-btn-text">Side</span></button>
+
+        <div class="hud-divider" role="presentation"></div>
+
+        <button class="hud-btn" onclick="zoomViewer(1)" title="Zoom In (+)" aria-label="Zoom in"><i
+            class="bi bi-plus-lg" aria-hidden="true"></i></button>
+        <button class="hud-btn" onclick="zoomViewer(-1)" title="Zoom Out (-)" aria-label="Zoom out"><i
+            class="bi bi-dash-lg" aria-hidden="true"></i></button>
+        <button class="hud-btn" onclick="resetAllFilters(); setCameraPreset('home'); setViewerMode('rotate');"
+          title="Reset View (H)"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> <span
+            class="hud-btn-text">Reset</span></button>
+      </div>
+    </main>
+
+    <!-- Left Toggle button (hidden initially because left panel is open) -->
+    <button id="left-trigger" class="sidebar-trigger" style="display:none" onclick="toggleLeftPanel()"
+      aria-label="Open model library" title="Model Library ( [ )"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+
+    <!-- Right Toggle button (visible initially because right panel is collapsed) -->
+    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()"
+      aria-label="Open bridge explorer" title="Bridge Explorer ( ] )"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+
+    <!-- ── Side stack: Model Library on top, Bridge Explorer below ── -->
+    <div id="side-stack">
+    <!-- ── Left Panel (Bridge Model Library) ── -->
+    <aside id="left-panel" class="dashboard-panel" aria-label="Model library">
+      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleLeftPanel()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeftPanel()}">
+        <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Model Library</div>
+        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+      </div>
+
+      <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
+
+        <!-- Primary Filters -->
+        <div class="settings-group mb-0">
+          <div class="settings-title">Primary Filters</div>
+
+          <div class="filter-grid">
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-location">Location</label>
+            <select id="filter-location" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-type">Type</label>
+            <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-structure">Structure</label>
+            <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-span">Span</label>
+            <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-lanes">Lanes</label>
+            <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          <div class="control-row mb-2">
+            <label class="text-muted" for="filter-footpath">Footpath</label>
+            <select id="filter-footpath" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+          </div>
+
+          </div>
+
+          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge(true)">
+            <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
+          </button>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ── Right Panel (Explorer & Inspector) ── -->
+    <aside id="right-panel" class="dashboard-panel collapsed" aria-label="Bridge explorer">
+      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleRightPanel()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRightPanel()}">
+        <div class="panel-title"><i class="bi bi-layers-half" aria-hidden="true"></i> Bridge Explorer</div>
+        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+      </div>
+
+      <div class="custom-tabs" role="tablist" aria-label="Explorer sections">
+        <div class="tab-btn active" id="tab-groups" role="tab" tabindex="0" aria-selected="true"
+          aria-controls="content-groups" onclick="switchRightTab('groups')">Groups</div>
+        <div class="tab-btn" id="tab-meta" role="tab" tabindex="0" aria-selected="false" aria-controls="content-meta"
+          onclick="switchRightTab('meta')">Specs</div>
+        <div class="tab-btn" id="tab-lcca" role="tab" tabindex="0" aria-selected="false" aria-controls="content-lcca"
+          onclick="switchRightTab('lcca')">LCCA</div>
+        <div class="tab-btn" id="tab-downloads" role="tab" tabindex="0" aria-selected="false"
+          aria-controls="content-downloads" onclick="switchRightTab('downloads')">Downloads</div>
+      </div>
+
+      <div class="panel-content">
+        <!-- TAB 1: GROUPS CHECKLIST -->
+        <div id="content-groups" role="tabpanel" aria-labelledby="tab-groups">
+          <div id="groups-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- TAB 2: SPECIFICATIONS PANEL -->
+        <div id="content-meta" role="tabpanel" aria-labelledby="tab-meta" style="display:none">
+          <div id="meta-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- TAB 3: LCCA PANEL -->
+        <div id="content-lcca" role="tabpanel" aria-labelledby="tab-lcca" style="display:none">
+          <button type="button" class="lcca-back" onclick="switchRightTab('groups')"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back to model</button>
+          <div id="lcca-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- TAB 4: DOWNLOADS PANEL -->
+        <div id="content-downloads" role="tabpanel" aria-labelledby="tab-downloads" style="display:none">
+          <div class="inspector-grid" id="downloads-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </aside>
+    </div>
+
+  </div>
+
+  <footer class="site-footer-strip">SSRR Lab, Department of Civil Engineering, IIT Bombay</footer>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./scripts/nav.js"></script>
+  <script>
+    // ── Keyboard shortcuts (ignored while typing in a form field) ──
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = (e.target.tagName || "").toLowerCase();
+      if (tag === "input" || tag === "select" || tag === "textarea" || e.target.isContentEditable) return;
+
+      switch (e.key.toLowerCase()) {
+        case "r": if (window.setViewerMode) setViewerMode("rotate"); break;
+        case "p": if (window.setViewerMode) setViewerMode("pan"); break;
+        case "t": if (window.setCameraPreset) setCameraPreset("top"); break;
+        case "f": if (window.setCameraPreset) setCameraPreset("front"); break;
+        case "s": if (window.setCameraPreset) setCameraPreset("side"); break;
+        case "h": if (window.setCameraPreset) setCameraPreset("home"); break;
+        case "l": if (window.toggleLCCADashboardHUD) toggleLCCADashboardHUD(); break;
+        case "+": case "=": if (window.zoomViewer) zoomViewer(1); break;
+        case "-": case "_": if (window.zoomViewer) zoomViewer(-1); break;
+        case "[": if (window.openSidebarSection) openSidebarSection("left"); break;
+        case "]": if (window.openSidebarSection) openSidebarSection("right"); break;
+      }
+    });
+
+    // ── Keyboard activation + aria-selected sync for the custom tab buttons ──
+    document.querySelectorAll(".tab-btn").forEach((tab) => {
+      tab.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          tab.click();
+        }
+      });
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach((t) =>
+          t.setAttribute("aria-selected", t === tab ? "true" : "false"));
+      });
+    });
+  </script>
+  <script type="module" src="./scripts/app.js"></script>
+</body>
+
+</html>

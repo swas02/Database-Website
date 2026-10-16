@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { OrbitControls } from "https://unpkg.com/three@0.170.0/examples/jsm/controls/OrbitControls.js";
-import { RoomEnvironment } from "https://unpkg.com/three@0.170.0/examples/jsm/environments/RoomEnvironment.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { state } from "./state.js";
 
 // Key light, re-fitted to each model (shadow frustum)

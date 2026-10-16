@@ -43,7 +43,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 IFC_DIR = BASE_DIR / "IFC"
 OUTPUT = BASE_DIR / "registry.json"
 OUTPUT_FLAT = BASE_DIR / "registry_flat.json"

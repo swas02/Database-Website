@@ -15,7 +15,7 @@ def calculate_sha256(filepath):
     return h.hexdigest()
 
 def verify_models():
-    base_dir = Path(__file__).parent
+    base_dir = Path(__file__).resolve().parent.parent
     ifc_dir = base_dir / "IFC"
     
     if not ifc_dir.exists():

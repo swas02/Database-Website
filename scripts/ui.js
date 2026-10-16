@@ -102,15 +102,15 @@ export function setLoadingState(text) {
       overlay.style.left = "0";
       overlay.style.width = "100%";
       overlay.style.height = "100%";
-      overlay.style.background = "rgba(15, 23, 42, 0.9)";
+      overlay.style.background = "rgba(250, 251, 247, 0.92)";
       overlay.style.display = "flex";
       overlay.style.flexDirection = "column";
       overlay.style.alignItems = "center";
       overlay.style.justifyContent = "center";
       overlay.style.zIndex = "999";
       overlay.innerHTML = `
-        <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem; color: #3b82f6 !important;"></div>
-        <div id="loading-text" class="text-white" style="font-family:'Outfit'; font-size: 14px; font-weight:500;"></div>
+        <div class="spinner-border mb-3" style="width: 3rem; height: 3rem; color: #90AF13 !important;"></div>
+        <div id="loading-text" style="font-family:'Inter', system-ui, sans-serif; font-size: 14px; font-weight:500; color: #1B2118;"></div>
       `;
       state.viewportContainer.appendChild(overlay);
     }
@@ -870,23 +870,6 @@ export function renderDownloads(bridgeId, ifcPath) {
     `;
   }
 
-  // 4. IFC Model (Always rendered)
-  if (ifcPath) {
-    container.innerHTML += `
-      <div class="metric-card mb-0">
-        <span class="metric-header">3D CAD Model</span>
-        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}.ifc</div>
-            <div class="text-muted" style="font-size: 9px;">IFC Model File • Source</div>
-          </div>
-          <a href="${ifcPath}" download="${bridgeId}.ifc" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        </div>
-      </div>
-    `;
-  }
-
-  // 5. JSON Schema (Always rendered)
   if (jsonPath) {
     container.innerHTML += `
       <div class="metric-card mb-0">
@@ -920,41 +903,8 @@ document.addEventListener("click", () => {
   }
 });
 
-// ── Theme Switching Handler ──
-const savedTheme = localStorage.getItem("bridge-lcca-theme") || "dark";
-document.documentElement.setAttribute("data-bs-theme", savedTheme);
-
-window.toggleSiteTheme = function (event) {
-  if (event) event.preventDefault();
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute("data-bs-theme") || "dark";
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  
-  html.setAttribute("data-bs-theme", newTheme);
-  localStorage.setItem("bridge-lcca-theme", newTheme);
-  
-  updateThemeUI(newTheme);
-};
-
-function updateThemeUI(theme) {
-  const icon = document.getElementById("theme-toggle-icon");
-  const text = document.getElementById("theme-toggle-text");
-  
-  if (theme === "light") {
-    if (icon) icon.className = "bi bi-moon-fill me-2";
-    if (text) text.innerText = "Dark Mode";
-  } else {
-    if (icon) icon.className = "bi bi-sun-fill me-2";
-    if (text) text.innerText = "Light Mode";
-  }
-}
-
-// Call updateThemeUI on load
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => updateThemeUI(savedTheme));
-} else {
-  setTimeout(() => updateThemeUI(savedTheme), 50);
-}
+// ── Theme: light only ──
+document.documentElement.setAttribute("data-bs-theme", "light");
 
 // ── LCCA Rendering Functions ──
 const MASTER_LABELS = {

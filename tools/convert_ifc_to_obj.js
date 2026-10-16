@@ -11,7 +11,7 @@ const WebIFC = require("web-ifc");
 const { buildDeckFurniture, GROUPS: FURNITURE_GROUPS } = require("./barrier_geometry");
 
 // Constants
-const BASE_DIR = __dirname;
+const BASE_DIR = path.join(__dirname, "..");
 const REGISTRY_FILE = path.join(BASE_DIR, "registry_flat.json");
 
 function applyMatrix(v, m) {

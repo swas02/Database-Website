@@ -93,7 +93,7 @@ function girderSoffits(superGroup) {
 // (one colour per group); returns [{ mesh, def }] with the group definition to list it under.
 async function buildSupports({ bearingXs, girderZs, soffitY, lowestY }) {
   if (!girderZs.length) return [];
-  const { mergeGeometries } = await import("https://unpkg.com/three@0.170.0/examples/jsm/utils/BufferGeometryUtils.js");
+  const { mergeGeometries } = await import("three/addons/utils/BufferGeometryUtils.js");
 
   const capTop = lowestY - BEARING_GAP;
   const baseBottom = capTop + PEDESTAL.height;
@@ -141,7 +141,7 @@ export async function loadOBJ(objPath, { subObjPath = null, span = 0 } = {}) {
   state.hovered.clear();
 
   try {
-    const { OBJLoader } = await import("https://unpkg.com/three@0.170.0/examples/jsm/loaders/OBJLoader.js");
+    const { OBJLoader } = await import("three/addons/loaders/OBJLoader.js");
     const loader = new OBJLoader();
     const loadFile = (path) => new Promise((resolve, reject) => loader.load(path, resolve, undefined, reject));
 
@@ -456,7 +456,7 @@ function updateGround(size) {
   const extent = Math.max(size.x, size.z) * 2.5;
   const divisions = Math.max(10, Math.round(extent / 5));
   const dark = document.documentElement.getAttribute("data-bs-theme") !== "light";
-  const grid = new THREE.GridHelper(extent, divisions, dark ? 0x4a5a78 : 0x94a3b8, dark ? 0x2b3752 : 0xcbd5e1);
+  const grid = new THREE.GridHelper(extent, divisions, dark ? 0x4a5a78 : 0xB9C1AE, dark ? 0x2b3752 : 0xD9DECF);
   grid.material.transparent = true;
   grid.material.opacity = 0.55;
   // Ground level: the top of the pile caps when the substructure is shown (piles go below it), else the model's base
