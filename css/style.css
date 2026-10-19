@@ -1805,3 +1805,113 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
 
 /* Logo: one fixed width on every screen and window size */
 .logo-link img, .site-logo img { display: block; width: 160px; height: auto; max-width: none; }
+
+/* ==========================================================================
+   Mobile (<= 800px): compact header with a menu button, shared by every page
+   ========================================================================== */
+.nav-toggle { display: none; }
+@media (max-width: 800px) {
+  .site-header { height: auto; padding: 4px 0; }
+  .header-inner { flex-wrap: nowrap; gap: 12px; }
+  .logo-link img, .site-logo img { width: 110px; }
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; margin-right: -10px;
+    background: none; border: 0; border-radius: 6px; color: var(--text-primary); cursor: pointer;
+  }
+  .nav-toggle:hover, .site-header.nav-open .nav-toggle { background: var(--brand-subtle); }
+  .nav-toggle:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 2px; }
+  .site-header nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg-canvas); border-bottom: 1px solid var(--border-fine);
+  }
+  .site-header.nav-open nav { display: block; }
+  .site-header .nav-links { flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 0; padding: 6px 0 10px; }
+  .site-header .nav-link { display: block; padding: 14px 20px; font-size: 1.05rem; border-bottom: 0; }
+  .site-header .nav-link.active { border-bottom: 0; background: var(--brand-subtle); font-weight: 700; }
+  .site-header .nav-link.active::after { display: none; }
+}
+
+/* ==========================================================================
+   Mobile (<= 800px): page layout, home page first
+   ========================================================================== */
+@media (max-width: 800px) {
+  .container { padding: 0 20px; }
+
+  /* Hero */
+  .hero2 { padding-top: 28px; }
+  main#top { min-height: calc(100vh - 58px); min-height: calc(100svh - 58px); display: flex; flex-direction: column; }
+  main#top > .hero2 { flex: 0 0 auto; }
+  main#top > #about { flex: 1 0 auto; }
+  .hero2 h1 { font-size: clamp(1.9rem, 8.5vw, 2.5rem); line-height: 1.08; }
+  .hero2-sub { font-size: 1.05rem; margin-top: 12px; }
+  .rel-fig { margin-top: 20px; }
+  .rel-fig { width: 100%; height: auto; }
+  #rel-svg { width: 100%; height: auto; aspect-ratio: 1440 / 300; max-height: none; }
+
+  /* Sections */
+  .plain-section { padding: 36px 0; }
+  .plain-section h2, .plain-single h2, .tiles-heading { font-size: 1.7rem; }
+  .tiles-heading { margin-bottom: 20px; }
+  .plain-text, .plain-list p { font-size: 1.02rem; }
+  .section-sub { font-size: 1.02rem; margin: -8px 0 22px; }
+
+  /* Research list */
+  .area-panel { padding: 20px; gap: 12px; }
+  .pub-mini { gap: 18px; }
+
+  /* Awards: let the card size to its content instead of a fixed golden ratio */
+  .awards-band { padding: 40px 0; }
+  .award-cards { grid-template-columns: 1fr; gap: 20px; }
+  .award-card { aspect-ratio: auto; }
+  .award-media { flex: 0 0 auto; height: 200px; }
+  .award-body { flex: 0 0 auto; padding: 18px; }
+  .award-detail { -webkit-line-clamp: 5; }
+
+  /* Software */
+  .software-tiles { gap: 16px; }
+  .software-tiles li.soft { padding: 24px 20px; }
+  .software-tiles h3 { font-size: 1.45rem; }
+  .software-tiles .btn { width: 100%; justify-content: center; text-align: center; white-space: normal; padding-left: 14px; padding-right: 14px; }
+
+  /* Datasets band and contact */
+  .band-green { padding: 32px 0; }
+  .band-grid { gap: 14px; }
+  .band-green .btn-dark { width: 100%; justify-content: center; text-align: center; }
+  .band-green .plain-actions { display: block; }
+  .contact-grid { gap: 24px; }
+  .contact-card p { font-size: 1.05rem; }
+
+  .plain-footer { padding: 24px 0; }
+  .plain-footer p { font-size: 0.92rem; }
+}
+
+/* ---- Team page, mobile ---- */
+@media (max-width: 800px) {
+  .plain-hero { padding: 28px 0 24px; }
+  .plain-hero h1 { font-size: clamp(1.9rem, 8.5vw, 2.5rem); line-height: 1.08; }
+  .plain-hero p { font-size: 1.05rem; margin-top: 12px; }
+
+  .team-lead { gap: 20px; align-items: start; }
+  .team-lead-portrait { max-width: 132px; }
+  .team-lead h2 { font-size: 1.9rem; }
+  .team-title { font-size: 1.02rem; margin: 10px 0 20px; }
+  .team-lead-actions .btn { flex: 1 1 100%; }
+
+  .team-grid { grid-template-columns: 1fr; gap: 14px; }
+  .team-card {
+    display: grid; grid-template-columns: 72px 1fr; column-gap: 16px; align-items: start;
+    padding: 18px 16px 12px;
+  }
+  .team-card:hover { transform: none; }
+  .team-card .team-mono, .team-card .team-photo { width: 72px; height: 72px; font-size: 1.4rem; margin-bottom: 0; grid-row: 1 / span 2; }
+  .team-card > :not(.team-mono):not(.team-photo) { grid-column: 2; }
+  .team-card h3 { font-size: 1.1rem; }
+  .team-focus, .team-tags { margin-top: 10px; }
+  .team-icons { padding-top: 10px; }
+
+  .team-join { gap: 16px; }
+  .team-join p { font-size: 1.02rem; }
+  .team-join .plain-actions { width: 100%; }
+  .team-join .btn { width: 100%; }
+}

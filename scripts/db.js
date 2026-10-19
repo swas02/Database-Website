@@ -115,9 +115,60 @@ function setFilterDefaults() {
     const select = document.getElementById(`filter-${key}`);
     if (select) select.value = defaults[key];
   });
-  
+
   // Update disabled states/combinations
   updateFilterCombinations();
+
+  applyUrlParams();
+}
+
+// URL parameters mirror the six dropdowns: ?location=Mumbai&type=Steel&structure=Superstructure&span=20&lanes=2L&footpath=OF
+const URL_KEYS = ["location", "type", "structure", "span", "lanes", "footpath"];
+
+// Match a raw URL value to an option value, ignoring case, spacing and a trailing "m" on spans
+function resolveOption(key, raw, select) {
+  const clean = (s) => String(s).trim().toLowerCase().replace(/[\s_-]+/g, "");
+  let want = clean(raw);
+  if (key === "span") want = want.replace(/m(eters?)?$/, "");
+  if (key === "structure" && (want === "super+sub" || want === "superandsub")) want = clean(BOTH);
+  return Array.from(select.options).find((o) => !o.disabled && clean(o.value) === want);
+}
+
+function applyUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const ignored = [];
+
+  // Apply in cascade order so each choice narrows the next dropdown
+  URL_KEYS.forEach((key) => {
+    if (!params.has(key)) return;
+    const select = document.getElementById(`filter-${key}`);
+    if (!select) return;
+    const opt = resolveOption(key, params.get(key), select);
+    if (opt) {
+      select.value = opt.value;
+      updateFilterCombinations();
+    } else {
+      ignored.push(`${key}=${params.get(key)}`);
+    }
+  });
+
+  if (ignored.length && window.showToast) {
+    window.showToast(`Not available in the library: ${ignored.join(", ")}. Showing the closest match.`);
+  }
+}
+
+// Keep the address bar in step with the loaded model so the link can be shared
+function syncUrlParams() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    URL_KEYS.forEach((key) => {
+      const select = document.getElementById(`filter-${key}`);
+      if (select) params.set(key, select.value);
+    });
+    history.replaceState(null, "", `${window.location.pathname}?${params}${window.location.hash}`);
+  } catch (e) {
+    /* history may be unavailable (sandboxed frame); the link is a convenience */
+  }
 }
 
 // A filter change only narrows the remaining options; the Load Model button loads.
@@ -308,6 +359,8 @@ window.loadSelectedBridge = async function (fromUser = false) {
         },
       };
     }
+
+    syncUrlParams();
 
     // Remember the current bridge
     state.currentLoadedBridgePath = match.ifc;
