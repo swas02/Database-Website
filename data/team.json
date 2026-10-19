@@ -1,0 +1,160 @@
+{
+  "_format_member": {
+    "name": "Full name",
+    "role": "e.g. PhD scholar, Project staff, Alumnus",
+    "focus": "One line on what they work on (optional)",
+    "tags": [
+      "Research areas, e.g. Reliability",
+      "Bridges"
+    ],
+    "photo": "Image link: a full URL or images/team/name.jpg. Leave out to show initials (optional)",
+    "social": {
+      "linkedin": "URL (shown first)",
+      "scholar": "Google Scholar URL",
+      "github": "URL",
+      "facebook": "URL",
+      "x": "URL",
+      "instagram": "URL",
+      "youtube": "URL",
+      "website": "URL",
+      "email": "address"
+    },
+    "link": "Personal or institute page, linked from the name (optional)",
+    "from": "Year or month they joined, e.g. 2022 (optional)",
+    "to": "Year they left. Leave out, or write \"Present\", for current members (optional)"
+  },
+  "lead": {
+    "name": "Prof. Siddhartha Ghosh",
+    "role": "Professor-in-charge",
+    "title": "JK and MJ Mehta Chair Professor of Structural Engineering, Department of Civil Engineering, IIT Bombay",
+    "link": "https://www.civil.iitb.ac.in/~sghosh/",
+    "photo": "images/team/siddhartha-ghosh.jpg",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/siddhartha-ghosh-a8086211"
+    }
+  },
+  "members": [
+    {
+      "name": "John Doe",
+      "role": "PhD scholar",
+      "from": "2021",
+      "focus": "Reliability-based life-cycle assessment of bridges",
+      "tags": [
+        "Reliability",
+        "Bridges"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/",
+        "github": "https://github.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "PhD scholar",
+      "from": "2022",
+      "focus": "Seismic fragility of reinforced concrete structures",
+      "tags": [
+        "Seismic",
+        "Fragility"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "PhD scholar",
+      "from": "2020",
+      "focus": "Open-source design tools for steel bridges",
+      "tags": [
+        "Software",
+        "Steel"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "PhD scholar",
+      "from": "2023",
+      "focus": "Maintenance planning under deterioration uncertainty",
+      "tags": [
+        "Maintenance",
+        "Uncertainty"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "MTech student",
+      "from": "2024",
+      "focus": "Digital models and datasets for bridge components",
+      "tags": [
+        "Datasets",
+        "Digital models"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "MTech student",
+      "from": "2023",
+      "to": "2025",
+      "focus": "Risk-informed decision making for infrastructure",
+      "tags": [
+        "Risk",
+        "Decision making"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "Project engineer",
+      "from": "2019",
+      "to": "2023",
+      "focus": "Steel girder bridge detailing",
+      "tags": [
+        "Steel",
+        "Detailing"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "Research associate",
+      "from": "2018",
+      "to": "2022",
+      "focus": "Cost and carbon accounting of bridge designs",
+      "tags": [
+        "Life-cycle cost",
+        "Carbon"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "Dual degree student",
+      "from": "2020",
+      "to": "2024",
+      "focus": "Software testing and documentation",
+      "tags": [
+        "Software",
+        "Documentation"
+      ],
+      "social": {
+        "linkedin": "https://www.linkedin.com/"
+      }
+    }
+  ]
+}

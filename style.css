@@ -1434,8 +1434,7 @@ canvas {
     display: none !important;
   }
   #hud-header,
-  #hud-triggers,
-  .model-chip {
+  #hud-triggers {
     left: 50%;
   }
 
@@ -1444,11 +1443,11 @@ canvas {
 /* ── Polish: model chip, hint, toast, loading, nav ── */
 .model-chip {
   position: absolute;
-  top: 76px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 10px;
+  left: 20px;
+  transform: none;
   z-index: 40;
-  padding: 6px 16px;
+  padding: 6px 12px;
   border-radius: 99px;
   background: var(--bg-hud);
   border: 1px solid var(--border-hud);
@@ -1731,3 +1730,6 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 
 .site-page-name a { color: var(--text-muted); text-decoration: none; font-weight: 500; }
 .site-page-name a:hover { color: var(--text-title); text-decoration: underline; }
+
+/* Logo: one fixed width on every screen, same as the other pages */
+.site-logo img { width: 160px; height: auto; max-width: none; }

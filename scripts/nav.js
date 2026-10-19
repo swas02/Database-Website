@@ -22,7 +22,12 @@
    (ui.js redefines theme/dropdown identically on the viewer page). */
 
 // Imported so Vite emits it with its hashed name; a runtime path would 404 in the build.
-import logoUrl from "../images/ssrr-logo.png";
+import logo160 from "../images/ssrr-logo-160.png";
+import logo240 from "../images/ssrr-logo-240.png";
+import logo320 from "../images/ssrr-logo-320.png";
+import logo480 from "../images/ssrr-logo-480.png";
+import logoFull from "../images/ssrr-logo.png";
+const logoSrcset = `${logo160} 160w, ${logo240} 240w, ${logo320} 320w, ${logo480} 480w, ${logoFull} 778w`;
 
 (function () {
   function renderTopNav(host) {
@@ -30,11 +35,12 @@ import logoUrl from "../images/ssrr-logo.png";
     host.innerHTML = `
       <div class="site-header-inner">
         <a href="${root}index.html" class="site-logo" aria-label="SSRR Lab home">
-          <img src="${logoUrl}" alt="SSRR Lab, IIT Bombay" height="48">
+          <img src="${logo320}" srcset="${logoSrcset}" sizes="160px" width="778" height="321" alt="SSRR Lab, IIT Bombay">
         </a>
         <span class="site-page-name"><a href="${root}datasets.html">Datasets</a> / Bridge model library</span>
         <nav aria-label="Main" class="site-links">
           <a href="${root}research.html">Research</a>
+          <a href="${root}team.html">Team</a>
           <a href="${root}index.html#awards">Awards</a>
           <a href="${root}index.html#software">Software</a>
           <a href="${root}datasets.html" class="active">Datasets</a>

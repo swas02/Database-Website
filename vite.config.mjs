@@ -39,8 +39,11 @@ function copyModelData() {
         copied++;
       }
       // Award photos are referenced by path from data/research.json, so copy the whole folder.
-      const awardImgs = path.join(root, "images", "awards");
-      if (fs.existsSync(awardImgs)) fs.cpSync(awardImgs, path.join(outDir, "images", "awards"), { recursive: true });
+      // Team photos are referenced the same way from data/team.json.
+      for (const dir of ["awards", "team"]) {
+        const imgs = path.join(root, "images", dir);
+        if (fs.existsSync(imgs)) fs.cpSync(imgs, path.join(outDir, "images", dir), { recursive: true });
+      }
       console.log(`copy-model-data: ${copied} files copied to ${path.relative(root, outDir)}/`);
     },
   };

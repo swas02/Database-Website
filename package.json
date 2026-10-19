@@ -8,6 +8,7 @@
     "build": "node tools/build.mjs",
     "preview": "vite preview",
     "convert": "node tools/convert_ifc_to_obj.js",
+    "update-teams": "node tools/team_csv_to_json.mjs",
     "build:complete": "node tools/build.mjs --complete"
   },
   "dependencies": {

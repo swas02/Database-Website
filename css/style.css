@@ -1759,3 +1759,49 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
 @media (max-width: 900px) { .ds-grid { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .ds-link { grid-template-columns: 1fr; } .ds-art { min-height: 150px; } .ds-facts { grid-template-columns: repeat(2, auto); } }
 @media (prefers-reduced-motion: reduce) { .ds-card { transition: none; } .ds-feature:hover { transform: none; } }
+
+/* ---- Team page ---- */
+.team-lead { display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.team-lead-portrait .team-mono, .team-lead-portrait .team-photo { width: 100%; height: auto; aspect-ratio: 1; font-size: clamp(3.5rem, 8vw, 6rem); box-shadow: 0 0 0 6px var(--bg-canvas); }
+.team-lead-portrait .team-photo { object-position: center 20%; }
+.team-lead h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; }
+.team-lead .team-role { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.team-title { font-size: 1.2rem; line-height: 1.5; color: var(--text-secondary); max-width: 34em; margin: 16px 0 28px; }
+.team-lead-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.team-lead .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--text-primary); }
+.team-lead .btn-outline:hover { background: var(--text-primary); color: #fff; }
+
+/* Portraits: circular, photo or initials */
+.team-mono, .team-photo { display: grid; place-items: center; border-radius: 50%; object-fit: cover; }
+.team-mono { background: var(--brand-subtle); border: 2px solid var(--brand-primary); color: var(--brand-dark); font-weight: 800; letter-spacing: -0.02em; }
+
+/* Member card. Reading order: face, name, role and dates, focus, tags, links. */
+.team-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+.team-card { display: flex; flex-direction: column; background: var(--bg-surface); border: 1px solid var(--border-fine); padding: 28px 24px 20px; transition: border-color .2s ease, transform .2s ease; }
+.team-card:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+.team-card .team-mono, .team-card .team-photo { width: 104px; height: 104px; font-size: 1.9rem; margin-bottom: 20px; }
+.team-card h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+.team-card h3 a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--brand-border); }
+.team-card h3 a:hover { text-decoration-color: var(--brand-primary); }
+.team-meta { display: flex; flex-direction: column; margin-top: 4px; font-size: 0.95rem; line-height: 1.4; }
+.team-meta .team-role { font-weight: 600; color: var(--brand-dark); }
+.team-period { color: var(--text-muted); }
+.team-focus { font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); margin-top: 14px; }
+.team-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.team-tags li { font-size: 0.8rem; padding: 2px 9px; border: 1px solid var(--border-fine); border-radius: 999px; color: var(--text-secondary); }
+.team-icons { display: flex; gap: 4px; margin-top: auto; padding-top: 18px; }
+.team-icon { display: grid; place-items: center; width: 36px; height: 36px; margin-left: -8px; color: var(--text-secondary); font-size: 1.15rem; border-radius: 50%; transition: color .15s ease, background .15s ease; }
+.team-icon:hover { color: var(--brand-dark); background: var(--brand-subtle); }
+
+.team-join { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.team-join .tiles-heading { margin-bottom: 12px; }
+.team-join p { font-size: 1.15rem; line-height: 1.55; color: var(--text-secondary); max-width: 36em; }
+.team-join .plain-actions { margin-top: 0; }
+
+@media (max-width: 800px) {
+  .team-lead { grid-template-columns: 1fr; }
+  .team-lead-portrait { max-width: 160px; }
+}
+
+/* Logo: one fixed width on every screen and window size */
+.logo-link img, .site-logo img { display: block; width: 160px; height: auto; max-width: none; }
