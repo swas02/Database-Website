@@ -1993,3 +1993,16 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
   .rs-many .rs-projects li:nth-child(3) { pointer-events: none; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent 100%); mask-image: linear-gradient(to right, #000 30%, transparent 100%); }
   .rs-many .rs-all { display: flex; right: 12px; }
 }
+
+
+/* Homepage: Database stays its own tinted band between Software and Contact; Contact goes white so the two tints never touch */
+#datasets.band-green { border-bottom: 1px solid var(--border-fine); }
+
+/* Homepage footer carries the contact details */
+.site-footer { padding: clamp(40px, 5vw, 64px) 0 24px; }
+.site-footer .footer-heading { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 800; letter-spacing: -0.025em; color: var(--text-inverse); margin-bottom: 28px; }
+.site-footer .contact-card h3 { color: var(--brand-primary); }
+.site-footer .contact-card p { color: var(--text-inverse); font-size: 1.05rem; }
+.site-footer .contact-card a { color: var(--text-inverse); text-decoration-color: var(--brand-primary); }
+.site-footer .contact-card a:hover { color: var(--brand-primary); }
+.site-footer .footer-base { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.18); font-size: 0.9rem; opacity: 0.75; }

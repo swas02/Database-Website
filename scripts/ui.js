@@ -831,7 +831,8 @@ export function renderDownloads(bridgeId, ifcPath) {
 
   // Not available yet: shown greyed out
   const items = [
-    { title: "Analysis model", file: "Super and Sub Structure Model (.mdb)" },
+    { title: "Analysis model (Superstructure)", file: "Superstructure Model (.mcb)" },
+    { title: "Analysis model (Substructure)", file: "Substructure Model (.mcb)" },
     { title: "2D CAD drawings", file: "Drawing File (.dwg)" },
     { title: "3psLCCA input", file: "Input File (.3ps)" },
     { title: "3psLCCA report", file: "Report File (.pdf)" },

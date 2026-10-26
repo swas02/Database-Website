@@ -41,7 +41,7 @@ const logoSrcset = `${logo160} 160w, ${logo240} 240w, ${logo320} 320w, ${logo480
         <nav aria-label="Main" class="site-links">
           <a href="${root}index.html#about">About</a>
           <a href="${root}research.html">Research</a>
-          <a href="${root}team.html">Team</a>
+          <!-- <a href="${root}team.html">Team</a> -->
           <a href="${root}index.html#awards">Awards</a>
           <a href="${root}index.html#software">Software</a>
           <a href="${root}datasets.html" class="active">Datasets</a>
@@ -53,7 +53,7 @@ const logoSrcset = `${logo160} 160w, ${logo240} 240w, ${logo320} 320w, ${logo480
             <div class="nav-dropdown-content" id="more-menu-content" role="menu">
               <a href="${root}index.html#about" class="dd-nav">About</a>
               <a href="${root}research.html" class="dd-nav">Research</a>
-              <a href="${root}team.html" class="dd-nav">Team</a>
+              <!-- <a href="${root}team.html" class="dd-nav">Team</a> -->
               <a href="${root}index.html#awards" class="dd-nav">Awards</a>
               <a href="${root}index.html#software" class="dd-nav">Software</a>
               <a href="${root}datasets.html" class="dd-nav">Datasets</a>
