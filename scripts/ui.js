@@ -268,6 +268,9 @@ export function renderGroupsPanel(list) {
     div.className = "group-item";
     div.setAttribute("data-group", g.name);
     div.setAttribute("onclick", `selectGroup('${g.name}')`);
+    div.setAttribute("role", "button");
+    div.setAttribute("tabindex", "0");
+    div.setAttribute("onkeydown", `if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();selectGroup('${g.name}')}`);
     div.innerHTML = `
       <div class="group-header">
         <div class="group-info">
@@ -281,6 +284,7 @@ export function renderGroupsPanel(list) {
           </div>
           <button class="vis-toggle" onclick="toggleGroupVisibility('${g.name}', this); event.stopPropagation();"><i class="bi bi-eye-fill"></i></button>
         </div>
+        <i class="bi bi-chevron-down group-chevron" aria-hidden="true"></i>
       </div>
       <div class="group-details-accordion" style="display:none" onclick="event.stopPropagation()"></div>
     `;

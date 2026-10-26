@@ -1715,6 +1715,15 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 #side-stack .group-item:hover { background: var(--bg-card-hover); }
 #side-stack .group-item.active { background: #F3F7E4; box-shadow: inset 3px 0 0 var(--primary); }
 
+/* CAD View: cues that rows are clickable */
+.groups-hint { margin: 0; padding: 6px 16px 8px; font-size: 12px; color: var(--text-muted); }
+.groups-hint i { margin-right: 4px; }
+.group-header .group-controls { margin-left: auto; }
+.group-chevron { margin-left: 8px; font-size: 11px; color: var(--text-muted); transition: transform 0.2s; }
+.group-item:hover .group-chevron { color: var(--text-title); }
+.group-item.active .group-chevron { transform: rotate(180deg); color: var(--text-title); }
+.group-item:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+
 /* Primary buttons: dark text on green (contrast) */
 .btn-primary, #btn-load-model { background-color: #90AF13 !important; border-color: #90AF13 !important; color: #1B2118 !important; border-radius: 4px; }
 .btn-primary:hover, #btn-load-model:hover { background-color: #7D9910 !important; border-color: #7D9910 !important; color: #1B2118 !important; }
