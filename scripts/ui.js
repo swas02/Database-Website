@@ -932,10 +932,10 @@ const LCCA_PILLARS = [
 function formatCompactINR(v) {
   const s = v < 0 ? '-' : '';
   const a = Math.abs(v);
-  if (a >= 1e9) return s + '₹' + (a/1e9).toFixed(2) + ' billion';
-  if (a >= 1e6) return s + '₹' + (a/1e6).toFixed(2) + ' million';
-  if (a >= 1e3) return s + '₹' + (a/1e3).toFixed(1) + ' thousand';
-  return s + '₹' + a.toFixed(0);
+  if (a >= 1e9) return s + (a/1e9).toFixed(2) + ' billion';
+  if (a >= 1e6) return s + (a/1e6).toFixed(2) + ' million';
+  if (a >= 1e3) return s + (a/1e3).toFixed(1) + ' thousand';
+  return s + a.toFixed(0);
 }
 
 const formatINR = formatCompactINR;
@@ -1280,7 +1280,7 @@ export function renderLCCAData(lccaData) {
         <tr class="${bgClass}">
           ${rowspanHtml}
           <td style="font-weight: 500; text-align: left;">${c.label}</td>
-          <td class="num font-monospace" style="font-weight: 600;">${formatINR(c.costEffect)}</td>
+          <td class="num font-monospace ledger-val" data-val="${c.costEffect}" style="font-weight: 600;"></td>
           <td style="position: relative; height: 32px; padding: 0 8px; vertical-align: middle;">
             <!-- Value bar -->
             <div style="position: absolute; top: 6px; bottom: 6px; left: 0; z-index: 2; transition: width 0.3s ease; ${barStyle}"></div>
@@ -1293,25 +1293,26 @@ export function renderLCCAData(lccaData) {
   // Render everything inside lcca-container
   container.innerHTML = `
     <!-- Charts Row 1: Gross Stage & Pillar splits -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-lg); ">Life Cycle Cost Distribution</h4>
+    <h4>Life Cycle Cost Distribution</h4>
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chStage"></div>
       <div class="lcca-dash-card" id="dash-chPillar"></div>
     </div>
 
     <!-- Charts Row 2: Nested Splits -->
-    <!-- <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cross-sectional relations</h4> -->
+    <!-- <h4>Cross-sectional relations</h4> -->
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chNestSP"></div>
       <div class="lcca-dash-card" id="dash-chNestPS"></div>
     </div>
 
     <!-- Charts Row 3: Inside Stages -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Stage component breakdowns</h4>
+    <hr class="lcca-divider">
+    <h4>Stage component breakdowns</h4>
     <div class="lcca-dash-grid3" id="dash-chComps"></div>
 
     <!-- Summary Tables -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--lg-md); ">Consolidated Stage Summary</h2>
+    <h4>Consolidated Stage Summary</h4>
     <div class="lcca-dash-card mb-4" style="overflow-x: auto;">
       <p class="sub" style="margin-bottom: 16px;">A consolidated presentation of costs across the three pillars (economic, social, and environmental) for each life cycle stage. This table facilitates the identification of phases that bear the most substantial burden.</p>
       <table class="matrix-table-lcca">
@@ -1329,7 +1330,7 @@ export function renderLCCAData(lccaData) {
     </div>
 
     <div class="lcca-dash-card" style="overflow-x: auto;">
-      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Itemized Cost Breakdown</h3>
+      <h3>Itemized Cost Breakdown</h3>
       <p class="sub" style="margin-bottom: 12px;">An itemised schedule of each individual cost component across all stages and pillars. All values are discounted to the year of assessment.</p>
       
       <!-- Color legend for the pillars -->
@@ -1339,12 +1340,23 @@ export function renderLCCAData(lccaData) {
         <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl3); width: 10px; height: 10px; border-radius: 2px;"></span>Social</span>
       </div>
 
+      <div class="d-flex align-items-center gap-2 mb-3 px-1">
+        <label for="ledger-unit" style="font-size: var(--fs-sm); color: var(--text-muted);">Show values in</label>
+        <select id="ledger-unit" class="form-select form-select-sm" style="width: auto; font-size: var(--fs-sm);">
+          <option value="1">Value</option>
+          <option value="1e3">Thousand</option>
+          <option value="1e6" selected>Million</option>
+          <option value="1e9">Billion</option>
+          <option value="pct">% of total</option>
+        </select>
+      </div>
+
       <table class="lcca-table">
         <thead>
           <tr>
             <th style="width: 85px; text-align: center;">Stage</th>
             <th>Cost item</th>
-            <th class="num" style="width: 160px; text-align: right;">Value (INR)</th>
+            <th class="num" style="width: 160px; text-align: right;"><span id="ledger-unit-hdr"></span></th>
             <th style="width: 250px; text-align: center;">Visual representation</th>
           </tr>
         </thead>
@@ -1359,6 +1371,25 @@ export function renderLCCAData(lccaData) {
   // Draw D3 Charts dynamically!
   try {
     // 1. Chart Stage Gross
+    // Itemized table: switch the display unit without re-rendering
+    const unitSel = container.querySelector('#ledger-unit');
+    const applyLedgerUnit = () => {
+      const isPct = unitSel.value === 'pct';
+      const div = isPct ? 1 : Number(unitSel.value);
+      const name = unitSel.options[unitSel.selectedIndex].text.toLowerCase();
+      const total = components.reduce((a, c) => a + c.costEffect, 0) || 1;
+      container.querySelector('#ledger-unit-hdr').textContent =
+        isPct ? 'Share of total (%)' : div === 1 ? 'Value (INR)' : `Value (${name} INR)`;
+      container.querySelectorAll('.ledger-val').forEach(td => {
+        const raw = Number(td.dataset.val);
+        const v = isPct ? raw / total * 100 : raw / div;
+        const dp = div === 1 && !isPct ? 0 : 2;
+        td.textContent = v.toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp });
+      });
+    };
+    unitSel.addEventListener('change', applyLedgerUnit);
+    applyLedgerUnit();
+
     renderDashCard('dash-chStage', 'Stage-wise Life Cycle Cost Distribution',
       'Initial · Use · End-of-life',
       [{ items: STAGES.map(s => ({ label: s.label, color: stCol[s.id] || s.color })) }]);

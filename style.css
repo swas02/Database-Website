@@ -1226,6 +1226,9 @@ canvas {
 
 
 #lcca-container h4 {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--text-title);
   text-align: center;
   margin-top: 32px !important;
   margin-bottom: 20px !important;
@@ -1879,3 +1882,7 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 #side-stack .btn-panel-toggle .bi::before { display: block; line-height: 1; }
 #side-stack .btn-panel-toggle .bi::before { vertical-align: 0 !important; text-align: center; width: 1em; height: 1em; line-height: 1em; margin: 0; }
 .lcca-currency-note { position: sticky; bottom: 8px; width: fit-content; margin: 16px 0 0 auto; padding: 4px 10px; font-size: var(--fs-xs); color: var(--text-muted); background: var(--bg-dropdown); border: 1px solid var(--border-card); border-radius: 99px; box-shadow: var(--shadow-dropdown); z-index: 5; }
+.lcca-divider { border: 0; border-top: 1px solid var(--border-card); opacity: 1; margin: 32px 0 0; }
+.matrix-table-lcca,
+.matrix-table-lcca th,
+.matrix-table-lcca td { border: 1px solid var(--border-card) !important; }
