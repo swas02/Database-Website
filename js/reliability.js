@@ -57,7 +57,7 @@ function build() {
   const hatch = el("pattern", { id: "rel-hatch", width: 7, height: 7, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
   el("rect", { width: 7, height: 7, fill: RED }, hatch);
   el("line", { x1: 0, y1: 0, x2: 0, y2: 7, stroke: "#FFFFFF", "stroke-width": 2.2 }, hatch);
-  const overlap = el("path", { fill: "url(#rel-hatch)", "fill-opacity": 0.92 }, svg);
+  const overlap = el("path", { fill: "none", "fill-opacity": 0.92 }, svg);
   const lineR = el("path", { fill: "none", stroke: GREEN_DK, "stroke-width": 2.4, "stroke-linejoin": "round" }, svg);
   const lineS = el("path", { fill: "none", stroke: INK, "stroke-width": 2.4, "stroke-linejoin": "round" }, svg);
   return { overlap, barsG, barsS, barsR, lineR, lineS };
