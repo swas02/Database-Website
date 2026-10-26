@@ -1,68 +1,61 @@
-import { publications, awards, metaHtml } from "../data/publications.js";
+import { publications, projects } from "../data/publications.js";
 
-const pubs = publications;   // keeps the order of data/research.json
-const awds = awards;
+// Projects and publications grow independently, so each block shows only its newest few and links to the full list.
+const MAX_PROJECTS = 3;
+const MAX_PUBS = 3;
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
-// Papers marked with a status (e.g. "Submitted") are listed but not counted as publications.
-const published = pubs.filter((p) => !p.status);
-const submitted = pubs.length - published.length;
-const count = (type) => published.filter((p) => p.type === type).length;
+const soon = (what) => `<li class="pub-empty">${what} will be listed here soon.</li>`;
 
-// "6 publications (1 journal paper, 5 conference papers), 3 submitted and 2 awards."
-const parts = [];   // each part: the highlighted phrase, plus optional detail in plain text
-if (published.length) {
-  const kinds = [];
-  if (count("journal")) kinds.push(plural(count("journal"), "journal paper", "journal papers"));
-  if (count("conference")) kinds.push(plural(count("conference"), "conference paper", "conference papers"));
-  if (count("chapter")) kinds.push(plural(count("chapter"), "book chapter", "book chapters"));
-  parts.push(`<mark>${plural(published.length, "publication", "publications")}</mark>` + (kinds.length ? ` (${kinds.join(", ")})` : ""));
-}
-if (submitted) parts.push(`<mark>${submitted} submitted</mark>`);
-if (awds.length) parts.push(`<mark>${plural(awds.length, "award", "awards")}</mark>`);
-const joinParts = (xs) => (xs.length < 3 ? xs.join(" and ") : xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1]);
-const summary = document.getElementById("research-summary");
-if (summary && parts.length) {
-  summary.innerHTML = joinParts(parts) + ".";   // only counts and fixed words go in, nothing from the data text
-  summary.hidden = false;
-}
+// ── Projects: in the order of data/research.json ──
+// Wide screens (3 cards fit in a row): the first three show, the third fading out to the right with a ">" button
+// that opens the full list. Narrower screens: every project sits in a horizontal slider with arrows. (See css.)
+const projHost = document.getElementById("rs-projects");
+if (projHost) {
+  projHost.innerHTML = projects.length ? projects.map((p) => {
+    const page = String(p.page ?? "").trim();
+    return `<li>
+      <h4>${esc(p.title)}</h4>
+      ${(p.sponsors || []).length ? `<span class="rs-meta">${p.sponsors.map(esc).join(" · ")}</span>` : ""}
+      ${page ? `<a class="project-link" href="${esc(page)}">Read more <span aria-hidden="true">&rarr;</span></a>` : ""}
+    </li>`;
+  }).join("") : soon("Projects");
 
-// ── Publications: all papers, three at a time ──
-// The down arrow replaces the current batch with the next one in place (nothing scrolls or moves);
-// the up arrow goes back. Papers keep the order of data/publications.js.
-const PAGE = 3;
-const box = document.querySelector("#papers .area-pubs");
-if (box && pubs.length) {
-  const list = box.querySelector("ul");
-  const pager = box.querySelector(".pub-pager");
-  const range = box.querySelector(".pub-range");
-  const prev = box.querySelector(".pager-prev");
-  const next = box.querySelector(".pager-next");
-  const pages = Math.ceil(pubs.length / PAGE);
-  let page = 0;
-
-  const draw = () => {
-    const from = page * PAGE;
-    const slice = pubs.slice(from, from + PAGE);
-    list.innerHTML = slice.map((p) => {
-      const t = p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">${esc(p.title)}</a>` : esc(p.title);
-      return `<li><span class="pub-title">${t}</span><span class="pub-meta">${metaHtml(p, true)}</span></li>`;
-    }).join("");
-    list.classList.remove("swap"); void list.offsetWidth; list.classList.add("swap");   // short fade-in on change
-    range.textContent = `${from + 1}\u2013${from + slice.length} of ${pubs.length}`;
-    prev.disabled = page === 0;
-    next.disabled = page === pages - 1;
+  const slider = document.getElementById("rs-slider");
+  const prev = slider.querySelector(".rs-prev");
+  const next = slider.querySelector(".rs-next");
+  const all = slider.querySelector(".rs-all");
+  const many = projects.length > MAX_PROJECTS;
+  slider.classList.toggle("rs-many", many);
+  all.hidden = !many;                          // wide-screen ">" (hidden by css on the slider layout)
+  const step = () => (projHost.firstElementChild ? projHost.firstElementChild.offsetWidth + 20 : 300);
+  const sync = () => {                         // slider arrows: only when the cards overflow
+    const overflow = projHost.scrollWidth > projHost.clientWidth + 2;
+    prev.hidden = next.hidden = !overflow;
+    prev.disabled = projHost.scrollLeft <= 2;
+    next.disabled = projHost.scrollLeft + projHost.clientWidth >= projHost.scrollWidth - 2;
   };
-
-  next.addEventListener("click", () => { page = Math.min(pages - 1, page + 1); draw(); });
-  prev.addEventListener("click", () => { page = Math.max(0, page - 1); draw(); });
-  pager.hidden = pages < 2;
-  draw();
-  box.hidden = false;
+  prev.addEventListener("click", () => projHost.scrollBy({ left: -step(), behavior: "smooth" }));
+  next.addEventListener("click", () => projHost.scrollBy({ left: step(), behavior: "smooth" }));
+  projHost.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
 }
-else {
-  // No papers yet: keep the card visible with a short note instead of leaving the section empty.
-  const empty = document.querySelector("#papers h3");
-  if (empty) empty.insertAdjacentHTML("afterend", '<p class="pub-empty">Publications will be listed here soon.</p>');
+
+// ── Publications: newest year first. When there are more than MAX_PUBS, the last row is shown faded out
+// and a "N more" link takes over, so the list reads as continuing. ──
+const pubHost = document.getElementById("rs-pubs");
+if (pubHost) {
+  const sorted = [...publications].sort((a, b) => b.year - a.year);
+  const latest = sorted.slice(0, MAX_PUBS);
+  const teased = sorted.length > MAX_PUBS;
+  pubHost.innerHTML = latest.length ? latest.map((p, i) => {
+    const t = p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">${esc(p.title)}</a>` : esc(p.title);
+    const fade = teased && i === latest.length - 1 ? ' class="rs-fade" aria-hidden="true"' : "";
+    return `<li${fade}><span class="rs-year">${esc(p.year)}</span><div><span class="pub-title">${t}</span><span class="pub-meta">${esc(p.venue)}</span></div></li>`;
+  }).join("") : soon("Publications");
+  if (teased) {
+    const more = sorted.length - (MAX_PUBS - 1);   // the faded row counts as one of the "more"
+    pubHost.insertAdjacentHTML("afterend", `<a class="rs-more" href="research.html#publications">${more} more publications <span aria-hidden="true">&rarr;</span></a>`);
+  }
 }

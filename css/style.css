@@ -1952,3 +1952,44 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
 .ds-actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
 .ds-more { font-weight: 600; color: var(--brand-dark); text-decoration: underline; text-underline-offset: 3px; }
 .ds-more:hover { color: var(--brand-primary); }
+/* Home: research section (projects and publications are separate blocks) */
+.rs-block + .rs-block { margin-top: clamp(40px, 5vw, 64px); }
+.rs-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 12px; margin-bottom: 20px; border-bottom: 2px solid var(--brand-primary); }
+.rs-head h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.015em; margin: 0; }
+.rs-head .text-link { white-space: nowrap; font-size: 0.95rem; }
+.rs-projects li { background: var(--bg-surface); border: 1px solid var(--border-fine); border-top: 4px solid var(--brand-primary); padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+.rs-projects li.pub-empty { grid-column: 1 / -1; border: 0; padding: 0; }
+.rs-projects h4 { font-size: 1.1rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.rs-meta { font-size: 0.88rem; color: var(--text-secondary); }
+.rs-projects .project-link { margin-top: auto; padding-top: 6px; }
+.rs-pubs { list-style: none; margin: 0; padding: 0; }
+.rs-pubs li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border-fine); }
+.rs-pubs li:first-child { padding-top: 0; }
+.rs-year { font-size: 1.05rem; font-weight: 800; color: var(--brand-dark); }
+.rs-pubs .pub-title { font-size: 1.05rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.rs-pubs .pub-meta { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 560px) { .rs-pubs li { grid-template-columns: 1fr; gap: 2px; } }
+.rs-pubs li.rs-fade { max-height: 76px; overflow: hidden; border-bottom: 0; -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent 100%); mask-image: linear-gradient(to bottom, #000 15%, transparent 100%); pointer-events: none; }
+.rs-more { display: inline-block; margin-top: 4px; font-weight: 700; color: var(--brand-dark); text-decoration: none; }
+.rs-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Projects: three-up row with a faded third card on wide screens, a slider below that */
+.rs-slider { position: relative; }
+.rs-projects { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.rs-projects::-webkit-scrollbar { display: none; }
+.rs-projects li { flex: 0 0 min(300px, 80%); scroll-snap-align: start; }
+.rs-projects li.pub-empty { flex: 1 1 100%; border: 0; padding: 0; }
+.rs-arrow, .rs-all { position: absolute; top: 50%; width: 44px; height: 44px; margin-top: -22px; border-radius: 50%; border: 1px solid var(--border-fine); background: var(--bg-surface); color: var(--brand-dark); font-size: 1.6rem; line-height: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.rs-arrow[hidden], .rs-all[hidden] { display: none; }
+.rs-arrow:hover:not(:disabled), .rs-all:hover { background: var(--brand-primary); color: var(--text-primary); }
+.rs-arrow:disabled { opacity: 0.35; cursor: default; }
+.rs-prev { left: -14px; }
+.rs-next { right: -14px; }
+.rs-all { display: none; }
+@media (min-width: 1000px) {
+  .rs-projects { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+  .rs-projects li { flex: none; }
+  .rs-projects li:nth-child(n+4) { display: none; }
+  .rs-arrow { display: none; }
+  .rs-many .rs-projects li:nth-child(3) { pointer-events: none; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent 100%); mask-image: linear-gradient(to right, #000 30%, transparent 100%); }
+  .rs-many .rs-all { display: flex; right: 12px; }
+}
