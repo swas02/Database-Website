@@ -1865,3 +1865,16 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
   #side-stack { border-top: 0; }
   .lcca-mode .splitter { display: none; }
 }
+
+.sidebar-trigger { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sidebar-trigger .trigger-label { writing-mode: vertical-rl; font-size: var(--fs-xs); font-weight: 600; white-space: nowrap; }
+#left-trigger .trigger-label { transform: rotate(180deg); }
+.sidebar-trigger, #right-trigger { border-radius: 12px; border: 1px solid var(--border-card); }
+#left-trigger { left: 8px; }
+#right-trigger { right: 8px; }
+#side-stack .btn-panel-toggle { width: 24px; height: 24px; justify-content: center; border-radius: 50%; padding: 0; }
+#side-stack .panel-header:hover .btn-panel-toggle, #side-stack .btn-panel-toggle:hover { background-color: #ffffff !important; color: var(--text-title) !important; }
+#side-stack .btn-panel-toggle { display: inline-flex !important; align-items: center; justify-content: center; line-height: 1; flex-shrink: 0; }
+#side-stack .btn-panel-toggle .bi { display: block; line-height: 1; width: 1em; height: 1em; }
+#side-stack .btn-panel-toggle .bi::before { display: block; line-height: 1; }
+#side-stack .btn-panel-toggle .bi::before { vertical-align: 0 !important; text-align: center; width: 1em; height: 1em; line-height: 1em; margin: 0; }

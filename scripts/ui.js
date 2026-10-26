@@ -829,92 +829,26 @@ export function renderDownloads(bridgeId, ifcPath) {
   const container = document.getElementById("downloads-container");
   if (!container) return;
 
-  container.innerHTML = "";
+  // Not available yet: shown greyed out
+  const items = [
+    { title: "Analysis model", file: "Super and Sub Structure Model (.mdb)" },
+    { title: "2D CAD drawings", file: "Drawing File (.dwg)" },
+    { title: "3psLCCA input", file: "Input File (.3ps)" },
+    { title: "3psLCCA report", file: "Report File (.pdf)" },
+  ];
 
-  let jsonPath = null;
-  let pdfPath = null;
-  let mcbPath = null;
-  let cadPath = null;
-
-  const currentBridge = state.currentLoadedBridge;
-  if (currentBridge && currentBridge.ifc === ifcPath) {
-    jsonPath = currentBridge.json;
-    pdfPath = currentBridge.design_report;
-    mcbPath = currentBridge.design_file;
-    cadPath = currentBridge.cad;
-  } else if (ifcPath) {
-    // Fallback if not loaded/found from state
-    const lower = ifcPath.toLowerCase();
-    if (lower.endsWith("/model.ifc")) {
-      jsonPath = ifcPath.substring(0, ifcPath.length - 9) + "groups.json";
-    } else {
-      jsonPath = ifcPath.replace(".ifc", ".json");
-    }
-  }
-
-  // 1. PDF Design Report (Rendered only if it exists)
-  if (pdfPath) {
-    container.innerHTML += `
+  container.innerHTML = items
+    .map(
+      (it) => `
       <div class="metric-card mb-0">
-        <span class="metric-header">Design documentation</span>
+        <span class="metric-header">${it.title}</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_design_report.pdf</div>
-            <div class="text-muted" style="font-size: var(--fs-xs);">PDF Document • ~4.5 MB</div>
-          </div>
-          <a href="${pdfPath}" download="${bridgeId}_design_report.pdf" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+          <div><div class="text-white fw-bold" style="font-size: var(--fs-xs);">${it.file}</div><div class="text-muted" style="font-size: var(--fs-xs);">Will be available soon</div></div>
+          <button type="button" class="btn btn-sm btn-outline-secondary" style="font-size: var(--fs-xs); padding: 4px 8px;" disabled><i class="bi bi-download"></i> Download</button>
         </div>
-      </div>
-    `;
-  }
-
-  // 2. MCB Analysis Model (Rendered only if it exists)
-  if (mcbPath) {
-    container.innerHTML += `
-      <div class="metric-card mb-0">
-        <span class="metric-header">Analysis model</span>
-        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_model.mcb</div>
-            <div class="text-muted" style="font-size: var(--fs-xs);">Midas Civil File • ~1.2 MB</div>
-          </div>
-          <a href="${mcbPath}" download="${bridgeId}_model.mcb" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        </div>
-      </div>
-    `;
-  }
-
-  // 3. CAD Drawings (Rendered only if it exists)
-  if (cadPath) {
-    const ext = cadPath.split(".").pop();
-    container.innerHTML += `
-      <div class="metric-card mb-0">
-        <span class="metric-header">2D CAD drawings</span>
-        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_drawings.${ext}</div>
-            <div class="text-muted" style="font-size: var(--fs-xs);">CAD Drawing File</div>
-          </div>
-          <a href="${cadPath}" download="${bridgeId}_drawings.${ext}" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        </div>
-      </div>
-    `;
-  }
-
-  if (jsonPath) {
-    container.innerHTML += `
-      <div class="metric-card mb-0">
-        <span class="metric-header">Structural schema data</span>
-        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}.json</div>
-            <div class="text-muted" style="font-size: var(--fs-xs);">JSON Data File</div>
-          </div>
-          <a href="${jsonPath}" download="${bridgeId}.json" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
-        </div>
-      </div>
-    `;
-  }
+      </div>`,
+    )
+    .join("");
 }
 
 // ── Dropdown Menu Toggle Handler ──
