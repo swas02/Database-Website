@@ -9,9 +9,16 @@ const MODEL_FIELDS = ["json", "obj", "design_report", "design_file", "cad"]; // 
 
 // Every top-level .html page is a build entry (lab site + dataset viewer).
 function htmlPages() {
-  return Object.fromEntries(
-    fs.readdirSync(process.cwd()).filter((f) => f.endsWith(".html")).map((f) => [f.replace(/\.html$/, ""), path.resolve(process.cwd(), f)])
-  );
+  const pages = {};
+  const add = (dir) => {
+    for (const f of fs.readdirSync(path.join(process.cwd(), dir))) {
+      if (!f.endsWith(".html") || f === "template.html") continue;
+      pages[path.join(dir, f).replaceAll("\\", "/").replace(/\.html$/, "")] = path.resolve(process.cwd(), dir, f);
+    }
+  };
+  add(".");
+  if (fs.existsSync(path.join(process.cwd(), "project"))) add("project"); // one page per project; project/template.html is skipped
+  return pages;
 }
 
 function copyModelData() {

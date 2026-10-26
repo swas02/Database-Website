@@ -42,7 +42,7 @@
     <section class="ds-hero">
       <div class="container">
         <h1>Datasets</h1>
-        <p>Open data from the lab's work. Pick a dataset to browse it, inspect the details and download what you need.</p>
+        <p>Open data from the lab's projects and analyses. Pick a dataset to browse it, inspect the details and download what you need.</p>
       </div>
     </section>
 
@@ -50,8 +50,8 @@
       <div class="container">
         <ul class="ds-grid">
           <li class="ds-card ds-feature">
-            <a class="ds-link" href="dataset_1.html" aria-label="Open the Bridge Library">
-              <div class="ds-art" aria-hidden="true">
+            <div class="ds-link">
+              <a class="ds-art" href="dataset_1.html" tabindex="-1" aria-hidden="true">
                 <svg viewBox="0 0 480 220" preserveAspectRatio="xMidYMid slice">
                   <rect width="480" height="220" fill="#F3F7E4"/>
                   <g fill="none" stroke="#90AF13" stroke-width="2" opacity="0.5">
@@ -65,20 +65,23 @@
                   </g>
                   <g stroke="#586B0B" stroke-width="3"><path d="M0 104V118M40 104V118M80 104V118M120 104V118M160 104V118M200 104V118M240 104V118M280 104V118M320 104V118M360 104V118M400 104V118M440 104V118M480 104V118"/><path d="M0 104H480"/></g>
                 </svg>
-              </div>
+              </a>
               <div class="ds-body">
-                <p class="ds-kicker">3D models</p>
-                <h2>Bridge Library</h2>
-                <p>Standard bridge models for different locations, structure types, spans and numbers of lanes. Inspect every component, read the specifications and download the data.</p>
+                <p class="ds-kicker">3D models · Project dataset</p>
+                <h2><a href="dataset_1.html">Bridge Library</a></h2>
+                <p>Short-span road bridge models with prestressed concrete girders and steel girders, generated for the project “A Detailed Comparison of Life Cycle Costs of Short-Span Road Bridges with Prestressed Concrete Girders and Steel Girders”. The models cover different locations, spans and numbers of lanes. Inspect every component, read the specifications and download the data.</p>
                 <!-- <ul class="ds-facts" aria-label="Contents">
                   <li><strong>190</strong><span>models</span></li>
                   <li><strong>2</strong><span>bridge types</span></li>
                   <li><strong>2</strong><span>structures</span></li>
                   <li><strong>OBJ</strong><span>+ JSON</span></li>
                 </ul> -->
-                <span class="ds-open">Open dataset <span aria-hidden="true">&rarr;</span></span>
+                <div class="ds-actions">
+                  <a class="btn btn-primary" href="dataset_1.html">Open dataset <span aria-hidden="true">&rarr;</span></a>
+                  <a class="ds-more" href="project/bridge-life-cycle-cost-projects.html">Read more about this project</a>
+                </div>
               </div>
-            </a>
+            </div>
           </li>
           <li class="ds-card ds-soon">
             <p class="ds-kicker">In preparation</p>

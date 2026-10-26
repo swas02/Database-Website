@@ -1,4 +1,4 @@
-import { publications, awards, metaHtml } from "../data/publications.js";
+import { publications, awards, projects, metaHtml } from "../data/publications.js";
 
 const TYPES = { journal: "Journal papers", conference: "Conference papers", chapter: "Book chapters" };
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -10,7 +10,7 @@ function titleHtml(item) {
 }
 
 function renderPublications() {
-  const list = publications.filter((p) => active === "all" || p.type === active);   // keeps the order of data/research.json
+  const list = publications.filter((p) => active === "all" || p.type === active).sort((a, b) => b.year - a.year);   // latest year first; within a year, keeps the order of data/research.json
   const host = document.getElementById("pub-list");
   if (!list.length) { host.innerHTML = '<p class="pub-empty">Publications will be listed here soon.</p>'; return; }
   const years = [...new Set(list.map((p) => p.year))];
@@ -44,6 +44,18 @@ function renderAwards() {
     </li>`).join("");
 }
 
+function renderProjects() {
+  const host = document.getElementById("project-list");
+  if (!projects.length) { host.innerHTML = '<li class="pub-empty">Projects will be listed here soon.</li>'; return; }
+  host.innerHTML = projects.map((p, i) => `
+    <li>
+      <h3>${titleHtml(p)}</h3>
+      ${(p.sponsors || []).length ? `<span class="project-tag">Sponsored by</span><ul class="sponsor-chips" aria-label="Sponsors">${p.sponsors.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}
+      ${String(p.page ?? "").trim() ? `<a class="project-link" href="${esc(String(p.page).trim())}">Read more <span aria-hidden="true">&rarr;</span></a>` : ""}
+    </li>`).join("");
+}
+
+renderProjects();
 renderFilters();
 renderPublications();
 renderAwards();

@@ -11,6 +11,8 @@ export const publications = [
   ...tag(raw.bookChapters, "chapter"),
 ];
 
+export const projects = raw.projects || [];
+
 export const awards = raw.awards || [];
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

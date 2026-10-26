@@ -1,7 +1,33 @@
 {
   "_how_to_add": "Add one object per item inside the matching list below, in the order you want it shown (the site does not re-sort). Keep the commas between objects. Do not edit the keys starting with an underscore. Use \"status\": \"Submitted\" for papers that are not published yet; they are listed but not counted as publications.",
   "_format_publication": { "year": 2024, "title": "Paper title", "authors": "Author, A., & Author, B.", "venue": "Journal or conference name, volume, pages", "link": "https://doi.org/... (optional, leave empty if none)", "status": "Submitted (optional, omit when published)" },
+  "_format_project": { "page": "project/<id>.html (the project page in the project folder)", "id": "short-name-no-spaces; the page is project/<id>.html (copy project/template.html)", "title": "Project title", "sponsors": ["Sponsor A", "Sponsor B"], "institution": "Awarded to (optional)", "scope": ["What the project involves, one point per entry (optional)"] },
   "_format_award": { "year": 2024, "event": "Short event name, e.g. STESSA 2026", "title": "Name of the award", "detail": "Event, place, dates (optional)", "link": "", "image": "images/awards/photo-name.jpg (optional; put the file in images/awards/)" },
+
+  "projects": [
+    {
+      "id": "lcc-concrete-vs-steel-bridges",
+      "page": "project/bridge-life-cycle-cost-projects.html",
+      "title": "A Detailed Comparison of Life Cycle Costs of Short-Span Road Bridges with Prestressed Concrete Girders and Steel Girders",
+      "sponsors": ["constructsteel", "INSDAG", "Ministry of Steel, Government of India"],
+      "institution": "IIT Bombay",
+      "scope": [
+        "A framework for sustainability-based life cycle cost assessment of bridges",
+        "Case studies comparing concrete and steel bridges"
+      ]
+    },
+    {
+      "id": "integrated-design-lcc-software",
+      "page": "project/bridge-life-cycle-cost-projects.html",
+      "title": "Development of an Integrated Design Optimization and Life-Cycle Cost Calculation Software for Steel Girder Bridges",
+      "sponsors": ["constructsteel", "INSDAG", "Ministry of Steel, Government of India"],
+      "institution": "IIT Bombay",
+      "scope": [
+        "A tool for life cycle cost assessment of bridges",
+        "A tool for the optimal design of short-span plate girder bridges"
+      ]
+    }
+  ],
 
   "journalPapers": [
     {

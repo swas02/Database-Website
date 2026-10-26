@@ -1915,3 +1915,40 @@ html:not(.js) .area-panels { position: static; display: grid; gap: 16px; }
   .team-join .plain-actions { width: 100%; }
   .team-join .btn { width: 100%; }
 }
+
+/* Sponsored projects (rendered from data/research.json) */
+.sponsor-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.sponsor-chips li { padding: 4px 12px; border-radius: 999px; background: var(--brand-subtle); color: var(--brand-dark); font-weight: 600; font-size: 0.88rem; }
+.project-cards { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; margin: 0; padding: 0; }
+.project-cards li.pub-empty { grid-column: 1 / -1; }
+.project-cards > li { background: var(--bg-surface); border: 1px solid var(--border-fine); border-top: 4px solid var(--brand-primary); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.project-tag { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-dark); }
+.project-cards h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; }
+.project-scope { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; line-height: 1.5; color: var(--text-secondary); }
+@media (max-width: 480px) { .project-cards { grid-template-columns: 1fr; } }
+.project-link { align-self: flex-start; margin-top: auto; font-weight: 600; color: var(--brand-dark); text-decoration: none; }
+.project-link:hover { color: var(--brand-primary); text-decoration: underline; text-underline-offset: 3px; }
+.back-link { display: inline-block; margin-bottom: 12px; font-weight: 600; color: var(--brand-dark); text-decoration: none; }
+.back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.project-detail { max-width: 48em; display: grid; gap: 14px; }
+.project-detail h2 { font-size: 1.25rem; font-weight: 700; margin-top: 18px; }
+.project-detail p { font-size: 1.1rem; line-height: 1.6; margin: 0; }
+.project-hero { padding-bottom: 0; }
+.project-hero h1 { font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.2; max-width: 30em; }
+.tight-hero { padding-bottom: 0; }
+/* Type scale for projects: section h2 > card title > body > labels */
+.project-cards > li { padding: 24px 28px; gap: 10px; }
+.project-cards h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+.project-cards .project-tag { font-size: 0.75rem; margin-top: 4px; color: var(--text-secondary); }
+.sponsor-chips li { font-size: 0.85rem; font-weight: 500; }
+.project-link { font-size: 0.95rem; margin-top: auto; padding-top: 8px; }
+.project-detail h2 { font-size: 1.5rem; font-weight: 700; margin-top: 28px; }
+.project-detail p, .project-detail li { font-size: 1.05rem; line-height: 1.6; }
+.project-detail .project-tag { font-size: 0.8rem; }
+/* Dataset card: separate actions instead of one big link */
+.ds-card h2 a { color: inherit; text-decoration: none; }
+.ds-card h2 a:hover { color: var(--brand-dark); }
+.ds-art { display: block; }
+.ds-actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.ds-more { font-weight: 600; color: var(--brand-dark); text-decoration: underline; text-underline-offset: 3px; }
+.ds-more:hover { color: var(--brand-primary); }
