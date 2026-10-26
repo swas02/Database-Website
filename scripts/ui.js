@@ -126,23 +126,13 @@ export function renderBridgeMetadata(data) {
   container.innerHTML = "";
 
   const items = [
-    { k: "Project ID", v: data.bridge_id },
-    { k: "Type", v: data.bridge_type },
-    { k: "Location", v: data.location || "N/A" },
-    { k: "Width", v: data.total_width_m + " m" },
-    { k: "Lanes", v: data.lanes },
-    { k: "Rebar Spec", v: data.material_grades?.rebar || "N/A" },
-    { k: "Steel Spec", v: data.material_grades?.structural_steel || "N/A" },
+    { k: "Bridge ID", v: data.bridge_id },
     {
-      k: "Concrete Substructure",
+      k: "Concrete Grade",
       v: data.material_grades?.concrete_substructure_and_deck_slab || "N/A",
     },
-    { k: "Pile Count", v: data.substructure?.pile?.count || "N/A" },
-    {
-      k: "Pile Cap Dimensions",
-      v: data.substructure?.pile_cap?.dimensions_m?.raw || "N/A",
-    },
-    { k: "Pier Diameter", v: data.substructure?.pier?.diameter_m ? data.substructure.pier.diameter_m + " m" : "N/A" },
+    { k: "Structural Steel Grade", v: data.material_grades?.structural_steel || "N/A" },
+    { k: "Rebar Grade", v: data.material_grades?.rebar || "N/A" },
   ];
 
   items.forEach((i) => {
