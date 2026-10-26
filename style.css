@@ -1184,7 +1184,7 @@ canvas {
   stroke-width: 1;
 }
 #lcca-container .ctrTop {
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: 700;
   fill: var(--text-title);
 }
@@ -1878,3 +1878,4 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 #side-stack .btn-panel-toggle .bi { display: block; line-height: 1; width: 1em; height: 1em; }
 #side-stack .btn-panel-toggle .bi::before { display: block; line-height: 1; }
 #side-stack .btn-panel-toggle .bi::before { vertical-align: 0 !important; text-align: center; width: 1em; height: 1em; line-height: 1em; margin: 0; }
+.lcca-currency-note { position: sticky; bottom: 8px; width: fit-content; margin: 16px 0 0 auto; padding: 4px 10px; font-size: var(--fs-xs); color: var(--text-muted); background: var(--bg-dropdown); border: 1px solid var(--border-card); border-radius: 99px; box-shadow: var(--shadow-dropdown); z-index: 5; }

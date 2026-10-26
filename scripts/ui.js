@@ -905,7 +905,7 @@ const MASTER_LABELS = {
   "reconstruction|social|ruc_demolition": "Road User Costs related to Demolition and Disposal during Reconstruction",
   "reconstruction|social|ruc_reconstruction": "Road User Costs during Reconstruction",
 
-  // End of Life Stage
+  // End-of-life Stage
   "end_of_life|economic|total_demolition_and_disposal_costs": "Demolition and Disposal Costs",
   "end_of_life|economic|total_scrap_value": "Recycling Costs",
   "end_of_life|environmental|carbon_costs_demolition_and_disposal": "Demolition and Disposal related Carbon Emissions",
@@ -928,19 +928,17 @@ const LCCA_PILLARS = [
   { id: 'social',        label: 'Social',        color: '#ff5a2a', cvar: '--pl3' }
 ];
 
-function formatINR(v) {
-  const s = v < 0 ? '-' : '';
-  return s + '₹' + Math.round(Math.abs(v)).toLocaleString('en-IN');
-}
-
+// International scale: thousand, million, billion
 function formatCompactINR(v) {
   const s = v < 0 ? '-' : '';
   const a = Math.abs(v);
-  if (a >= 1e7) return s + '₹' + (a/1e7).toFixed(2) + ' Cr';
-  if (a >= 1e5) return s + '₹' + (a/1e5).toFixed(2) + ' L';
-  if (a >= 1e3) return s + '₹' + (a/1e3).toFixed(1) + 'K';
+  if (a >= 1e9) return s + '₹' + (a/1e9).toFixed(2) + ' billion';
+  if (a >= 1e6) return s + '₹' + (a/1e6).toFixed(2) + ' million';
+  if (a >= 1e3) return s + '₹' + (a/1e3).toFixed(1) + ' thousand';
   return s + '₹' + a.toFixed(0);
 }
+
+const formatINR = formatCompactINR;
 
 const pct = (v, of) => (of > 0 ? (100 * v / of).toFixed(1) : '0.0') + '%';
 const cv = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -1025,8 +1023,8 @@ function donut(el, data, o) {
   bindTip(paths, d => ttRow(d.data.color, d.data.label, d.data.value,
     [`${pct(d.data.value, total)} of ${o.ofLabel || 'total'}`, ...(d.data.tip || [])]));
 
-  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.05em').text(formatCompactINR(o.center ?? total));
-  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '1.75em').text(o.centerLabel || 'gross cost');
+  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.95em').text(formatCompactINR(o.center ?? total));
+  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '-0.45em').text(o.centerLabel || 'Total');
 
   const min = o.labelMin ?? 0.03, sides = { 1: [], '-1': [] };
   arcs.forEach(d => {
@@ -1090,7 +1088,7 @@ function nested(el, inner, o) {
     .attr('class', 'slice in').attr('tabindex', 0)
     .attr('d', arcIn).attr('fill', d => d.data.color)
     .attr('stroke', 'none')
-    .attr('aria-label', d => `${d.data.label}: ${formatINR(d.data.value)}, ${pct(d.data.value, total)} of gross`);
+    .attr('aria-label', d => `${d.data.label}: ${formatINR(d.data.value)}, ${pct(d.data.value, total)} of total`);
   const pOut = allPaths.selectAll('.out').data(outerArcs).join('path')
     .attr('class', 'slice out').attr('tabindex', 0)
     .attr('d', arcOut).attr('fill', d => d.data.color)
@@ -1102,12 +1100,12 @@ function nested(el, inner, o) {
   pIn.on('mouseenter.hl', function() { hl(this); }).on('mouseleave.hl', () => both.attr('opacity', null));
   pOut.on('mouseenter.hl', function() { hl(this); }).on('mouseleave.hl', () => both.attr('opacity', null));
   
-  bindTip(pIn, d => ttRow(d.data.color, d.data.label, d.data.value, [`${pct(d.data.value, total)} of gross cost`]));
+  bindTip(pIn, d => ttRow(d.data.color, d.data.label, d.data.value, [`${pct(d.data.value, total)} of total`]));
   bindTip(pOut, d => ttRow(d.data.color, `${d.parent.label} — ${d.data.label}`, d.data.value,
-    [`${pct(d.data.value, d.parent.value)} of ${d.parent.short || d.parent.label}`, `${pct(d.data.value, total)} of gross cost`]));
+    [`${pct(d.data.value, d.parent.value)} of ${d.parent.short || d.parent.label}`, `${pct(d.data.value, total)} of total`]));
 
-  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.05em').text(formatCompactINR(total));
-  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '1.75em').text('gross cost');
+  g.append('text').attr('class', 'ctrTop').attr('text-anchor', 'middle').attr('dy', '0.95em').text(formatCompactINR(total));
+  g.append('text').attr('class', 'ctrBot').attr('text-anchor', 'middle').attr('dy', '-0.45em').text('Total');
 
   innerArcs.forEach(d => {
     const span = d.endAngle - d.startAngle; if (span < 0.5) return;
@@ -1178,7 +1176,7 @@ export function renderLCCAData(lccaData) {
   const STAGES = [
     { id: 'initial', label: 'Initial stage', short: 'Initial', color: '#64748b', cvar: '--st1', parts: [{ id: 'initial_stage', src: RAW.initial_stage || {}, tag: '' }] },
     { id: 'use',     label: 'Use stage',     short: 'Use', color: '#00C49A', cvar: '--st2', parts: [{ id: 'use_stage', src: RAW.use_stage || {}, tag: '' }] },
-    { id: 'eol',     label: 'End of life',   short: 'End of life', color: '#EA9E9E', cvar: '--st3',
+    { id: 'eol',     label: 'End-of-life',   short: 'End-of-life', color: '#EA9E9E', cvar: '--st3',
       parts: [
         ...(hasRecon ? [{ id: 'reconstruction', src: RAW.reconstruction, tag: ' (reconstruction)' }] : []),
         { id: 'end_of_life', src: RAW.end_of_life || {}, tag: hasRecon ? ' (final)' : '' }
@@ -1295,14 +1293,14 @@ export function renderLCCAData(lccaData) {
   // Render everything inside lcca-container
   container.innerHTML = `
     <!-- Charts Row 1: Gross Stage & Pillar splits -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cost distribution overview</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-lg); ">Life Cycle Cost Distribution</h4>
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chStage"></div>
       <div class="lcca-dash-card" id="dash-chPillar"></div>
     </div>
 
     <!-- Charts Row 2: Nested Splits -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cross-sectional relations</h4>
+    <!-- <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cross-sectional relations</h4> -->
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chNestSP"></div>
       <div class="lcca-dash-card" id="dash-chNestPS"></div>
@@ -1313,10 +1311,9 @@ export function renderLCCAData(lccaData) {
     <div class="lcca-dash-grid3" id="dash-chComps"></div>
 
     <!-- Summary Tables -->
-    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Tabular reports</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--lg-md); ">Consolidated Stage Summary</h2>
     <div class="lcca-dash-card mb-4" style="overflow-x: auto;">
-      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Consolidated stage summary</h3>
-      <p class="sub" style="margin-bottom: 16px;">A consolidated presentation of costs across the three pillars (economic, social, and environmental) for each lifecycle stage. This table facilitates the identification of phases that bear the most substantial burden.</p>
+      <p class="sub" style="margin-bottom: 16px;">A consolidated presentation of costs across the three pillars (economic, social, and environmental) for each life cycle stage. This table facilitates the identification of phases that bear the most substantial burden.</p>
       <table class="matrix-table-lcca">
         <thead>
           <tr>
@@ -1332,8 +1329,8 @@ export function renderLCCAData(lccaData) {
     </div>
 
     <div class="lcca-dash-card" style="overflow-x: auto;">
-      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Detailed Component Cost Ledger</h3>
-      <p class="sub" style="margin-bottom: 12px;">Fully itemized ledger of cost components compiled from the analysis model results</p>
+      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Itemized Cost Breakdown</h3>
+      <p class="sub" style="margin-bottom: 12px;">An itemised schedule of each individual cost component across all stages and pillars. All values are discounted to the year of assessment.</p>
       
       <!-- Color legend for the pillars -->
       <div class="d-flex gap-3 mb-3 px-1" style="font-size: var(--fs-xs); font-weight: 600;  ">
@@ -1356,27 +1353,28 @@ export function renderLCCAData(lccaData) {
         </tbody>
       </table>
     </div>
+    <p class="lcca-currency-note">Note: all values are in Indian rupees (INR, ₹).</p>
   `;
 
   // Draw D3 Charts dynamically!
   try {
     // 1. Chart Stage Gross
-    renderDashCard('dash-chStage', 'Gross Cost by Life-Cycle Stage',
-      'Initial · Use · End of Life stages',
+    renderDashCard('dash-chStage', 'Stage-wise Life Cycle Cost Distribution',
+      'Initial · Use · End-of-life',
       [{ items: STAGES.map(s => ({ label: s.label, color: stCol[s.id] || s.color })) }]);
     donut('#dash-chStage', STAGES.map(s => ({
       label: s.short, value: stageGross[s.id], color: stCol[s.id] || s.color,
-      tip: stageCredit[s.id] ? [`scrap credit ${formatCompactINR(stageCredit[s.id])} → net ${formatCompactINR(stageGross[s.id] + stageCredit[s.id])}`] : []
-    })), { title: 'Gross cost by stage', ofLabel: 'gross cost' });
+      tip: stageCredit[s.id] ? [`scrap credit ${formatCompactINR(stageCredit[s.id])}`] : []
+    })), { title: 'Cost by stage', ofLabel: 'total' });
 
     // 2. Chart Pillar Gross
-    renderDashCard('dash-chPillar', 'Gross Cost by Sustainability Pillar', 'Economic · Environmental · Social splits',
+    renderDashCard('dash-chPillar', 'Pillar-wise Life Cycle Cost Distribution', 'Economic · Environmental · Social',
       [{ items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) }]);
     donut('#dash-chPillar', LCCA_PILLARS.map(p => ({ label: p.label, value: pillarGross[p.id], color: plCol[p.id] || p.color })),
-      { title: 'Gross cost by pillar', ofLabel: 'gross cost' });
+      { title: 'Cost by pillar', ofLabel: 'total' });
 
     // 3. Chart Nested Stage x Pillar
-    renderDashCard('dash-chNestSP', 'Life-Cycle Stage × Pillar Breakdown', 'Inner ring: Stage · Outer ring: Pillar split',
+    renderDashCard('dash-chNestSP', 'Life cycle stage by pillar', 'The inner ring shows life cycle stages, and the outer ring shows sustainability pillars.',
       [{ name: 'Stage', items: STAGES.map(s => ({ label: s.short, color: stCol[s.id] || s.color })) },
        { name: 'Pillar', items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) }]);
     nested('#dash-chNestSP', STAGES.map(s => ({
@@ -1385,7 +1383,7 @@ export function renderLCCAData(lccaData) {
     })), { title: 'Stage by pillar double pie' });
 
     // 4. Chart Nested Pillar x Stage
-    renderDashCard('dash-chNestPS', 'Sustainability Pillar × Stage Breakdown', 'Inner ring: Pillar · Outer ring: Stage split',
+    renderDashCard('dash-chNestPS', 'Sustainability pillar by stage', 'The inner ring shows sustainability pillars, and the outer ring shows life cycle stages.',
       [{ name: 'Pillar', items: LCCA_PILLARS.map(p => ({ label: p.label, color: plCol[p.id] || p.color })) },
        { name: 'Stage', items: STAGES.map(s => ({ label: s.short, color: stCol[s.id] || s.color })) }]);
     nested('#dash-chNestPS', LCCA_PILLARS.map(p => ({
@@ -1417,14 +1415,14 @@ export function renderLCCAData(lccaData) {
       
       const credits = components.filter(c => c.stage === s.id && c.isCredit);
       const foot = credits.length
-        ? `Credit: ${credits.map(c => `${c.label} <b class="credit">${formatCompactINR(c.costEffect)}</b>`).join(' · ')} → net ${formatCompactINR(stageGross[s.id] + stageCredit[s.id])}`
+        ? `Credit: ${credits.map(c => `${c.label} <b class="credit">${formatCompactINR(c.costEffect)}</b>`).join(' · ')}`
         : '';
         
       const div = document.createElement('div');
       div.className = 'lcca-dash-card'; div.id = 'dash-comp_' + s.id;
       dashChComps.appendChild(div);
       
-      renderDashCard('dash-comp_' + s.id, s.label, `${pct(stageGross[s.id], gross)} of gross cost`,
+      renderDashCard('dash-comp_' + s.id, s.label, `${pct(stageGross[s.id], gross)} of total`,
         [{ items: data.map(d => ({ label: d.label, color: d.color })) }], foot);
         
       donut('#dash-comp_' + s.id, data, { title: s.label + ' components', ofLabel: s.short, R: 96, W: 460, H: 290, labelMin: 0.055, pctOnly: true });
