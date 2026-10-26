@@ -95,9 +95,6 @@ function formatOptionText(key, value) {
   if (key === "lanes") {
     return value === "2L" ? "2 Lanes (2L)" : "3 Lanes (3L)";
   }
-  if (key === "span") {
-    return `${value} meters`;
-  }
   return value;
 }
 

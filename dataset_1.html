@@ -3,16 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Bridge Model Library | SSRR Lab</title>
+  <title>Bridge Library | SSRR Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SSRR Lab, IIT Bombay: browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
+  <meta name="description"
+    content="SSRR Lab, IIT Bombay: browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <meta name="theme-color" content="#90AF13">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SSRR Lab, IIT Bombay">
-  <meta property="og:title" content="Bridge Model Library | SSRR Lab">
-  <meta property="og:description" content="SSRR Lab, IIT Bombay: browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
+  <meta property="og:title" content="Bridge Library | SSRR Lab">
+  <meta property="og:description"
+    content="SSRR Lab, IIT Bombay: browse standard 3D bridge models by location, type, span and lanes, inspect their components and specifications, and download the data.">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +28,8 @@
 <body>
 
   <noscript>
-    <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#FAFBF7;color:#1B2118;font-family:system-ui,sans-serif;z-index:9999;text-align:center;padding:24px;">
+    <div
+      style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#FAFBF7;color:#1B2118;font-family:system-ui,sans-serif;z-index:9999;text-align:center;padding:24px;">
       This page needs JavaScript to render 3D bridge models. Please enable JavaScript and reload.
     </div>
   </noscript>
@@ -52,8 +55,8 @@
 
       <!-- Overlay Controls -->
       <div id="hud-triggers" role="toolbar" aria-label="Viewer controls">
-        <button class="hud-btn active" id="btn-mode-rotate" onclick="setViewerMode('rotate')"
-          title="Rotate Mode (R)"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> <span class="hud-btn-text">Rotate</span></button>
+        <button class="hud-btn active" id="btn-mode-rotate" onclick="setViewerMode('rotate')" title="Rotate Mode (R)"><i
+            class="bi bi-arrow-repeat" aria-hidden="true"></i> <span class="hud-btn-text">Rotate</span></button>
         <button class="hud-btn" id="btn-mode-pan" onclick="setViewerMode('pan')" title="Pan Mode (P)"><i
             class="bi bi-arrows-move" aria-hidden="true"></i> <span class="hud-btn-text">Pan</span></button>
 
@@ -61,21 +64,21 @@
 
         <button class="hud-btn" onclick="setCameraPreset('top')" title="Top View (T)" aria-label="Top view">
           <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75"/>
-            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
-            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" />
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35" />
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35" />
           </svg> <span class="hud-btn-text">Top</span></button>
         <button class="hud-btn" onclick="setCameraPreset('front')" title="Front View (F)" aria-label="Front view">
           <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
-            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75"/>
-            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35"/>
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35" />
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" />
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" opacity="0.35" />
           </svg> <span class="hud-btn-text">Front</span></button>
         <button class="hud-btn" onclick="setCameraPreset('side')" title="Side View (S)" aria-label="Side view">
           <svg class="view-cube-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35"/>
-            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35"/>
-            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75"/>
+            <polygon points="8,1 14.5,4.75 8,8.5 1.5,4.75" opacity="0.35" />
+            <polygon points="1.5,4.75 8,8.5 8,15.5 1.5,11.75" opacity="0.35" />
+            <polygon points="14.5,4.75 8,8.5 8,15.5 14.5,11.75" />
           </svg> <span class="hud-btn-text">Side</span></button>
 
         <div class="hud-divider" role="presentation"></div>
@@ -92,122 +95,129 @@
 
     <!-- Left Toggle button (hidden initially because left panel is open) -->
     <button id="left-trigger" class="sidebar-trigger" style="display:none" onclick="toggleLeftPanel()"
-      aria-label="Open model library" title="Model Library ( [ )"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      aria-label="Open Bridge Configuration" title="Bridge Configuration ( [ )"><i class="bi bi-chevron-right"
+        aria-hidden="true"></i></button>
 
     <!-- Right Toggle button (visible initially because right panel is collapsed) -->
-    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()"
-      aria-label="Open bridge explorer" title="Bridge Explorer ( ] )"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+    <button id="right-trigger" class="sidebar-trigger" onclick="toggleRightPanel()" aria-label="Open bridge explorer"
+      title="Bridge Explorer ( ] )"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
 
-    <!-- ── Side stack: Model Library on top, Bridge Explorer below ── -->
+    <!-- ── Side stack: Bridge Configuration on top, Bridge Explorer below ── -->
     <!-- Mobile only: drag to resize the model area -->
-    <div id="splitter" class="splitter" role="separator" aria-orientation="horizontal" aria-label="Resize model area" tabindex="0"><span></span></div>
+    <div id="splitter" class="splitter" role="separator" aria-orientation="horizontal" aria-label="Resize model area"
+      tabindex="0"><span></span></div>
 
     <div id="side-stack">
-    <!-- ── Left Panel (Bridge Model Library) ── -->
-    <aside id="left-panel" class="dashboard-panel" aria-label="Model library">
-      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleLeftPanel()"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeftPanel()}">
-        <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Model Library</div>
-        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
-      </div>
-
-      <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
-
-        <!-- Primary Filters -->
-        <div class="settings-group mb-0">
-          <div class="settings-title">Primary Filters</div>
-
-          <div class="filter-grid">
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-location">Location</label>
-            <select id="filter-location" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-type">Type</label>
-            <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-structure">Structure</label>
-            <select id="filter-structure" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-span">Span</label>
-            <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-lanes">Lanes</label>
-            <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          <div class="control-row mb-2">
-            <label class="text-muted" for="filter-footpath">Footpath</label>
-            <select id="filter-footpath" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
-          </div>
-
-          </div>
-
-          <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge(true)">
-            <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Model
-          </button>
+      <!-- ── Left Panel (Bridge Library) ── -->
+      <aside id="left-panel" class="dashboard-panel" aria-label="Bridge Configuration">
+        <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleLeftPanel()"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeftPanel()}">
+          <div class="panel-title"><i class="bi bi-folder-fill" aria-hidden="true"></i> Bridge Configuration</div>
+          <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
         </div>
 
-      </div>
-    </aside>
+        <div class="panel-content d-flex flex-column gap-3" style="overflow-y: auto;">
 
-    <!-- ── Right Panel (Explorer & Inspector) ── -->
-    <aside id="right-panel" class="dashboard-panel collapsed" aria-label="Bridge explorer">
-      <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleRightPanel()"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRightPanel()}">
-        <div class="panel-title"><i class="bi bi-layers-half" aria-hidden="true"></i> Bridge Explorer</div>
-        <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
-      </div>
+          <!-- Primary Filters -->
+          <div class="settings-group mb-0">
+            <div class="settings-title">Primary Filters</div>
 
-      <div class="custom-tabs" role="tablist" aria-label="Explorer sections">
-        <div class="tab-btn active" id="tab-groups" role="tab" tabindex="0" aria-selected="true"
-          aria-controls="content-groups" onclick="switchRightTab('groups')">Groups</div>
-        <div class="tab-btn" id="tab-meta" role="tab" tabindex="0" aria-selected="false" aria-controls="content-meta"
-          onclick="switchRightTab('meta')">Specs</div>
-        <div class="tab-btn" id="tab-lcca" role="tab" tabindex="0" aria-selected="false" aria-controls="content-lcca"
-          onclick="switchRightTab('lcca')">LCCA</div>
-        <div class="tab-btn" id="tab-downloads" role="tab" tabindex="0" aria-selected="false"
-          aria-controls="content-downloads" onclick="switchRightTab('downloads')">Downloads</div>
-      </div>
+            <div class="filter-grid">
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-location">Location</label>
+                <select id="filter-location" class="form-select form-select-sm w-50"
+                  onchange="onFilterChange()"></select>
+              </div>
 
-      <div class="panel-content">
-        <!-- TAB 1: GROUPS CHECKLIST -->
-        <div id="content-groups" role="tabpanel" aria-labelledby="tab-groups">
-          <div id="groups-container">
-            <!-- Populated dynamically -->
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-type">Girder Type</label>
+                <select id="filter-type" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+              </div>
+
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-span">Span (m)</label>
+                <select id="filter-span" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+              </div>
+
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-lanes">Lanes</label>
+                <select id="filter-lanes" class="form-select form-select-sm w-50" onchange="onFilterChange()"></select>
+              </div>
+
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-footpath">Footpath</label>
+                <select id="filter-footpath" class="form-select form-select-sm w-50"
+                  onchange="onFilterChange()"></select>
+              </div>
+
+              <div class="control-row mb-2">
+                <label class="text-muted" for="filter-structure">Components</label>
+                <select id="filter-structure" class="form-select form-select-sm w-50"
+                  onchange="onFilterChange()"></select>
+              </div>
+
+
+            </div>
+
+            <button id="btn-load-model" class="btn btn-primary btn-sm w-100 mt-1" onclick="loadSelectedBridge(true)">
+              <i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Load Bridge Data
+            </button>
           </div>
+
+        </div>
+      </aside>
+
+      <!-- ── Right Panel (Explorer & Inspector) ── -->
+      <aside id="right-panel" class="dashboard-panel collapsed" aria-label="Bridge explorer">
+        <div class="panel-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleRightPanel()"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRightPanel()}">
+          <div class="panel-title"><i class="bi bi-layers-half" aria-hidden="true"></i> Bridge Database Explorer</div>
+          <span class="btn-panel-toggle" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
         </div>
 
-        <!-- TAB 2: SPECIFICATIONS PANEL -->
-        <div id="content-meta" role="tabpanel" aria-labelledby="tab-meta" style="display:none">
-          <div id="meta-container">
-            <!-- Populated dynamically -->
-          </div>
+        <div class="custom-tabs" role="tablist" aria-label="Explorer sections">
+          <div class="tab-btn active" id="tab-groups" role="tab" tabindex="0" aria-selected="true"
+            aria-controls="content-groups" onclick="switchRightTab('groups')">CAD View</div>
+          <div class="tab-btn" id="tab-meta" role="tab" tabindex="0" aria-selected="false" aria-controls="content-meta"
+            onclick="switchRightTab('meta')">Specs</div>
+          <div class="tab-btn" id="tab-lcca" role="tab" tabindex="0" aria-selected="false" aria-controls="content-lcca"
+            onclick="switchRightTab('lcca')">LCCA</div>
+          <div class="tab-btn" id="tab-downloads" role="tab" tabindex="0" aria-selected="false"
+            aria-controls="content-downloads" onclick="switchRightTab('downloads')">Downloads</div>
         </div>
 
-        <!-- TAB 3: LCCA PANEL -->
-        <div id="content-lcca" role="tabpanel" aria-labelledby="tab-lcca" style="display:none">
-          <button type="button" class="lcca-back" onclick="switchRightTab('groups')"><i class="bi bi-arrow-left" aria-hidden="true"></i> Back to model</button>
-          <div id="lcca-container">
-            <!-- Populated dynamically -->
+        <div class="panel-content">
+          <!-- TAB 1: GROUPS CHECKLIST -->
+          <div id="content-groups" role="tabpanel" aria-labelledby="tab-groups">
+            <div id="groups-container">
+              <!-- Populated dynamically -->
+            </div>
           </div>
-        </div>
 
-        <!-- TAB 4: DOWNLOADS PANEL -->
-        <div id="content-downloads" role="tabpanel" aria-labelledby="tab-downloads" style="display:none">
-          <div class="inspector-grid" id="downloads-container">
-            <!-- Populated dynamically -->
+          <!-- TAB 2: SPECIFICATIONS PANEL -->
+          <div id="content-meta" role="tabpanel" aria-labelledby="tab-meta" style="display:none">
+            <div id="meta-container">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- TAB 3: LCCA PANEL -->
+          <div id="content-lcca" role="tabpanel" aria-labelledby="tab-lcca" style="display:none">
+            <button type="button" class="lcca-back" onclick="switchRightTab('groups')"><i class="bi bi-arrow-left"
+                aria-hidden="true"></i> Back to model</button>
+            <div id="lcca-container">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- TAB 4: DOWNLOADS PANEL -->
+          <div id="content-downloads" role="tabpanel" aria-labelledby="tab-downloads" style="display:none">
+            <div class="inspector-grid" id="downloads-container">
+              <!-- Populated dynamically -->
+            </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
     </div>
 
   </div>

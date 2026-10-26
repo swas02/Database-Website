@@ -39,7 +39,7 @@ window.switchRightTab = function (tab) {
   }
 };
 
-// Model Library and Bridge Explorer are independent collapsible sections; either, both or neither can be open.
+// Bridge Configuration and Bridge Explorer are independent collapsible sections; either, both or neither can be open.
 window.setSidebarSection = function (which, open) {
   const p = document.getElementById(which === "left" ? "left-panel" : "right-panel");
   if (!p) return;

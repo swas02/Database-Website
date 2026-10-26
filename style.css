@@ -1328,7 +1328,7 @@ canvas {
 
 
 
-/* ── Side stack: compact Model Library with Bridge Explorer below it ── */
+/* ── Side stack: compact Bridge Configuration with Bridge Explorer below it ── */
 #side-stack {
   display: contents; /* mobile: panels keep their own absolute positioning */
 }
@@ -1519,7 +1519,7 @@ canvas {
   .viewer-hint { right: 20px; bottom: auto; top: 28px; }
 
 
-/* ── Compact Model Library ── */
+/* ── Compact Bridge Configuration ── */
   #left-panel .panel-header { padding: 8px 16px; }
   #left-panel .panel-title { font-size: 12px; }
   #left-panel .panel-content { padding: 10px 16px 12px; gap: 0 !important; }

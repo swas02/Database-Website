@@ -37,7 +37,7 @@ const logoSrcset = `${logo160} 160w, ${logo240} 240w, ${logo320} 320w, ${logo480
         <a href="${root}index.html" class="site-logo" aria-label="SSRR Lab home">
           <img src="${logo320}" srcset="${logoSrcset}" sizes="160px" width="778" height="321" alt="SSRR Lab, IIT Bombay">
         </a>
-        <span class="site-page-name"><a href="${root}datasets.html">Datasets</a> / Bridge model library</span>
+        <span class="site-page-name"><a href="${root}datasets.html">Datasets</a> / Bridge Library</span>
         <nav aria-label="Main" class="site-links">
           <a href="${root}index.html#about">About</a>
           <a href="${root}research.html">Research</a>

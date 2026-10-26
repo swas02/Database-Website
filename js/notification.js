@@ -12,7 +12,7 @@ import { showNotification } from "./notification-helper.js";
 const NOTIFICATION = {
   enabled: true,
   type: "warning",
-  message: "This website is under development. Some features may be incomplete or change without notice.",
+  message: "Under development: some features may be incomplete or contain mistakes.",
   link: null, // e.g. { text: "Report an issue", url: "https://github.com/..." }
   dismissible: false,
 };
