@@ -362,6 +362,7 @@ window.loadSelectedBridge = async function (fromUser = false) {
     // Remember the current bridge
     state.currentLoadedBridgePath = match.ifc;
     state.currentLoadedBridge = match;
+    state.currentLoadedSubBridge = subMatch;
     state.loadedStructure = wantBoth ? BOTH : match.structure;
 
     // Refresh general specifications UI

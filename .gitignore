@@ -40,3 +40,5 @@ plots/
 .claude
 skills-lock.json
 .gitattributes
+
+archive/

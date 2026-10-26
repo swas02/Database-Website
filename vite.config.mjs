@@ -5,7 +5,7 @@ import path from "node:path";
 // Runtime data the viewer fetches by relative URL. Only what the registry lists
 // is copied, so scratch files in IFC/ never reach dist/.
 const STATIC_FILES = ["registry_flat.json", "data/steel_data.json", "test.lcca"];
-const MODEL_FIELDS = ["json", "obj", "design_report", "design_file", "cad"]; // no .ifc: only OBJ + groups.json are served
+const MODEL_FIELDS = ["json", "obj", "design_report", "design_file", "cad", "input_file", "lcca"]; // no .ifc: only OBJ + groups.json are served
 
 // Every top-level .html page is a build entry (lab site + dataset viewer).
 function htmlPages() {

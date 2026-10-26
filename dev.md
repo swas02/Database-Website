@@ -13,7 +13,7 @@ To optimize loading times on the website, we load pre-converted **`.obj`** files
 
 ## 2. Re-Initialization Workflow (Adding New Models)
 
-Whenever you add new models (new `.ifc` files and `groups.json` mappings) to the `IFC/` directory, execute the following sequence of commands in order from the project root:
+Whenever you add new models (new `.ifc` files and `groups.json` mappings) to the `project_database/PSC_vs_Steel_Short_Span_Bridges/` directory, execute the following sequence of commands in order from the project root:
 
 ### Step 1: Install Dependencies (If needed)
 Ensure you have the required Node.js libraries:

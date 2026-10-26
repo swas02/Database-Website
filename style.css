@@ -573,6 +573,10 @@ canvas {
   transition: all 0.2s;
   letter-spacing: 0;
 }
+.tab-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 .tab-btn.active {
   color: var(--text-accent);
   border-bottom-color: var(--primary);

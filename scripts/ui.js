@@ -4,6 +4,7 @@ import { COLOR, getMaterialColor, DECK_DIMS, standardLaneWidth } from "./constan
 
 // Tab Navigation Explorer
 window.switchRightTab = function (tab) {
+  if (tab === "lcca" && document.getElementById("tab-lcca")?.classList.contains("disabled")) return;
   state.activeSidebarTab = tab;
   document
     .getElementById("tab-groups")
@@ -829,13 +830,18 @@ export function renderDownloads(bridgeId, ifcPath) {
   const container = document.getElementById("downloads-container");
   if (!container) return;
 
-  // Not available yet: shown greyed out
+  // The loaded registry row is either the superstructure or (for a substructure-only view) the substructure
+  const loaded = state.currentLoadedBridge;
+  const superRow = loaded?.structure === "Superstructure" ? loaded : null;
+  const subRow = loaded?.structure === "Substructure" ? loaded : state.currentLoadedSubBridge;
+
+  // An item without a url is shown greyed out
   const items = [
-    { title: "Analysis model (Superstructure)", file: "Superstructure Model (.mcb)" },
-    { title: "Analysis model (Substructure)", file: "Substructure Model (.mcb)" },
-    { title: "2D CAD drawings", file: "Drawing File (.dwg)" },
-    { title: "3psLCCA input", file: "Input File (.3ps)" },
-    { title: "3psLCCA report", file: "Report File (.pdf)" },
+    { title: "Analysis model (Superstructure)", file: "Superstructure Model (.mcb)", url: superRow?.design_file },
+    { title: "Analysis model (Substructure)", file: "Substructure Model (.mcb)", url: subRow?.design_file },
+    { title: "2D CAD drawings", file: "Drawing File (.dwg)", url: superRow?.cad || subRow?.cad },
+    { title: "3psLCCA input", file: "Input File (.3ps)", url: superRow?.input_file || subRow?.input_file },
+    { title: "3psLCCA report", file: "Report File (.pdf)", url: superRow?.design_report || subRow?.design_report },
   ];
 
   container.innerHTML = items
@@ -844,8 +850,12 @@ export function renderDownloads(bridgeId, ifcPath) {
       <div class="metric-card mb-0">
         <span class="metric-header">${it.title}</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-          <div><div class="text-white fw-bold" style="font-size: var(--fs-xs);">${it.file}</div><div class="text-muted" style="font-size: var(--fs-xs);">Will be available soon</div></div>
-          <button type="button" class="btn btn-sm btn-outline-secondary" style="font-size: var(--fs-xs); padding: 4px 8px;" disabled><i class="bi bi-download"></i> Download</button>
+          <div><div class="text-white fw-bold" style="font-size: var(--fs-xs);">${it.file}</div>${it.url ? "" : `<div class="text-muted" style="font-size: var(--fs-xs);">Will be available soon</div>`}</div>
+          ${
+            it.url
+              ? `<a class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px;" href="${it.url}" download="${it.url.split("/").pop()}"><i class="bi bi-download"></i> Download</a>`
+              : `<button type="button" class="btn btn-sm btn-outline-secondary" style="font-size: var(--fs-xs); padding: 4px 8px;" disabled><i class="bi bi-download"></i> Download</button>`
+          }
         </div>
       </div>`,
     )
@@ -1476,10 +1486,23 @@ export async function loadAndRenderLCCA() {
     </div>
   `;
 
-  // Determine path to LCCA results:
-  // Look for test.lcca in the root folder by default
-  const lccaPath = state.currentLoadedBridge?.lcca || "./test.lcca";
-  
+  const lccaPath = state.currentLoadedBridge?.lcca;
+  const lccaTab = document.getElementById("tab-lcca");
+  if (lccaTab) {
+    lccaTab.classList.toggle("disabled", !lccaPath);
+    lccaTab.setAttribute("aria-disabled", String(!lccaPath));
+    lccaTab.title = lccaPath ? "" : "LCCA file unavailable";
+  }
+  if (!lccaPath) {
+    if (state.activeSidebarTab === "lcca") window.switchRightTab("groups");
+    container.innerHTML = `
+      <div class="p-4 text-center" style="font-size: var(--fs-sm); color: var(--text-muted);">
+        LCCA results are not available for this bridge yet.
+      </div>
+    `;
+    return;
+  }
+
   try {
     const response = await fetch(lccaPath);
     if (!response.ok) throw new Error("Failed to load LCCA data");

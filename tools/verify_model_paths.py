@@ -16,7 +16,7 @@ def calculate_sha256(filepath):
 
 def verify_models():
     base_dir = Path(__file__).resolve().parent.parent
-    ifc_dir = base_dir / "IFC"
+    ifc_dir = base_dir / "project_database" / "PSC_vs_Steel_Short_Span_Bridges"
     
     if not ifc_dir.exists():
         print(f"\033[91mError: IFC directory not found at {ifc_dir}\033[0m")
@@ -34,7 +34,7 @@ def verify_models():
     
     for ifc_path in model_files:
         # Parent directory is the config name (e.g. M_20_2L_NF_P)
-        folder_name = ifc_path.parent.name
+        folder_name = ifc_path.parent.parent.name
         rel_path = ifc_path.relative_to(base_dir)
         
         file_name_val = None

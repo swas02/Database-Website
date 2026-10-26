@@ -1,4 +1,4 @@
-"""
+﻿"""
 reg.py — Dev tool to scan the IFC folder and generate a file registry JSON.
 
 Output: registry.json (next to this script)
@@ -44,7 +44,7 @@ from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-IFC_DIR = BASE_DIR / "IFC"
+IFC_DIR = BASE_DIR / "project_database" / "PSC_vs_Steel_Short_Span_Bridges"
 OUTPUT = BASE_DIR / "registry.json"
 OUTPUT_FLAT = BASE_DIR / "registry_flat.json"
 OUTPUT_LOG = BASE_DIR / "registry.log"
@@ -57,6 +57,28 @@ STRUCTURE_LABEL = {
     "Sub_Str": "Substructure",
     "Sup_Str": "Superstructure",
 }
+
+
+# Downloadable files sit next to model.ifc and are named <bridge>.<kind>.<ext>, e.g.
+#   D_35_2L_OF_P.sub.mcb  D_35_2L_OF_P.sup.mcb  D_35_2L_OF_P.report.pdf  D_35_2L_OF_P.cad.dwg  D_35_2L_OF_P.3ps
+# They are matched on the last two dot-segments only, so the <bridge> prefix can be anything.
+ASSET_SUFFIXES = {
+    structure_dir: {
+        "design_file": [f".{kind}.mcb"],
+        "design_report": [".report.pdf"],
+        "cad": [".cad.dwg", ".cad.dxf"],
+        "input_file": [".3ps"],
+        "lcca": [".results.lcca"],
+    }
+    for structure_dir, kind in (("Sub_Str", "sub"), ("Sup_Str", "sup"))
+}
+
+
+def find_asset(folder: Path, suffixes: list) -> str | None:
+    for f in sorted(folder.iterdir()):
+        if f.is_file() and any(f.name.lower().endswith(s) for s in suffixes):
+            return str(f.relative_to(BASE_DIR)).replace("\\", "/")
+    return None
 
 
 def setup_logging():
@@ -106,14 +128,11 @@ def scan():
 
     for ifc_path in all_ifc:
         rel = ifc_path.relative_to(BASE_DIR)
-        parts = rel.parts  # ('IFC', 'PSC', 'Darbhanga', 'Sub_Str', 'D_20_2L_NF_P.ifc') or ('IFC', 'PSC', 'Darbhanga', 'Sub_Str', 'D_20_2L_NF_P', 'model.ifc')
+        # Layout: project_database/<project>/<type>/<location>/<bridge>/<structure_dir>/model.ifc
+        parts = ifc_path.relative_to(IFC_DIR).parts  # ('PSC', 'Darbhanga', 'D_20_2L_NF_P', 'Sub_Str', 'model.ifc')
 
         if len(parts) == 5:
-            _, bridge_type, location, structure_dir, filename = parts
-            stem = ifc_path.stem
-            json_path = ifc_path.with_suffix(".json")
-        elif len(parts) == 6:
-            _, bridge_type, location, structure_dir, folder_name, filename = parts
+            bridge_type, location, folder_name, structure_dir, filename = parts
             stem = folder_name
             # Resolve JSON sidecar path: check {stem}.json, then groups.json, then fallback to any json in folder
             json_path = ifc_path.parent / f"{stem}.json"
@@ -142,43 +161,13 @@ def scan():
 
         logging.debug(f"OK — {ifc_rel}")
 
-        # Resolve extra assets based purely on file extensions in the directory
-        pdf_rel = None
-        mcb_rel = None
-        cad_rel = None
-
-        if len(parts) == 5:
-            # Flat layout (match prefix + extension in parent folder)
-            parent_dir = ifc_path.parent
-            pdfs = list(parent_dir.glob(f"{stem}*.pdf"))
-            if pdfs:
-                pdf_rel = str(pdfs[0].relative_to(BASE_DIR)).replace("\\", "/")
-
-            mcbs = list(parent_dir.glob(f"{stem}*.mcb"))
-            if mcbs:
-                mcb_rel = str(mcbs[0].relative_to(BASE_DIR)).replace("\\", "/")
-
-            dwgs = list(parent_dir.glob(f"{stem}*.dwg")) + list(parent_dir.glob(f"{stem}*.dxf"))
-            if dwgs:
-                cad_rel = str(dwgs[0].relative_to(BASE_DIR)).replace("\\", "/")
-        elif len(parts) == 6:
-            # Subfolder layout (match any file with extension in config directory)
-            config_dir = ifc_path.parent
-            
-            # Find any PDF
-            pdfs = list(config_dir.glob("*.pdf"))
-            if pdfs:
-                pdf_rel = str(pdfs[0].relative_to(BASE_DIR)).replace("\\", "/")
-
-            # Find any MCB
-            mcbs = list(config_dir.glob("*.mcb"))
-            if mcbs:
-                mcb_rel = str(mcbs[0].relative_to(BASE_DIR)).replace("\\", "/")
-
-            # Find any DWG or DXF
-            dwgs = list(config_dir.glob("*.dwg")) + list(config_dir.glob("*.dxf"))
-            if dwgs:
-                cad_rel = str(dwgs[0].relative_to(BASE_DIR)).replace("\\", "/")
+        # Resolve extra assets from the last two dot-segments of the filename (see ASSET_SUFFIXES)
+        suffixes = ASSET_SUFFIXES[structure_dir]
+        pdf_rel = find_asset(ifc_path.parent, suffixes["design_report"])
+        mcb_rel = find_asset(ifc_path.parent, suffixes["design_file"])
+        cad_rel = find_asset(ifc_path.parent, suffixes["cad"])
+        input_rel = find_asset(ifc_path.parent, suffixes["input_file"])
+        lcca_rel = find_asset(ifc_path.parent, suffixes["lcca"])
 
         # Resolve OBJ companion file path
         obj_path = ifc_path.with_suffix(".obj")
@@ -193,6 +182,8 @@ def scan():
             "design_report": pdf_rel,
             "design_file": mcb_rel,
             "cad": cad_rel,
+            "input_file": input_rel,
+            "lcca": lcca_rel,
         }
 
         nested_set(registry, [bridge_type, location, structure_dir,
