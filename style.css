@@ -1,5 +1,11 @@
 
 :root {
+  /* Type scale: four sizes, Inter (monospace only for IDs and values) */
+  --fs-xs: 11px;  /* labels, captions, table headers */
+  --fs-sm: 12px;  /* body, tabs, rows, tables */
+  --fs-md: 13px;  /* titles, section headings */
+  --fs-lg: 18px;  /* big numbers */
+
   /* Common Core Colors */
   --primary: #90AF13;
   --primary-hover: #7D9910;
@@ -229,10 +235,10 @@ canvas {
 }
 .panel-title {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: var(--fs-md);
   font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-accent);
   margin: 0;
   display: flex;
@@ -279,10 +285,10 @@ canvas {
   gap: 8px;
   text-decoration: none;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--text-brand);
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
   white-space: nowrap;
   transition: opacity 0.2s;
 }
@@ -290,7 +296,7 @@ canvas {
   opacity: 0.85;
 }
 .nav-brand i {
-  font-size: 16px;
+  font-size: var(--fs-md);
   text-shadow: 0 0 8px rgba(var(--primary-rgb), 0.6);
 }
 
@@ -310,14 +316,14 @@ canvas {
 .nav-link {
   text-decoration: none;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--text-muted);
   padding: 6px 12px;
   border-radius: 99px;
   transition: all 0.2s;
   white-space: nowrap;
-  letter-spacing: 0.2px;
+  letter-spacing: 0;
 }
 .nav-link:hover {
   color: var(--text-title);
@@ -339,7 +345,7 @@ canvas {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--fs-md);
   padding: 0;
   border-radius: 50%;
   display: flex;
@@ -379,7 +385,7 @@ canvas {
   display: flex;
   align-items: center;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   transition: all 0.2s;
 }
@@ -411,7 +417,7 @@ canvas {
 
 .hud-title {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6) !important;
   white-space: nowrap;
@@ -422,7 +428,7 @@ canvas {
   color: var(--text-accent);
   padding: 3px 12px;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-family: "Inter", system-ui, sans-serif;
   white-space: nowrap;
 }
@@ -443,7 +449,7 @@ canvas {
   color: var(--text-main);
   padding: 8px 16px;
   border-radius: 99px;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -509,7 +515,7 @@ canvas {
   background: var(--bg-dropzone-hover);
 }
 .file-dropzone p {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   margin: 6px 0 0 0;
 }
@@ -529,21 +535,21 @@ canvas {
   border-color: rgba(var(--primary-rgb), 0.3);
 }
 .metric-header {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--text-muted);
   margin-bottom: 4px;
 }
 .metric-value {
-  font-size: 14px;
+  font-size: var(--fs-md);
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 600;
   color: var(--text-title);
 }
 .metric-sub {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   margin-top: 2px;
 }
@@ -558,14 +564,14 @@ canvas {
   font-family: "Inter", system-ui, sans-serif;
   flex: 1;
   padding: 8px 12px;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   text-align: center;
   cursor: pointer;
   color: var(--text-muted);
   border-bottom: 2px solid transparent;
   transition: all 0.2s;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
 }
 .tab-btn.active {
   color: var(--text-accent);
@@ -621,13 +627,13 @@ canvas {
   box-shadow: 0 0 6px currentColor;
 }
 .group-name {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: capitalize;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .group-count {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-family: "Inter", system-ui, sans-serif;
   color: var(--text-muted);
   background: var(--bg-card-hover);
@@ -681,10 +687,10 @@ canvas {
   margin-bottom: 20px;
 }
 .settings-title {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--text-muted);
   margin-bottom: 12px;
   border-left: 2px solid var(--primary);
@@ -695,7 +701,7 @@ canvas {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
 }
 
 .inspector-grid {
@@ -755,14 +761,14 @@ canvas {
   margin-bottom: 10px;
 }
 .hud-item-title {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-title);
 }
 .hud-item-badge {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-family: "Inter", system-ui, sans-serif;
   color: var(--text-accent);
   background: var(--bg-badge);
@@ -779,7 +785,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   background: var(--bg-card);
   padding: 4px 8px;
   border-radius: 4px;
@@ -788,9 +794,9 @@ canvas {
 .hud-key {
   color: var(--text-muted);
   font-weight: 500;
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 0.5px;
+  text-transform: none;
+  font-size: var(--fs-xs);
+  letter-spacing: 0;
 }
 .hud-val {
   font-family: "Inter", system-ui, sans-serif;
@@ -810,9 +816,9 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
   transition: all 0.25s;
 }
 .girder-seg-item.active {
@@ -887,13 +893,13 @@ canvas {
 }
 .lcca-section-title {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--text-title);
   margin-top: 20px;
   margin-bottom: 8px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .lcca-table-wrapper {
   overflow-x: auto;
@@ -905,7 +911,7 @@ canvas {
 .lcca-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-main);
 }
 .lcca-table th,
@@ -918,9 +924,9 @@ canvas {
   background: var(--bg-panel);
   color: var(--text-title);
   font-weight: 600;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: var(--fs-xs);
+  text-transform: none;
+  letter-spacing: 0;
 }
 .lcca-table td.num {
   text-align: right;
@@ -946,7 +952,7 @@ canvas {
 }
 .lcca-table tr.net-row td {
   font-weight: 700;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   background: rgba(16, 185, 129, 0.15);
   color: var(--success);
 }
@@ -961,7 +967,7 @@ canvas {
 .matrix-table-lcca {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-main);
 }
 .matrix-table-lcca th,
@@ -978,9 +984,9 @@ canvas {
   background: var(--bg-panel);
   color: var(--text-title);
   font-weight: 600;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: var(--fs-xs);
+  text-transform: none;
+  letter-spacing: 0;
   text-align: right;
 }
 .matrix-table-lcca th:first-child {
@@ -1009,7 +1015,7 @@ canvas {
 }
 .matrix-table-lcca tr.matrix-net-row td {
   font-weight: 700;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   background: rgba(16, 185, 129, 0.15);
   color: var(--success);
 }
@@ -1047,14 +1053,14 @@ canvas {
 }
 .lcca-dash-card h3 {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 15px;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-title);
   margin: 0 0 6px 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
 }
 .lcca-dash-card .sub {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin: 0 0 16px 0;
 }
@@ -1069,7 +1075,7 @@ canvas {
   flex-wrap: wrap;
   gap: 8px 16px;
   margin-top: 16px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-main);
   border-top: 1px solid var(--border-card);
   padding-top: 12px;
@@ -1093,7 +1099,7 @@ canvas {
   flex: none;
 }
 .lcca-dash-card .footnote {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   margin-top: 12px;
   border-top: 1px solid var(--border-card);
@@ -1104,7 +1110,7 @@ canvas {
   font-weight: 600;
 }
 .lcca-dash-card .nochart {
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   text-align: center;
   padding: 46px 16px;
@@ -1125,7 +1131,7 @@ canvas {
   border-radius: 10px;
   box-shadow: var(--shadow-dropdown);
   padding: 10px 14px;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   color: var(--text-main);
   backdrop-filter: blur(8px);
 }
@@ -1146,13 +1152,13 @@ canvas {
 .lcca-tooltip .v {
   color: var(--text-title);
   font-weight: 700;
-  font-size: 15px;
+  font-size: var(--fs-md);
   margin-bottom: 4px;
 }
 
 /* SVG typography styling inside the expanded LCCA panel */
 #lcca-container svg text {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   fill: var(--text-main);
 }
 #lcca-container .slice {
@@ -1165,7 +1171,7 @@ canvas {
   stroke-width: 2px;
 }
 #lcca-container .lab {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   fill: var(--text-muted);
 }
 #lcca-container .lab .pct {
@@ -1178,24 +1184,24 @@ canvas {
   stroke-width: 1;
 }
 #lcca-container .ctrTop {
-  font-size: 22px;
+  font-size: var(--fs-lg);
   font-weight: 700;
   fill: var(--text-title);
 }
 #lcca-container .ctrBot {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   fill: var(--text-muted);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 #lcca-container .inLab {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   pointer-events: none;
 }
 #lcca-container .inLab2 {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   pointer-events: none;
 }
 
@@ -1288,10 +1294,10 @@ canvas {
   vertical-align: middle !important;
   text-align: center !important;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 11px;
+  font-family: "Inter", system-ui, sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--fs-xs);
   border-right: 1px solid var(--border-panel) !important;
   color: #000000 !important;
   width: 85px;
@@ -1344,11 +1350,11 @@ canvas {
   justify-content: flex-start;
   gap: 2px;
   margin: 0 !important;
-  font-size: 11px;
+  font-size: var(--fs-xs);
 }
 .filter-grid .control-row select {
   width: 100% !important;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   padding-top: 2px;
   padding-bottom: 2px;
 }
@@ -1451,9 +1457,9 @@ canvas {
   background: var(--bg-hud);
   border: 1px solid var(--border-hud);
   color: var(--text-main);
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   white-space: nowrap;
   max-width: calc(100% - 32px);
   overflow: hidden;
@@ -1469,7 +1475,7 @@ canvas {
   right: 20px;
   bottom: 20px;
   z-index: 30;
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   pointer-events: none;
 }
@@ -1484,7 +1490,7 @@ canvas {
   background: #1e293b;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   box-shadow: var(--shadow-dropdown);
   opacity: 0;
   pointer-events: none;
@@ -1508,9 +1514,9 @@ canvas {
   text-overflow: ellipsis;
 }
 .filter-grid .control-row label {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 500;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
 }
 
 
@@ -1521,24 +1527,24 @@ canvas {
 
 /* ── Compact Bridge Configuration ── */
   #left-panel .panel-header { padding: 8px 16px; }
-  #left-panel .panel-title { font-size: 12px; }
+  #left-panel .panel-title { font-size: var(--fs-sm); }
   #left-panel .panel-content { padding: 10px 16px 12px; gap: 0 !important; }
   #left-panel .settings-title { display: none; }
 
 #left-panel .filter-grid { gap: 6px 8px; margin-bottom: 8px; }
 #left-panel .filter-grid .control-row { gap: 1px; }
-#left-panel .filter-grid .control-row label { font-size: 11px; line-height: 1.2; }
+#left-panel .filter-grid .control-row label { font-size: var(--fs-xs); line-height: 1.2; }
 #left-panel .filter-grid .control-row select {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   height: 26px;
   padding: 0 24px 0 8px;
 }
-#left-panel #btn-load-model { padding: 5px 0; font-size: 13px; margin-top: 0 !important; }
+#left-panel #btn-load-model { padding: 5px 0; font-size: var(--fs-sm); margin-top: 0 !important; }
 
 /* ── Sidebar readability + density ── */
 #side-stack .panel-title {
-  font-size: 11.5px;
-  letter-spacing: 0.12em;
+  font-size: var(--fs-xs);
+  letter-spacing: 0;
   font-weight: 600;
   gap: 8px;
 }
@@ -1549,7 +1555,7 @@ canvas {
 }
 #side-stack .tab-btn {
   padding: 8px 4px;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   letter-spacing: 0;
 }
 #side-stack #right-panel .panel-content {
@@ -1578,12 +1584,12 @@ canvas {
 #side-stack .group-info { gap: 10px; }
 #side-stack .group-dot { width: 8px; height: 8px; box-shadow: none; }
 #side-stack .group-name {
-  font-size: 13px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0;
   color: var(--text-main);
 }
-#side-stack .group-count { font-size: 10.5px; padding: 0 5px; }
+#side-stack .group-count { font-size: var(--fs-xs); padding: 0 5px; }
 #side-stack .group-controls { gap: 8px; }
 #side-stack .color-picker-wrapper { width: 14px; height: 14px; }
 #side-stack #left-panel { border-bottom: 1px solid var(--border-panel); }
@@ -1613,7 +1619,7 @@ canvas {
   display: inline-flex !important;
   align-items: center;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: var(--fs-sm);
 }
 #side-stack .btn-panel-toggle .bi {
   transition: transform 0.2s;
@@ -1639,10 +1645,10 @@ canvas {
   margin: 10px 2px 4px;
   padding-top: 8px;
   border-top: 1px solid var(--border-card);
-  font-size: 0.66rem;
+  font-size: var(--fs-xs);
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
 }
 .group-section:first-child {
@@ -1681,15 +1687,15 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 }
 .site-header-inner { height: 100%; padding: 0 24px; display: flex; align-items: center; gap: 20px; }
 .site-logo img { display: block; height: 48px; width: auto; }
-.site-page-name { font-size: 1rem; font-weight: 600; color: var(--text-title); padding-left: 20px; border-left: 1px solid #E2E6DA; }
+.site-page-name { font-size: var(--fs-md); font-weight: 600; color: var(--text-title); padding-left: 20px; border-left: 1px solid #E2E6DA; }
 .site-links { margin-left: auto; display: flex; align-items: center; gap: 28px; }
-.site-links > a { font-size: 0.92rem; font-weight: 500; color: var(--text-main); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
+.site-links > a { font-size: var(--fs-md); font-weight: 500; color: var(--text-main); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
 .site-links > a:hover, .site-links > a.active { border-bottom-color: var(--primary); }
 .nav-dropdown-trigger { border-radius: 4px; }
 .nav-dropdown-content { border-radius: 4px; }
 
 /* Footer strip */
-.site-footer-strip { flex: 0 0 auto; background: #1B2118; color: #F6F8F1; font-size: 0.8rem; padding: 8px 24px; }
+.site-footer-strip { flex: 0 0 auto; background: #1B2118; color: #F6F8F1; font-size: var(--fs-sm); padding: 8px 24px; }
 
 /* LCCA full-canvas pane now starts under the bar instead of the floating pill */
 #side-stack #content-lcca { top: 80px; bottom: 36px; padding: 24px 32px 32px !important; }
@@ -1705,8 +1711,8 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 .model-chip { background: #FFFFFF; border: 1px solid #D5DACB; font-weight: 500; letter-spacing: 0; }
 
 /* Panel titles: sentence case, normal size, no tracking */
-.panel-title, #side-stack .panel-title, #left-panel .panel-title { text-transform: none; letter-spacing: 0; font-size: 14px; font-weight: 600; color: var(--text-title); }
-.group-section, #side-stack .group-section { text-transform: none; letter-spacing: 0; font-size: 0.8rem; font-weight: 600; }
+.panel-title, #side-stack .panel-title, #left-panel .panel-title { text-transform: none; letter-spacing: 0; font-size: var(--fs-md); font-weight: 600; color: var(--text-title); }
+.group-section, #side-stack .group-section { text-transform: none; letter-spacing: 0; font-size: var(--fs-sm); font-weight: 600; }
 .settings-title { text-transform: none; letter-spacing: 0; }
 
 /* No row hairlines: tone steps instead */
@@ -1717,12 +1723,12 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
 
 /* Material tab: same scale as the other sidebar tabs (12-13px) */
 #side-stack #meta-container .metric-card { padding: 8px 14px; gap: 1px; }
-#side-stack #meta-container .metric-header { font-size: 11px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--text-muted); margin-bottom: 0; }
-#side-stack #meta-container .metric-value { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--text-title); }
+#side-stack #meta-container .metric-header { font-size: var(--fs-xs); font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--text-muted); margin-bottom: 0; }
+#side-stack #meta-container .metric-value { font-size: var(--fs-sm); font-weight: 600; line-height: 1.3; color: var(--text-title); }
 
 /* CAD View: cues that rows are clickable */
 .group-header .group-controls { margin-left: auto; }
-.group-chevron { margin-left: 8px; font-size: 11px; color: var(--text-muted); transition: transform 0.2s; }
+.group-chevron { margin-left: 8px; font-size: var(--fs-xs); color: var(--text-muted); transition: transform 0.2s; }
 .group-item:hover .group-chevron { color: var(--text-title); }
 .group-item.active .group-chevron { transform: rotate(180deg); color: var(--text-title); }
 .group-item:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
@@ -1778,14 +1784,14 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
   }
   #hud-triggers { bottom: 10px; gap: 4px; flex-wrap: wrap; justify-content: center; }
   .hud-btn { padding: 6px 9px; }
-  .model-chip { top: 8px; left: 8px; max-width: calc(100% - 16px); font-size: 12px; }
-  .site-footer-strip { padding: 6px 16px; font-size: 0.75rem; }
+  .model-chip { top: 8px; left: 8px; max-width: calc(100% - 16px); font-size: var(--fs-sm); }
+  .site-footer-strip { padding: 6px 16px; font-size: var(--fs-sm); }
 }
 
 /* Mobile refinements: one scrolling sidebar column, single-row toolbar, tighter chrome */
 @media (max-width: 800px) {
   .site-header-inner { padding: 6px 16px; gap: 2px 12px; }
-  .site-page-name { font-size: 0.85rem; }
+  .site-page-name { font-size: var(--fs-md); }
   .site-links { flex-wrap: nowrap; overflow-x: auto; gap: 18px; scrollbar-width: none; }
   .site-links::-webkit-scrollbar { display: none; }
   .site-links > a { white-space: nowrap; }
@@ -1795,7 +1801,7 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
   #hud-triggers { flex-wrap: nowrap; gap: 4px; bottom: 8px; max-width: calc(100% - 16px); }
   #hud-triggers .hud-divider { display: none; }
   .hud-btn { padding: 6px 8px; min-width: 34px; }
-  .model-chip { font-size: 11px; padding: 4px 10px; }
+  .model-chip { font-size: var(--fs-xs); padding: 4px 10px; }
 
   #side-stack { overflow-y: auto; -webkit-overflow-scrolling: touch; }
   #side-stack > #left-panel:not(.section-closed),
@@ -1812,7 +1818,7 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
   .site-links { margin-left: auto; width: auto; overflow: visible; }
   .site-links > a { display: none; }
   .dd-nav { display: block !important; }
-  .nav-dropdown-trigger { font-size: 1.3rem; padding: 6px 10px; }
+  .nav-dropdown-trigger { font-size: var(--fs-lg); padding: 6px 10px; }
 }
 
 @media (max-width: 800px) {
@@ -1835,7 +1841,7 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
     position: sticky; top: 0; z-index: 2;
     width: calc(100% + 32px); margin: 0 -16px 8px; padding: 12px 16px;
     background: #FAFBF7; border: 0; border-bottom: 1px solid #E2E6DA;
-    font: 600 0.9rem "Inter", system-ui, sans-serif; color: var(--text-title); text-align: left;
+    font: 600 var(--fs-md) "Inter", system-ui, sans-serif; color: var(--text-title); text-align: left;
   }
 }
 

@@ -110,7 +110,7 @@ export function setLoadingState(text) {
       overlay.style.zIndex = "999";
       overlay.innerHTML = `
         <div class="spinner-border mb-3" style="width: 3rem; height: 3rem; color: #90AF13 !important;"></div>
-        <div id="loading-text" style="font-family:'Inter', system-ui, sans-serif; font-size: 14px; font-weight:500; color: #1B2118;"></div>
+        <div id="loading-text" style="font-family:'Inter', system-ui, sans-serif; font-size: var(--fs-md); font-weight:500; color: #1B2118;"></div>
       `;
       state.viewportContainer.appendChild(overlay);
     }
@@ -151,32 +151,32 @@ export function renderBridgeMetadata(data) {
 export function getCleanGroupName(name) {
   const nameLower = name.toLowerCase();
   if (name === "deck_slab" || nameLower === "slab" || nameLower === "deck" || nameLower === "deck slab") {
-    return "Deck Slab";
+    return "Deck slab";
   }
   if (name === "cross_bracing" || nameLower === "bracing" || nameLower.includes("brace")) {
-    return "Cross Bracing";
+    return "Cross bracing";
   }
   if (name === "girder_sections" || nameLower === "girder") {
-    return "Girder Sections";
+    return "Girder sections";
   }
   if (nameLower === "chord" || nameLower === "cord") {
     return "Chord";
   }
   if (nameLower === "pot bearings") return name;
   if (nameLower.includes("bearing") || nameLower.includes("end stiffener") || nameLower.includes("end stifferen")) {
-    return "Bearing Stiffeners";
+    return "Bearing stiffeners";
   }
   if (nameLower.includes("transverse") || nameLower.includes("intermediate stiffener") || nameLower.includes("stiffener") || nameLower.includes("stifferen")) {
-    return "Transverse Stiffeners";
+    return "Transverse stiffeners";
   }
   if (nameLower === "pier" || name === "Pier Shaft") {
-    return "Pier Shaft";
+    return "Pier shaft";
   }
   if (nameLower === "pier_cap" || nameLower.includes("pier cap")) {
-    return "Pier Cap";
+    return "Pier cap";
   }
   if (nameLower === "pile_cap" || nameLower === "pile cap") {
-    return "Pile Cap";
+    return "Pile cap";
   }
   if (nameLower === "pile" || nameLower === "piles") {
     return "Piles";
@@ -411,52 +411,52 @@ export function updatePropertyInspector(group) {
   if (!group && state.bridgeData) {
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 230px;">
-        <span class="metric-header">General Specs</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">General specs</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Bridge ID</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_id || "M_20_2L_NF_S"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Bridge Type</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_type || "N/A"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Bridge type</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_type || "N/A"}</td></tr>
             <tr><td class="text-muted p-0 py-1">Location</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.location || "Mumbai"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Span Length</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.span_m || "20"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Total Width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.total_width_m || "8.5"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Span length</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.span_m || "20"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.total_width_m || "8.5"} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Lanes</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.lanes || "2"}</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="metric-card mb-0" style="min-width: 230px;">
-        <span class="metric-header">Materials & Spacing</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Materials & spacing</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Concrete Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Structural Steel</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Rebar Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Girder Spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Structural steel</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Rebar grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Girder spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="metric-card mb-0" style="min-width: 230px;">
-        <span class="metric-header">Substructure: Piers</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Substructure: piers</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Pier Height</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.height_m || "6.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pier Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.diameter_m || "1.2"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pier Cap Width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.width_m || "1.4"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap Depth (Mid)</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.mid_depth_m || "1.45"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier height</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.height_m || "6.0"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.diameter_m || "1.2"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier cap width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.width_m || "1.4"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap depth (mid)</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.mid_depth_m || "1.45"} m</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="metric-card mb-0" style="min-width: 230px;">
-        <span class="metric-header">Substructure: Piles</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Substructure: piles</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Piles Count</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.count || "4"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile Depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.depth_m || "10.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.diameter_m || "0.75"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap Dimensions</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.dimensions_m?.raw || "3.8 x 3.8 m"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap Depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.depth_m || "0.85"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Piles count</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.count || "4"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.depth_m || "10.0"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.diameter_m || "0.75"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap dimensions</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.dimensions_m?.raw || "3.8 x 3.8 m"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.depth_m || "0.85"} m</td></tr>
           </tbody>
         </table>
       </div>
@@ -468,12 +468,12 @@ export function updatePropertyInspector(group) {
   ) {
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Deck Slab Specifications</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Deck slab specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.deck_slab.depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Concrete Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Rebar Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Rebar grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
           </tbody>
         </table>
       </div>
@@ -489,7 +489,7 @@ export function updatePropertyInspector(group) {
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
         <span class="metric-header">Carriageway</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             ${row("Total Deck Width", total ? total.toFixed(2) + " m" : "N/A")}
             ${row("Carriageway Width", carriageway.toFixed(2) + " m")}
@@ -507,8 +507,8 @@ export function updatePropertyInspector(group) {
       `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Railing (IRC:5, Cl. 109.7)</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Railing (IRC:5, cl. 109.7)</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             ${row("Height Above Footpath", DECK_DIMS.railingHeight.toFixed(2) + " m")}
             ${row("Post Size", (DECK_DIMS.railingPost * 1000).toFixed(0) + " mm")}
@@ -526,7 +526,7 @@ export function updatePropertyInspector(group) {
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
         <span class="metric-header">Footpath</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             ${row("Width", DECK_DIMS.footpathWidth.toFixed(1) + " m")}
             ${row("Railing Plinth", DECK_DIMS.plinthWidth.toFixed(3) + " m")}
@@ -552,12 +552,12 @@ export function updatePropertyInspector(group) {
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
         <span class="metric-header">${displayName} Specifications</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Section Profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || "90x90x10"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Section profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || "90x90x10"}</td></tr>
             <tr><td class="text-muted p-0 py-1">Spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.spacing_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Total Pairs</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.count}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Material Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total pairs</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.count}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Material grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
           </tbody>
         </table>
       </div>
@@ -582,15 +582,15 @@ export function updatePropertyInspector(group) {
 
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header" style="margin-bottom: 8px;">End Diaphragm Specifications</span>
+        <span class="metric-header" style="margin-bottom: 8px;">End diaphragm specifications</span>
         <div style="display: flex; gap: 15px; align-items: center; justify-content: center;">
           ${svgHtml}
-          <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
             <tbody>
-              <tr><td class="text-muted p-0 py-0.5">Web Depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Web Thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Top Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Bottom Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Bottom flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
             </tbody>
           </table>
         </div>
@@ -632,22 +632,22 @@ export function updatePropertyInspector(group) {
       const props = state.bridgeData.girder_sections[seg.section] || {};
 
       barHtml += `
-        <div style="flex: ${length}; background: ${color}; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+        <div style="flex: ${length}; background: ${color}; display: flex; align-items: center; justify-content: center; font-size: var(--fs-xs); font-weight: 600; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
           ${name}
         </div>
       `;
 
       cardsHtml += `
         <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.04); padding: 8px 12px; border-radius: 6px;">
-          <div style="font-size: 9px; font-weight: 600; color: ${color}; margin-bottom: 4px; text-transform: uppercase;">
+          <div style="font-size: var(--fs-xs); font-weight: 600; color: ${color}; margin-bottom: 4px; ">
             ${name} (${seg.initial_m.toFixed(1)} - ${seg.end_m.toFixed(1)} m)
           </div>
-          <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
             <tbody>
-              <tr><td class="text-muted p-0 py-0.5">Web Depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Web Thick</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Top Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Bot Flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web thick</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Bot flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
             </tbody>
           </table>
         </div>
@@ -672,7 +672,7 @@ export function updatePropertyInspector(group) {
       <!-- Girder/Chord Spacing -->
       <div class="metric-card mb-0" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 14px; margin-top: 8px;">
         <span class="metric-header" style="margin-bottom: 0;">${displayName} Spacing</span>
-        <span class="metric-value font-monospace" style="font-size: 16px; color: #60a5fa;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</span>
+        <span class="metric-value font-monospace" style="font-size: var(--fs-md); color: #60a5fa;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</span>
       </div>
     `;
   } else if (
@@ -683,12 +683,12 @@ export function updatePropertyInspector(group) {
     const p = state.bridgeData.substructure.pier;
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Pier Column Specifications</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Pier column specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Height</td><td class="text-end text-white font-monospace p-0 py-1">${p.height_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${p.diameter_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Concrete Grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
           </tbody>
         </table>
       </div>
@@ -714,23 +714,23 @@ export function updatePropertyInspector(group) {
 
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header" style="margin-bottom: 8px;">Pier Cap Specifications</span>
+        <span class="metric-header" style="margin-bottom: 8px;">Pier cap specifications</span>
         ${svgHtml}
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; margin-bottom: 12px; font-size: 8px; color: #94a3b8; font-family: monospace; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; margin-bottom: 12px; font-size: var(--fs-xs); color: #94a3b8; font-family: monospace; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
           <span><strong>L1</strong>: Total Length</span>
           <span><strong>L2</strong>: Mid Length</span>
           <span><strong>d1</strong>: Mid Depth</span>
           <span><strong>d2</strong>: End Depth</span>
         </div>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Cap Width</td><td class="text-end text-white font-monospace p-0 py-1">${pc.width_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Mid Depth (d1)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">End Depth (d2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Mid Length (L2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Side Length (Taper)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Total Length (L1)</td><td class="text-end text-white font-monospace p-0 py-1">${((parseFloat(pc.mid_section_length_m) || 2.0) + 2 * (parseFloat(pc.taper_section_length_m) || 3.63)).toFixed(2)} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pc.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap width</td><td class="text-end text-white font-monospace p-0 py-1">${pc.width_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid depth (d1)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">End depth (d2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid length (L2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Side length (taper)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total length (L1)</td><td class="text-end text-white font-monospace p-0 py-1">${((parseFloat(pc.mid_section_length_m) || 2.0) + 2 * (parseFloat(pc.taper_section_length_m) || 3.63)).toFixed(2)} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pc.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
           </tbody>
         </table>
       </div>
@@ -743,13 +743,13 @@ export function updatePropertyInspector(group) {
     const pcap = state.bridgeData.substructure.pile_cap;
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Pile Cap Specifications</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Pile cap specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.depth_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Dimensions (W x L)</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.dimensions_m?.raw || `${pcap.dimensions_m?.width_m} x ${pcap.dimensions_m?.length_m} m`}</td></tr>
-            <tr><td class="text-muted p-0 py-1">PCC Bedding Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.pcc_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pcap.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">PCC bedding depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.pcc_depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pcap.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
           </tbody>
         </table>
       </div>
@@ -762,13 +762,13 @@ export function updatePropertyInspector(group) {
     const pile = state.bridgeData.substructure.pile;
     htmlContent = `
       <div class="metric-card mb-0" style="min-width: 250px;">
-        <span class="metric-header">Foundation Pile Specifications</span>
-        <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+        <span class="metric-header">Foundation pile specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Piles Count</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement Ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pile.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">Piles count</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile depth</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile diameter</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pile.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
           </tbody>
         </table>
       </div>
@@ -788,11 +788,11 @@ export function updatePropertyInspector(group) {
       htmlContent = `
         <div class="metric-card mb-0" style="min-width: 250px;">
           <span class="metric-header">${displayName} Specifications</span>
-          <table class="table table-borderless table-sm text-white mb-0" style="font-size: 11px; --bs-table-bg: transparent;">
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
             <tbody>
               <tr><td class="text-muted p-0 py-1">Width</td><td class="text-end text-white font-monospace p-0 py-1">${s.width_m} m</td></tr>
               <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${s.thickness_m} m</td></tr>
-              <tr><td class="text-muted p-0 py-1">Spacing Interval</td><td class="text-end text-white font-monospace p-0 py-1">${s.spacing_m} m</td></tr>
+              <tr><td class="text-muted p-0 py-1">Spacing interval</td><td class="text-end text-white font-monospace p-0 py-1">${s.spacing_m} m</td></tr>
             </tbody>
           </table>
         </div>
@@ -804,7 +804,7 @@ export function updatePropertyInspector(group) {
   if (!htmlContent.trim()) {
     const isPSC = state.bridgeData?.bridge_type?.includes("PSC") || state.bridgeData?.bridge_type?.includes("Prestressed");
     htmlContent = `
-      <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: 11px;">
+      <div class="text-muted text-center w-100 py-4 font-monospace" style="font-size: var(--fs-xs);">
         ${isPSC ? "Specifications not yet mapped for Prestressed Concrete (PSC) models." : "No properties found for this component."}
       </div>
     `;
@@ -856,13 +856,13 @@ export function renderDownloads(bridgeId, ifcPath) {
   if (pdfPath) {
     container.innerHTML += `
       <div class="metric-card mb-0">
-        <span class="metric-header">Design Documentation</span>
+        <span class="metric-header">Design documentation</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
           <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_design_report.pdf</div>
-            <div class="text-muted" style="font-size: 9px;">PDF Document • ~4.5 MB</div>
+            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_design_report.pdf</div>
+            <div class="text-muted" style="font-size: var(--fs-xs);">PDF Document • ~4.5 MB</div>
           </div>
-          <a href="${pdfPath}" download="${bridgeId}_design_report.pdf" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+          <a href="${pdfPath}" download="${bridgeId}_design_report.pdf" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
       </div>
     `;
@@ -872,13 +872,13 @@ export function renderDownloads(bridgeId, ifcPath) {
   if (mcbPath) {
     container.innerHTML += `
       <div class="metric-card mb-0">
-        <span class="metric-header">Analysis Model</span>
+        <span class="metric-header">Analysis model</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
           <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_model.mcb</div>
-            <div class="text-muted" style="font-size: 9px;">Midas Civil File • ~1.2 MB</div>
+            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_model.mcb</div>
+            <div class="text-muted" style="font-size: var(--fs-xs);">Midas Civil File • ~1.2 MB</div>
           </div>
-          <a href="${mcbPath}" download="${bridgeId}_model.mcb" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+          <a href="${mcbPath}" download="${bridgeId}_model.mcb" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
       </div>
     `;
@@ -889,13 +889,13 @@ export function renderDownloads(bridgeId, ifcPath) {
     const ext = cadPath.split(".").pop();
     container.innerHTML += `
       <div class="metric-card mb-0">
-        <span class="metric-header">2D CAD Drawings</span>
+        <span class="metric-header">2D CAD drawings</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
           <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}_drawings.${ext}</div>
-            <div class="text-muted" style="font-size: 9px;">CAD Drawing File</div>
+            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}_drawings.${ext}</div>
+            <div class="text-muted" style="font-size: var(--fs-xs);">CAD Drawing File</div>
           </div>
-          <a href="${cadPath}" download="${bridgeId}_drawings.${ext}" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+          <a href="${cadPath}" download="${bridgeId}_drawings.${ext}" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
       </div>
     `;
@@ -904,13 +904,13 @@ export function renderDownloads(bridgeId, ifcPath) {
   if (jsonPath) {
     container.innerHTML += `
       <div class="metric-card mb-0">
-        <span class="metric-header">Structural Schema Data</span>
+        <span class="metric-header">Structural schema data</span>
         <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
           <div>
-            <div class="text-white fw-bold font-monospace" style="font-size: 11px;">${bridgeId}.json</div>
-            <div class="text-muted" style="font-size: 9px;">JSON Data File</div>
+            <div class="text-white fw-bold font-monospace" style="font-size: var(--fs-xs);">${bridgeId}.json</div>
+            <div class="text-muted" style="font-size: var(--fs-xs);">JSON Data File</div>
           </div>
-          <a href="${jsonPath}" download="${bridgeId}.json" class="btn btn-sm btn-outline-primary" style="font-size: 10px; padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
+          <a href="${jsonPath}" download="${bridgeId}.json" class="btn btn-sm btn-outline-primary" style="font-size: var(--fs-xs); padding: 4px 8px; color: #3b82f6; border-color: rgba(59, 130, 246, 0.4);"><i class="bi bi-download"></i> Download</a>
         </div>
       </div>
     `;
@@ -1361,36 +1361,36 @@ export function renderLCCAData(lccaData) {
   // Render everything inside lcca-container
   container.innerHTML = `
     <!-- Charts Row 1: Gross Stage & Pillar splits -->
-    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Cost Distribution Overview</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cost distribution overview</h4>
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chStage"></div>
       <div class="lcca-dash-card" id="dash-chPillar"></div>
     </div>
 
     <!-- Charts Row 2: Nested Splits -->
-    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Cross-Sectional Relations</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Cross-sectional relations</h4>
     <div class="lcca-dash-grid2">
       <div class="lcca-dash-card" id="dash-chNestSP"></div>
       <div class="lcca-dash-card" id="dash-chNestPS"></div>
     </div>
 
     <!-- Charts Row 3: Inside Stages -->
-    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Stage Component Breakdowns</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Stage component breakdowns</h4>
     <div class="lcca-dash-grid3" id="dash-chComps"></div>
 
     <!-- Summary Tables -->
-    <h4 style="font-family:'Outfit'; font-weight:600; color:var(--text-title); margin-bottom:12px; font-size:16px; letter-spacing:0.5px; text-transform:uppercase;">Tabular Reports</h4>
+    <h4 style=" font-weight:600; color:var(--text-title); margin-bottom:12px; font-size: var(--fs-md); ">Tabular reports</h4>
     <div class="lcca-dash-card mb-4" style="overflow-x: auto;">
-      <h3 style="font-size:15px; margin-bottom:4px;">Consolidated stage summary</h3>
+      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Consolidated stage summary</h3>
       <p class="sub" style="margin-bottom: 16px;">A consolidated presentation of costs across the three pillars (economic, social, and environmental) for each lifecycle stage. This table facilitates the identification of phases that bear the most substantial burden.</p>
       <table class="matrix-table-lcca">
         <thead>
           <tr>
             <th style="width: 150px; text-align: left;">Stage</th>
-            <th class="matrix-hdr-eco">Economic<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
-            <th class="matrix-hdr-env">Environmental<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
-            <th class="matrix-hdr-soc">Social<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
-            <th style="text-align: right; width: 150px;">Stage Total<br><span style="font-size: 10px; font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th class="matrix-hdr-eco">Economic<br><span style="font-size: var(--fs-xs); font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th class="matrix-hdr-env">Environmental<br><span style="font-size: var(--fs-xs); font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th class="matrix-hdr-soc">Social<br><span style="font-size: var(--fs-xs); font-weight: normal; opacity: 0.85;">(INR)</span></th>
+            <th style="text-align: right; width: 150px;">Stage total<br><span style="font-size: var(--fs-xs); font-weight: normal; opacity: 0.85;">(INR)</span></th>
           </tr>
         </thead>
         ${matrixTableBody}
@@ -1398,11 +1398,11 @@ export function renderLCCAData(lccaData) {
     </div>
 
     <div class="lcca-dash-card" style="overflow-x: auto;">
-      <h3 style="font-size:15px; margin-bottom:4px;">Detailed Component Cost Ledger</h3>
+      <h3 style="font-size: var(--fs-md); margin-bottom:4px;">Detailed Component Cost Ledger</h3>
       <p class="sub" style="margin-bottom: 12px;">Fully itemized ledger of cost components compiled from the analysis model results</p>
       
       <!-- Color legend for the pillars -->
-      <div class="d-flex gap-3 mb-3 px-1" style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+      <div class="d-flex gap-3 mb-3 px-1" style="font-size: var(--fs-xs); font-weight: 600;  ">
         <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl1); width: 10px; height: 10px; border-radius: 2px;"></span>Economic</span>
         <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl2); width: 10px; height: 10px; border-radius: 2px;"></span>Environmental</span>
         <span class="d-flex align-items-center"><span class="lcca-dot me-2" style="background-color: var(--pl3); width: 10px; height: 10px; border-radius: 2px;"></span>Social</span>
@@ -1412,9 +1412,9 @@ export function renderLCCAData(lccaData) {
         <thead>
           <tr>
             <th style="width: 85px; text-align: center;">Stage</th>
-            <th>Cost Item</th>
+            <th>Cost item</th>
             <th class="num" style="width: 160px; text-align: right;">Value (INR)</th>
-            <th style="width: 250px; text-align: center;">Visual Representation</th>
+            <th style="width: 250px; text-align: center;">Visual representation</th>
           </tr>
         </thead>
         <tbody>
@@ -1508,7 +1508,7 @@ export async function loadAndRenderLCCA() {
   container.innerHTML = `
     <div class="d-flex justify-content-center align-items-center p-4">
       <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
-      <span style="font-size: 12px; color: var(--text-muted);">Loading LCCA Data...</span>
+      <span style="font-size: var(--fs-sm); color: var(--text-muted);">Loading LCCA Data...</span>
     </div>
   `;
 
@@ -1524,7 +1524,7 @@ export async function loadAndRenderLCCA() {
   } catch (err) {
     console.error("Failed to load LCCA data:", err);
     container.innerHTML = `
-      <div class="alert alert-danger m-3" role="alert" style="font-size: 12px; padding: 8px 12px;">
+      <div class="alert alert-danger m-3" role="alert" style="font-size: var(--fs-sm); padding: 8px 12px;">
         <i class="bi bi-exclamation-triangle-fill me-2"></i>
         Failed to load LCCA data: ${err.message}
       </div>

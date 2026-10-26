@@ -88,7 +88,7 @@ function findSubstructureFor(sup) {
 }
 
 function formatOptionText(key, value) {
-  if (key === "structure" && value === BOTH) return "Super + Substructure";
+  if (key === "structure" && value === BOTH) return "Super + substructure";
   if (key === "footpath") {
     return value === "OF" ? "With footpath" : "No footpath";
   }
