@@ -311,7 +311,8 @@ window.loadSelectedBridge = async function (fromUser = false) {
     // 3. Find matching spec in steelDatabase
     const pathParts = match.ifc.split("/");
     const lastPart = pathParts.pop();
-    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts.pop() : lastPart.replace(".ifc", "");
+    // Layout: .../<bridge>/<Sub_Str|Sup_Str>/model.ifc, so the bridge id is the folder above the structure folder
+    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts[pathParts.length - 2] : lastPart.replace(".ifc", "");
     // Replace trailing _P with _S to lookup superstructure details (which holds pier cap, pier size etc.)
     const searchId = bridgeIdFromPath.replace(/_P$/, "_S");
 
