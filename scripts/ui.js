@@ -25,6 +25,8 @@ window.switchRightTab = function (tab) {
     tab === "meta" ? "block" : "none";
   document.getElementById("content-lcca").style.display =
     tab === "lcca" ? "block" : "none";
+  document.getElementById("lcca-side").style.display =
+    tab === "lcca" ? "block" : "none";
   document.getElementById("content-downloads").style.display =
     tab === "downloads" ? "block" : "none";
 
@@ -1174,6 +1176,10 @@ window.toggleLCCAMode = function (isLCCA) {
   }
 };
 
+// Fixed for every bridge in the database
+const LCCA_ASSESSMENT_YEAR = 2025;
+const LCCA_DESIGN_LIFE_YEARS = 100;
+
 export function renderLCCAData(lccaData) {
   const container = document.getElementById("lcca-container");
   if (!container) return;
@@ -1301,6 +1307,22 @@ export function renderLCCAData(lccaData) {
     });
   });
 
+  // Sidebar summary (the dashboard itself fills the canvas)
+  const side = document.getElementById("lcca-side");
+  if (side) {
+    const period = Number(META.analysis_period);
+    side.innerHTML = [
+      { k: "Analysis period", v: period ? `${period} years` : "N/A" },
+      { k: "Assessment year", v: String(LCCA_ASSESSMENT_YEAR) },
+      { k: "Design life", v: `${LCCA_DESIGN_LIFE_YEARS} years` },
+      { k: "Total LCCA", v: formatINR(net) },
+    ].map(i => `
+      <div class="metric-card">
+        <span class="metric-header">${i.k}</span>
+        <span class="metric-value">${i.v}</span>
+      </div>`).join("") + `<p class="metric-sub" style="padding: 0 4px;">Note: This LCCA calculation is for a single span and a single pier foundation.</p>`;
+  }
+
   // Render everything inside lcca-container
   container.innerHTML = `
     <!-- Charts Row 1: Gross Stage & Pillar splits -->
@@ -1377,7 +1399,7 @@ export function renderLCCAData(lccaData) {
         </tbody>
       </table>
     </div>
-    <p class="lcca-currency-note">Note: all values are in Indian rupees (INR, ₹).</p>
+    <p class="lcca-currency-note">Note: all values are in Indian rupees (INR, ₹). This LCCA covers a single span and a single pier.</p>
   `;
 
   // Draw D3 Charts dynamically!

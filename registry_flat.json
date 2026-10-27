@@ -393,7 +393,7 @@
       "cad": null
     },
     "common": {
-      "design_report": null,
+      "design_report": "project_database/PSC_vs_Steel_Short_Span_Bridges/PSC/Darbhanga/D_35_2L_OF_P/D_35_2L_OF_P.3ps.pdf",
       "input_file": "project_database/PSC_vs_Steel_Short_Span_Bridges/PSC/Darbhanga/D_35_2L_OF_P/D_35_2L_OF_P.3ps",
       "lcca": "project_database/PSC_vs_Steel_Short_Span_Bridges/PSC/Darbhanga/D_35_2L_OF_P/D_35_2L_OF_P.results.lcca"
     }
@@ -1785,7 +1785,7 @@
       "cad": null
     },
     "common": {
-      "design_report": null,
+      "design_report": "project_database/PSC_vs_Steel_Short_Span_Bridges/Steel/Darbhanga/D_35_2L_OF_S/D_35_2L_OF_S.3ps.pdf",
       "input_file": "project_database/PSC_vs_Steel_Short_Span_Bridges/Steel/Darbhanga/D_35_2L_OF_S/D_35_2L_OF_S.3ps",
       "lcca": "project_database/PSC_vs_Steel_Short_Span_Bridges/Steel/Darbhanga/D_35_2L_OF_S/D_35_2L_OF_S.results.lcca"
     }
