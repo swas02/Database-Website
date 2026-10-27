@@ -4,8 +4,8 @@ import path from "node:path";
 
 // Runtime data the viewer fetches by relative URL. Only what the registry lists
 // is copied, so scratch files in IFC/ never reach dist/.
-const STATIC_FILES = ["registry_flat.json", "data/steel_data.json", "test.lcca"];
-const MODEL_FIELDS = ["json", "obj", "design_report", "design_file", "cad", "input_file", "lcca"]; // no .ifc: only OBJ + groups.json are served
+const STATIC_FILES = ["registry_flat.json", "test.lcca"];
+const MODEL_FIELDS = ["json", "obj", "components", "design_report", "design_file", "cad", "input_file", "lcca"]; // no .ifc: only OBJ + groups.json are served
 
 // Every top-level .html page is a build entry (lab site + dataset viewer).
 function htmlPages() {
@@ -33,8 +33,11 @@ function copyModelData() {
       const root = process.cwd();
       const registry = JSON.parse(fs.readFileSync(path.join(root, "registry_flat.json"), "utf-8"));
       const files = new Set(STATIC_FILES);
-      for (const entry of registry) {
-        for (const f of MODEL_FIELDS) if (entry[f]) files.add(entry[f]);
+      for (const bridge of registry) {
+        for (const group of [bridge.sub, bridge.sup, bridge.common]) {
+          if (!group) continue;
+          for (const f of MODEL_FIELDS) if (group[f]) files.add(group[f]);
+        }
       }
       let copied = 0;
       for (const rel of files) {

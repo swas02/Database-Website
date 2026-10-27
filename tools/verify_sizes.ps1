@@ -9,7 +9,8 @@ if (-not (Test-Path $registryFile)) {
     exit 1
 }
 
-$registry = Get-Content $registryFile -Raw | ConvertFrom-Json
+# One record per bridge; audit each of its sub / sup models
+$registry = @(Get-Content $registryFile -Raw | ConvertFrom-Json | ForEach-Object { $_.sup; $_.sub } | Where-Object { $_ })
 $results = [System.Collections.Generic.List[PSObject]]::new()
 
 Write-Host ""

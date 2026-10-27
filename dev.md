@@ -1,4 +1,4 @@
-# BridgeLCCA Developer Guide
+﻿# BridgeLCCA Developer Guide
 
 This document describes the workflow for managing, converting, and registering 3D bridge models in the database.
 
@@ -34,7 +34,7 @@ python tools/verify_model_paths.py
 ```
 
 ### Step 4: Regenerate Registry Databases
-Scan the folder structure and regenerate the website index databases (`registry.json` and `registry_flat.json`) listing both the `.ifc` and generated `.obj` paths:
+Scan the folder structure and regenerate the website index databases (`registry_flat.json`) listing both the `.ifc` and generated `.obj` paths:
 ```bash
 python tools/reg.py
 ```
@@ -43,9 +43,9 @@ python tools/reg.py
 
 ## 3. Script References
 
-* [convert_ifc_to_obj.js](./tools/convert_ifc_to_obj.js) — Node.js CLI script using `web-ifc` to output grouped `.obj` files.
-* [verify_model_paths.py](./tools/verify_model_paths.py) — Python script checking IFC file headers for correct naming conventions.
-* [reg.py](./tools/reg.py) — Python script generating registry database.
+* [convert_ifc_to_obj.js](./tools/convert_ifc_to_obj.js) â€” Node.js CLI script using `web-ifc` to output grouped `.obj` files.
+* [verify_model_paths.py](./tools/verify_model_paths.py) â€” Python script checking IFC file headers for correct naming conventions.
+* [reg.py](./tools/reg.py) â€” Python script generating registry database.
 
 ---
 
@@ -68,7 +68,7 @@ The following group names are extracted and mapped across the current models:
 ```bash
 npm install
 npm run dev      # local dev server
-npm run build    # outputs dist/ (bundled JS/CSS + registry, steel data, test.lcca and every registered OBJ + groups.json (no IFC))
+npm run build    # outputs dist/ (bundled JS/CSS + registry (with steel data), test.lcca and every registered OBJ + groups.json (no IFC))
 npm run build:complete  # (or: npm run build -- --complete) reg.py -> regenerate every OBJ -> build
 npm run preview  # serve dist/ locally
 ```

@@ -2,20 +2,51 @@ import { state } from "./state.js";
 import { setLoadingState, renderBridgeMetadata, loadAndRenderLCCA } from "./ui.js";
 import { loadOBJ } from "./ifcLoader.js";
 
+// registry_flat.json holds one record per bridge: {bridge_id, ..., sub: {...}, sup: {...}, common: {...}}.
+// The viewer works on one row per model (a bridge's sub or sup), with the bridge fields and common files merged in.
+const PARTS = [
+  ["sup", "Superstructure"],
+  ["sub", "Substructure"],
+];
+
+function modelRows(bridge) {
+  const { sub, sup, common, ...meta } = bridge;
+  const parts = { sub, sup };
+  // The Material tab and inspector show the whole bridge whichever part is loaded, so each row knows both components files
+  const components = { sub: sub?.components, sup: sup?.components };
+  return PARTS.filter(([key]) => parts[key]).map(([key, structure]) => ({
+    ...meta,
+    structure,
+    ...common,
+    ...parts[key],
+    componentFiles: components,
+  }));
+}
+
+// Fetches a bridge's sub / sup <bridge>.<sub|sup>.component.json and merges them into the shape the UI reads
+// ({...superstructure fields, material_grades, substructure: {pile, pile_cap, pier, pier_cap}}). Null when there are none.
+async function loadComponents({ sub, sup }) {
+  const get = async (url) => {
+    if (!url) return null;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`Failed to load ${url}`);
+    return resp.json();
+  };
+  const [subData, supData] = await Promise.all([get(sub), get(sup)]);
+  if (!subData && !supData) return null;
+  const { material_grades, ...substructure } = subData || {};
+  return { ...supData, material_grades: supData?.material_grades || material_grades, substructure };
+}
+
 // Global lists populated from registry_flat.json
 let registry = [];
-let steelDatabase = [];
 
 export async function initDatabase() {
   try {
     setLoadingState("Loading Bridge Database...");
-    const [registryResp, dbResp] = await Promise.all([
-      fetch("registry_flat.json"),
-      fetch("data/steel_data.json"),
-    ]);
+    const registryResp = await fetch("registry_flat.json");
 
-    if (registryResp.ok) registry = await registryResp.json();
-    if (dbResp.ok) steelDatabase = await dbResp.json();
+    if (registryResp.ok) registry = (await registryResp.json()).flatMap(modelRows);
 
     // Populate the dropdown filters dynamically
     populateFilters();
@@ -308,15 +339,9 @@ window.loadSelectedBridge = async function (fromUser = false) {
     // 2. Resolve OBJ model path
     const objPath = match.obj || match.ifc.replace(/\.ifc$/i, ".obj");
 
-    // 3. Find matching spec in steelDatabase
-    const pathParts = match.ifc.split("/");
-    const lastPart = pathParts.pop();
-    // Layout: .../<bridge>/<Sub_Str|Sup_Str>/model.ifc, so the bridge id is the folder above the structure folder
-    const bridgeIdFromPath = lastPart.toLowerCase() === "model.ifc" ? pathParts[pathParts.length - 2] : lastPart.replace(".ifc", "");
-    // Replace trailing _P with _S to lookup superstructure details (which holds pier cap, pier size etc.)
-    const searchId = bridgeIdFromPath.replace(/_P$/, "_S");
-
-    const spec = match.bridge_type !== "PSC" ? steelDatabase.find((item) => item.bridge_id === searchId) : null;
+    // 3. Component data comes from each part's <bridge>.<sub|sup>.component.json (sub and sup merged)
+    const bridgeIdFromPath = match.bridge_id;
+    const spec = await loadComponents(match.componentFiles);
     if (spec) {
       // Create local deep copy
       state.bridgeData = JSON.parse(JSON.stringify(spec));

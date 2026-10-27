@@ -1,0 +1,96 @@
+{
+  "total_width_m": 11.5,
+  "deck_slab": {
+    "depth_m": 0.23
+  },
+  "girder_spacing_m": 2.875,
+  "cross_bracing": {
+    "spacing_m": 3.5,
+    "count": 11,
+    "section": {
+      "raw": "100 x 100 x 8",
+      "leg1_mm": 100.0,
+      "leg2_mm": 100.0,
+      "thickness_mm": 8.0
+    }
+  },
+  "transverse_stiffeners_per_girder_side": {
+    "width_m": 0.2,
+    "thickness_m": 0.008,
+    "spacing_m": 2
+  },
+  "bearing_stiffeners_per_girder_side": {
+    "width_m": 0.2,
+    "thickness_m": 0.008,
+    "spacing_m": 0.15
+  },
+  "girder_sections": {
+    "mid": {
+      "top_flange_width_m": 0.475,
+      "top_flange_thickness_m": 0.022,
+      "web_depth_m": 2,
+      "web_thickness_m": 0.012,
+      "bottom_flange_width_m": 0.55,
+      "bottom_flange_thickness_m": 0.028,
+      "length_per_girder_m": 11
+    },
+    "intermediate": {
+      "top_flange_width_m": 0.4,
+      "top_flange_thickness_m": 0.022,
+      "web_depth_m": 2,
+      "web_thickness_m": 0.012,
+      "bottom_flange_width_m": 0.475,
+      "bottom_flange_thickness_m": 0.028,
+      "length_per_girder_m": 12
+    },
+    "support": {
+      "top_flange_width_m": 0.35,
+      "top_flange_thickness_m": 0.018,
+      "web_depth_m": 2.012,
+      "web_thickness_m": 0.014,
+      "bottom_flange_width_m": 0.4,
+      "bottom_flange_thickness_m": 0.02,
+      "length_per_girder_m": 12
+    },
+    "end_diaphragm": {
+      "top_flange_width_m": 0.475,
+      "top_flange_thickness_m": 0.022,
+      "web_depth_m": 2,
+      "web_thickness_m": 0.012,
+      "bottom_flange_width_m": 0.55,
+      "bottom_flange_thickness_m": 0.028
+    },
+    "longitudinal_segmentation_m": [
+      {
+        "section": "support",
+        "initial_m": 0,
+        "end_m": 6
+      },
+      {
+        "section": "intermediate",
+        "initial_m": 6,
+        "end_m": 12
+      },
+      {
+        "section": "mid",
+        "initial_m": 12,
+        "end_m": 23
+      },
+      {
+        "section": "intermediate",
+        "initial_m": 23,
+        "end_m": 29
+      },
+      {
+        "section": "support",
+        "initial_m": 29,
+        "end_m": 35
+      }
+    ]
+  },
+  "material_grades": {
+    "rebar": "Fe500",
+    "structural_steel": "E350",
+    "concrete_substructure_and_deck_slab": "M35"
+  }
+}

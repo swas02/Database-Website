@@ -1226,8 +1226,8 @@ export function renderLCCAData(lccaData) {
   // Retrieve current color stylesheet values
   const stCol = Object.fromEntries(STAGES.map(s => [s.id, cv(s.cvar)]));
   const plCol = Object.fromEntries(LCCA_PILLARS.map(p => [p.id, cv(p.cvar)]));
-  const compCols = ['--c1','--c2','--c3','--c4','--c5'].map(cv);
-  const otherCol = cv('--other');
+  // const compCols = ['--c1','--c2','--c3','--c4','--c5'].map(cv);  // used by the hidden stage component breakdowns
+  // const otherCol = cv('--other');
 
   const cellNet = (s, p) => sumBy(c => c.stage === s && c.pillar === p);
 
@@ -1317,10 +1317,11 @@ export function renderLCCAData(lccaData) {
       <div class="lcca-dash-card" id="dash-chNestPS"></div>
     </div>
 
-    <!-- Charts Row 3: Inside Stages -->
+    <!-- Charts Row 3: Inside Stages (hidden)
     <hr class="lcca-divider">
     <h4>Stage component breakdowns</h4>
     <div class="lcca-dash-grid3" id="dash-chComps"></div>
+    -->
 
     <!-- Summary Tables -->
     <h4>Consolidated Stage Summary</h4>
@@ -1433,13 +1434,13 @@ export function renderLCCAData(lccaData) {
       children: STAGES.map(s => ({ label: s.short, value: cell(s.id, p.id), color: stCol[s.id] || s.color }))
     })), { title: 'Pillar by stage double pie' });
 
-    // 5. Stage Component Breakdowns (Card + Donut for each stage)
+    /* Stage Component Breakdowns (hidden; uncomment together with the HTML block, compCols/otherCol and .lcca-dash-grid3 in style.css)
     const dashChComps = document.getElementById('dash-chComps');
     STAGES.forEach(s => {
       const costs = components.filter(c => c.stage === s.id && !c.isCredit)
         .slice().sort((a, b) => b.costEffect - a.costEffect);
       const top = costs.slice(0, 5), rest = costs.slice(5);
-      
+
       const data = top.map((c, i) => {
         let col = compCols[i] || '#607d8b';
         const lbl = c.label.toLowerCase();
@@ -1447,28 +1448,29 @@ export function renderLCCAData(lccaData) {
         else if (lbl.includes('concrete')) col = cv('--concrete_color') || '#4B4B4B';
         return { label: c.label, value: c.costEffect, color: col };
       });
-      
+
       if (rest.length) {
         data.push({
           label: `Other (${rest.length})`, value: d3.sum(rest, c => c.costEffect), color: otherCol || '#64748b',
           tip: rest.map(c => `${c.label}: ${formatCompactINR(c.costEffect)}`)
         });
       }
-      
+
       const credits = components.filter(c => c.stage === s.id && c.isCredit);
       const foot = credits.length
         ? `Credit: ${credits.map(c => `${c.label} <b class="credit">${formatCompactINR(c.costEffect)}</b>`).join(' · ')}`
         : '';
-        
+
       const div = document.createElement('div');
       div.className = 'lcca-dash-card'; div.id = 'dash-comp_' + s.id;
       dashChComps.appendChild(div);
-      
+
       renderDashCard('dash-comp_' + s.id, s.label, `${pct(stageGross[s.id], gross)} of total`,
         [{ items: data.map(d => ({ label: d.label, color: d.color })) }], foot);
-        
+
       donut('#dash-comp_' + s.id, data, { title: s.label + ' components', ofLabel: s.short, R: 96, W: 460, H: 290, labelMin: 0.055, pctOnly: true });
     });
+    */
 
   } catch (err) {
     console.error("Failed to render D3 charts:", err);

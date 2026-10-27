@@ -1,244 +1,161 @@
 ﻿"""
-reg.py — Dev tool to scan the IFC folder and generate a file registry JSON.
+reg.py — scan project_database/ and write the site index: registry_flat.json (+ registry.log).
+It only lists the files that exist and reports the ones that are missing; it holds no bridge data.
 
-Output: registry.json (next to this script)
+Folder layout:
+  project_database/<project>/<type>/<location>/<bridge>/
+      <bridge>.3ps  <bridge>.3ps.pdf  <bridge>.results.lcca      shared by both structures
+      Sub_Str/  model.ifc  model.obj  groups.json  <bridge>.sub.component.json  <bridge>.sub.mcb  [<bridge>.cad.dwg]
+      Sup_Str/  model.ifc  model.obj  groups.json  <bridge>.sup.component.json  <bridge>.sup.mcb  [<bridge>.cad.dwg]
 
-Registry structure:
-{
-  "PSC": {
-    "Darbhanga": {
-      "Sub_Str": {
-        "20": {
-          "2L": {
-            "NF": { "ifc": "...", "json": "..." },
-            "OF": { "ifc": "...", "json": "..." }
-          },
-          "3L": { ... }
-        }
-      },
-      "Sup_Str": { ... }
-    },
-    "Mumbai": { ... }
-  },
-  "Steel": { ... },
-  "_flat": [ ... ]
-}
+Bridge folder name: {D|M}_{span}_{2L|3L}_{NF|OF}_{P|S}   (NF = no footpath, OF = one footpath)
 
-Filename convention (parsed from stem):
-  {LocationCode}_{Span}_{Lanes}_{FootpathType}_{BridgeCode}
-  e.g.  D_20_2L_NF_P   or   M_45_3L_OF_P
+Output: one record per bridge
+  {bridge_id, bridge_type, location, span, lanes, footpath,
+   sub: {ifc, json, obj, components, design_file, cad} | null,
+   sup: {ifc, json, obj, components, design_file, cad} | null,
+   common: {design_report, input_file, lcca}}
 
-  Structure type (Sub_Str / Sup_Str) is determined by the parent folder, not the filename.
-
-  NF = No Footpath
-  OF = One Footpath (with Footpath)
-
-  Sub_Str  = Substructure  (piers, abutments, foundations)
-  Sup_Str  = Superstructure (deck, girders, beams)
+Every file field is a path relative to the project root, or null when the file does not exist.
+`components` is the file behind the viewer's Material tab / girder inspector (PSC bridges have none).
 """
 
 import json
 import logging
 import re
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-IFC_DIR = BASE_DIR / "project_database" / "PSC_vs_Steel_Short_Span_Bridges"
-OUTPUT = BASE_DIR / "registry.json"
-OUTPUT_FLAT = BASE_DIR / "registry_flat.json"
+DB_DIR = BASE_DIR / "project_database" / "PSC_vs_Steel_Short_Span_Bridges"
+OUTPUT = BASE_DIR / "registry_flat.json"
 OUTPUT_LOG = BASE_DIR / "registry.log"
 
-FILENAME_RE = re.compile(
-    r"^([A-Z])_(\d+)_(\d+L)_(NF|OF)_([A-Z]+)$", re.IGNORECASE  # NF=No Footpath, OF=One Footpath
-)
+BRIDGE_RE = re.compile(r"^[A-Z]_(\d+)_(\d+L)_(NF|OF)_[A-Z]+$", re.IGNORECASE)
 
-STRUCTURE_LABEL = {
-    "Sub_Str": "Substructure",
-    "Sup_Str": "Superstructure",
+# Structure folder -> key in the record. The key also names the design file: <bridge>.<key>.mcb
+PARTS = {"Sub_Str": "sub", "Sup_Str": "sup"}
+
+# Downloadable files are matched on the last two dot-segments, so the <bridge> prefix can be anything.
+PART_ASSETS = {  # live inside Sub_Str / Sup_Str
+    "components": lambda key: [".component.json"],
+    "design_file": lambda key: [f".{key}.mcb"],
+    "cad": lambda key: [".cad.dwg", ".cad.dxf"],
+}
+COMMON_ASSETS = {  # live once in the bridge folder (a copy inside a structure folder is still honoured)
+    "design_report": [".3ps.pdf", ".report.pdf"],
+    "input_file": [".3ps"],
+    "lcca": [".results.lcca"],
 }
 
 
-# Downloadable files sit next to model.ifc and are named <bridge>.<kind>.<ext>, e.g.
-#   D_35_2L_OF_P.sub.mcb  D_35_2L_OF_P.sup.mcb  D_35_2L_OF_P.report.pdf  D_35_2L_OF_P.cad.dwg  D_35_2L_OF_P.3ps
-# They are matched on the last two dot-segments only, so the <bridge> prefix can be anything.
-ASSET_SUFFIXES = {
-    structure_dir: {
-        "design_file": [f".{kind}.mcb"],
-        "design_report": [".report.pdf"],
-        "cad": [".cad.dwg", ".cad.dxf"],
-        "input_file": [".3ps"],
-        "lcca": [".results.lcca"],
+def rel(path: Path | None) -> str | None:
+    return path.relative_to(BASE_DIR).as_posix() if path else None
+
+
+def find_asset(folder: Path, suffixes: list) -> Path | None:
+    if not folder.is_dir():
+        return None
+    return next((f for f in sorted(folder.iterdir())
+                 if f.is_file() and f.name.lower().endswith(tuple(suffixes))), None)
+
+
+def find_json(folder: Path, bridge_id: str) -> Path | None:
+    """Groups sidecar: <bridge>.json, then groups.json, then any .json in the folder."""
+    for name in (f"{bridge_id}.json", "groups.json"):
+        if (folder / name).exists():
+            return folder / name
+    return next(iter(sorted(folder.glob("*.json"))), None)
+
+
+def scan_part(folder: Path, key: str, bridge_id: str, missing: list) -> dict | None:
+    ifc = folder / "model.ifc"
+    if not ifc.exists():
+        return None
+    json_path = find_json(folder, bridge_id)
+    if json_path is None:
+        logging.warning(f"MISSING JSON — skipping: {rel(ifc)}")
+        missing.append(rel(ifc))
+        return None
+    obj = ifc.with_suffix(".obj")
+    logging.debug(f"OK — {rel(ifc)}")
+    return {
+        "ifc": rel(ifc),
+        "json": rel(json_path),
+        "obj": rel(obj) if obj.exists() else None,
+        **{field: rel(find_asset(folder, suffixes(key))) for field, suffixes in PART_ASSETS.items()},
     }
-    for structure_dir, kind in (("Sub_Str", "sub"), ("Sup_Str", "sup"))
-}
 
 
-def find_asset(folder: Path, suffixes: list) -> str | None:
-    for f in sorted(folder.iterdir()):
-        if f.is_file() and any(f.name.lower().endswith(s) for s in suffixes):
-            return str(f.relative_to(BASE_DIR)).replace("\\", "/")
-    return None
+def scan() -> tuple:
+    if not DB_DIR.exists():
+        raise FileNotFoundError(f"Database directory not found: {DB_DIR}")
+    bridges, missing = [], []
+
+    for folder in sorted(DB_DIR.glob("*/*/*")):  # <type>/<location>/<bridge>
+        if not folder.is_dir():
+            continue
+        bridge_type, location, bridge_id = folder.relative_to(DB_DIR).parts
+        m = BRIDGE_RE.match(bridge_id)
+        if not m:
+            logging.warning(f"SKIP — folder name does not match the expected pattern: {bridge_id}")
+            continue
+        span, lanes, footpath = m.group(1), m.group(2).upper(), m.group(3).upper()
+
+        record = {"bridge_id": bridge_id, "bridge_type": bridge_type, "location": location,
+                  "span": span, "lanes": lanes, "footpath": footpath, "sub": None, "sup": None}
+        for dirname, key in PARTS.items():
+            record[key] = scan_part(folder / dirname, key, bridge_id, missing)
+        if not (record["sub"] or record["sup"]):
+            continue
+
+        folders = [folder, *(folder / d for d in PARTS)]
+        record["common"] = {field: rel(next(filter(None, (find_asset(d, s) for d in folders)), None))
+                            for field, s in COMMON_ASSETS.items()}
+        bridges.append(record)
+    return bridges, missing
 
 
-def setup_logging():
+def main():
     logging.basicConfig(
         level=logging.DEBUG,
         format="%(asctime)s  %(levelname)-8s  %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[
-            logging.FileHandler(OUTPUT_LOG, encoding="utf-8"),
-            logging.StreamHandler(),
-        ],
+        handlers=[logging.FileHandler(OUTPUT_LOG, encoding="utf-8"), logging.StreamHandler()],
     )
     logging.info(f"=== reg.py started at {datetime.now().isoformat()} ===")
+    logging.info(f"Scanning: {DB_DIR}")
 
-
-def parse_filename(stem: str) -> dict | None:
-    m = FILENAME_RE.match(stem)
-    if not m:
-        return None
-    location_code, span, lanes, flood, bridge_code = m.groups()
-    return {
-        "location_code": location_code.upper(),
-        "span": span,
-        "lanes": lanes.upper(),
-        "flood": flood.upper(),
-        "bridge_code": bridge_code.upper(),
-    }
-
-
-def nested_set(d: dict, keys: list, value):
-    for k in keys[:-1]:
-        d = d.setdefault(k, {})
-    d[keys[-1]] = value
-
-
-def scan():
-    registry: dict = {}
-    flat: list = []
-    missing_pairs: list = []
-
-    if not IFC_DIR.exists():
-        logging.error(f"IFC directory not found: {IFC_DIR}")
-        raise FileNotFoundError(f"IFC directory not found: {IFC_DIR}")
-
-    all_ifc = sorted(IFC_DIR.rglob("*.ifc"))
-    logging.info(f"Found {len(all_ifc)} .ifc files to process")
-
-    for ifc_path in all_ifc:
-        rel = ifc_path.relative_to(BASE_DIR)
-        # Layout: project_database/<project>/<type>/<location>/<bridge>/<structure_dir>/model.ifc
-        parts = ifc_path.relative_to(IFC_DIR).parts  # ('PSC', 'Darbhanga', 'D_20_2L_NF_P', 'Sub_Str', 'model.ifc')
-
-        if len(parts) == 5:
-            bridge_type, location, folder_name, structure_dir, filename = parts
-            stem = folder_name
-            # Resolve JSON sidecar path: check {stem}.json, then groups.json, then fallback to any json in folder
-            json_path = ifc_path.parent / f"{stem}.json"
-            if not json_path.exists():
-                json_path = ifc_path.parent / "groups.json"
-            if not json_path.exists():
-                jsons = list(ifc_path.parent.glob("*.json"))
-                if jsons:
-                    json_path = jsons[0]
-        else:
-            logging.warning(f"SKIP — unexpected folder depth ({len(parts)} levels): {rel}")
-            continue
-
-        parsed = parse_filename(stem)
-        if parsed is None:
-            logging.warning(f"SKIP — config identifier does not match expected pattern: {stem}")
-            continue
-
-        ifc_rel = str(rel).replace("\\", "/")
-        json_rel = str(json_path.relative_to(BASE_DIR)).replace("\\", "/")
-
-        if not json_path.exists():
-            logging.warning(f"MISSING JSON — skipping: {ifc_rel}")
-            missing_pairs.append(ifc_rel)
-            continue
-
-        logging.debug(f"OK — {ifc_rel}")
-
-        # Resolve extra assets from the last two dot-segments of the filename (see ASSET_SUFFIXES)
-        suffixes = ASSET_SUFFIXES[structure_dir]
-        pdf_rel = find_asset(ifc_path.parent, suffixes["design_report"])
-        mcb_rel = find_asset(ifc_path.parent, suffixes["design_file"])
-        cad_rel = find_asset(ifc_path.parent, suffixes["cad"])
-        input_rel = find_asset(ifc_path.parent, suffixes["input_file"])
-        lcca_rel = find_asset(ifc_path.parent, suffixes["lcca"])
-
-        # Resolve OBJ companion file path
-        obj_path = ifc_path.with_suffix(".obj")
-        obj_rel = None
-        if obj_path.exists():
-            obj_rel = str(obj_path.relative_to(BASE_DIR)).replace("\\", "/")
-
-        entry = {
-            "ifc": ifc_rel,
-            "json": json_rel,
-            "obj": obj_rel,
-            "design_report": pdf_rel,
-            "design_file": mcb_rel,
-            "cad": cad_rel,
-            "input_file": input_rel,
-            "lcca": lcca_rel,
-        }
-
-        nested_set(registry, [bridge_type, location, structure_dir,
-                               parsed["span"], parsed["lanes"], parsed["flood"]], entry)
-
-        flat.append({
-            "bridge_type": bridge_type,
-            "location": location,
-            "structure": STRUCTURE_LABEL.get(structure_dir, structure_dir),
-            "structure_dir": structure_dir,
-            "span": parsed["span"],
-            "lanes": parsed["lanes"],
-            "footpath": parsed["flood"],  # NF=No Footpath, OF=One Footpath
-            **entry,
-        })
-
-    return registry, flat, missing_pairs
-
-
-def main():
-    setup_logging()
-    logging.info(f"Scanning: {IFC_DIR}")
-
-    registry, flat, missing = scan()
-
+    bridges, missing = scan()
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(registry, f, indent=2)
+        json.dump(bridges, f, indent=2)
     logging.info(f"Registry written : {OUTPUT}")
 
-    with open(OUTPUT_FLAT, "w", encoding="utf-8") as f:
-        json.dump(flat, f, indent=2)
-    logging.info(f"Flat list written: {OUTPUT_FLAT}")
-
-    from collections import Counter
-
-    counts = Counter(f"{e['bridge_type']}/{e['location']}/{e['structure_dir']}" for e in flat)
-    empty_folders = []
-
+    counts = Counter(f"{b['bridge_type']}/{b['location']}/{dirname}"
+                     for b in bridges for dirname, key in PARTS.items() if b[key])
     logging.info("=" * 50)
-    logging.info("SUMMARY")
-    logging.info("=" * 50)
-    logging.info(f"  Total .ifc files found   : {len(flat)}")
-    logging.info(f"  Total .json sidecars      : {len(flat) - len(missing)}")
-    logging.info(f"  Missing .json sidecars    : {len(missing)}")
-    logging.info("  ---")
+    logging.info(f"  Bridges                  : {len(bridges)}")
+    logging.info(f"  Models (.ifc + .json)    : {sum(counts.values())}")
+    logging.info(f"  Missing .json sidecars   : {len(missing)}")
     logging.info("  Files per folder:")
     for folder, count in sorted(counts.items()):
         logging.info(f"    {folder:<40} {count} file(s)")
-    if missing:
-        logging.info("  ---")
-        logging.info("  Missing .json sidecars:")
-        for p in missing:
-            logging.warning(f"    {p}")
+    for p in missing:
+        logging.warning(f"    missing json: {p}")
+
+    # Report which optional files are absent, per kind
+    logging.info("  Missing files (count of bridges / models without it):")
+    for field in COMMON_ASSETS:
+        absent = [b["bridge_id"] for b in bridges if not b["common"][field]]
+        logging.info(f"    {field:<14} {len(absent)} of {len(bridges)} bridges")
+    parts = [(b["bridge_id"], k, b[k]) for b in bridges for k in PARTS.values() if b[k]]
+    for field in ("obj", *PART_ASSETS):
+        absent = [f"{bid}/{k}" for bid, k, p in parts if not p[field]]
+        logging.info(f"    {field:<14} {len(absent)} of {len(parts)} models")
+        for name in absent if field in ("obj", "components") and len(absent) < 20 else []:
+            logging.debug(f"      no {field}: {name}")
     logging.info("=" * 50)
-    logging.info("=== reg.py finished ===")
 
 
 if __name__ == "__main__":

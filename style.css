@@ -1039,12 +1039,14 @@ canvas {
   gap: 20px;
   margin-bottom: 24px;
 }
+/* hidden with the stage component breakdowns
 .lcca-dash-grid3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 20px;
   margin-bottom: 24px;
 }
+*/
 
 .lcca-dash-card {
   background: var(--bg-panel);

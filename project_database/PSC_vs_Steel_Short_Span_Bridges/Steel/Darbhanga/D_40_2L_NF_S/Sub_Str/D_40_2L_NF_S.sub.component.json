@@ -1,0 +1,34 @@
+{
+  "pile": {
+    "count": 5,
+    "depth_m": 10,
+    "diameter_m": 1.2,
+    "reinforcement_pct": 0.008
+  },
+  "pile_cap": {
+    "depth_m": 0.69,
+    "dimensions_m": {
+      "raw": "6 X 6",
+      "width_m": 6.0,
+      "length_m": 6.0
+    },
+    "pcc_depth_m": 0.1,
+    "reinforcement_pct": 0.007
+  },
+  "pier": {
+    "height_m": 6,
+    "diameter_m": 1.45
+  },
+  "pier_cap": {
+    "mid_depth_m": 1.85,
+    "end_depth_m": 0.925,
+    "width_m": 1.55,
+    "mid_section_length_m": 2,
+    "taper_section_length_m": 3.38,
+    "reinforcement_pct": 0.0067
+  },
+  "material_grades": {
+    "rebar": "Fe500",
+    "concrete_substructure_and_deck_slab": "M35"
+  }
+}

@@ -15,7 +15,7 @@ if (reduce || !("IntersectionObserver" in window)) {
 const num = document.getElementById("model-count");
 if (num) {
   fetch("registry_flat.json").then((r) => r.json()).then((rows) => {
-    const n = rows.length;
+    const n = rows.reduce((sum, b) => sum + (b.sub ? 1 : 0) + (b.sup ? 1 : 0), 0); // one model per sub/sup
     if (reduce) { num.textContent = n; return; }
     const t0 = performance.now(), dur = 900;
     const tick = (t) => {

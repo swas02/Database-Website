@@ -232,7 +232,11 @@ async function main() {
     process.exit(1);
   }
 
-  const registry = JSON.parse(fs.readFileSync(REGISTRY_FILE, "utf-8"));
+  // One record per bridge; convert each of its sub / sup models
+  const registry = JSON.parse(fs.readFileSync(REGISTRY_FILE, "utf-8")).flatMap((bridge) => {
+    const { sub, sup, common, ...meta } = bridge;
+    return [sup, sub].filter(Boolean).map((part) => ({ ...meta, ...common, ...part }));
+  });
   console.log(`Found ${registry.length} models in registry.`);
 
   let succeeded = 0;
