@@ -123,22 +123,42 @@ export function setLoadingState(text) {
   }
 }
 
+// Inspector table row for a material grade; nothing when the grade is not filled in
+function gradeRow(label, value) {
+  return value
+    ? `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`
+    : "";
+}
+
 // Render general metadata specifications
 export function renderBridgeMetadata(data) {
   const container = document.getElementById("meta-container");
   container.innerHTML = "";
 
+  const g = data.material_grades || {};
+  const isPsc = /psc|prestressed/i.test(data.bridge_type || "");
   const items = [
     { k: "Bridge ID", v: data.bridge_id },
-    {
-      k: "Concrete Grade",
-      v: data.material_grades?.concrete_substructure_and_deck_slab || "N/A",
-    },
-    { k: "Structural Steel Grade", v: data.material_grades?.structural_steel || "N/A" },
-    { k: "Rebar Grade", v: data.material_grades?.rebar || "N/A" },
+    { k: "Deck slab concrete grade", v: g.concrete_deck_slab },
+    { k: "Deck slab rebar grade", v: g.rebar_deck_slab },
+    ...(isPsc
+      ? [
+          { k: "Main girder concrete grade", v: g.concrete_main_girder },
+          { k: "Main girder rebar grade", v: g.rebar_main_girder },
+          { k: "Main girder tendon grade", v: g.tendons_main_girder },
+        ]
+      : [
+          { k: "Structural steel grade", v: g.structural_steel },
+          { k: "Cross bracing grade", v: g.cross_bracing },
+        ]),
+    { k: "Pier concrete grade", v: g.concrete_pier },
+    { k: "Pier cap concrete grade", v: g.concrete_pier_cap },
+    { k: "Pedestal concrete grade", v: g.concrete_pedestal },
+    { k: "Pedestal rebar grade", v: g.rebar_pedestal },
   ];
 
-  items.forEach((i) => {
+  // Grades that are not filled in are left out
+  items.filter((i) => i.v).forEach((i) => {
     container.innerHTML += `
       <div class="metric-card">
         <span class="metric-header">${i.k}</span>
@@ -173,7 +193,7 @@ export function getCleanGroupName(name) {
     return "Transverse stiffeners";
   }
   if (nameLower === "pier" || name === "Pier Shaft") {
-    return "Pier shaft";
+    return "Pier";
   }
   if (nameLower === "pier_cap" || nameLower.includes("pier cap")) {
     return "Pier cap";
@@ -431,9 +451,9 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">Materials & spacing</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Structural steel</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Rebar grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
+            ${gradeRow("Concrete grade", state.bridgeData.material_grades?.concrete_deck_slab)}
+            ${gradeRow("Structural steel", state.bridgeData.material_grades?.structural_steel)}
+            ${gradeRow("Rebar grade", state.bridgeData.material_grades?.rebar_deck_slab)}
             <tr><td class="text-muted p-0 py-1">Girder spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</td></tr>
           </tbody>
         </table>
@@ -475,8 +495,8 @@ export function updatePropertyInspector(group) {
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Thickness</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.deck_slab.depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Rebar grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.rebar || "Fe500"}</td></tr>
+            ${gradeRow("Concrete grade", state.bridgeData.material_grades?.concrete_deck_slab)}
+            ${gradeRow("Rebar grade", state.bridgeData.material_grades?.rebar_deck_slab)}
           </tbody>
         </table>
       </div>
@@ -560,7 +580,7 @@ export function updatePropertyInspector(group) {
             <tr><td class="text-muted p-0 py-1">Section profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || "90x90x10"}</td></tr>
             <tr><td class="text-muted p-0 py-1">Spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.spacing_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Total pairs</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.count}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Material grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.structural_steel || "E350"}</td></tr>
+            ${gradeRow("Material grade", state.bridgeData.material_grades?.cross_bracing)}
           </tbody>
         </table>
       </div>
@@ -691,7 +711,7 @@ export function updatePropertyInspector(group) {
           <tbody>
             <tr><td class="text-muted p-0 py-1">Height</td><td class="text-end text-white font-monospace p-0 py-1">${p.height_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Diameter</td><td class="text-end text-white font-monospace p-0 py-1">${p.diameter_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Concrete grade</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.material_grades?.concrete_substructure_and_deck_slab || "M35"}</td></tr>
+            ${gradeRow("Concrete grade", state.bridgeData.material_grades?.concrete_pier)}
           </tbody>
         </table>
       </div>
@@ -759,6 +779,25 @@ export function updatePropertyInspector(group) {
     `;
   } else if (
     group &&
+    group.name.toLowerCase() === "pedestals"
+  ) {
+    const g = state.bridgeData?.material_grades || {};
+    const size = state.bridgeData?.substructure?.pedestal?.size_m;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Pedestal specifications</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+          <tbody>
+            <tr><td class="text-muted p-0 py-1">Shape</td><td class="text-end text-white font-monospace p-0 py-1">Cube</td></tr>
+            ${size ? `<tr><td class="text-muted p-0 py-1">Size</td><td class="text-end text-white font-monospace p-0 py-1">${size} x ${size} x ${size} m</td></tr>` : ""}
+            ${gradeRow("Concrete grade", g.concrete_pedestal)}
+            ${gradeRow("Rebar grade", g.rebar_pedestal)}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (
+    group &&
     (group.name.toLowerCase() === "pile" || group.name === "piles" || group.name === "Pile") &&
     state.bridgeData.substructure?.pile
   ) {
@@ -768,9 +807,9 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">Foundation pile specifications</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Piles count</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile depth</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile diameter</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Number of piles</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile length</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Diameter of each pile</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pile.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
           </tbody>
         </table>

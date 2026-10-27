@@ -1,0 +1,9 @@
+{
+  "material_grades": {
+    "rebar_deck_slab": "Fe550",
+    "rebar_main_girder": "Fe550",
+    "tendons_main_girder": "Fu 1860 MPa",
+    "concrete_deck_slab": "M40",
+    "concrete_main_girder": "M40"
+  }
+}

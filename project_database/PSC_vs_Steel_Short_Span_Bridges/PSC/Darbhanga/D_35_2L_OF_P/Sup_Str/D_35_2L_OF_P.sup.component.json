@@ -1,0 +1,14 @@
+{
+  "total_width_m": 10.5,
+  "deck_slab": {
+    "depth_m": 0.23
+  },
+  "girder_spacing_m": 2.75,
+  "material_grades": {
+    "rebar_deck_slab": "Fe550",
+    "rebar_main_girder": "Fe550",
+    "tendons_main_girder": "Fu 1860 MPa",
+    "concrete_deck_slab": "M45",
+    "concrete_main_girder": "M45"
+  }
+}

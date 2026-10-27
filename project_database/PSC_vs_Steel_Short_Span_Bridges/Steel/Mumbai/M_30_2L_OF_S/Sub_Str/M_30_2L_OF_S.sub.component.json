@@ -1,6 +1,5 @@
 {
   "pile": {
-    "count": 4,
     "depth_m": 10,
     "diameter_m": 0.9,
     "reinforcement_pct": 0.008
@@ -27,8 +26,13 @@
     "taper_section_length_m": 3.63,
     "reinforcement_pct": 0.0129
   },
+  "pedestal": {
+    "size_m": 0.3
+  },
   "material_grades": {
-    "rebar": "Fe500",
-    "concrete_substructure_and_deck_slab": "M35"
+    "concrete_pier": "M40",
+    "concrete_pier_cap": "M40",
+    "concrete_pedestal": "M40",
+    "rebar_pedestal": "Fe550"
   }
 }

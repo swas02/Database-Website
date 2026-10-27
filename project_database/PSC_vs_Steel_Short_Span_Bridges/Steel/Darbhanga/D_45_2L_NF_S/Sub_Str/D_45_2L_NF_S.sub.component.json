@@ -1,6 +1,5 @@
 {
   "pile": {
-    "count": 5,
     "depth_m": 10,
     "diameter_m": 1.2,
     "reinforcement_pct": 0.008
@@ -9,8 +8,8 @@
     "depth_m": 0.735,
     "dimensions_m": {
       "raw": "6 X 6",
-      "width_m": 6.0,
-      "length_m": 6.0
+      "width_m": 6,
+      "length_m": 6
     },
     "pcc_depth_m": 0.1,
     "reinforcement_pct": 0.0066
@@ -27,8 +26,13 @@
     "taper_section_length_m": 3.38,
     "reinforcement_pct": 0.0064
   },
+  "pedestal": {
+    "size_m": 0.3
+  },
   "material_grades": {
-    "rebar": "Fe500",
-    "concrete_substructure_and_deck_slab": "M35"
+    "concrete_pier": "M40",
+    "concrete_pier_cap": "M40",
+    "concrete_pedestal": "M40",
+    "rebar_pedestal": "Fe550"
   }
 }

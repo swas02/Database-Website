@@ -34,8 +34,9 @@ async function loadComponents({ sub, sup }) {
   };
   const [subData, supData] = await Promise.all([get(sub), get(sup)]);
   if (!subData && !supData) return null;
-  const { material_grades, ...substructure } = subData || {};
-  return { ...supData, material_grades: supData?.material_grades || material_grades, substructure };
+  const { material_grades: subGrades, ...substructure } = subData || {};
+  // Superstructure and substructure grades use different keys, so they merge into one object
+  return { ...supData, material_grades: { ...supData?.material_grades, ...subGrades }, substructure };
 }
 
 // Global lists populated from registry_flat.json
@@ -375,11 +376,7 @@ window.loadSelectedBridge = async function (fromUser = false) {
         lanes: match.lanes === "2L" ? 2 : 3,
         has_footpath: match.footpath === "OF",
         total_width_m: match.lanes === "2L" ? 8.5 : 10.5,
-        material_grades: {
-          rebar: "Fe500",
-          structural_steel: match.bridge_type === "PSC" ? null : "E350",
-          concrete_substructure_and_deck_slab: "M35",
-        },
+        material_grades: {},
       };
     }
 

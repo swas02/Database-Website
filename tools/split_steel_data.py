@@ -17,13 +17,20 @@ SUP_KEYS = ("total_width_m", "deck_slab", "girder_spacing_m", "cross_bracing",
             "transverse_stiffeners_per_girder_side", "bearing_stiffeners_per_girder_side",
             "girder_sections")
 
+SUB_GRADES = ("concrete_pier", "concrete_pier_cap", "concrete_pedestal", "rebar_pedestal")
+
 
 def split(spec: dict) -> dict:
     """steel_data.json entry -> {"Sub_Str": ..., "Sup_Str": ...}."""
     grades = spec.get("material_grades") or {}
+    # The old combined "concrete_substructure_and_deck_slab" / "rebar" entries are gone: the deck slab values carry over,
+    # the substructure grades are filled in from the sheet
     sub = {**(spec.get("substructure") or {}),  # pile, pile_cap, pier, pier_cap
-           "material_grades": {k: v for k, v in grades.items() if k != "structural_steel"}}
-    sup = {**{k: spec[k] for k in SUP_KEYS if k in spec}, "material_grades": grades}
+           "material_grades": dict.fromkeys(SUB_GRADES)}
+    sup_grades = {"structural_steel": grades.get("structural_steel"),
+                  "concrete_deck_slab": grades.get("concrete_substructure_and_deck_slab"),
+                  "rebar_deck_slab": grades.get("rebar")}
+    sup = {**{k: spec[k] for k in SUP_KEYS if k in spec}, "material_grades": sup_grades}
     return {"Sub_Str": sub, "Sup_Str": sup}
 
 

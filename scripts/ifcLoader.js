@@ -11,8 +11,12 @@ import { fitLightingToModel } from "./viewer.js";
 //  - across: the pier cap is centred on the superstructure
 //  - along: one copy at each end of the span, the pier centre on the end of the girders. The cap (width w) is shared
 //    with the next span, so this span rests on half of it (w/2) and its bearings sit w/4 in from the end
-// Pot-PTFE bearing on a concrete pedestal, under each girder at each pier (dimensions in metres)
-const PEDESTAL = { plan: 0.7, height: 0.3 };
+// Side of the cube-shaped concrete pedestal under each bearing, from the sheet (pedestal.size_m); 0 when it has none
+function pedestalSize() {
+  return state.bridgeData?.substructure?.pedestal?.size_m || 0;
+}
+
+// Pot-PTFE bearing on the pedestal, under each girder at each pier (dimensions in metres)
 const BEARING = {
   height: 0.15, // base plate to sole plate
   basePlate: { plan: 0.6, thickness: 0.02 },
@@ -20,7 +24,8 @@ const BEARING = {
   ptfe: { diameter: 0.4, thickness: 0.012 },
   solePlate: 0.55, // plan; its thickness takes up the rest of the height
 };
-const BEARING_GAP = PEDESTAL.height + BEARING.height; // pier cap top to the lowest point of the superstructure
+// Pier cap top to the lowest point of the superstructure
+const bearingGap = () => pedestalSize() + BEARING.height;
 
 // A few source models end the pier column a few cm below the pier cap. Raise its top face to just inside the cap.
 function closePierCapGap(group) {
@@ -48,7 +53,7 @@ function alignSubstructure(subGroup, superGroup) {
   const capCenter = capBox.getCenter(new THREE.Vector3());
   const capWidth = capBox.max.x - capBox.min.x;
 
-  const dy = superBox.min.y - BEARING_GAP - subBox.max.y;
+  const dy = superBox.min.y - bearingGap() - subBox.max.y;
   const dz = superBox.getCenter(new THREE.Vector3()).z - capCenter.z;
   const girders = girderSoffits(superGroup);
   const ends = girders.zs.length ? [girders.minX, girders.maxX] : [superBox.min.x, superBox.max.x];
@@ -95,8 +100,9 @@ async function buildSupports({ bearingXs, girderZs, soffitY, lowestY }) {
   if (!girderZs.length) return [];
   const { mergeGeometries } = await import("three/addons/utils/BufferGeometryUtils.js");
 
-  const capTop = lowestY - BEARING_GAP;
-  const baseBottom = capTop + PEDESTAL.height;
+  const pedestal = pedestalSize();
+  const capTop = lowestY - bearingGap();
+  const baseBottom = capTop + pedestal;
   const potBottom = baseBottom + BEARING.basePlate.thickness;
   const ptfeBottom = potBottom + BEARING.pot.height;
   const soleBottom = ptfeBottom + BEARING.ptfe.thickness;
@@ -124,7 +130,7 @@ async function buildSupports({ bearingXs, girderZs, soffitY, lowestY }) {
       () => disc(BEARING.ptfe.diameter, ptfeBottom, soleBottom), // PTFE pad, part of the pot bearing
       () => box(BEARING.solePlate, soleBottom, soffitY),
     ]),
-    group("Pedestals", "sub", "sub:injected_pedestals_0", [() => box(PEDESTAL.plan, capTop, baseBottom)]),
+    ...(pedestal ? [group("Pedestals", "sub", "sub:injected_pedestals_0", [() => box(pedestal, capTop, baseBottom)])] : []),
   ];
 }
 

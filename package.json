@@ -4,6 +4,7 @@
   "description": "IFC to OBJ converter with structural grouping support",
   "main": "tools/convert_ifc_to_obj.js",
   "scripts": {
+    "components": "python tools/build_components_from_xlsx.py && python tools/reg.py",
     "dev": "vite",
     "build": "node tools/build.mjs",
     "preview": "vite preview",

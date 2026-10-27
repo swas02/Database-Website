@@ -1,0 +1,38 @@
+{
+  "pile": {
+    "depth_m": 10,
+    "diameter_m": 1.2,
+    "reinforcement_pct": 0.008
+  },
+  "pile_cap": {
+    "depth_m": 0.81,
+    "dimensions_m": {
+      "raw": "6 X 6",
+      "width_m": 6,
+      "length_m": 6
+    },
+    "pcc_depth_m": 0.1,
+    "reinforcement_pct": 0.006
+  },
+  "pier": {
+    "height_m": 6,
+    "diameter_m": 1.4
+  },
+  "pier_cap": {
+    "mid_depth_m": 1.75,
+    "end_depth_m": 0.875,
+    "width_m": 1.5,
+    "mid_section_length_m": 2,
+    "taper_section_length_m": 3.38,
+    "reinforcement_pct": 0.007
+  },
+  "pedestal": {
+    "size_m": 0.3
+  },
+  "material_grades": {
+    "concrete_pier": "M40",
+    "concrete_pier_cap": "M40",
+    "concrete_pedestal": "M40",
+    "rebar_pedestal": "Fe550"
+  }
+}

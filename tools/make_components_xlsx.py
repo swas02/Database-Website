@@ -31,7 +31,13 @@ OUTPUT = BASE_DIR / "data" / "components.xlsx"
 
 # PSC bridges have no steel girders; these are the superstructure fields the viewer can use for them
 PSC_SUP_COLUMNS = ["total_width_m", "deck_slab.depth_m", "girder_spacing_m",
-                   "material_grades.rebar", "material_grades.concrete_substructure_and_deck_slab"]
+                   "material_grades.rebar_deck_slab", "material_grades.rebar_main_girder",
+                   "material_grades.tendons_main_girder", "material_grades.concrete_deck_slab",
+                   "material_grades.concrete_main_girder"]
+
+# Extra substructure grades, asked for steel and PSC bridges alike (left empty to be filled in)
+SUB_GRADE_COLUMNS = ["pedestal.size_m", "material_grades.concrete_pier", "material_grades.concrete_pier_cap",
+                     "material_grades.concrete_pedestal", "material_grades.rebar_pedestal"]
 
 
 def flatten(value, prefix="") -> dict:
@@ -106,9 +112,24 @@ def group_by_segment(columns: list) -> list:
     return out
 
 
+# Written into every concrete / rebar grade cell as a real value (not a formula or a fallback)
+DEFAULT_VALUES = {"pedestal.size_m": 0.3}  # the pedestal is a 0.3 m cube
+DEFAULT_GRADES = {"concrete": "M40", "rebar": "Fe550", "steel": "E350", "structural": "E350", "tendons": "Fu 1860 MPa"}
+
+
+def default_grade(column: str):
+    if column in DEFAULT_VALUES:
+        return DEFAULT_VALUES[column]
+    name = column.split(".")[-1]
+    if column.startswith("material_grades.") and name.split("_")[0] in DEFAULT_GRADES:
+        return DEFAULT_GRADES[name.split("_")[0]]
+    return None
+
+
 def write_sheet(wb, title, columns, rows):
     ws = wb.create_sheet(title)
     columns = group_by_segment(columns)
+    rows = [(bid, {**values, **{c: default_grade(c) for c in columns if default_grade(c)}}) for bid, values in rows]
     ws.append(["bridge_id", *columns])
     for bridge_id, values in rows:
         ws.append([bridge_id, *(values.get(c) for c in columns)])
@@ -142,8 +163,11 @@ def main():
             ids = [b["bridge_id"] for b in registry if b["bridge_type"] == bridge_type and b[key]]
             if bridge_type == "Steel":
                 columns = list(dict.fromkeys(c for bid in ids for c in flat.get(bid, {}).get(dirname, {})))
+                if key == "sub":
+                    columns += [c for c in SUB_GRADE_COLUMNS if c not in columns]
             elif key == "sub":  # same substructure fields as steel
                 columns = list(dict.fromkeys(c for d in flat.values() for c in d["Sub_Str"]))
+                columns += [c for c in SUB_GRADE_COLUMNS if c not in columns]
             else:
                 columns = PSC_SUP_COLUMNS
             rows = [(bid, flat.get(bid, {}).get(dirname, {}) if bridge_type == "Steel" else {}) for bid in ids]
