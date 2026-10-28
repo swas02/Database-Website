@@ -323,19 +323,22 @@ export function generateGirderSVG(props, color) {
   const bf_t = Math.max(2, (props.bottom_flange_thickness_m / 0.028) * 6);
   const web_t = Math.max(2, (props.web_thickness_m / 0.012) * 5);
 
-  const svgW = 60;
-  const svgH = 80;
-
-  const tf_x = (svgW - tf_w) / 2;
-  const bf_x = (svgW - bf_w) / 2;
-  const web_x = (svgW - web_t) / 2;
-
   const tf_y = 10;
   const web_y = tf_y + tf_t;
   const bf_y = web_y + web_h;
 
+  // Deep webs (e.g. 2 m end diaphragms) are taller than the 80px box: grow the viewBox so the whole section is shown, scaled down
+  const svgW = 60;
+  const svgH = 80;
+  const vbH = Math.max(svgH, bf_y + bf_t + 10);
+  const vbW = Math.max(svgW, tf_w + 4, bf_w + 4);
+
+  const tf_x = (vbW - tf_w) / 2;
+  const bf_x = (vbW - bf_w) / 2;
+  const web_x = (vbW - web_t) / 2;
+
   return `
-    <svg width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="stroke: ${color}; stroke-width: 1.2; fill: rgba(${hexToRgb(color)}, 0.15); filter: drop-shadow(0 0 4px rgba(${hexToRgb(color)}, 0.35)); flex-shrink: 0;">
+    <svg width="${svgW}" height="${svgH}" viewBox="0 0 ${vbW} ${vbH}" style="stroke: ${color}; stroke-width: 1.2; fill: rgba(${hexToRgb(color)}, 0.15); filter: drop-shadow(0 0 4px rgba(${hexToRgb(color)}, 0.35)); flex-shrink: 0;">
       <rect x="${tf_x}" y="${tf_y}" width="${tf_w}" height="${tf_t}" rx="0.5" />
       <rect x="${web_x}" y="${web_y}" width="${web_t}" height="${web_h}" rx="0.5" />
       <rect x="${bf_x}" y="${bf_y}" width="${bf_w}" height="${bf_t}" rx="0.5" />
