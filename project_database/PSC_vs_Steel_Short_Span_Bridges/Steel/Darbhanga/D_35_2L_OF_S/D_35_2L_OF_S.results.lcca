@@ -1,10 +1,10 @@
 {
   "export_meta": {
     "type": "results",
-    "project_name": "Steel_35m_2L_F_Darbhanga (imported)",
+    "project_name": "Steel_35m_2L_F_Darbhanga",
     "analysis_period": 100,
     "currency": "INR",
-    "exported_at": "2026-10-26"
+    "exported_at": "2026-10-28"
   },
   "lcc_breakdown": {
     "initial_construction_cost": 16926251.289172,

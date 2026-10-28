@@ -1,16 +1,16 @@
 {
   "export_meta": {
     "type": "results",
-    "project_name": "PSC_35m_2L_F_Darbhanga (imported)",
+    "project_name": "PSC_35m_2L_F_Darbhanga",
     "analysis_period": 100,
     "currency": "INR",
-    "exported_at": "2026-10-26"
+    "exported_at": "2026-10-28"
   },
   "lcc_breakdown": {
-    "initial_construction_cost": 12306581.9081615,
-    "initial_carbon_emissions_cost": 2242217.1053498397,
+    "initial_construction_cost": 12186258.9081615,
+    "initial_carbon_emissions_cost": 2242992.0809498397,
     "superstructure_construction_cost": 6583403.9435015,
-    "total_scrap_value": 1060186.310625,
+    "total_scrap_value": 482255.060625,
     "daily_road_user_cost_with_vehicular_emissions": {
       "accident_cost": {
         "total_accident_cost_INR_per_day": 17.55,
@@ -54,11 +54,11 @@
   "results": {
     "initial_stage": {
       "economic": {
-        "initial_construction_cost": 12306581.9081615,
-        "time_cost_of_loan": 365608.0375216312
+        "initial_construction_cost": 12186258.9081615,
+        "time_cost_of_loan": 362033.4417299645
       },
       "environmental": {
-        "initial_material_carbon_emission_cost": 2242217.1053498397,
+        "initial_material_carbon_emission_cost": 2242992.0809498397,
         "initial_vehicular_emission_cost": 1339099.99
       },
       "social": {
@@ -67,15 +67,15 @@
     },
     "use_stage": {
       "economic": {
-        "routine_inspection_costs": 631610.7032725727,
-        "periodic_maintenance": 662106.4132409969,
-        "major_inspection_costs": 601914.921128179,
-        "major_repair_cost": 2468700.3307771967,
+        "routine_inspection_costs": 625435.3659435727,
+        "periodic_maintenance": 655632.915517997,
+        "major_inspection_costs": 596029.923198179,
+        "major_repair_cost": 2444563.5369771966,
         "replacement_costs_for_bearing_and_expansion_joint": 1227804.8354630296
       },
       "environmental": {
-        "periodic_carbon_costs": 120633.52248492674,
-        "major_repair_material_carbon_emission_costs": 24738.381323324782,
+        "periodic_carbon_costs": 120675.21694718233,
+        "major_repair_material_carbon_emission_costs": 24746.93162911958,
         "major_repair_vehicular_emission_costs": 875946.06,
         "vehicular_emission_costs_for_replacement_of_bearing_and_expansion_joint": 14477.81
       },
@@ -89,11 +89,11 @@
     },
     "end_of_life": {
       "economic": {
-        "total_demolition_and_disposal_costs": 284282.04207853065,
-        "total_scrap_value": 244903.037754375
+        "total_demolition_and_disposal_costs": 281502.5807785307,
+        "total_scrap_value": 111400.919004375
       },
       "environmental": {
-        "carbon_costs_demolition_and_disposal": 51795.215133581296,
+        "carbon_costs_demolition_and_disposal": 51813.11706994129,
         "demolition_vehicular_emission_cost": 33623.05
       },
       "social": {

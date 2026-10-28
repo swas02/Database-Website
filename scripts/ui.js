@@ -894,8 +894,8 @@ export function renderDownloads(bridgeId, ifcPath) {
 
   // An item without a url is shown greyed out
   const items = [
-    { title: "Analysis model (Superstructure)", file: "Superstructure Model (.mcb)", url: superRow?.design_file },
-    { title: "Analysis model (Substructure)", file: "Substructure Model (.mcb)", url: subRow?.design_file },
+    { title: "Midas Civil model (Superstructure)", file: "Superstructure Model (.mcb)", url: superRow?.design_file },
+    { title: "Midas Civil model (Substructure)", file: "Substructure Model (.mcb)", url: subRow?.design_file },
     { title: "2D CAD drawings", file: "Drawing File (.dwg)", url: superRow?.cad || subRow?.cad },
     { title: "3psLCCA input", file: "Input File (.3ps)", url: superRow?.input_file || subRow?.input_file },
     { title: "3psLCCA report", file: "Report File (.pdf)", url: superRow?.design_report || subRow?.design_report },
