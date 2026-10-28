@@ -2,18 +2,16 @@
   "pile": {
     "count": 4,
     "depth_m": 10,
-    "diameter_m": 1.2,
-    "reinforcement_pct": 0.008
+    "diameter_m": 1.2
   },
   "pile_cap": {
-    "depth_m": 0.72,
+    "depth_m": 1.35,
     "dimensions_m": {
       "raw": "6 X 6",
       "width_m": 6,
       "length_m": 6
     },
-    "pcc_depth_m": 0.1,
-    "reinforcement_pct": 0.0067
+    "pcc_depth_m": 0.1
   },
   "pier": {
     "height_m": 6,
