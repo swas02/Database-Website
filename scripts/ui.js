@@ -130,6 +130,18 @@ function gradeRow(label, value) {
     : "";
 }
 
+// Spec rows whose Excel value is blank are left out (value cell holds nothing but units / separators)
+function dropBlankRows(html) {
+  const box = document.createElement("div");
+  box.innerHTML = html;
+  box.querySelectorAll("tr").forEach((tr) => {
+    const cell = tr.cells[tr.cells.length - 1];
+    const text = (cell?.textContent || "").replace(/(m|mm|%)|[×x]/g, "").trim();
+    if (tr.cells.length > 1 && (!text || /undefined|NaN|null/.test(text))) tr.remove();
+  });
+  return box.innerHTML;
+}
+
 // Render general metadata specifications
 export function renderBridgeMetadata(data) {
   const container = document.getElementById("meta-container");
@@ -440,12 +452,12 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">General specs</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Bridge ID</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_id || "M_20_2L_NF_S"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Bridge type</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_type || "N/A"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Location</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.location || "Mumbai"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Span length</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.span_m || "20"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Total width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.total_width_m || "8.5"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Lanes</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.lanes || "2"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Bridge ID</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_id || ""}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Bridge type</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.bridge_type || ""}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Location</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.location || ""}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Span length</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.span_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.total_width_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Lanes</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.lanes || ""}</td></tr>
           </tbody>
         </table>
       </div>
@@ -457,7 +469,7 @@ export function updatePropertyInspector(group) {
             ${gradeRow("Concrete grade", state.bridgeData.material_grades?.concrete_deck_slab)}
             ${gradeRow("Structural steel", state.bridgeData.material_grades?.structural_steel)}
             ${gradeRow("Rebar grade", state.bridgeData.material_grades?.rebar_deck_slab)}
-            <tr><td class="text-muted p-0 py-1">Girder spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Girder spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || ""} m</td></tr>
           </tbody>
         </table>
       </div>
@@ -466,10 +478,10 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">Substructure: piers</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Pier height</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.height_m || "6.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pier diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.diameter_m || "1.2"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pier cap width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.width_m || "1.4"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap depth (mid)</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.mid_depth_m || "1.45"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier height</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.height_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier?.diameter_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pier cap width</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.width_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap depth (mid)</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pier_cap?.mid_depth_m || ""} m</td></tr>
           </tbody>
         </table>
       </div>
@@ -478,11 +490,11 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">Substructure: piles</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Piles count</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.count || "4"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.depth_m || "10.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Pile diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.diameter_m || "0.75"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap dimensions</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.dimensions_m?.raw || "3.8 x 3.8 m"}</td></tr>
-            <tr><td class="text-muted p-0 py-1">Cap depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.depth_m || "0.85"} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Piles count</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.count || ""}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.depth_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Pile diameter</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile?.diameter_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap dimensions</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.dimensions_m?.raw || ""}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Cap depth</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.substructure?.pile_cap?.depth_m || ""} m</td></tr>
           </tbody>
         </table>
       </div>
@@ -580,7 +592,7 @@ export function updatePropertyInspector(group) {
         <span class="metric-header">${displayName} Specifications</span>
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
-            <tr><td class="text-muted p-0 py-1">Section profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || "90x90x10"}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Section profile</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.section?.raw || ""}</td></tr>
             <tr><td class="text-muted p-0 py-1">Spacing</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.spacing_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Total pairs</td><td class="text-end text-white font-monospace p-0 py-1">${state.bridgeData.cross_bracing.count}</td></tr>
             ${gradeRow("Material grade", state.bridgeData.material_grades?.cross_bracing)}
@@ -613,10 +625,10 @@ export function updatePropertyInspector(group) {
           ${svgHtml}
           <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
             <tbody>
-              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Web thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Bottom flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || ""} × ${props.top_flange_thickness_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Bottom flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || ""} × ${props.bottom_flange_thickness_m || ""} m</td></tr>
             </tbody>
           </table>
         </div>
@@ -670,10 +682,10 @@ export function updatePropertyInspector(group) {
           </div>
           <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
             <tbody>
-              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Web thick</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || "0.0"} × ${props.top_flange_thickness_m || "0.0"} m</td></tr>
-              <tr><td class="text-muted p-0 py-0.5">Bot flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || "0.0"} × ${props.bottom_flange_thickness_m || "0.0"} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_depth_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Web thick</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.web_thickness_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Top flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.top_flange_width_m || ""} × ${props.top_flange_thickness_m || ""} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Bot flange</td><td class="text-end text-white font-monospace p-0 py-0.5">${props.bottom_flange_width_m || ""} × ${props.bottom_flange_thickness_m || ""} m</td></tr>
             </tbody>
           </table>
         </div>
@@ -698,7 +710,7 @@ export function updatePropertyInspector(group) {
       <!-- Girder/Chord Spacing -->
       <div class="metric-card mb-0" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 14px; margin-top: 8px;">
         <span class="metric-header" style="margin-bottom: 0;">${displayName} Spacing</span>
-        <span class="metric-value font-monospace" style="font-size: var(--fs-md); color: #60a5fa;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || "2.875"} m</span>
+        <span class="metric-value font-monospace" style="font-size: var(--fs-md); color: #60a5fa;">${state.bridgeData.grid_spacing_m || state.bridgeData.girder_spacing_m || ""} m</span>
       </div>
     `;
   } else if (
@@ -753,10 +765,10 @@ export function updatePropertyInspector(group) {
             <tr><td class="text-muted p-0 py-1">Cap width</td><td class="text-end text-white font-monospace p-0 py-1">${pc.width_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Mid depth (d1)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_depth_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">End depth (d2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.end_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Mid length (L2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || "2.0"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Side length (taper)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || "3.63"} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Total length (L1)</td><td class="text-end text-white font-monospace p-0 py-1">${((parseFloat(pc.mid_section_length_m) || 2.0) + 2 * (parseFloat(pc.taper_section_length_m) || 3.63)).toFixed(2)} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pc.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">Mid length (L2)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.mid_section_length_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Side length (taper)</td><td class="text-end text-white font-monospace p-0 py-1">${pc.taper_section_length_m || ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Total length (L1)</td><td class="text-end text-white font-monospace p-0 py-1">${parseFloat(pc.mid_section_length_m) && parseFloat(pc.taper_section_length_m) ? (parseFloat(pc.mid_section_length_m) + 2 * parseFloat(pc.taper_section_length_m)).toFixed(2) : ""} m</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${pc.reinforcement_pct ? (pc.reinforcement_pct * 100).toFixed(2) + " %" : ""}</td></tr>
           </tbody>
         </table>
       </div>
@@ -773,9 +785,9 @@ export function updatePropertyInspector(group) {
         <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
           <tbody>
             <tr><td class="text-muted p-0 py-1">Depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Dimensions (W x L)</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.dimensions_m?.raw || `${pcap.dimensions_m?.width_m} x ${pcap.dimensions_m?.length_m} m`}</td></tr>
+            <tr><td class="text-muted p-0 py-1">Dimensions (W x L)</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.dimensions_m?.raw || (pcap.dimensions_m?.width_m && pcap.dimensions_m?.length_m ? `${pcap.dimensions_m.width_m} x ${pcap.dimensions_m.length_m} m` : "")}</td></tr>
             <tr><td class="text-muted p-0 py-1">PCC bedding depth</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.pcc_depth_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pcap.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${pcap.reinforcement_pct ? (pcap.reinforcement_pct * 100).toFixed(2) + " %" : ""}</td></tr>
           </tbody>
         </table>
       </div>
@@ -813,7 +825,7 @@ export function updatePropertyInspector(group) {
             <tr><td class="text-muted p-0 py-1">Number of piles</td><td class="text-end text-white font-monospace p-0 py-1">${pile.count}</td></tr>
             <tr><td class="text-muted p-0 py-1">Pile length</td><td class="text-end text-white font-monospace p-0 py-1">${pile.depth_m} m</td></tr>
             <tr><td class="text-muted p-0 py-1">Diameter of each pile</td><td class="text-end text-white font-monospace p-0 py-1">${pile.diameter_m} m</td></tr>
-            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${((pile.reinforcement_pct || 0) * 100).toFixed(2)} %</td></tr>
+            <tr><td class="text-muted p-0 py-1">Reinforcement ratio</td><td class="text-end text-white font-monospace p-0 py-1">${pile.reinforcement_pct ? (pile.reinforcement_pct * 100).toFixed(2) + " %" : ""}</td></tr>
           </tbody>
         </table>
       </div>
@@ -846,6 +858,7 @@ export function updatePropertyInspector(group) {
   }
 
   // Fallback if no specific template content was loaded (e.g. PSC components)
+  htmlContent = dropBlankRows(htmlContent);
   if (!htmlContent.trim()) {
     const isPSC = state.bridgeData?.bridge_type?.includes("PSC") || state.bridgeData?.bridge_type?.includes("Prestressed");
     htmlContent = `
