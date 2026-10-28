@@ -76,9 +76,33 @@ function inlineResearch() {
   };
 }
 
+// Dev server: Vite only serves 404.html itself in preview, so answer unknown page URLs with it here.
+function devNotFoundPage() {
+  return {
+    name: "dev-404-page",
+    apply: "serve",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.method !== "GET" || !(req.headers.accept || "").includes("text/html")) return next();
+        const root = path.resolve(server.config.root);
+        const rel = decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/, "");
+        const target = path.join(root, rel);
+        const page = path.join(root, "404.html");
+        if (!target.startsWith(root) || !fs.existsSync(page)) return next();
+        if (fs.existsSync(target) && (fs.statSync(target).isFile() || fs.existsSync(path.join(target, "index.html")))) return next();
+        const html = await server.transformIndexHtml(req.url, fs.readFileSync(page, "utf-8"));
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "text/html");
+        res.end(html);
+      });
+    },
+  };
+}
+
 export default defineConfig({
   base: "./",
+  appType: "mpa", // unknown URLs get 404.html instead of falling back to index.html
   publicDir: false,
-  plugins: [inlineResearch(), copyModelData()],
+  plugins: [inlineResearch(), copyModelData(), devNotFoundPage()],
   build: { outDir: "dist", emptyOutDir: true, chunkSizeWarningLimit: 1200, rollupOptions: { input: htmlPages() } },
 });
