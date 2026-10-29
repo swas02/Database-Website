@@ -53,45 +53,45 @@
       {
         "section": "intermediate",
         "initial_m": 28.5,
-        "end_m": 39.0
+        "end_m": 39
       },
       {
         "section": "support",
-        "initial_m": 39.0,
-        "end_m": 45.0
+        "initial_m": 39,
+        "end_m": 45
       }
     ],
     "intermediate": {
-      "top_flange_width_m": 0.425,
+      "top_flange_width_m": 0.4,
       "top_flange_thickness_m": 0.025,
       "web_depth_m": 2.593,
       "web_thickness_m": 0.02,
-      "bottom_flange_width_m": 0.5,
+      "bottom_flange_width_m": 0.475,
       "bottom_flange_thickness_m": 0.032,
       "length_per_girder_m": 21
     },
     "mid": {
-      "top_flange_width_m": 0.475,
+      "top_flange_width_m": 0.5,
       "top_flange_thickness_m": 0.025,
       "web_depth_m": 2.593,
-      "web_thickness_m": 0.02,
-      "bottom_flange_width_m": 0.55,
+      "web_thickness_m": 0.018,
+      "bottom_flange_width_m": 0.575,
       "bottom_flange_thickness_m": 0.032,
       "length_per_girder_m": 12
     },
     "end_diaphragm": {
-      "top_flange_width_m": 0.475,
+      "top_flange_width_m": 0.5,
       "top_flange_thickness_m": 0.025,
       "web_depth_m": 2.593,
-      "web_thickness_m": 0.02,
-      "bottom_flange_width_m": 0.55,
+      "web_thickness_m": 0.018,
+      "bottom_flange_width_m": 0.575,
       "bottom_flange_thickness_m": 0.032
     }
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

@@ -5,5 +5,51 @@
     "tendons_main_girder": "Fu 1860 MPa",
     "concrete_deck_slab": "M40",
     "concrete_main_girder": "M40"
+  },
+  "psc_girder": {
+    "girder_count": 5,
+    "tendon": "15T15.2",
+    "tendon_count": 15,
+    "tendons_per_girder": 3,
+    "sections": {
+      "support": {
+        "top_flange_width_m": 1.2,
+        "top_flange_thickness_m": 0.15,
+        "top_haunch_depth_m": 0.083,
+        "web_depth_m": 0.667,
+        "web_thickness_m": 0.698,
+        "bottom_haunch_depth_m": 0.15,
+        "bottom_flange_width_m": 0.7,
+        "bottom_flange_thickness_m": 0.25,
+        "total_depth_m": 1.3
+      },
+      "transition": {
+        "top_flange_width_m": 1.2,
+        "top_flange_thickness_m": 0.15,
+        "top_haunch_depth_m": 0.083,
+        "web_depth_m": 0.667,
+        "web_thickness_m": 0.3,
+        "bottom_haunch_depth_m": 0.15,
+        "bottom_flange_width_m": 0.7,
+        "bottom_flange_thickness_m": 0.25,
+        "total_depth_m": 1.3,
+        "web_thickness_support_end_m": 0.698
+      },
+      "mid": {
+        "top_flange_width_m": 1.2,
+        "top_flange_thickness_m": 0.15,
+        "top_haunch_depth_m": 0.083,
+        "web_depth_m": 0.667,
+        "web_thickness_m": 0.3,
+        "bottom_haunch_depth_m": 0.15,
+        "bottom_flange_width_m": 0.7,
+        "bottom_flange_thickness_m": 0.25,
+        "total_depth_m": 1.3
+      }
+    }
+  },
+  "psc_diaphragm": {
+    "height_m": 1.05,
+    "width_m": 0.3
   }
 }

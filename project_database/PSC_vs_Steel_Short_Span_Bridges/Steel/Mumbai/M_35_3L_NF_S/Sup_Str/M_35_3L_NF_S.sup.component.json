@@ -8,10 +8,10 @@
     "spacing_m": 3.5,
     "count": 11,
     "section": {
-      "raw": "100 x 100 x 8",
-      "leg1_mm": 100,
-      "leg2_mm": 100,
-      "thickness_mm": 8
+      "raw": "110 x 110 x 10",
+      "leg1_mm": 110,
+      "leg2_mm": 110,
+      "thickness_mm": 10
     }
   },
   "transverse_stiffeners_per_girder_side": {
@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

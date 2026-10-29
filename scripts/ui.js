@@ -259,6 +259,15 @@ export function renderGroupsPanel(list) {
   const container = document.getElementById("groups-container");
   container.innerHTML = "";
 
+  // PSC girder: the transition zone is listed after the support and mid-portion groups it joins
+  const isTransition = (g) => /girder.*transition/i.test(g.name);
+  const moved = list.filter(isTransition);
+  if (moved.length) {
+    list = list.filter((g) => !isTransition(g));
+    const at = list.findLastIndex((g) => /girder/i.test(g.name)) + 1;
+    list.splice(at || list.length, 0, ...moved);
+  }
+
   // With both parts loaded, the list is split under Superstructure / Substructure headings
   const sectioned = new Set(list.map((g) => g.part).filter(Boolean)).size > 1;
   const partTitles = { super: "Superstructure", sub: "Substructure" };
@@ -354,6 +363,32 @@ export function generateGirderSVG(props, color) {
       <rect x="${tf_x}" y="${tf_y}" width="${tf_w}" height="${tf_t}" rx="0.5" />
       <rect x="${web_x}" y="${web_y}" width="${web_t}" height="${web_h}" rx="0.5" />
       <rect x="${bf_x}" y="${bf_y}" width="${bf_w}" height="${bf_t}" rx="0.5" />
+    </svg>
+  `;
+}
+
+// PSC I-girder drawn to scale from its layer depths, with the flanges, haunches and web as in the model
+export function generatePscGirderSVG(sec, color, { maxW, maxH }) {
+  const tw = sec.top_flange_width_m / 2;
+  const bw = sec.bottom_flange_width_m / 2;
+  const ww = (sec.web_thickness_m || 0.3) / 2;
+  const y1 = sec.top_flange_thickness_m;
+  const y2 = y1 + sec.top_haunch_depth_m;
+  const y3 = y2 + sec.web_depth_m;
+  const y4 = y3 + sec.bottom_haunch_depth_m;
+  const y5 = y4 + sec.bottom_flange_thickness_m;
+
+  const pad = 0.08;
+  const vbW = maxW + 2 * pad;
+  const vbH = maxH + 2 * pad;
+  const pts = [
+    [-tw, 0], [tw, 0], [tw, y1], [ww, y2], [ww, y3], [bw, y4], [bw, y5],
+    [-bw, y5], [-bw, y4], [-ww, y3], [-ww, y2], [-tw, y1],
+  ].map(([x, y]) => `${(x + maxW / 2 + pad).toFixed(3)},${(y + pad).toFixed(3)}`).join(" ");
+
+  return `
+    <svg width="64" height="${Math.round((64 * vbH) / vbW)}" viewBox="0 0 ${vbW} ${vbH}" style="stroke: ${color}; stroke-width: 0.025; stroke-linejoin: round; fill: rgba(${hexToRgb(color)}, 0.25); filter: drop-shadow(0 0 4px rgba(${hexToRgb(color)}, 0.35)); flex-shrink: 0;">
+      <polygon points="${pts}" />
     </svg>
   `;
 }
@@ -540,6 +575,23 @@ export function updatePropertyInspector(group) {
         </table>
       </div>
     `;
+  } else if (group && group.name.toLowerCase() === "crash barrier") {
+    const row = (label, value) =>
+      `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header">Crash barrier (IRC:5)</span>
+        <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+          <tbody>
+            ${row("Height", DECK_DIMS.crashBarrierHeight.toFixed(2) + " m")}
+            ${state.bridgeData?.has_footpath ? row("Height (footpath side)", DECK_DIMS.crashBarrierHeightFootpathSide.toFixed(2) + " m") : ""}
+            ${row("Base Width", DECK_DIMS.crashBarrierWidth.toFixed(2) + " m")}
+            ${row("Position", state.bridgeData?.has_footpath ? "Both edges of carriageway" : "Both deck edges")}
+          </tbody>
+        </table>
+        <div class="text-muted" style="font-size: var(--fs-xs); margin-top: 6px;">Ref: IRC:5-2024, p. 40, Fig. 2 (without footpath) and Fig. 1 (with footpath)</div>
+      </div>
+    `;
   } else if (group && group.name.toLowerCase() === "railing") {
     const row = (label, value) =>
       `<tr><td class="text-muted p-0 py-1">${label}</td><td class="text-end text-white font-monospace p-0 py-1">${value}</td></tr>`;
@@ -556,6 +608,7 @@ export function updatePropertyInspector(group) {
             ${row("Plinth Width", DECK_DIMS.plinthWidth.toFixed(3) + " m")}
           </tbody>
         </table>
+        <div class="text-muted" style="font-size: var(--fs-xs); margin-top: 6px;">Ref: IRC:5, cl. 109.7; IRC:5-2024, p. 40, Fig. 1</div>
       </div>
     `;
   } else if (group && group.name.toLowerCase() === "footpath") {
@@ -571,6 +624,7 @@ export function updatePropertyInspector(group) {
             ${row("Height Above Deck", DECK_DIMS.footpathHeight.toFixed(1) + " m")}
           </tbody>
         </table>
+        <div class="text-muted" style="font-size: var(--fs-xs); margin-top: 6px;">Ref: IRC:5-2024, p. 40, Fig. 1</div>
       </div>
     `;
   } else if (
@@ -855,6 +909,99 @@ export function updatePropertyInspector(group) {
         </div>
       `;
     }
+  } else if (group && !isSteel && /girder/i.test(group.name) && state.bridgeData.psc_girder) {
+    const pg = state.bridgeData.psc_girder;
+    const nameLower = group.name.toLowerCase();
+    const zone = nameLower.includes("transition") ? "transition" : nameLower.includes("support") ? "support" : "mid";
+    const zoneNames = { support: "Support section", transition: "Transition zone", mid: "Mid-portion" };
+    const sec = pg.sections?.[zone];
+    if (zone === "transition") {
+      const web = sec?.web_thickness_support_end_m ? `${sec.web_thickness_support_end_m} m → ${sec.web_thickness_m} m` : "";
+      htmlContent = `
+        <div class="metric-card mb-0" style="min-width: 250px;">
+          <span class="metric-header">Girder · Transition zone</span>
+          <div style="font-size: var(--fs-xs); line-height: 1.5; margin-bottom: 6px;">
+            Transition between the support section (T, solid end block) and the mid-portion (I), and vice versa at the other end.
+          </div>
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+            <tbody>
+              <tr><td class="text-muted p-0 py-0.5">Web thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${web}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else if (sec) {
+      let colorHex = "#6f6f6f";
+      const firstPartID = Array.from(state.groupIndex.get(group.name) || [])[0];
+      const mesh = firstPartID && state.meshMap.get(firstPartID)?.[0];
+      if (mesh) colorHex = "#" + mesh.material.color.getHexString();
+
+      // One scale for all zones so their sketches can be compared
+      const all = Object.values(pg.sections);
+      const scale = {
+        maxW: Math.max(...all.map((s) => Math.max(s.top_flange_width_m, s.bottom_flange_width_m))),
+        maxH: Math.max(...all.map((s) => s.total_depth_m)),
+      };
+      const row = (label, value) =>
+        `<tr><td class="text-muted p-0 py-0.5">${label}</td><td class="text-end text-white font-monospace p-0 py-0.5">${value}</td></tr>`;
+      const web = sec.web_thickness_support_end_m
+        ? `${sec.web_thickness_support_end_m} → ${sec.web_thickness_m}`
+        : sec.web_thickness_m || "";
+
+      htmlContent = `
+        <div class="metric-card mb-0" style="min-width: 250px;">
+          <span class="metric-header" style="margin-bottom: 8px;">Girder cross-section · ${zoneNames[zone]}</span>
+          <div style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+            ${generatePscGirderSVG(sec, colorHex, scale)}
+            <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+              <tbody>
+                ${row("Total depth", `${sec.total_depth_m} m`)}
+                ${row("Top flange", `${sec.top_flange_width_m} × ${sec.top_flange_thickness_m} m`)}
+                ${row("Top haunch", `${sec.top_haunch_depth_m} m`)}
+                ${row("Web", `${sec.web_depth_m} × ${web} m`)}
+                ${row("Bottom haunch", `${sec.bottom_haunch_depth_m} m`)}
+                ${row("Bottom flange", `${sec.bottom_flange_width_m} × ${sec.bottom_flange_thickness_m} m`)}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="metric-card mb-0" style="min-width: 250px; margin-top: 8px;">
+          <span class="metric-header">Girder layout</span>
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+            <tbody>
+              ${row("Girders", pg.girder_count || "")}
+              ${row("Girder spacing", `${state.bridgeData.girder_spacing_m || ""} m`)}
+              ${row("Tendon", pg.tendon || "")}
+              ${row("Tendons per girder", pg.tendons_per_girder || "")}
+              ${row("Total tendons", pg.tendon_count || "")}
+              ${gradeRow("Concrete grade", state.bridgeData.material_grades?.concrete_main_girder)}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+  } else if (group && !isSteel && /diaphragm/i.test(group.name) && state.bridgeData.psc_diaphragm) {
+    const d = state.bridgeData.psc_diaphragm;
+    const mesh = state.meshMap.get(Array.from(state.groupIndex.get(group.name) || [])[0])?.[0];
+    const colorHex = mesh ? "#" + mesh.material.color.getHexString() : "#6f6f6f";
+    // Rectangle drawn to scale inside a 64 px box
+    const k = 64 / Math.max(d.height_m, d.width_m);
+    htmlContent = `
+      <div class="metric-card mb-0" style="min-width: 250px;">
+        <span class="metric-header" style="margin-bottom: 8px;">Diaphragm specifications</span>
+        <div style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+          <svg width="${(d.width_m * k + 4).toFixed(0)}" height="${(d.height_m * k + 4).toFixed(0)}" style="stroke: ${colorHex}; stroke-width: 1.2; fill: rgba(${hexToRgb(colorHex)}, 0.25); filter: drop-shadow(0 0 4px rgba(${hexToRgb(colorHex)}, 0.35)); flex-shrink: 0;">
+            <rect x="2" y="2" width="${(d.width_m * k).toFixed(1)}" height="${(d.height_m * k).toFixed(1)}" rx="0.5" />
+          </svg>
+          <table class="table table-borderless table-sm text-white mb-0" style="font-size: var(--fs-xs); --bs-table-bg: transparent;">
+            <tbody>
+              <tr><td class="text-muted p-0 py-0.5">Depth</td><td class="text-end text-white font-monospace p-0 py-0.5">${d.height_m} m</td></tr>
+              <tr><td class="text-muted p-0 py-0.5">Thickness</td><td class="text-end text-white font-monospace p-0 py-0.5">${d.width_m} m</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
   }
 
   // Fallback if no specific template content was loaded (e.g. PSC components)

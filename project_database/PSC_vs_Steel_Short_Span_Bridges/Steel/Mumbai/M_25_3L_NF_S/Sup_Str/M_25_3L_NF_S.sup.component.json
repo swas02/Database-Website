@@ -5,7 +5,7 @@
   },
   "girder_spacing_m": 2.875,
   "cross_bracing": {
-    "spacing_m": 3.571,
+    "spacing_m": 3.5714,
     "count": 8,
     "section": {
       "raw": "90 x 90 x 12",
@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

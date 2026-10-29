@@ -53,12 +53,12 @@
       {
         "section": "intermediate",
         "initial_m": 28.5,
-        "end_m": 39.0
+        "end_m": 39
       },
       {
         "section": "support",
-        "initial_m": 39.0,
-        "end_m": 45.0
+        "initial_m": 39,
+        "end_m": 45
       }
     ],
     "intermediate": {
@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

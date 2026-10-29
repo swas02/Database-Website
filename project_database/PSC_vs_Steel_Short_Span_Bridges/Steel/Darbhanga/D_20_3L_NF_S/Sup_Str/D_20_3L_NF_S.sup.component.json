@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "E350",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

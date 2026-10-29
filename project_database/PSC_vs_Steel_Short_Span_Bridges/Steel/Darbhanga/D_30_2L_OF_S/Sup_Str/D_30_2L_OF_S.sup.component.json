@@ -29,7 +29,7 @@
       "top_flange_width_m": 0.375,
       "top_flange_thickness_m": 0.018,
       "web_depth_m": 1.71,
-      "web_thickness_m": 0.018,
+      "web_thickness_m": 0.016,
       "bottom_flange_width_m": 0.425,
       "bottom_flange_thickness_m": 0.022,
       "length_per_girder_m": 18
@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

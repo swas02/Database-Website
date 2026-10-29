@@ -53,18 +53,18 @@
       {
         "section": "intermediate",
         "initial_m": 28.5,
-        "end_m": 39.0
+        "end_m": 39
       },
       {
         "section": "support",
-        "initial_m": 39.0,
-        "end_m": 45.0
+        "initial_m": 39,
+        "end_m": 45
       }
     ],
     "intermediate": {
       "top_flange_width_m": 0.375,
       "top_flange_thickness_m": 0.02,
-      "web_depth_m": 2.605,
+      "web_depth_m": 2.6,
       "web_thickness_m": 0.016,
       "bottom_flange_width_m": 0.45,
       "bottom_flange_thickness_m": 0.025,
@@ -90,7 +90,7 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
+    "cross_bracing": "Fe410WA",
     "concrete_deck_slab": "M40",
     "rebar_deck_slab": "Fe550"
   }

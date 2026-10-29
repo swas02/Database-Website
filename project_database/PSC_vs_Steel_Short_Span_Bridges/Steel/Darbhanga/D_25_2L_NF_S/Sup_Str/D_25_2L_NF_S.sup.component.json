@@ -5,7 +5,7 @@
   },
   "girder_spacing_m": 2.875,
   "cross_bracing": {
-    "spacing_m": 3.571,
+    "spacing_m": 3.5714,
     "count": 8,
     "section": {
       "raw": "90 x 90 x 12",
@@ -32,7 +32,7 @@
       "web_thickness_m": 0.016,
       "bottom_flange_width_m": 0.45,
       "bottom_flange_thickness_m": 0.022,
-      "length_per_girder_m": 16
+      "length_per_girder_m": 15.1429
     },
     "longitudinal_segmentation_m": [
       {
@@ -48,16 +48,16 @@
       {
         "section": "mid",
         "initial_m": 8,
-        "end_m": 17
+        "end_m": 17.8571
       },
       {
         "section": "intermediate",
-        "initial_m": 17,
-        "end_m": 17
+        "initial_m": 17.8571,
+        "end_m": 17.8571
       },
       {
         "section": "support",
-        "initial_m": 17,
+        "initial_m": 17.8571,
         "end_m": 25
       }
     ],
@@ -77,7 +77,7 @@
       "web_thickness_m": 0.012,
       "bottom_flange_width_m": 0.575,
       "bottom_flange_thickness_m": 0.028,
-      "length_per_girder_m": 9
+      "length_per_girder_m": 9.8571
     },
     "end_diaphragm": {
       "top_flange_width_m": 0.475,
@@ -90,8 +90,8 @@
   },
   "material_grades": {
     "structural_steel": "E350",
-    "cross_bracing": "E250",
-    "concrete_deck_slab": "M40",
+    "cross_bracing": "Fe410WA",
+    "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
   }
 }

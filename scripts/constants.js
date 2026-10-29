@@ -88,6 +88,8 @@ export function getMaterialColor(groupName) {
 // Deck furniture widths in metres. Keep in sync with barrier_geometry.js.
 export const DECK_DIMS = {
   crashBarrierWidth: 0.45,
+  crashBarrierHeight: 1.1,
+  crashBarrierHeightFootpathSide: 0.9,
   footpathWidth: 1.5,
   footpathHeight: 0.1,
   plinthWidth: 0.375,
