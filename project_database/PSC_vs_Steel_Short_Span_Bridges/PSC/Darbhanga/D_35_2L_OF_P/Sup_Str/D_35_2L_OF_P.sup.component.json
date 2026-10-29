@@ -9,7 +9,9 @@
     "rebar_main_girder": "Fe550",
     "tendons_main_girder": "Fu 1860 MPa",
     "concrete_deck_slab": "M45",
-    "concrete_main_girder": "M45"
+    "concrete_main_girder": "M45",
+    "concrete_end_diaphragm": "M45",
+    "rebar_end_diaphragm": "Fe550"
   },
   "psc_girder": {
     "girder_count": 4,
@@ -26,7 +28,8 @@
         "bottom_haunch_depth_m": 0.2,
         "bottom_flange_width_m": 0.7,
         "bottom_flange_thickness_m": 0.25,
-        "total_depth_m": 1.7
+        "total_depth_m": 1.7,
+        "length_per_girder_m": 4
       },
       "transition": {
         "top_flange_width_m": 1.2,
@@ -38,7 +41,8 @@
         "bottom_flange_width_m": 0.7,
         "bottom_flange_thickness_m": 0.25,
         "total_depth_m": 1.7,
-        "web_thickness_support_end_m": 0.698
+        "web_thickness_support_end_m": 0.698,
+        "length_per_girder_m": 4
       },
       "mid": {
         "top_flange_width_m": 1.2,
@@ -49,12 +53,73 @@
         "bottom_haunch_depth_m": 0.2,
         "bottom_flange_width_m": 0.7,
         "bottom_flange_thickness_m": 0.25,
-        "total_depth_m": 1.7
+        "total_depth_m": 1.7,
+        "length_per_girder_m": 27
       }
-    }
+    },
+    "tendon_profile_m": [
+      {
+        "x": [
+          0,
+          17.5,
+          35
+        ],
+        "z": [
+          -0.6,
+          -1.39,
+          -0.6
+        ]
+      },
+      {
+        "x": [
+          0,
+          17.5,
+          35
+        ],
+        "z": [
+          -0.9,
+          -1.515,
+          -0.9
+        ]
+      },
+      {
+        "x": [
+          0,
+          17.5,
+          35
+        ],
+        "z": [
+          -1.2,
+          -1.64,
+          -1.2
+        ]
+      },
+      {
+        "x": [
+          0,
+          17.5,
+          35
+        ],
+        "z": [
+          -1.5,
+          -1.765,
+          -1.5
+        ]
+      }
+    ]
   },
   "psc_diaphragm": {
     "height_m": 1.475,
-    "width_m": 0.3
+    "width_m": 0.3,
+    "count": 4,
+    "spacing_m": 11.33,
+    "segments": 3
+  },
+  "footpath_width_m": 1.5,
+  "carriageway_width_m": 10.5,
+  "wind_speed_mps": 55,
+  "bearings": {
+    "count": 8,
+    "max_vertical_reaction_kN": 2958.86
   }
 }

@@ -25,12 +25,18 @@
     "taper_section_length_m": 3.625
   },
   "pedestal": {
-    "size_m": 0.3
+    "size_m": 0.3,
+    "count": 8,
+    "reinforcement_kg": 32.4
   },
   "material_grades": {
     "concrete_pier": "M40",
     "concrete_pier_cap": "M40",
     "concrete_pedestal": "M40",
-    "rebar_pedestal": "Fe550"
+    "rebar_pedestal": "Fe550",
+    "rebar_pier": "Fe550",
+    "rebar_pier_cap": "Fe550",
+    "concrete_pile_cap": "M40",
+    "rebar_pile_cap": "Fe550"
   }
 }

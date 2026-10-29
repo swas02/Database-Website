@@ -93,5 +93,16 @@
     "cross_bracing": "E250",
     "concrete_deck_slab": "M45",
     "rebar_deck_slab": "Fe550"
-  }
+  },
+  "footpath_width_m": 1.5,
+  "carriageway_width_m": 10.5,
+  "wind_speed_mps": 55,
+  "bearings": {
+    "count": 4,
+    "max_vertical_reaction_kN": 1837.82
+  },
+  "girder_count": 4,
+  "end_girder_count": 2,
+  "intermediate_girder_count": 2,
+  "girder_depth_m": 2.05
 }
