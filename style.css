@@ -1429,6 +1429,7 @@ canvas {
     background: var(--bg-main);
   }
   .lcca-mode .model-chip,
+  .lcca-mode .scale-note,
   .lcca-mode .viewer-hint {
     display: none;
   }
@@ -1482,6 +1483,15 @@ canvas {
 .viewer-hint {
   position: absolute;
   right: 20px;
+  bottom: 20px;
+  z-index: 30;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.scale-note {
+  position: absolute;
+  left: 20px;
   bottom: 20px;
   z-index: 30;
   font-size: var(--fs-xs);
@@ -1814,6 +1824,7 @@ body { display: flex; flex-direction: column; font-family: "Inter", system-ui, s
   #hud-triggers .hud-divider { display: none; }
   .hud-btn { padding: 6px 8px; min-width: 34px; }
   .model-chip { font-size: var(--fs-xs); padding: 4px 10px; }
+  .scale-note { left: 10px; bottom: 52px; }
 
   #side-stack { overflow-y: auto; -webkit-overflow-scrolling: touch; }
   #side-stack > #left-panel:not(.section-closed),
