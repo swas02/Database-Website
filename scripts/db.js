@@ -385,7 +385,8 @@ window.loadSelectedBridge = async function (fromUser = false) {
     // Remember the current bridge
     state.currentLoadedBridgePath = match.ifc;
     state.currentLoadedBridge = match;
-    state.currentLoadedSubBridge = subMatch;
+    // Downloads list the paired substructure files even when only the superstructure model is loaded
+    state.currentLoadedSubBridge = subMatch || (match.structure === "Superstructure" ? findSubstructureFor(match) : null);
     state.loadedStructure = wantBoth ? BOTH : match.structure;
 
     // Refresh general specifications UI
